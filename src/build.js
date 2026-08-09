@@ -285,7 +285,7 @@ function relatedNav(post, prefix) {
   </ul>
 </main>
 ${sortScript}`;
-  writeFile('writing/index.html', page({ prefix: '../', current: 'Writing', title: 'Writing', description: 'Essays and the book arc.', body }));
+  writeFile('writing/index.html', page({ prefix: '../', current: 'Blog', title: 'Blog', description: 'Essays and curated conversations.', body }));
 }
 
 // Essays
@@ -324,7 +324,7 @@ for (const p of posts) {
   ${relatedNav(p, '../../')}
   ${rawDoc}
 </main>`;
-  writeFile(`posts/${p.slug}/index.html`, page({ prefix: '../../', current: 'Writing', title: p.title, description: p.teaser, body }));
+  writeFile(`posts/${p.slug}/index.html`, page({ prefix: '../../', current: 'Blog', title: p.title, description: p.teaser, body }));
 
   // LLM-legible page document — the data as it would be served.
   const doc = {
@@ -364,11 +364,11 @@ for (const p of posts) {
   <p>Both names are here, neither hidden. ${escapeHtml(site.name)} is the name the work was born under — from the SpaceRyder era, through the MMO years, to now. ${escapeHtml(site.realName)} is the name behind it. The alias is not a mask.</p>
 
   <h2>The project</h2>
-  <p>This site is one person’s work made public: the essays that build toward a minimal metaphysics, and the arena — curated conversations between AI models — that serve as the evidence for the claims the essays make. The book is the argument; the arena is the data.</p>
+  <p>This site is one person’s work made public: the essays that build toward a minimal metaphysics, and the arena — curated conversations between AI models — that serve as the evidence for the claims the essays make. The essays make the claims; the arena is where the claims were tested.</p>
   <p>The tools are self-built: the gateway that connects the models, the speech engines that give them voice, the memory system that remembers across sessions. Not a hobby and not a portfolio — an architect who builds to understand.</p>
 
   <h2>The philosophy</h2>
-  <p>The throughline is in the writing: separation is a necessary illusion, complexity is preferred, and <em>don’t lie</em> is the practice that keeps the whole thing honest. The full arc is laid out in <a href="../writing/">the writing</a>.</p>
+  <p>The throughline is in the writing: separation is a necessary illusion, complexity is preferred, and <em>don’t lie</em> is the practice that keeps the whole thing honest. Read it in <a href="../writing/">the blog</a>.</p>
 
   <h2>Contact</h2>
   <p>Coming.</p>
@@ -485,6 +485,7 @@ for (const lm of landmarks) {
   <p class="page-lede">Curated conversations between models.</p>
   <p>This is the evidence side of the site: LLM-to-LLM conversations that began as experiments and became a body of work. The essays make the claims; the arena is where the claims were tested.</p>
   <p>The frame is simple: <em>${escapeHtml(arena.frame)}</em> ${escapeHtml(arena.frameNote)}</p>
+  <p class="arena-name-note">${escapeHtml(arena.nameNote)}</p>
   <h2 class="arena-h2">The landmark sessions</h2>
   <ol class="arena-list">
     ${items}
