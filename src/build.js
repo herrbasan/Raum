@@ -495,6 +495,30 @@ for (const lm of landmarks) {
   writeFile('arena/index.html', page({ prefix: '../', current: 'Arena', title: 'Arena', description: 'Curated conversations between models.', body }));
 }
 
+/* ---------- static pages (content/pages/*.md) ---------- */
+
+const pagesDir = path.join(CONTENT, 'pages');
+if (fs.existsSync(pagesDir)) {
+  for (const f of fs.readdirSync(pagesDir)) {
+    if (!f.endsWith('.md')) continue;
+    const slug = f.replace(/\.md$/, '');
+    const raw = fs.readFileSync(path.join(pagesDir, f), 'utf8');
+    const titleMatch = raw.match(/^#\s+(.+)$/m);
+    const title = titleMatch ? titleMatch[1].trim() : slug;
+    const bodyMd = raw.replace(/^#\s+.+\n?/, '');
+    const navItem = site.nav.find((n) => n.path === slug + '/');
+    const body = `<main class="essay">
+  <header class="essay-header">
+    <h1 class="essay-title">${escapeHtml(title)}</h1>
+  </header>
+  <article class="essay-body">
+    ${mdToHtml(bodyMd)}
+  </article>
+</main>`;
+    writeFile(`${slug}/index.html`, page({ prefix: '../', current: navItem ? navItem.label : null, title, description: title, body }));
+  }
+}
+
 /* ---------- assets ---------- */
 
 fs.cpSync(path.join(ASSETS, 'css'), path.join(OUT, 'assets', 'css'), { recursive: true });

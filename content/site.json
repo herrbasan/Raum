@@ -7,6 +7,7 @@
   "nav": [
     { "label": "Blog", "path": "writing/" },
     { "label": "Arena", "path": "arena/" },
+    { "label": "Little Religion", "path": "religion/" },
     { "label": "About", "path": "about/" }
   ],
   "footer": "Herrbasan (David A. Renelt) · writing and curated conversations",
@@ -26,6 +27,7 @@
     "nav_writing": { "en": "Blog", "de": "Blog" },
     "nav_arena": { "en": "Arena", "de": "Arena" },
     "nav_about": { "en": "About", "de": "Über mich" },
+    "nav_religion": { "en": "Little Religion", "de": "Die kleine Religion" },
     "entry_writing_kicker": { "en": "Primary", "de": "Primär" },
     "entry_writing_note": { "en": "Essays, conversations, the music.", "de": "Essays, Gespräche, die Musik." },
     "entry_arena_kicker": { "en": "Evidence", "de": "Belege" },
