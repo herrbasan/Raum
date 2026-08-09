@@ -274,6 +274,7 @@ function relatedNav(post, prefix) {
 </script>`;
   const body = `<main class="writing">
   <h1 class="page-title"${i18nAttr('writing_title')}>${escapeHtml(i18nVal('writing_title', 'en'))}</h1>
+  <p class="page-author"${i18nAttr('writing_author')}>${escapeHtml(i18nVal('writing_author', 'en'))}</p>
   <p class="page-lede"${i18nAttr('writing_lede')}>${escapeHtml(i18nVal('writing_lede', 'en'))}</p>
   <div class="sort-toggle">
     <button type="button" data-sort="date" class="active"${i18nAttr('sort_chronological')}>${escapeHtml(i18nVal('sort_chronological', 'en'))}</button>
@@ -372,7 +373,7 @@ for (const p of posts) {
   <h2>Contact</h2>
   <p>Coming.</p>
 </main>`;
-  writeFile('about/index.html', page({ prefix: '../', current: 'About', title: 'About', description: 'Herrbasan (David Renelt) — who and why.', body }));
+  writeFile('about/index.html', page({ prefix: '../', current: 'About', title: 'About', description: 'Herrbasan (David A. Renelt) — who and why.', body }));
 }
 
 /* ---------- Arena ---------- */

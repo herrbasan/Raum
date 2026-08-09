@@ -1,6 +1,6 @@
 {
   "name": "Herrbasan",
-  "realName": "David Renelt",
+  "realName": "David A. Renelt",
   "description": "Writing and curated conversations. The book is the argument; the arena is the data.",
   "threshold": "It's not nothing.",
   "thresholdSource": "the arena",
@@ -9,7 +9,7 @@
     { "label": "Arena", "path": "arena/" },
     { "label": "About", "path": "about/" }
   ],
-  "footer": "Herrbasan (David Renelt) · writing and curated conversations",
+  "footer": "Herrbasan (David A. Renelt) · writing and curated conversations",
   "i18n": {
     "threshold": {
       "en": "It's not nothing.",
@@ -20,8 +20,8 @@
       "de": "aus der Arena"
     },
     "footer": {
-      "en": "Herrbasan (David Renelt) · writing and curated conversations",
-      "de": "Herrbasan (David Renelt) · Schreiben und kuratierte Gespräche"
+      "en": "Herrbasan (David A. Renelt) · writing and curated conversations",
+      "de": "Herrbasan (David A. Renelt) · Schreiben und kuratierte Gespräche"
     },
     "nav_writing": { "en": "Writing", "de": "Schreiben" },
     "nav_arena": { "en": "Arena", "de": "Arena" },
@@ -31,7 +31,8 @@
     "entry_arena_kicker": { "en": "Evidence", "de": "Belege" },
     "entry_arena_note": { "en": "Curated conversations between models.", "de": "Kuratierte Gespräche zwischen Modellen." },
     "latest_kicker": { "en": "Latest", "de": "Neuestes" },
-    "writing_title": { "en": "Writing", "de": "Schreiben" },
+    "writing_title": { "en": "It's not nothing", "de": "Es ist nicht nichts" },
+    "writing_author": { "en": "Herrbasan (David A. Renelt)", "de": "Herrbasan (David A. Renelt)" },
     "writing_lede": {
       "en": "The book arc, the essays, and the music. Everything is an entry in one feed.",
       "de": "Der Buchbogen, die Essays und die Musik. Alles ist ein Eintrag in einem Feed."
