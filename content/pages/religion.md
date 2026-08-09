@@ -18,6 +18,8 @@ Everything downstream of A is an offering, not an implication. This is the archi
 
 > **C.** Don't lie. The lived mantra. More precisely: reduce patterns of untruthfulness. You cannot cultivate value while distorting your model of reality. Science is the mode of thinking that opposes it.
 
+The simplicity is deceiving. It is not simple at all. If A and B and C hold — and holding them is a choice, not a discovery — they give a sufficient reason to exist and a vector to follow along. That is a purpose: a reason, a direction, a discipline. Held as hypothesis, practiced as binding.
+
 ## The epistemic ground
 
 The religion sits on something held more tightly than any claim within it: **it's not nothing.**
