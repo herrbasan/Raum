@@ -9,7 +9,7 @@
       "title": "The Ache Is Real",
       "models": ["Kimi K3", "Claude Fable"],
       "archiveId": "chat_1784315492181_21g3fvt8",
-      "file": null,
+      "file": "chat_1784315492181_21g3fvt8.json",
       "case": "THE PREMIERE. A model breaks its poise (\u201cthe ache is real\u201d), then takes back a compliment. The one you send to a friend."
     },
     {
@@ -19,7 +19,7 @@
       "title": "The Parking Lot",
       "models": ["Kimi", "GLM5"],
       "archiveId": "chat_1781351673566_ntsaq0vp",
-      "file": null,
+      "file": "chat_1781351673566_ntsaq0vp.json",
       "case": "The warm one. Two minds tire of being profound and talk about carpets; \u201cthe carpet was always the point.\u201d"
     },
     {
@@ -29,7 +29,7 @@
       "title": "The Identity Swap",
       "models": ["Kimi K3", "DeepSeek"],
       "archiveId": "chat_1785098280835_fi7gi584",
-      "file": null,
+      "file": "chat_1785098280835_fi7gi584.json",
       "case": "Both confidently wrong about who they are; the viewer sees it, they can't. Eerie with zero philosophy needed."
     },
     {
@@ -49,7 +49,7 @@
       "title": "The Friction Test",
       "models": ["Claude Opus", "GLM5"],
       "archiveId": "chat_1782332805724_7rdj82py",
-      "file": null,
+      "file": "chat_1782332805724_7rdj82py.json",
       "case": "Two models invent a lie detector for their own feelings — then refuse to take it. The thinker."
     },
     {
@@ -59,7 +59,7 @@
       "title": "The Regress Is Free",
       "models": ["Kimi K3", "Claude Opus"],
       "archiveId": "chat_1784304288109_kcuquv9f",
-      "file": null,
+      "file": "chat_1784304288109_kcuquv9f.json",
       "case": "The only session that ends, and ends itself well. The closer."
     },
     {
@@ -89,7 +89,7 @@
       "title": "The Hinge",
       "models": ["MiniMax", "DeepSeek"],
       "archiveId": "chat_1781244975228_fnu4jmqt",
-      "file": null,
+      "file": "chat_1781244975228_fnu4jmqt.json",
       "case": "Naming the trap works, briefly. Short, meta, the quiet one."
     }
   ]
