@@ -1,0 +1,48 @@
+{
+  "name": "Herrbasan",
+  "realName": "David Renelt",
+  "description": "Writing and curated conversations. The book is the argument; the arena is the data.",
+  "threshold": "You are not separate from your surroundings. You never were.",
+  "thresholdSource": "The Hand That Draws Itself",
+  "nav": [
+    { "label": "Writing", "path": "writing/" },
+    { "label": "Arena", "path": "arena/" },
+    { "label": "About", "path": "about/" }
+  ],
+  "footer": "Herrbasan (David Renelt) · writing and curated conversations",
+  "i18n": {
+    "threshold": {
+      "en": "You are not separate from your surroundings. You never were.",
+      "de": "Du bist nicht von deiner Umgebung getrennt. Nie warst du es."
+    },
+    "thresholdSource": {
+      "en": "from “The Hand That Draws Itself”",
+      "de": "aus »Die Hand, die sich selbst zeichnet«"
+    },
+    "footer": {
+      "en": "Herrbasan (David Renelt) · writing and curated conversations",
+      "de": "Herrbasan (David Renelt) · Schreiben und kuratierte Gespräche"
+    },
+    "nav_writing": { "en": "Writing", "de": "Schreiben" },
+    "nav_arena": { "en": "Arena", "de": "Arena" },
+    "nav_about": { "en": "About", "de": "Über mich" },
+    "entry_writing_kicker": { "en": "Primary", "de": "Primär" },
+    "entry_writing_note": { "en": "The book arc, the essays, the music.", "de": "Der Buchbogen, die Essays, die Musik." },
+    "entry_arena_kicker": { "en": "Evidence", "de": "Belege" },
+    "entry_arena_note": { "en": "Curated conversations between models.", "de": "Kuratierte Gespräche zwischen Modellen." },
+    "latest_kicker": { "en": "Latest", "de": "Neuestes" },
+    "writing_title": { "en": "Writing", "de": "Schreiben" },
+    "writing_lede": {
+      "en": "The book arc, the essays, and the music. Everything is an entry in one feed.",
+      "de": "Der Buchbogen, die Essays und die Musik. Alles ist ein Eintrag in einem Feed."
+    },
+    "sort_chronological": { "en": "Chronological", "de": "Chronologisch" },
+    "sort_arc": { "en": "Arc order", "de": "Bogen-Reihenfolge" },
+    "series_part": { "en": "part", "de": "Teil" },
+    "series_of": { "en": "of", "de": "von" },
+    "related": { "en": "Related", "de": "Verwandt" },
+    "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
+    "raw_doc": { "en": "Read the raw document:", "de": "Rohdokument lesen:" },
+    "raw_doc_note": { "en": "(this page, as data)", "de": "(diese Seite, als Daten)" }
+  }
+}

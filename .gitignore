@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+.idea/
+
+# Node
+node_modules/
+
+# Scratch / generated-temp
+.preview/
+*.tmp

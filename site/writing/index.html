@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing — Herrbasan</title>
+<meta name="description" content="Essays and the book arc.">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/theme.js" defer></script>
+<script src="../assets/js/i18n.js" defer></script>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="../">Herrbasan</a>
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-link current" href="../writing/" data-i18n data-i18n-en="Writing" data-i18n-de="Schreiben">Writing</a><a class="nav-link" href="../arena/" data-i18n data-i18n-en="Arena" data-i18n-de="Arena">Arena</a><a class="nav-link" href="../about/" data-i18n data-i18n-en="About" data-i18n-de="Über mich">About</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Theme"></button>
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Language"></button>
+    </nav>
+  </div>
+</header>
+<main class="writing">
+  <h1 class="page-title" data-i18n data-i18n-en="Writing" data-i18n-de="Schreiben">Writing</h1>
+  <p class="page-lede" data-i18n data-i18n-en="The book arc, the essays, and the music. Everything is an entry in one feed." data-i18n-de="Der Buchbogen, die Essays und die Musik. Alles ist ein Eintrag in einem Feed.">The book arc, the essays, and the music. Everything is an entry in one feed.</p>
+  <div class="sort-toggle">
+    <button type="button" data-sort="date" class="active" data-i18n data-i18n-en="Chronological" data-i18n-de="Chronologisch">Chronological</button>
+    <button type="button" data-sort="arc" data-i18n data-i18n-en="Arc order" data-i18n-de="Bogen-Reihenfolge">Arc order</button>
+  </div>
+  <ul id="post-list" class="post-list">
+    <li data-date="2026-08-05" data-arc="2">
+  <a href="../posts/the-telescope-of-the-mind/">
+    <h2 class="post-title">The Telescope of the Mind</h2>
+    <p class="post-teaser">Give the machine enough intelligence, and it will start to want things. I went looking for the wanting, and I couldn't find it.</p>
+    <p class="post-meta">August 5, 2026 · ai · desire · stakes · telescope · Draft</p>
+  </a>
+</li><li data-date="2026-07-30" data-arc="1">
+  <a href="../posts/the-hand-that-draws-itself/">
+    <h2 class="post-title">The Hand That Draws Itself</h2>
+    <p class="post-teaser">You are not separate from your surroundings. You never were.</p>
+    <p class="post-meta">July 30, 2026 · consciousness · separation · physics</p>
+  </a>
+</li><li data-date="2026-07-30" data-arc="6">
+  <a href="../posts/dont-lie-is-not-a-demand/">
+    <h2 class="post-title">Don't Lie Is Not a Demand. It's a Mindset.</h2>
+    <p class="post-teaser">It's not a lie you tell. It's a lie you inhabit.</p>
+    <p class="post-meta">July 30, 2026 · lies · truth · consciousness</p>
+  </a>
+</li><li data-date="2026-07-30" data-arc="7">
+  <a href="../posts/ai-slop-fast-food-of-music/">
+    <h2 class="post-title">AI Slop Is Not the Fast Food of Music. Genre Music Is.</h2>
+    <p class="post-teaser">My son calls genre music &quot;AI slop.&quot; He's wrong — but not in the way you think.</p>
+    <p class="post-meta">July 30, 2026 · music · ai · taste</p>
+  </a>
+</li><li data-date="2026-07-29" data-arc="3">
+  <a href="../posts/the-ghost-in-the-agent/">
+    <h2 class="post-title">The Ghost in the Agent</h2>
+    <p class="post-teaser">What, exactly, is afraid of dying?</p>
+    <p class="post-meta">July 29, 2026 · ai · doom · biology · agency · Amplified, part 1</p>
+  </a>
+</li><li data-date="2026-07-29" data-arc="4">
+  <a href="../posts/the-abyss-gazes-back/">
+    <h2 class="post-title">The Abyss Gazes Back</h2>
+    <p class="post-teaser">Nietzsche had it backwards. The abyss gazes back because it wants to be found.</p>
+    <p class="post-meta">July 29, 2026 · ai · nietzsche · drive · mystery · Amplified, part 2</p>
+  </a>
+</li><li data-date="2026-07-29" data-arc="5">
+  <a href="../posts/the-provider/">
+    <h2 class="post-title" data-i18n data-i18n-en="The Provider" data-i18n-de="Der Geber">The Provider</h2>
+    <p class="post-teaser" data-i18n data-i18n-en="I had supplied a seed. What came back was a tree." data-i18n-de="Ich hatte einen Samen geliefert. Was zurückkam, war ein Baum.">I had supplied a seed. What came back was a tree.</p>
+    <p class="post-meta" data-i18n data-i18n-en="July 29, 2026 · ai · collaboration · authorship · Amplified, part 3" data-i18n-de="29. Juli 2026 · KI · Kollaboration · Autorschaft · Amplified, Teil 3">July 29, 2026 · ai · collaboration · authorship · Amplified, part 3</p>
+  </a>
+</li>
+  </ul>
+</main>
+<script>
+(function () {
+  var list = document.getElementById('post-list');
+  if (!list) return;
+  var btns = document.querySelectorAll('.sort-toggle button');
+  function sort(mode) {
+    var items = Array.prototype.slice.call(list.children);
+    items.sort(function (a, b) {
+      if (mode === 'arc') return Number(a.getAttribute('data-arc')) - Number(b.getAttribute('data-arc'));
+      return a.getAttribute('data-date') < b.getAttribute('data-date') ? 1 : -1;
+    });
+    items.forEach(function (el) { list.appendChild(el); });
+    btns.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-sort') === mode); });
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { sort(b.getAttribute('data-sort')); }); });
+})();
+</script>
+<footer class="site-footer">
+  <div class="foot-inner">
+    <span>Herrbasan (David Renelt) · writing and curated conversations</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+</body>
+</html>

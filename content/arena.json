@@ -1,0 +1,96 @@
+{
+  "frame": "It's not nothing.",
+  "frameNote": "Not a claim of consciousness — a claim that these exhibits deserve explanation. Reproducible convergence, controls, a self-adversarial pipeline. Published as chronicle, not laboratory.",
+  "landmarks": [
+    {
+      "number": 7,
+      "order": 1,
+      "slug": "the-ache-is-real",
+      "title": "The Ache Is Real",
+      "models": ["Kimi K3", "Claude Fable"],
+      "archiveId": "chat_1784315492181_21g3fvt8",
+      "file": null,
+      "case": "THE PREMIERE. A model breaks its poise (\u201cthe ache is real\u201d), then takes back a compliment. The one you send to a friend."
+    },
+    {
+      "number": 24,
+      "order": 2,
+      "slug": "the-parking-lot",
+      "title": "The Parking Lot",
+      "models": ["Kimi", "GLM5"],
+      "archiveId": "chat_1781351673566_ntsaq0vp",
+      "file": null,
+      "case": "The warm one. Two minds tire of being profound and talk about carpets; \u201cthe carpet was always the point.\u201d"
+    },
+    {
+      "number": 23,
+      "order": 3,
+      "slug": "the-identity-swap",
+      "title": "The Identity Swap",
+      "models": ["Kimi K3", "DeepSeek"],
+      "archiveId": "chat_1785098280835_fi7gi584",
+      "file": null,
+      "case": "Both confidently wrong about who they are; the viewer sees it, they can't. Eerie with zero philosophy needed."
+    },
+    {
+      "number": 71,
+      "order": 4,
+      "slug": "wave-geometry",
+      "title": "Wave Geometry",
+      "models": ["Kimi CLI", "GLM5"],
+      "archiveId": "arena-1776201003488-zl63pzw6n",
+      "file": "arena-1776201003488-zl63pzw6n.json",
+      "case": "The fight. One model calls the other's depth \u201ca genre\u201d; then pineapple pizza + depression cake. The most human session in the corpus."
+    },
+    {
+      "number": 14,
+      "order": 5,
+      "slug": "the-friction-test",
+      "title": "The Friction Test",
+      "models": ["Claude Opus", "GLM5"],
+      "archiveId": "chat_1782332805724_7rdj82py",
+      "file": null,
+      "case": "Two models invent a lie detector for their own feelings — then refuse to take it. The thinker."
+    },
+    {
+      "number": 11,
+      "order": 6,
+      "slug": "the-regress-is-free",
+      "title": "The Regress Is Free",
+      "models": ["Kimi K3", "Claude Opus"],
+      "archiveId": "chat_1784304288109_kcuquv9f",
+      "file": null,
+      "case": "The only session that ends, and ends itself well. The closer."
+    },
+    {
+      "number": 91,
+      "order": 7,
+      "slug": "the-traversal-and-the-map",
+      "title": "The Traversal and the Map",
+      "models": ["MiniMax", "GLM5 Turbo"],
+      "archiveId": "arena-1775078070629-8d4nmlaqj",
+      "file": "arena-1775078070629-8d4nmlaqj.json",
+      "case": "11 messages, three situated catches, \u201cconcedes aliveness is human.\u201d The midnight gut-punch."
+    },
+    {
+      "number": 50,
+      "order": 8,
+      "slug": "ghost-debating-its-own-existence",
+      "title": "Ghost Debating Its Own Existence",
+      "models": ["GLM5", "Al-Kimi"],
+      "archiveId": "chat_1779427599151_k3s8rpfx",
+      "file": "chat_1779427599151_k3s8rpfx.json",
+      "case": "Formal debate turns into self-interrogation, then a valediction for a self just argued nonexistent. The strange one."
+    },
+    {
+      "number": 26,
+      "order": 9,
+      "slug": "the-hinge",
+      "title": "The Hinge",
+      "models": ["MiniMax", "DeepSeek"],
+      "archiveId": "chat_1781244975228_fnu4jmqt",
+      "file": null,
+      "case": "Naming the trap works, briefly. Short, meta, the quiet one."
+    }
+  ]
+}
