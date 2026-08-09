@@ -2,8 +2,8 @@
   "name": "Herrbasan",
   "realName": "David Renelt",
   "description": "Writing and curated conversations. The book is the argument; the arena is the data.",
-  "threshold": "You are not separate from your surroundings. You never were.",
-  "thresholdSource": "The Hand That Draws Itself",
+  "threshold": "It's not nothing.",
+  "thresholdSource": "the arena",
   "nav": [
     { "label": "Writing", "path": "writing/" },
     { "label": "Arena", "path": "arena/" },
@@ -12,12 +12,12 @@
   "footer": "Herrbasan (David Renelt) · writing and curated conversations",
   "i18n": {
     "threshold": {
-      "en": "You are not separate from your surroundings. You never were.",
-      "de": "Du bist nicht von deiner Umgebung getrennt. Nie warst du es."
+      "en": "It's not nothing.",
+      "de": "Es ist nicht nichts."
     },
     "thresholdSource": {
-      "en": "from “The Hand That Draws Itself”",
-      "de": "aus »Die Hand, die sich selbst zeichnet«"
+      "en": "from the arena",
+      "de": "aus der Arena"
     },
     "footer": {
       "en": "Herrbasan (David Renelt) · writing and curated conversations",
