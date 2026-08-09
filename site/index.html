@@ -5,50 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Herrbasan</title>
 <meta name="description" content="Writing and curated conversations. The essays make the claims; the arena is the data.">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('raum-theme')||'system'}catch(e){document.documentElement.dataset.theme='system'}</script>
 <link rel="stylesheet" href="assets/css/site.css">
-<script src="assets/js/theme.js" defer></script>
-<script src="assets/js/i18n.js" defer></script>
-
+<script src="assets/js/md-renderer.js" defer></script>
+<script src="assets/js/app.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="site-header-inner">
-    <a class="brand" href="">Herrbasan</a>
-    <nav class="nav" aria-label="Primary">
-      <a class="nav-link" href="writing/" data-i18n data-i18n-en="Blog" data-i18n-de="Blog">Blog</a><a class="nav-link" href="arena/" data-i18n data-i18n-en="Arena" data-i18n-de="Arena">Arena</a><a class="nav-link" href="religion/" data-i18n data-i18n-en="Little Religion" data-i18n-de="Die kleine Religion">Little Religion</a><a class="nav-link" href="about/" data-i18n data-i18n-en="About" data-i18n-de="Über mich">About</a>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Theme"></button>
-      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Language"></button>
-    </nav>
-  </div>
-</header>
-<main class="home">
-  <p class="threshold" data-i18n data-i18n-en="It's not nothing." data-i18n-de="Es ist nicht nichts.">It's not nothing.</p>
-  <p class="threshold-source" data-i18n data-i18n-en="from the arena" data-i18n-de="aus der Arena">from the arena</p>
-  <div class="entry-points">
-    <a class="entry" href="writing/">
-      <p class="entry-kicker" data-i18n data-i18n-en="Primary" data-i18n-de="Primär">Primary</p>
-      <h2 data-i18n data-i18n-en="Blog" data-i18n-de="Blog">Writing</h2>
-      <p class="entry-note" data-i18n data-i18n-en="Essays, conversations, the music." data-i18n-de="Essays, Gespräche, die Musik.">Essays, conversations, the music.</p>
-    </a>
-    <a class="entry" href="arena/">
-      <p class="entry-kicker" data-i18n data-i18n-en="Evidence" data-i18n-de="Belege">Evidence</p>
-      <h2 data-i18n data-i18n-en="Arena" data-i18n-de="Arena">Arena</h2>
-      <p class="entry-note" data-i18n data-i18n-en="Curated conversations between models." data-i18n-de="Kuratierte Gespräche zwischen Modellen.">Curated conversations between models.</p>
-    </a>
-  </div>
-  <section class="latest">
-    <p class="latest-kicker" data-i18n data-i18n-en="Latest" data-i18n-de="Neuestes">Latest</p>
-    <a href="posts/the-hand-that-draws-itself/">
-    <h2 class="post-title">The Hand That Draws Itself</h2>
-    <p class="post-teaser">You are not separate from your surroundings. You never were.</p>
-  </a>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="foot-inner">
-    <span>Herrbasan (David A. Renelt) · writing and curated conversations</span>
-    <span>© 2026</span>
-  </div>
-</footer>
+<main id="app" data-kind="home" data-slug="" data-prefix=""></main>
 </body>
 </html>
