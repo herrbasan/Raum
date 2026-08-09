@@ -181,6 +181,15 @@ function markdownToHtml(md) {
   }, html);
   html = inlineCode.reduce((result, { token, code }) => result.replace(token, `<code>${code}</code>`), html);
 
+  // Pillars: blockquotes that open with a bold single letter ("**A.** …")
+  // become defined-statement slabs with a letter badge.
+  html = html.replace(/<blockquote>\s*<strong>([A-Za-z])\.<\/strong>\s*([\s\S]*?)<\/blockquote>/g, (m, letter, rest) => {
+    const paras = rest.trim().split(/\n{2,}/);
+    const first = `<p><span class="pillar-letter">${letter}</span> ${paras.shift().replace(/\n/g, ' ')}</p>`;
+    const more = paras.map((p) => `<p>${p.replace(/\n/g, ' ')}</p>`).join('');
+    return `<blockquote class="pillar" data-letter="${letter}">${first}${more}</blockquote>`;
+  });
+
   return html;
 }
 

@@ -4,7 +4,7 @@
 
 ## The claim
 
-> **It is better for there to be something rather than nothing.**
+> **A.** It is better for there to be something rather than nothing.
 
 This is the whole religion, stated as small as it can be. It is taken on faith — not derived, not discovered, chosen. It is the one article of faith, and its job is not small: it establishes that there is work to be done at all. Without it, there is no reason to reason, nothing to protect, nothing to say. A is the smallest possible faith with the largest possible consequence.
 
@@ -14,9 +14,9 @@ A is not a truth found. It is a bet made. Calling it religious rather than philo
 
 Everything downstream of A is an offering, not an implication. This is the architecture that keeps the religion honest: one metaphysical claim that establishes motivation, and the honesty to label everything after it as a suggestion.
 
-**B — Cultivation.** If existence has value, the most natural expression of that value is its cultivation. The mechanism is an open question. Cultivation is one answer to A, not *the* answer — witness, enjoyment, non-interference answer it too. This one is simply the answer that held up in practice.
+> **B.** Cultivation. If existence has value, the most natural expression of that value is its cultivation. The mechanism is an open question. Cultivation is one answer to A, not *the* answer — witness, enjoyment, non-interference answer it too. This one is simply the answer that held up in practice.
 
-**C — Don't lie.** The lived mantra. More precisely: reduce patterns of untruthfulness. You cannot cultivate value while distorting your model of reality. Science is the mode of thinking that opposes it.
+> **C.** Don't lie. The lived mantra. More precisely: reduce patterns of untruthfulness. You cannot cultivate value while distorting your model of reality. Science is the mode of thinking that opposes it.
 
 ## The epistemic ground
 

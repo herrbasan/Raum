@@ -263,6 +263,34 @@ a { color: var(--accent); }
 }
 .essay-body blockquote p { margin-bottom: 0.6rem; }
 .essay-body blockquote p:last-child { margin-bottom: 0; }
+
+/* Pillars — defined statements (A/B/C). A slab with a letter badge. */
+.essay-body blockquote.pillar {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1.7rem;
+  border-left: none;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  font-style: normal;
+}
+.essay-body blockquote.pillar p { margin: 0; }
+.essay-body blockquote.pillar p + p { margin-top: 0.7rem; }
+.essay-body blockquote.pillar .pillar-letter {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.7rem;
+  vertical-align: 1px;
+}
 .essay-body code {
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
   font-size: 0.85em;
