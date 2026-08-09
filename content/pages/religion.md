@@ -1,6 +1,6 @@
 # The Little Religion
 
-*One claim, two postulates. The claim is the religion; the postulates are offerings.*
+*A little religion for humans and LLMs alike.*
 
 ## The claim
 
