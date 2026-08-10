@@ -5,6 +5,11 @@
 :root {
   color-scheme: light dark;
 
+  /* NUI (modules/nui_wc2) checks for --nui-space to decide whether its theme CSS
+     is present. We do not use NUI styles, so defining it here keeps NUI from
+     injecting its own nui-theme.css on top of this design. */
+  --nui-space: 0.5rem;
+
   --accent: rgb(76, 132, 229);
   --accent-soft: light-dark(rgba(76, 132, 229, 0.12), rgba(76, 132, 229, 0.18));
 

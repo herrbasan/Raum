@@ -1,8 +1,8 @@
-// src/md.js — markdown → HTML renderer.
+// assets/js/md-renderer.js — markdown → HTML renderer.
 // Adapted from nui_wc2's markdownToHtml (modules/nui_wc2/NUI/nui.js, MIT).
-// Vendored as a pure function so it runs at build time in Node with zero
-// runtime dependencies. Supports: headers, bold/italic/strikethrough, links,
-// images, flat/loose/nested lists, fenced + inline code, tables, blockquotes,
+// Vendored as a pure function with a pillar extension ("**A.**" blockquotes).
+// Supports: headers, bold/italic/strikethrough, links, images,
+// flat/loose/nested lists, fenced + inline code, tables, blockquotes,
 // horizontal rules — with URL-scheme validation on links/images (blocks
 // javascript:, data:, vbscript:). Output is styled by assets/css/site.css.
 'use strict';
@@ -193,7 +193,7 @@ function markdownToHtml(md) {
   return html;
 }
 
-// Dual export: CommonJS for Node (build), window.MD for the browser.
+// Dual export: CommonJS for Node, window.MD for the browser.
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { mdToHtml: markdownToHtml };
 }
