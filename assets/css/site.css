@@ -312,6 +312,11 @@ a { color: var(--accent); }
   line-height: 1.5;
 }
 .essay-body pre code { background: none; padding: 0; }
+/* nui-markdown wraps fenced code blocks in <nui-code> (copy button + syntax
+   highlighting). Give the wrapper the same rhythm as other blocks. */
+.essay-body nui-code { display: block; margin: 0 0 1.5rem; }
+.essay-body nui-code .nui-code-copy { background: var(--bg-soft); border: 1px solid var(--border); }
+.essay-body nui-code .nui-code-copy:hover { background: var(--bg); }
 .essay-body ul, .essay-body ol { margin: 0 0 1.5rem; padding-left: 1.6rem; }
 .essay-body li { margin-bottom: 0.5rem; }
 .essay-body li > ul, .essay-body li > ol { margin-bottom: 0.25rem; margin-top: 0.25rem; }

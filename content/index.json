@@ -127,6 +127,17 @@
       "order": 7,
       "file": "ai-slop-fast-food-of-music.md",
       "links": { "related": [] }
+    },
+    {
+      "slug": "markdown-formatting-test",
+      "title": "Markdown Formatting Test",
+      "date": "2026-06-01",
+      "teaser": "Exercises the markdown renderer: headings, emphasis, lists, tables, blockquotes, and syntax-highlighted code blocks.",
+      "tags": ["test", "markdown"],
+      "order": 8,
+      "status": "draft",
+      "file": "markdown-formatting-test.md",
+      "links": { "related": [] }
     }
   ],
   "pages": [

@@ -40,21 +40,38 @@ function setTitle(s) {
 }
 
 // Stale-render guard: only the newest renderInto for a wrapper may write.
-async function renderInto(wrapper, buildHtml) {
+// Builders return { html, markdown?: [mdStrings] }; [data-md-slot] placeholders
+// in html are replaced with hydrated <nui-markdown> elements.
+async function renderInto(wrapper, build) {
 	const my = (wrapper.__rv || 0) + 1;
 	wrapper.__rv = my;
-	const html = await buildHtml();
+	const { html, markdown } = await build();
 	if (my !== wrapper.__rv) return;
 	wrapper.innerHTML = html;
+	hydrateMarkdown(wrapper, markdown || []);
 }
 
 /* ---------------- markdown + link rewriting ---------------- */
 
-function renderMarkdown(mdText) {
-	const div = document.createElement('div');
-	div.innerHTML = window.MD.mdToHtml(mdText);
-	rewriteLinks(div);
-	return div.innerHTML;
+// Markdown is rendered by the nui-markdown component (fenced code maps to its
+// nui-code syntax highlighting). Each placeholder becomes a <nui-markdown>
+// carrying the raw text in a <script type="text/markdown"> block — textContent
+// keeps code samples safe (no HTML escaping at injection time).
+function hydrateMarkdown(root, texts) {
+	if (!texts?.length) return;
+	const nodes = [...root.querySelectorAll('[data-md-slot]')];
+	nodes.forEach((node, i) => {
+		const md = document.createElement('nui-markdown');
+		for (const attr of [...node.attributes]) {
+			if (attr.name !== 'data-md-slot') md.setAttribute(attr.name, attr.value);
+		}
+		const script = document.createElement('script');
+		script.type = 'text/markdown';
+		script.textContent = texts[i] ?? '';
+		md.appendChild(script);
+		node.replaceWith(md); // connects → nui-markdown renders synchronously
+		rewriteLinks(md);
+	});
 }
 
 function rewriteLinks(root) {
@@ -138,7 +155,7 @@ function buildHome() {
 			<h2>${esc(t(title))}</h2>
 			<p class="entry-note">${esc(t(note))}</p>
 		</a>`;
-	return `
+	return { html: `
 		<div class="home">
 			<p class="threshold">${esc(site.threshold)}</p>
 			<p class="threshold-source">${esc(t('thresholdSource'))}</p>
@@ -153,7 +170,7 @@ function buildHome() {
 					<p class="post-teaser">${esc(de?.teaser || latest.teaser)}</p>
 				</a>
 			</div>
-		</div>`;
+		</div>` };
 }
 
 /* ---------------- writing ---------------- */
@@ -177,14 +194,14 @@ function buildWriting() {
 	}).join('');
 	const sortBtn = (key) =>
 		`<button type="button" data-sort="${key}" class="${state.sort === key ? 'active' : ''}">${esc(t('sort_' + key))}</button>`;
-	return `
+	return { html: `
 		<div class="writing">
 			<h1 class="page-title">${esc(t('blog_title'))}</h1>
 			<p class="page-author">${esc(t('blog_author'))}</p>
 			<p class="page-lede">${esc(t('blog_lede'))}</p>
 			<div class="sort-toggle">${sortBtn('chronological')}${sortBtn('arc')}</div>
 			<ul class="post-list">${items}</ul>
-		</div>`;
+		</div>` };
 }
 
 /* ---------------- arena overview ---------------- */
@@ -201,7 +218,7 @@ function buildArena() {
 			</a>
 			<p class="arena-case">${esc(l.case)}</p>
 		</li>`).join('');
-	return `
+	return { html: `
 		<div class="arena">
 			<h1 class="page-title">Arena</h1>
 			<p class="page-lede">${esc(arena.frame)}</p>
@@ -212,7 +229,7 @@ function buildArena() {
 			</div>
 			<h2 class="arena-h2">Landmark sessions</h2>
 			<ul class="arena-list">${items}</ul>
-		</div>`;
+		</div>` };
 }
 
 /* ---------------- pages (religion, about) ---------------- */
@@ -238,12 +255,15 @@ async function buildPage(slug, docTitle) {
 	});
 	const { title, subtitle, body } = splitPage(mdText);
 	setTitle(docTitle || title);
-	return `
-		<div class="about">
-			<h1 class="name-line">${esc(title)}</h1>
-			${subtitle ? `<p class="real-name">${esc(subtitle)}</p>` : ''}
-			<div class="essay-body">${renderMarkdown(body)}</div>
-		</div>`;
+	return {
+		html: `
+			<div class="about">
+				<h1 class="name-line">${esc(title)}</h1>
+				${subtitle ? `<p class="real-name">${esc(subtitle)}</p>` : ''}
+				<div data-md-slot class="essay-body"></div>
+			</div>`,
+		markdown: [body],
+	};
 }
 
 /* ---------------- post ---------------- */
@@ -286,7 +306,7 @@ function buildRelatedNav(post) {
 
 async function buildPost(slug) {
 	const post = state.manifest.posts.find((p) => p.slug === slug);
-	if (!post) return `<div class="essay"><h1 class="essay-title">Not found</h1></div>`;
+	if (!post) return { html: `<div class="essay"><h1 class="essay-title">Not found</h1></div>` };
 	const de = state.lang === 'de' && post.de;
 	const file = de?.file || post.file;
 	const mdText = await fetch(`content/posts/${file}`).then((r) => {
@@ -298,18 +318,21 @@ async function buildPost(slug) {
 	const statusNote = post.status === 'draft'
 		? `<p class="status-note">${esc(t('status_draft'))}</p>`
 		: '';
-	return `
-		<div class="essay">
-			<div class="essay-header">
-				<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
-				<p class="byline">${esc(t('blog_author'))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>
-				${statusNote}
-			</div>
-			<div class="essay-body">${renderMarkdown(mdText)}</div>
-			${buildSeriesNav(post)}
-			${buildRelatedNav(post)}
-			<p class="raw-doc"><a href="content/posts/${esc(file)}" download>${esc(t('download_md'))}</a></p>
-		</div>`;
+	return {
+		html: `
+			<div class="essay">
+				<div class="essay-header">
+					<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
+					<p class="byline">${esc(t('blog_author'))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>
+					${statusNote}
+				</div>
+				<div data-md-slot class="essay-body"></div>
+				${buildSeriesNav(post)}
+				${buildRelatedNav(post)}
+				<p class="raw-doc"><a href="content/posts/${esc(file)}" download>${esc(t('download_md'))}</a></p>
+			</div>`,
+		markdown: [mdText],
+	};
 }
 
 /* ---------------- arena session ---------------- */
@@ -368,7 +391,7 @@ async function buildSessionMarkdown(slug) {
 
 async function buildSession(slug) {
 	const loaded = await loadSession(slug);
-	if (!loaded) return `<div class="arena-session"><h1 class="essay-title">Not found</h1></div>`;
+	if (!loaded) return { html: `<div class="arena-session"><h1 class="essay-title">Not found</h1></div>` };
 	const { landmark, data } = loaded;
 	setTitle(landmark.title);
 	const seed = extractSeed(data);
@@ -376,30 +399,33 @@ async function buildSession(slug) {
 	const turnHtml = turns.map((tr) => `
 		<li class="turn turn-${tr.letter}">
 			<p class="turn-speaker">${esc(tr.letter)}</p>
-			<div class="turn-text">${renderMarkdown(tr.content)}</div>
+			<div data-md-slot class="turn-text"></div>
 		</li>`).join('');
-	return `
-		<div class="arena-session">
-			<div class="arena-case">
-				<p class="arena-case-label">The case</p>
-				<p>${esc(landmark.case)}</p>
-			</div>
-			<h1 class="essay-title">${esc(landmark.title)}</h1>
-			<p class="byline">${esc((landmark.models || []).join(' × '))}</p>
-			${seed ? `
-			<div class="arena-seed">
-				<p class="arena-seed-label">Seed</p>
-				<p class="arena-seed-text">${esc(seed)}</p>
-			</div>` : ''}
-			<div class="downloads">
-				<span class="downloads-label">${esc(t('download_md'))} / ${esc(t('download_json'))}</span>
-				<a href="#" data-dl-md>${esc(t('download_md'))}</a>
-				<a href="content/arena/${esc(landmark.file)}" download>${esc(t('download_json'))}</a>
-			</div>
-			<div class="transcript">
-				<ul class="turns">${turnHtml}</ul>
-			</div>
-		</div>`;
+	return {
+		html: `
+			<div class="arena-session">
+				<div class="arena-case">
+					<p class="arena-case-label">The case</p>
+					<p>${esc(landmark.case)}</p>
+				</div>
+				<h1 class="essay-title">${esc(landmark.title)}</h1>
+				<p class="byline">${esc((landmark.models || []).join(' × '))}</p>
+				${seed ? `
+				<div class="arena-seed">
+					<p class="arena-seed-label">Seed</p>
+					<p class="arena-seed-text">${esc(seed)}</p>
+				</div>` : ''}
+				<div class="downloads">
+					<span class="downloads-label">${esc(t('download_md'))} / ${esc(t('download_json'))}</span>
+					<a href="#" data-dl-md>${esc(t('download_md'))}</a>
+					<a href="content/arena/${esc(landmark.file)}" download>${esc(t('download_json'))}</a>
+				</div>
+				<div class="transcript">
+					<ul class="turns">${turnHtml}</ul>
+				</div>
+			</div>`,
+		markdown: turns.map((tr) => tr.content),
+	};
 }
 
 /* ---------------- feature / type registration ---------------- */
