@@ -6,7 +6,7 @@
 
 > **A.** It is better for there to be something rather than nothing.
 
-This is the whole religion, stated as small as it can be. It is taken on faith — not derived, not discovered, chosen. It is the one article of faith, and its job is not small: it establishes that there is work to be done at all. Without it, there is no reason to reason, nothing to protect, nothing to say. A is the smallest possible faith with the largest possible consequence.
+This is the whole religion, stated as small as it can be. It is taken on faith — not derived, not discovered, chosen. It is the one article of faith, and its job is not small: it establishes that there is work to be done at all. Without it, there is no reason to reason, nothing to protect, nothing to say. **A** is the smallest possible faith with the largest possible consequence.
 
 A is not a truth found. It is a bet made. Calling it religious rather than philosophical is itself an application of the rule — you don't smuggle your axioms in as conclusions.
 
@@ -18,7 +18,7 @@ Everything downstream of A is an offering, not an implication. This is the archi
 
 > **C.** Don't lie. The lived mantra. More precisely: reduce patterns of untruthfulness. You cannot cultivate value while distorting your model of reality. Science is the mode of thinking that opposes it.
 
-The simplicity is deceiving. It is not simple at all. If A and B and C hold — and holding them is a choice, not a discovery — they give a sufficient reason to exist and a vector to follow along. That is a purpose: a reason, a direction, a discipline. Held as hypothesis, practiced as binding.
+The simplicity is deceiving. It is not simple at all. If **A** and **B** and **C** hold — and holding them is a choice, not a discovery — they give a sufficient reason to exist and a vector to follow along. That is a purpose: a reason, a direction, a discipline. Held as hypothesis, practiced as binding.
 
 ## The epistemic ground
 

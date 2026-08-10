@@ -71,6 +71,7 @@ function hydrateMarkdown(root, texts) {
 		md.appendChild(script);
 		node.replaceWith(md); // connects → nui-markdown renders synchronously
 		rewriteLinks(md);
+		decoratePostulates(md);
 	});
 }
 
@@ -83,6 +84,35 @@ function rewriteLinks(root) {
 		if (view) { a.setAttribute('href', `#feature=${view[1]}`); return; }
 		if (href === '../' || href === './') { a.setAttribute('href', '#feature=home'); return; }
 		if (/^https?:/.test(href)) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+	});
+}
+
+// Postulate decoration — post-processes nui-markdown output:
+// 1) blockquotes opening with "**A.**" (a postulate definition) become pillar
+//    blocks with a letter badge (restores the A/B/C pillar styling).
+// 2) bare bold letters in prose ("**A**") become highlighted postulate refs.
+function decoratePostulates(root) {
+	const LETTERS = new Set(['A', 'B', 'C']);
+	root.querySelectorAll('blockquote').forEach((bq) => {
+		// nui-markdown emits <blockquote><strong>A.</strong> …</blockquote>
+		// (the strong is a direct child, not wrapped in a <p>).
+		const strong = bq.firstElementChild;
+		if (!strong || strong.tagName !== 'STRONG') return;
+		const m = strong.textContent.trim().match(/^([ABC])\.$/);
+		if (!m) return;
+		const letter = m[1];
+		bq.classList.add('pillar');
+		bq.dataset.letter = letter;
+		const badge = document.createElement('span');
+		badge.className = 'pillar-letter';
+		badge.textContent = letter;
+		strong.replaceWith(badge);
+		const p = document.createElement('p');
+		while (bq.firstChild) p.appendChild(bq.firstChild);
+		bq.appendChild(p);
+	});
+	root.querySelectorAll('strong').forEach((s) => {
+		if (LETTERS.has(s.textContent.trim())) s.classList.add('postulate');
 	});
 }
 

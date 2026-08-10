@@ -296,6 +296,18 @@ a { color: var(--accent); }
   margin-right: 0.7rem;
   vertical-align: 1px;
 }
+/* Postulate references in prose — written as **A** / **B** / **C** */
+.essay-body strong.postulate {
+  font-family: var(--sans);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.08em 0.42em;
+  border-radius: 3px;
+  white-space: nowrap;
+}
 .essay-body code {
   font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
   font-size: 0.85em;
