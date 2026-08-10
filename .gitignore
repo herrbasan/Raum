@@ -10,6 +10,9 @@ Thumbs.db
 # Node
 node_modules/
 
+# Generated output (fully regenerable via `node src/build.js`)
+site/
+
 # Scratch / generated-temp
 .preview/
 *.tmp
