@@ -30,7 +30,7 @@
     Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  --measure: 65ch;
+  --measure: 78ch;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
 }
 html[data-theme="dark"] { color-scheme: dark; }
@@ -84,7 +84,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 
 /* ---------- Header / nav ---------- */
 
-.site-header { border-bottom: 1px solid var(--border); }
+.site-header { position: relative; border-bottom: 1px solid var(--border); }
 .site-header-inner {
   max-width: 60rem;
   margin: 0 auto;
@@ -126,7 +126,54 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .theme-toggle:hover,
 .lang-toggle:hover { color: var(--text); border-color: var(--text-dim); }
-.lang-toggle { margin-left: -0.8rem; }
+.nav-controls { display: flex; align-items: center; gap: 1.4rem; margin-left: -0.8rem; }
+
+/* Mobile menu toggle (hamburger) — hidden on desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-dim);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 700px) {
+  .menu-toggle { display: flex; }
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    display: none;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem var(--gutter) 1.25rem;
+    box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.35);
+  }
+  .site-header.nav-open .nav { display: flex; }
+  .nav-link { padding: 0.7rem 0; font-size: 1.05rem; }
+  .nav-controls { margin-left: 0; gap: 0.6rem; margin-top: 0.9rem; }
+}
 
 /* ---------- Shared page scaffold ---------- */
 

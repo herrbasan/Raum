@@ -65,6 +65,8 @@ function hydrateMarkdown(root, texts) {
 		for (const attr of [...node.attributes]) {
 			if (attr.name !== 'data-md-slot') md.setAttribute(attr.name, attr.value);
 		}
+		// Let the renderer strip YAML frontmatter rather than handling it here.
+		md.setAttribute('frontmatter', 'strip');
 		const script = document.createElement('script');
 		script.type = 'text/markdown';
 		script.textContent = texts[i] ?? '';
@@ -150,14 +152,29 @@ function renderChrome() {
 	header.innerHTML = `
 		<div class="site-header-inner">
 			<a class="brand" href="#feature=home">${esc(site.name)}</a>
-			<nav class="nav" aria-label="Main">
+			<button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="${esc(t('menu_label'))}">
+				<span></span><span></span><span></span>
+			</button>
+			<nav class="nav" id="site-nav" aria-label="Main">
 				${navItems}
-				<button class="lang-toggle" type="button" id="lang-toggle">${state.lang === 'de' ? 'EN' : 'DE'}</button>
-				<button class="theme-toggle" type="button" id="theme-toggle">${themeLabel()}</button>
+				<div class="nav-controls">
+					<button class="lang-toggle" type="button" id="lang-toggle">${state.lang === 'de' ? 'EN' : 'DE'}</button>
+					<button class="theme-toggle" type="button" id="theme-toggle">${themeLabel()}</button>
+				</div>
 			</nav>
 		</div>`;
 	document.getElementById('site-footer').innerHTML =
 		`<div class="foot-inner"><span>${esc(t('footer'))}</span></div>`;
+	const menuToggle = document.getElementById('menu-toggle');
+	const nav = document.getElementById('site-nav');
+	const setMenu = (open) => {
+		menuToggle.setAttribute('aria-expanded', String(open));
+		menuToggle.classList.toggle('open', open);
+		header.classList.toggle('nav-open', open);
+	};
+	menuToggle.addEventListener('click', () =>
+		setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+	nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 	document.getElementById('theme-toggle').addEventListener('click', cycleTheme);
 	document.getElementById('lang-toggle').addEventListener('click', toggleLang);
 }
@@ -325,6 +342,11 @@ function splitPage(mdText) {
 	let title = '';
 	let subtitle = '';
 	let i = 0;
+	// skip a leading YAML frontmatter block
+	if (lines[i] && lines[i].trim() === '---') {
+		for (i++; i < lines.length && lines[i].trim() !== '---'; i++) {}
+		i++; // past the closing ---
+	}
 	while (i < lines.length && !lines[i].trim()) i++;
 	const m = lines[i]?.match(/^#\s+(.+)$/);
 	if (m) { title = m[1].trim(); i++; }
@@ -342,8 +364,8 @@ async function buildPage(slug, docTitle) {
 		if (!r.ok) throw new Error(`page ${slug}: ${r.status}`);
 		return r.text();
 	});
-	const { meta, body } = parseFrontmatter(mdText);
-	const { title, subtitle, body: pageBody } = splitPage(body);
+	const { meta } = parseFrontmatter(mdText);
+	const { title, subtitle, body: pageBody } = splitPage(mdText);
 	setTitle(docTitle || title);
 	return {
 		html: `
@@ -400,9 +422,10 @@ function buildRelatedNav(post) {
 // so strip the duplicate H1 and italic byline from the post body.
 function stripPostHeader(md) {
 	return md
-		.replace(/^\s*#\s+[^\n]*\n?/, '')             // H1 title (allow leading blank)
-		.replace(/^\s*\*by\s+[^\n]*\*?\s*\n?/, '')    // italic byline
-		.replace(/^\s*\n/, '');                       // remaining leading blank line
+		.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')  // YAML frontmatter
+		.replace(/^\s*#\s+[^\n]*\n?/, '')                // H1 title (allow leading blank)
+		.replace(/^\s*\*by\s+[^\n]*\*?\s*\n?/, '')       // italic byline
+		.replace(/^\s*\n/, '');                          // remaining leading blank line
 }
 
 async function buildPost(slug) {
@@ -414,7 +437,7 @@ async function buildPost(slug) {
 		if (!r.ok) throw new Error(`post ${slug}: ${r.status}`);
 		return r.text();
 	});
-	const { meta, body } = parseFrontmatter(mdText);
+	const { meta } = parseFrontmatter(mdText);
 	setTitle(de?.title || post.title);
 	const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
 	const statusNote = post.status === 'draft'
@@ -434,7 +457,7 @@ async function buildPost(slug) {
 				${buildProcessFooter(meta)}
 				<p class="raw-doc"><a href="content/posts/${esc(file)}" download><nui-icon name="download"></nui-icon>${esc(t('download_md'))}</a></p>
 			</div>`,
-		markdown: [stripPostHeader(body)],
+		markdown: [stripPostHeader(mdText)],
 	};
 }
 

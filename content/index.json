@@ -50,7 +50,8 @@
       "lang_note": {
         "en": "The English versions are the originals. I am German, but the language I write and think in is English — and it is the most natural language to the models. The German versions, despite our best efforts, are translations. If you are able to, read the English originals.",
         "de": "Die englischen Fassungen sind die Originale. Obgleich das Deutsche meine Muttersprache ist, ist englisch die Sprache in der ich denke und schreibe — und sie ist die natürlichste Sprache für die Modelle. Die deutschen Fassungen sind trotz aller Mühe Übersetzungen. Wenn Sie dazu in der Lage sind, lesen Sie die englischen Originale."
-      }
+      },
+      "menu_label": { "en": "Menu", "de": "Menü" }
     }
   },
   "nav": [
