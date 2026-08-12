@@ -167,6 +167,29 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   margin: 0 0 clamp(3rem, 8vh, 5rem);
 }
 .entry-points { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
+.lang-note {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-soft);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: clamp(3rem, 9vh, 5.5rem);
+  max-width: 34rem;
+}
+.lang-note-kicker {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin: 0 0 0.5rem;
+}
+.lang-note-text {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
 .entry { text-decoration: none; display: block; }
 .entry-kicker {
   font-family: var(--sans);
@@ -428,6 +451,73 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   color: var(--text-faint);
 }
 .raw-doc a { color: var(--text-dim); }
+.raw-doc nui-icon, .downloads a nui-icon { vertical-align: -0.15em; margin-right: 0.35em; }
+.raw-doc nui-icon svg, .downloads a nui-icon svg { width: 1em; height: 1em; }
+
+/* Process footer — the authoring chain, public */
+.meta-footer {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.meta-footer .kicker {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+}
+.meta-chain { list-style: none; margin: 0 0 0.6rem; padding: 0; }
+.meta-chain li { margin: 0.2rem 0; }
+.meta-chain a { color: var(--text-dim); text-decoration: none; }
+.meta-chain a:hover { color: var(--accent); }
+.meta-chain .role { color: var(--text-faint); margin-left: 0.4rem; }
+.meta-dates { color: var(--text-faint); font-size: 0.78rem; }
+
+/* Author page */
+.author {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(3rem, 9vh, 5.5rem) var(--gutter) 4rem;
+}
+.author-role {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.8rem;
+}
+.author-posts { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
+.author-posts .kicker {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+}
+.author-post-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.9rem; }
+.author-post-list li { margin: 0.3rem 0; }
+.author-post-list a { color: var(--text); text-decoration: none; }
+.author-post-list a:hover { color: var(--accent); }
+.author-post-list .role { color: var(--text-faint); margin-left: 0.4rem; }
+
+/* About — author directory */
+.about-authors { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
+.about-authors h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+.author-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.95rem; }
+.author-list li { margin: 0.4rem 0; }
+.author-list a { color: var(--text); text-decoration: none; }
+.author-list a:hover { color: var(--accent); }
+.author-list .role { color: var(--text-faint); margin-left: 0.4rem; }
 
 /* ---------- About / Arena ---------- */
 

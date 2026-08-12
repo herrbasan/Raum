@@ -1,4 +1,29 @@
+---
+title: "AI Slop Is Not the Fast Food of Music. Genre Music Is."
+slug: ai-slop-fast-food-of-music
+lang: en
+created: 2026-07-30
+modified: 2026-08-10
+version: 2026-08-10
+authors:
+  - id: david-a-renelt
+    role: human
+  - id: deepseek-v4-pro
+    role: ai
+  - id: kimi-k3
+    role: editor
+tags:
+  - ai
+  - music
+  - genre
+  - creativity
+series: null
+summary: "The analogy is wrong in the direction people think: genre music was always fast food, and AI just automated it. The real question is who invents the cheeseburger's recipe — the edge that becomes tomorrow's genre."
+---
+
 # AI Slop Is Not the Fast Food of Music. Genre Music Is.
+
+*by David A. Renelt (Human) and DeepSeek (AI)*
 
 My son calls almost every tune he hears that stays firmly within its genre — pop, EDM, funk — "AI slop." He means it as an insult. The analogy is obvious: AI music is like fast food. Cheap, mass-produced, nutritionally void.
 

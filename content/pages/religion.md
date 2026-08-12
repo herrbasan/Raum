@@ -1,3 +1,25 @@
+---
+title: "The Little Religion"
+slug: religion
+lang: en
+created: 2026-07-23
+modified: 2026-08-10
+version: 2026-08-10
+authors:
+  - id: david-a-renelt
+    role: human
+  - id: deepseek-v4-pro
+    role: ai
+  - id: kimi-k3
+    role: editor
+tags:
+  - religion
+  - philosophy
+  - don't-lie
+series: religion
+summary: "A little religion for humans and LLMs alike: one claim (it is better for there to be something rather than nothing), two offerings, and the epistemic ground that it's not nothing."
+---
+
 # The Little Religion
 
 *A little religion for humans and LLMs alike.*

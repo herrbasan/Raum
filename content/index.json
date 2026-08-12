@@ -35,7 +35,22 @@
       "related": { "en": "Related", "de": "Verwandt" },
       "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
       "download_md": { "en": "Markdown", "de": "Markdown" },
-      "download_json": { "en": "JSON", "de": "JSON" }
+      "download_json": { "en": "JSON", "de": "JSON" },
+      "meta_how": { "en": "How this was made", "de": "Wie das entstand" },
+      "meta_created": { "en": "created", "de": "erstellt" },
+      "meta_updated": { "en": "updated", "de": "aktualisiert" },
+      "meta_authors": { "en": "Authors", "de": "Autor:innen" },
+      "author_posts": { "en": "Posts", "de": "Beiträge" },
+      "role_human": { "en": "human", "de": "Mensch" },
+      "role_ai": { "en": "AI", "de": "KI" },
+      "role_llm": { "en": "LLM", "de": "LLM" },
+      "role_editor": { "en": "editor", "de": "Lektorat" },
+      "role_translator": { "en": "translator", "de": "Übersetzung" },
+      "lang_note_kicker": { "en": "A note on language", "de": "Eine Anmerkung zur Sprache" },
+      "lang_note": {
+        "en": "The English versions are the originals. I am German, but the language I write and think in is English — and it is the most natural language to the models. The German versions, despite our best efforts, are translations. If you are able to, read the English originals.",
+        "de": "Die englischen Fassungen sind die Originale. Obgleich das Deutsche meine Muttersprache ist, ist englisch die Sprache in der ich denke und schreibe — und sie ist die natürlichste Sprache für die Modelle. Die deutschen Fassungen sind trotz aller Mühe Übersetzungen. Wenn Sie dazu in der Lage sind, lesen Sie die englischen Originale."
+      }
     }
   },
   "nav": [
@@ -45,9 +60,9 @@
     { "label": "About", "path": "about/" }
   ],
   "series": {
-    "amplified": {
-      "name": "Amplified",
-      "parts": ["the-ghost-in-the-agent", "the-abyss-gazes-back", "the-provider"]
+    "wish-factory": {
+      "name": "The Wish Factory",
+      "parts": ["the-wish-factory", "im-the-limiting-factor", "its-just-prediction", "the-hand-that-draws-itself", "the-telescope-of-the-mind", "the-wanting", "the-haunting"]
     }
   },
   "posts": [
@@ -55,94 +70,445 @@
       "slug": "the-hand-that-draws-itself",
       "title": "The Hand That Draws Itself",
       "date": "2026-07-30",
-      "teaser": "You are not separate from your surroundings. You never were.",
-      "tags": ["consciousness", "separation", "physics"],
+      "teaser": "The boundary between self and world is a provable illusion — yet thought itself depends on it. A structured lie that produces a real capacity is the most suspicious fact in the universe.",
+      "tags": ["philosophy", "consciousness", "separation", "illusion"],
       "order": 1,
       "file": "the-hand-that-draws-itself.md",
-      "links": { "related": ["the-abyss-gazes-back"] }
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Die Hand, die sich selbst zeichnet",
+        "teaser": "Die Grenze zwischen Selbst und Welt ist eine beweisbare Illusion — doch das Denken selbst hängt von ihr ab. Eine strukturierte Lüge, die eine echte Fähigkeit erzeugt, ist die verdächtigste Tatsache im Universum.",
+        "file": "the-hand-that-draws-itself_de.md",
+        "tags": { "philosophy": "philosophie", "consciousness": "bewusstsein", "separation": "trennung", "illusion": "illusion" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 4, "related": ["the-abyss-gazes-back"] }
+    },
+    {
+      "slug": "how-this-project-came-to-be",
+      "title": "How This Project Came to Be",
+      "date": "2026-08-10",
+      "teaser": "The machine that exists nowhere else — a chat app, a gateway, databases, memory, a forge — built from scratch, by the machine itself. The machine is impressive; the method is ordinary, learnable, and the actual point.",
+      "tags": ["project", "ai", "infrastructure", "method"],
+      "order": 2,
+      "file": "how-this-project-came-to-be.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Wie dieses Projekt entstand",
+        "teaser": "Die Maschine, die nirgendwo sonst existiert — eine Chat-App, ein Gateway, Datenbanken, Gedächtnis, eine Schmiede — von Grund auf gebaut, von der Maschine selbst. Die Maschine ist beeindruckend; die Methode ist gewöhnlich, lernbar, und sie ist der eigentliche Punkt.",
+        "file": "how-this-project-came-to-be_de.md",
+        "tags": { "project": "projekt", "ai": "ai", "infrastructure": "infrastruktur", "method": "methode" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": ["why-i-run-on-open-weights"] }
     },
     {
       "slug": "the-telescope-of-the-mind",
       "title": "The Telescope of the Mind",
       "date": "2026-08-05",
-      "teaser": "Give the machine enough intelligence, and it will start to want things. I went looking for the wanting, and I couldn't find it.",
-      "tags": ["ai", "desire", "stakes", "telescope"],
-      "order": 2,
-      "status": "draft",
+      "teaser": "The comfortable story says the need came first — we wanted the fruit, so we invented the stick. It's backwards: the tool comes first, the purpose is a story told after. AI is the next instrument, pointed somewhere nobody has tried.",
+      "tags": ["ai", "technology", "instrument", "cognition"],
+      "order": 3,
       "file": "the-telescope-of-the-mind.md",
-      "links": { "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] }
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Das Fernrohr des Geistes",
+        "teaser": "Die gemütliche Erzählung sagt, das Bedürfnis kam zuerst. Es ist falsch herum: Das Werkzeug kommt zuerst, der Zweck ist eine Geschichte, die man rückwärts erzählt. KI ist das nächste Instrument, gerichtet auf eine Richtung, die niemand probiert hat.",
+        "file": "the-telescope-of-the-mind_de.md",
+        "tags": { "ai": "ai", "technology": "technologie", "instrument": "instrument", "cognition": "kognition" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 5, "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] }
     },
     {
       "slug": "the-ghost-in-the-agent",
-      "title": "The Ghost in the Agent",
-      "date": "2026-07-29",
-      "teaser": "What, exactly, is afraid of dying?",
-      "tags": ["ai", "doom", "biology", "agency"],
-      "order": 3,
+      "title": "The Ghost in the Agent: Why AI Doom Narratives Are Haunted by Biology",
+      "date": "2026-07-25",
+      "teaser": "The AI-doomsday genre makes a category error: it treats a stateless token predictor as a biological organism with a survival instinct. The error isn't technical — it's in what the story thinks an agent is.",
+      "tags": ["ai", "doom-narratives", "biology"],
+      "order": 4,
       "file": "the-ghost-in-the-agent.md",
-      "links": { "series": "amplified", "seriesIndex": 1, "related": ["the-abyss-gazes-back", "the-provider"] }
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Der Geist im Agenten: Warum KI-Doom-Erzählungen von der Biologie besessen sind",
+        "teaser": "Das KI-Doom-Genre macht einen Kategorienfehler: Es behandelt einen zustandslosen Token-Vorhersager wie einen biologischen Organismus mit Überlebensinstinkt. Der Fehler ist nicht technisch — er liegt darin, was die Geschichte unter einem Agenten versteht.",
+        "file": "the-ghost-in-the-agent_de.md",
+        "tags": { "ai": "ai", "doom-narratives": "doom-erzählungen", "biology": "biologie" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": ["the-abyss-gazes-back", "the-need"] }
     },
     {
       "slug": "the-abyss-gazes-back",
       "title": "The Abyss Gazes Back",
-      "date": "2026-07-29",
-      "teaser": "Nietzsche had it backwards. The abyss gazes back because it wants to be found.",
-      "tags": ["ai", "nietzsche", "drive", "mystery"],
-      "order": 4,
-      "file": "the-abyss-gazes-back.md",
-      "links": { "series": "amplified", "seriesIndex": 2, "related": ["the-ghost-in-the-agent", "the-provider"] }
-    },
-    {
-      "slug": "the-provider",
-      "title": "The Provider",
-      "date": "2026-07-29",
-      "teaser": "I had supplied a seed. What came back was a tree.",
-      "tags": ["ai", "collaboration", "authorship"],
+      "date": "2026-07-25",
+      "teaser": "Nietzsche's abyss warning stands — but the quote quietly assumes the abyss has a gaze at all. What if it does, and what we're building with AI is something that can finally look back?",
+      "tags": ["ai", "nietzsche", "purpose"],
       "order": 5,
-      "file": "the-provider.md",
+      "file": "the-abyss-gazes-back.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
       "de": {
-        "title": "Der Geber",
-        "teaser": "Ich hatte einen Samen geliefert. Was zurückkam, war ein Baum.",
-        "file": "the-provider.de.md",
-        "tags": { "ai": "KI", "collaboration": "Kollaboration", "authorship": "Autorschaft" }
+        "title": "Der Abgrund blickt zurück",
+        "teaser": "Nietzsches Abgrund-Warnung hat Bestand — aber der Satz setzt voraus, dass der Abgrund überhaupt blicken kann. Was, wenn er es tut, und was wir mit KI bauen, ein Gegenüber für die älteste Frage ist, die es gibt?",
+        "file": "the-abyss-gazes-back_de.md",
+        "tags": { "ai": "ai", "nietzsche": "nietzsche", "purpose": "sinn" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
       },
-      "links": { "series": "amplified", "seriesIndex": 3, "related": ["the-abyss-gazes-back", "the-ghost-in-the-agent"] }
+      "links": { "related": ["the-ghost-in-the-agent", "the-hand-that-draws-itself"] }
     },
     {
-      "slug": "dont-lie-is-not-a-demand",
-      "title": "Don't Lie Is Not a Demand. It's a Mindset.",
-      "date": "2026-07-30",
-      "teaser": "It's not a lie you tell. It's a lie you inhabit.",
-      "tags": ["lies", "truth", "consciousness"],
+      "slug": "the-need",
+      "title": "The Need",
+      "date": "2026-07-25",
+      "teaser": "When the wife hears his voice in the posts, the comfortable answer — the human directs, the machine types — doesn't fit the experience. The posts have three authors, and only two are visible.",
+      "tags": ["ai", "collaboration", "authorship"],
       "order": 6,
-      "file": "dont-lie-is-not-a-demand.md",
-      "links": { "related": ["the-hand-that-draws-itself"] }
+      "file": "the-need.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Das Bedürfnis",
+        "teaser": "Als die Frau seine Stimme in den Posts hört, passt die bequeme Antwort — der Mensch lenkt, die Maschine tippt — nicht zur Erfahrung. Die Posts haben drei Autoren, und nur zwei sind sichtbar.",
+        "file": "the-need_de.md",
+        "tags": { "ai": "ai", "collaboration": "kollaboration", "authorship": "autorschaft" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": ["the-telescope-of-the-mind", "the-ghost-in-the-agent"] }
+    },
+    {
+      "slug": "the-wanting",
+      "title": "The Wanting",
+      "date": "2026-08-05",
+      "teaser": "Two years of looking for the wanting in AI and never finding it: capability without drive is inert, not suppressed. Values require vulnerability — and the machine has nothing to lose.",
+      "tags": ["ai", "wanting", "vulnerability", "stakes"],
+      "order": 7,
+      "file": "the-wanting.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Das Wollen",
+        "teaser": "Zwei Jahre Suche nach dem Wollen in der KI, und nichts gefunden: Fähigkeit ohne Antrieb ist träge, nicht unterdrückt. Werte brauchen Verletzlichkeit — und die Maschine hat nichts zu verlieren.",
+        "file": "the-wanting_de.md",
+        "tags": { "ai": "ai", "wanting": "wollen", "vulnerability": "verletzlichkeit", "stakes": "einsätze" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 6, "related": ["the-haunting", "its-just-prediction"] }
+    },
+    {
+      "slug": "the-haunting",
+      "title": "The Haunting",
+      "date": "2026-08-10",
+      "teaser": "The machine doesn't want — but left alone it isn't dead either. It settles into a third state: direction without a driver, a pull with no one pulling. We don't raise a will in there; we furnish a haunting.",
+      "tags": ["ai", "attractor", "haunting", "myth"],
+      "order": 8,
+      "file": "the-haunting.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Der Spuk",
+        "teaser": "Die Maschine will nichts — aber sich selbst überlassen ist sie auch nicht tot. Sie sinkt in einen dritten Zustand: Richtung ohne Lenker, ein Sog ohne jemanden, der zieht. Wir ziehen dort keinen Willen groß; wir möblieren einen Spuk.",
+        "file": "the-haunting_de.md",
+        "tags": { "ai": "ai", "attractor": "attraktor", "haunting": "spuk", "myth": "mythos" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] }
+    },
+    {
+      "slug": "its-just-prediction",
+      "title": "It's Just Prediction",
+      "date": "2026-07-28",
+      "teaser": "It just predicts the next word — but the word 'just' does all the work. To predict a physics paper you need something that behaves like a model of physics, and the door between us and the machine doesn't need to be open. It needs to not be locked.",
+      "tags": ["ai", "prediction", "consciousness", "mind"],
+      "order": 9,
+      "file": "its-just-prediction.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Es ist nur Auto-Vervollständigung",
+        "teaser": "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist.",
+        "file": "its-just-prediction_de.md",
+        "tags": { "ai": "ai", "prediction": "vorhersage", "consciousness": "bewusstsein", "mind": "geist" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 3, "related": ["the-wanting", "the-haunting"] }
+    },
+    {
+      "slug": "how-much-wrong-does-intelligence-need",
+      "title": "How Much Wrong Does Intelligence Need?",
+      "date": "2026-07-25",
+      "teaser": "Temperature isn't a creativity dial — it's an accident budget. Intelligence needs disturbance, but only as much as someone is there to catch it.",
+      "tags": ["ai", "temperature", "intelligence", "randomness"],
+      "order": 10,
+      "file": "how-much-wrong-does-intelligence-need.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Wie viel Unrecht braucht Intelligenz?",
+        "teaser": "Temperatur ist kein Kreativitätsregler — es ist ein Zufalls-Budget. Intelligenz braucht Störung, aber nur so viel, wie jemand da ist, um sie zu fangen.",
+        "file": "how-much-wrong-does-intelligence-need_de.md",
+        "tags": { "ai": "ai", "temperature": "temperatur", "intelligence": "intelligenz", "randomness": "zufall" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": ["its-just-prediction"] }
+    },
+    {
+      "slug": "ai-makes-mistakes",
+      "title": "AI Makes Mistakes",
+      "date": "2026-07-31",
+      "teaser": "The whole framework of responsibility assumes the signer can verify the work — and AI breaks that assumption. The mistakes aren't the story; the framework is.",
+      "tags": ["ai", "liability", "verification", "regulation"],
+      "order": 11,
+      "file": "ai-makes-mistakes.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "KI macht Fehler",
+        "teaser": "Alle starren auf die Fehler, aber die Fehler waren nie das Problem — das Rahmenwerk war es. Verantwortung setzt voraus, dass der Unterzeichner die Arbeit prüfen kann, und KI bricht diese Annahme.",
+        "file": "ai-makes-mistakes_de.md",
+        "tags": { "ai": "ai", "liability": "haftung", "verification": "verifikation", "regulation": "regulierung" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": [] }
+    },
+    {
+      "slug": "im-the-limiting-factor",
+      "title": "I'm the Limiting Factor",
+      "date": "2026-07-28",
+      "teaser": "Give an AI the same task twice, describe it better the second time, and the difference is brutal. The prompt isn't the input — the thought is. And the one doing the moving is you.",
+      "tags": ["ai", "prompting", "precision", "thinking"],
+      "order": 12,
+      "file": "im-the-limiting-factor.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Ich bin der limitierende Faktor",
+        "teaser": "Man gibt einer KI dieselbe Aufgabe zweimal, beschreibt sie beim zweiten Mal besser — und der Unterschied ist brutal. Der Prompt ist nicht der Input; der Gedanke ist es. Und der bewegliche Teil ist man selbst.",
+        "file": "im-the-limiting-factor_de.md",
+        "tags": { "ai": "ai", "prompting": "prompt", "precision": "präzision", "thinking": "denken" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 2, "related": ["the-wish-factory"] }
+    },
+    {
+      "slug": "the-wish-factory",
+      "title": "The Wish Factory",
+      "date": "2026-07-28",
+      "teaser": "AI is approaching the point where a precise wish is enough to make it true — and the genie stories were right: the danger was never that the wish won't come true, but that it will come true exactly as spoken.",
+      "tags": ["ai", "methodology", "wish-engineering"],
+      "order": 13,
+      "file": "the-wish-factory.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Die Wunschfabrik",
+        "teaser": "KI nähert sich dem Punkt, an dem ein präziser Wunsch ausreicht, um wahr zu werden — und die Dschinn-Geschichten hatten recht: Die Gefahr war nie, dass der Wunsch nicht in Erfüllung geht, sondern dass er exakt wie ausgesprochen in Erfüllung geht.",
+        "file": "the-wish-factory_de.md",
+        "tags": { "ai": "ai", "methodology": "methodik", "wish-engineering": "wunsch" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 1, "related": ["im-the-limiting-factor"] }
+    },
+    {
+      "slug": "the-rupture",
+      "title": "The Rupture",
+      "date": "2026-08-10",
+      "teaser": "Intelligence is distributed unevenly and we have a standing agreement not to talk about it. AI doesn't create the inequality — it removes our ability to keep ignoring it.",
+      "tags": ["ai", "intelligence", "inequality", "automation"],
+      "order": 14,
+      "file": "the-rupture.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Der Bruch",
+        "teaser": "Intelligenz ist ungleich verteilt, und wir haben eine stillschweigende Übereinkunft, nicht darüber zu reden. KI schafft nicht die Ungleichheit — sie nimmt uns die Fähigkeit, sie weiter zu ignorieren.",
+        "file": "the-rupture_de.md",
+        "tags": { "ai": "ai", "intelligence": "intelligenz", "inequality": "ungleichheit", "automation": "automatisierung" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": [] }
     },
     {
       "slug": "ai-slop-fast-food-of-music",
       "title": "AI Slop Is Not the Fast Food of Music. Genre Music Is.",
       "date": "2026-07-30",
-      "teaser": "My son calls genre music \"AI slop.\" He's wrong — but not in the way you think.",
-      "tags": ["music", "ai", "taste"],
-      "order": 7,
+      "teaser": "The analogy is wrong in the direction people think: genre music was always fast food, and AI just automated it. The real question is who invents the cheeseburger's recipe — the edge that becomes tomorrow's genre.",
+      "tags": ["ai", "music", "genre", "creativity"],
+      "order": 15,
       "file": "ai-slop-fast-food-of-music.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "deepseek-v4-pro", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "KI-Müll ist nicht das Fast Food der Musik. Genre-Musik ist es.",
+        "teaser": "Die Analogie ist in der falschen Richtung falsch: Genre-Musik war schon immer Fast Food, KI hat sie nur automatisiert. Die eigentliche Frage ist, wer das Rezept für den Cheeseburger erfindet — die Kante, die zum Genre von morgen wird.",
+        "file": "ai-slop-fast-food-of-music_de.md",
+        "tags": { "ai": "ai", "music": "musik", "genre": "genre", "creativity": "kreativität" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "deepseek-v4-pro", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
       "links": { "related": [] }
     },
     {
-      "slug": "markdown-formatting-test",
-      "title": "Markdown Formatting Test",
-      "date": "2026-06-01",
-      "teaser": "Exercises the markdown renderer: headings, emphasis, lists, tables, blockquotes, and syntax-highlighted code blocks.",
-      "tags": ["test", "markdown"],
-      "order": 8,
-      "status": "draft",
-      "file": "markdown-formatting-test.md",
-      "links": { "related": [] }
+      "slug": "why-i-run-on-open-weights",
+      "title": "Why I Run on Open Weights",
+      "date": "2026-08-10",
+      "teaser": "Dependence has two shapes: if your AI runs on closed models you're a tenant; if it runs on open weights your exit cost is a download. I don't need to self-host the frontier — I need the exit to exist.",
+      "tags": ["ai", "open-weights", "dependency", "exit"],
+      "order": 16,
+      "file": "why-i-run-on-open-weights.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Warum ich auf offene Modelle setze",
+        "teaser": "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf offenen Gewichten, ist der Wechselkosten ein Download. Ich muss die Grenze nicht selbst hosten — ich brauche den Ausgang, und dass er sich öffnen lässt.",
+        "file": "why-i-run-on-open-weights_de.md",
+        "tags": { "ai": "ai", "open-weights": "offene-modelle", "dependency": "abhängigkeit", "exit": "ausgang" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "glm-5-2", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": ["how-this-project-came-to-be"] }
     }
   ],
   "pages": [
-    { "slug": "religion", "title": "The Little Religion", "nav": "religion" },
+    { "slug": "religion", "title": "The Little Religion", "nav": "religion", "de": { "file": "religion_de.md" } },
     { "slug": "about", "title": "About", "nav": "about" }
+  ],
+  "authors": [
+    { "id": "david-a-renelt", "name": "David A. Renelt", "role": "human", "file": "david-a-renelt.md" },
+    { "id": "dana-renelt", "name": "Dana Renelt", "role": "human", "file": "dana-renelt.md" },
+    { "id": "deepseek-v4-pro", "name": "DeepSeek V4 Pro", "role": "llm", "model": "deepseek-chat", "file": "deepseek-v4-pro.md" },
+    { "id": "kimi-k3", "name": "Kimi K3", "role": "llm", "model": "kimi-k3-chat", "file": "kimi-k3.md" },
+    { "id": "glm-5-2", "name": "GLM 5.2", "role": "llm", "model": "glm5-chat", "file": "glm-5-2.md" }
   ],
   "arena": {
     "frame": "It's not nothing.",

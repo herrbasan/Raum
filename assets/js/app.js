@@ -137,9 +137,7 @@ function toggleLang() {
 	state.lang = state.lang === 'de' ? 'en' : 'de';
 	document.documentElement.lang = state.lang;
 	try { localStorage.setItem('raum-lang', state.lang); } catch {}
-	renderChrome();
-	const cur = state.current;
-	if (cur) router?.cache.get(`${cur.type}:${cur.id}`)?.show?.();
+	location.reload();
 }
 
 function renderChrome() {
@@ -193,6 +191,11 @@ function buildHome() {
 				${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', '#feature=writing')}
 				${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '#feature=arena')}
 			</div>
+			${state.lang === 'de' ? `
+			<div class="lang-note">
+				<p class="lang-note-kicker">${esc(t('lang_note_kicker'))}</p>
+				<p class="lang-note-text">${esc(t('lang_note'))}</p>
+			</div>` : ''}
 			<div class="latest">
 				<p class="latest-kicker">${esc(t('latest_kicker'))}</p>
 				<a href="#post=${esc(latest.slug)}">
@@ -264,6 +267,59 @@ function buildArena() {
 
 /* ---------------- pages (religion, about) ---------------- */
 
+// Parse a leading YAML frontmatter block (--- ... ---). Returns { meta, body }.
+function parseFrontmatter(md) {
+	const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+	if (!m) return { meta: null, body: md };
+	const fm = m[1];
+	const get = (k) => {
+		const mm = fm.match(new RegExp('^' + k + ':\\s*"?(.*?)?"?\\s*$', 'm'));
+		return mm ? mm[1].trim() : '';
+	};
+	const ids = [...fm.matchAll(/^\s+-\s+id:\s*(\S+)/gm)].map((x) => x[1]);
+	const roles = [...fm.matchAll(/^\s+role:\s*(\S+)/gm)].map((x) => x[1]);
+	const authors = ids.map((id, i) => ({ id, role: roles[i] || '' }));
+	const bioBlock = fm.match(/(?:^|\n)bio:\s*[>|]?\s*\n((?:[ \t]+.*\n?)+)/);
+	const bio = bioBlock
+		? bioBlock[1].split(/\r?\n/).map((l) => l.replace(/^[ \t]+/, '')).join(' ').trim()
+		: get('bio').replace(/^[>|]$/, '');
+	return {
+		meta: { title: get('title'), created: get('created'), modified: get('modified'), authors, bio },
+		body: md.slice(m[0].length),
+	};
+}
+
+// Author + process helpers -------------------------------------------------
+function authorName(id) {
+	return state.manifest.authors?.find((a) => a.id === id)?.name || id;
+}
+function roleLabel(role) {
+	return t('role_' + role) || role;
+}
+function buildProcessFooter(meta) {
+	if (!meta?.authors?.length) return '';
+	const chain = meta.authors.map((a) => `
+			<li><a href="#author=${esc(a.id)}">${esc(authorName(a.id))}</a><span class="role">${esc(roleLabel(a.role))}</span></li>`).join('');
+	const dates = [];
+	if (meta.created) dates.push(`${esc(t('meta_created'))} ${esc(meta.created)}`);
+	if (meta.modified) dates.push(`${esc(t('meta_updated'))} ${esc(meta.modified)}`);
+	return `
+		<footer class="meta-footer">
+			<p class="kicker">${esc(t('meta_how'))}</p>
+			<ul class="meta-chain">${chain}</ul>
+			${dates.length ? `<p class="meta-dates">${dates.join(' · ')}</p>` : ''}
+		</footer>`;
+}
+function buildAuthorList() {
+	const list = (state.manifest.authors || []).map((a) => `
+			<li><a href="#author=${esc(a.id)}">${esc(a.name)}</a><span class="role">${esc(roleLabel(a.role))}</span></li>`).join('');
+	return list ? `
+			<section class="about-authors">
+				<h2>${esc(t('meta_authors'))}</h2>
+				<ul class="author-list">${list}</ul>
+			</section>` : '';
+}
+
 function splitPage(mdText) {
 	const lines = mdText.replace(/\r\n/g, '\n').split('\n');
 	let title = '';
@@ -279,11 +335,15 @@ function splitPage(mdText) {
 }
 
 async function buildPage(slug, docTitle) {
-	const mdText = await fetch(`content/pages/${slug}.md`).then((r) => {
+	const page = state.manifest.pages?.find((p) => p.slug === slug);
+	const de = state.lang === 'de' && page?.de;
+	const file = de?.file || `${slug}.md`;
+	const mdText = await fetch(`content/pages/${file}`).then((r) => {
 		if (!r.ok) throw new Error(`page ${slug}: ${r.status}`);
 		return r.text();
 	});
-	const { title, subtitle, body } = splitPage(mdText);
+	const { meta, body } = parseFrontmatter(mdText);
+	const { title, subtitle, body: pageBody } = splitPage(body);
 	setTitle(docTitle || title);
 	return {
 		html: `
@@ -291,8 +351,10 @@ async function buildPage(slug, docTitle) {
 				<h1 class="name-line">${esc(title)}</h1>
 				${subtitle ? `<p class="real-name">${esc(subtitle)}</p>` : ''}
 				<div data-md-slot class="essay-body"></div>
+				${buildProcessFooter(meta)}
+				${slug === 'about' ? buildAuthorList() : ''}
 			</div>`,
-		markdown: [body],
+		markdown: [pageBody],
 	};
 }
 
@@ -334,6 +396,15 @@ function buildRelatedNav(post) {
 		</nav>`;
 }
 
+// The header renders title + byline, and the process footer the authoring chain,
+// so strip the duplicate H1 and italic byline from the post body.
+function stripPostHeader(md) {
+	return md
+		.replace(/^\s*#\s+[^\n]*\n?/, '')             // H1 title (allow leading blank)
+		.replace(/^\s*\*by\s+[^\n]*\*?\s*\n?/, '')    // italic byline
+		.replace(/^\s*\n/, '');                       // remaining leading blank line
+}
+
 async function buildPost(slug) {
 	const post = state.manifest.posts.find((p) => p.slug === slug);
 	if (!post) return { html: `<div class="essay"><h1 class="essay-title">Not found</h1></div>` };
@@ -343,6 +414,7 @@ async function buildPost(slug) {
 		if (!r.ok) throw new Error(`post ${slug}: ${r.status}`);
 		return r.text();
 	});
+	const { meta, body } = parseFrontmatter(mdText);
 	setTitle(de?.title || post.title);
 	const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
 	const statusNote = post.status === 'draft'
@@ -359,9 +431,10 @@ async function buildPost(slug) {
 				<div data-md-slot class="essay-body"></div>
 				${buildSeriesNav(post)}
 				${buildRelatedNav(post)}
-				<p class="raw-doc"><a href="content/posts/${esc(file)}" download>${esc(t('download_md'))}</a></p>
+				${buildProcessFooter(meta)}
+				<p class="raw-doc"><a href="content/posts/${esc(file)}" download><nui-icon name="download"></nui-icon>${esc(t('download_md'))}</a></p>
 			</div>`,
-		markdown: [mdText],
+		markdown: [stripPostHeader(body)],
 	};
 }
 
@@ -383,13 +456,17 @@ function extractSeed(data) {
 	return m.content.replace(/^Topic:\s*/i, '').trim();
 }
 
-function extractTurns(data) {
+function extractTurns(data, models = []) {
 	const map = new Map();
 	const turns = [];
 	for (const m of data.messages || []) {
 		if (!m || m.speaker === 'moderator') continue;
-		if (!map.has(m.speaker)) map.set(m.speaker, String.fromCharCode(65 + map.size));
-		turns.push({ letter: map.get(m.speaker), content: m.content || '' });
+		if (!map.has(m.speaker)) {
+			const i = map.size;
+			map.set(m.speaker, { name: models[i] || m.speaker, letter: String.fromCharCode(65 + i) });
+		}
+		const t = map.get(m.speaker);
+		turns.push({ name: t.name, letter: t.letter, content: m.content || '' });
 	}
 	return turns;
 }
@@ -409,13 +486,13 @@ async function buildSessionMarkdown(slug) {
 	if (!loaded) return;
 	const { landmark, data } = loaded;
 	const seed = extractSeed(data);
-	const turns = extractTurns(data);
+	const turns = extractTurns(data, landmark.models);
 	let md = `# ${landmark.title}\n\n`;
 	md += `_${(landmark.models || []).join(' × ')}_\n\n`;
 	md += `> ${landmark.case}\n\n`;
 	if (seed) md += `**Seed:** ${seed}\n\n`;
 	md += `---\n\n`;
-	turns.forEach((tr) => { md += `## ${tr.letter}\n\n${tr.content.trim()}\n\n`; });
+	turns.forEach((tr) => { md += `## ${tr.name}\n\n${tr.content.trim()}\n\n`; });
 	downloadText(`arena-${landmark.slug}.md`, md);
 }
 
@@ -425,10 +502,10 @@ async function buildSession(slug) {
 	const { landmark, data } = loaded;
 	setTitle(landmark.title);
 	const seed = extractSeed(data);
-	const turns = extractTurns(data);
+	const turns = extractTurns(data, landmark.models);
 	const turnHtml = turns.map((tr) => `
 		<li class="turn turn-${tr.letter}">
-			<p class="turn-speaker">${esc(tr.letter)}</p>
+			<p class="turn-speaker">${esc(tr.name)}</p>
 			<div data-md-slot class="turn-text"></div>
 		</li>`).join('');
 	return {
@@ -447,14 +524,51 @@ async function buildSession(slug) {
 				</div>` : ''}
 				<div class="downloads">
 					<span class="downloads-label">${esc(t('download_md'))} / ${esc(t('download_json'))}</span>
-					<a href="#" data-dl-md>${esc(t('download_md'))}</a>
-					<a href="content/arena/${esc(landmark.file)}" download>${esc(t('download_json'))}</a>
+					<a href="#" data-dl-md><nui-icon name="download"></nui-icon>${esc(t('download_md'))}</a>
+					<a href="content/arena/${esc(landmark.file)}" download><nui-icon name="download"></nui-icon>${esc(t('download_json'))}</a>
 				</div>
 				<div class="transcript">
 					<ul class="turns">${turnHtml}</ul>
 				</div>
 			</div>`,
 		markdown: turns.map((tr) => tr.content),
+	};
+}
+
+/* ---------------- author ---------------- */
+
+async function buildAuthor(id) {
+	const author = state.manifest.authors?.find((a) => a.id === id);
+	if (!author) return { html: `<div class="author"><h1 class="essay-title">Not found</h1></div>` };
+	const mdText = await fetch(`content/authors/${author.file}`).then((r) => {
+		if (!r.ok) throw new Error(`author ${id}: ${r.status}`);
+		return r.text();
+	});
+	const { meta, body } = parseFrontmatter(mdText);
+	const name = meta?.name || author.name;
+	setTitle(name);
+	const roleLine = `<p class="author-role">${esc(roleLabel(author.role))}${author.model ? ` · ${esc(author.model)}` : ''}</p>`;
+	const entries = [];
+	for (const p of state.manifest.posts) {
+		for (const a of p.authors || []) if (a.id === id) entries.push({ slug: p.slug, title: p.title, role: a.role });
+		for (const a of p.de?.authors || []) if (a.id === id) entries.push({ slug: p.slug, title: p.de.title, role: a.role });
+	}
+	const postsHtml = entries.length ? `
+			<nav class="author-posts">
+				<p class="kicker">${esc(t('author_posts'))}</p>
+				<ul class="author-post-list">
+					${entries.map((e) => `<li><a href="#post=${esc(e.slug)}">${esc(e.title)}</a><span class="role">${esc(roleLabel(e.role))}</span></li>`).join('')}
+				</ul>
+			</nav>` : '';
+	return {
+			html: `
+			<div class="author">
+				${roleLine}
+				<h1 class="essay-title">${esc(name)}</h1>
+				<div data-md-slot class="essay-body"></div>
+				${postsHtml}
+			</div>`,
+		markdown: [meta?.bio || body],
 	};
 }
 
@@ -510,6 +624,11 @@ nui.registerType('session', (slug, params, wrapper) => {
 	});
 	wrapper.show = () => renderInto(wrapper, () => buildSession(slug));
 	renderInto(wrapper, () => buildSession(slug));
+});
+
+nui.registerType('author', (id, params, wrapper) => {
+	wrapper.show = () => renderInto(wrapper, () => buildAuthor(id));
+	renderInto(wrapper, () => buildAuthor(id));
 });
 
 /* ---------------- boot ---------------- */

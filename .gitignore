@@ -16,3 +16,6 @@ site/
 # Scratch / generated-temp
 .preview/
 *.tmp
+
+# VS Code GitLens workspace data
+_gsdata_/
