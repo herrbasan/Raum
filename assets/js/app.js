@@ -41,7 +41,7 @@ function escStrong(s) {
 }
 
 function setTitle(s) {
-	document.title = s ? `${s} — Herrbasan` : 'Herrbasan — It\'s not nothing';
+	document.title = s ? `${s} — RAUM` : 'RAUM — It\'s not nothing';
 }
 
 // Stale-render guard: only the newest renderInto for a wrapper may write.
