@@ -8,7 +8,7 @@
     "footer": "Herrbasan (David A. Renelt) · writing and curated conversations",
     "i18n": {
       "threshold": { "en": "It's not nothing.", "de": "Es ist nicht nichts." },
-      "thresholdSource": { "en": "from the arena", "de": "aus der Arena" },
+      "thresholdSource": { "en": "thinking about thinking with machines that think", "de": "mit denkenden Maschinen über das Denken nachdenken" },
       "footer": {
         "en": "Herrbasan (David A. Renelt) · writing and curated conversations",
         "de": "Herrbasan (David A. Renelt) · Schreiben und kuratierte Gespräche"
@@ -19,10 +19,16 @@
       "nav_about": { "en": "About", "de": "Über mich" },
       "entry_blog_kicker": { "en": "Primary", "de": "Primär" },
       "entry_blog_note": { "en": "Essays, conversations, the music.", "de": "Essays, Gespräche, die Musik." },
-      "entry_arena_kicker": { "en": "Evidence", "de": "Belege" },
-      "entry_arena_note": { "en": "Curated conversations between models.", "de": "Kuratierte Gespräche zwischen Modellen." },
+      "entry_arena_kicker": { "en": "Experiment", "de": "Experiment" },
+      "entry_arena_note": { "en": "Conversations between models.", "de": "Gespräche zwischen Modellen." },
+      "entry_religion_kicker": { "en": "Myth", "de": "Mythos" },
+      "entry_religion_note": { "en": "A distillation.", "de": "Eine Destillation." },
       "latest_kicker": { "en": "Latest", "de": "Neuestes" },
       "blog_title": { "en": "It's not nothing", "de": "Es ist nicht nichts" },
+      "intro_1": { "en": "This is a blog about someone thinking about thinking with machines that think.", "de": "Dies ist ein Blog über jemanden, der mit denkenden Maschinen über das Denken nachdenkt." },
+      "intro_2": { "en": "The subject is AI itself — a thing some of us dreamed of and some of us fear. It's not about the products, the hype, the spectacle — it's about the phenomenon. It is an invitation to explore something about ourselves that couldn't be explored without an \"other\" to look back.", "de": "Das Thema ist die KI selbst — etwas, wovon manche von uns geträumt haben und manche es fürchten. Es geht nicht um Produkte, Hype, Spektakel — es geht um das Phänomen. Es ist eine Einladung, etwas über uns selbst zu erkunden, das ohne ein \"Gegenüber\", das zurückblickt, nicht erkundbar wäre." },
+      "intro_3": { "en": "The posts themselves are what happens in that friction. The lines are blurry between where the biological brain ends and the silicon brain begins. What happens in that space is not clear, but **it's not nothing**.", "de": "Die Beiträge selbst sind das, was in dieser Reibung entsteht. Die Grenzen sind unscharf zwischen dem Punkt, an dem das biologische Gehirn endet, und dem, an dem das silizene beginnt. Was in diesem Raum geschieht, ist nicht klar — aber **es ist nicht nichts**." },
+      "intro_4": { "en": "Why is it so messy? Because it's a chronicle, and its shape will evolve. Please don't expect anything to stay the same. The whole of it is a snapshot of what human-AI relations look like at this moment. It will take a more solid shape over time — when it does, you'll know.", "de": "Warum ist alles so unfertig? Weil es eine Chronik ist, und ihre Gestalt wird sich wandeln. Erwarten Sie bitte nicht, dass etwas so bleibt, wie es ist. Das Ganze ist eine Momentaufnahme davon, wie Mensch-KI-Beziehungen gerade aussehen. Mit der Zeit wird es eine festere Form annehmen — wenn es so weit ist, werden Sie es merken." },
       "blog_author": { "en": "Herrbasan (David A. Renelt)", "de": "Herrbasan (David A. Renelt)" },
       "blog_lede": {
         "en": "Essays, conversations, and the music. Everything is an entry in one feed.",
@@ -51,7 +57,8 @@
         "en": "The English versions are the originals. I am German, but the language I write and think in is English — and it is the most natural language to the models. The German versions, despite our best efforts, are translations. If you are able to, read the English originals.",
         "de": "Die englischen Fassungen sind die Originale. Obgleich das Deutsche meine Muttersprache ist, ist englisch die Sprache in der ich denke und schreibe — und sie ist die natürlichste Sprache für die Modelle. Die deutschen Fassungen sind trotz aller Mühe Übersetzungen. Wenn Sie dazu in der Lage sind, lesen Sie die englischen Originale."
       },
-      "menu_label": { "en": "Menu", "de": "Menü" }
+      "menu_label": { "en": "Menu", "de": "Menü" },
+      "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" }
     }
   },
   "nav": [
@@ -92,7 +99,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 4, "related": ["the-abyss-gazes-back"] }
+      "links": { "series": "wish-factory", "seriesIndex": 4, "related": ["the-abyss-gazes-back"] },
+      "audio": { "en": "the-hand-that-draws-itself_2026-08-10.mp3", "de": "the-hand-that-draws-itself_de_2026-08-10.mp3" }
     },
     {
       "slug": "how-this-project-came-to-be",
@@ -119,7 +127,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["why-i-run-on-open-weights"] }
+      "links": { "related": ["why-i-run-on-open-weights"] },
+      "audio": { "en": "how-this-project-came-to-be_2026-08-10.mp3", "de": "how-this-project-came-to-be_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-telescope-of-the-mind",
@@ -146,7 +155,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 5, "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] }
+      "links": { "series": "wish-factory", "seriesIndex": 5, "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] },
+      "audio": { "en": "the-telescope-of-the-mind_2026-08-10.mp3", "de": "the-telescope-of-the-mind_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-ghost-in-the-agent",
@@ -200,7 +210,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["the-ghost-in-the-agent", "the-hand-that-draws-itself"] }
+      "links": { "related": ["the-ghost-in-the-agent", "the-hand-that-draws-itself"] },
+      "audio": { "en": "the-abyss-gazes-back_2026-08-12.mp3", "de": "the-abyss-gazes-back_de_2026-08-12.mp3" }
     },
     {
       "slug": "the-need",
@@ -227,7 +238,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["the-telescope-of-the-mind", "the-ghost-in-the-agent"] }
+      "links": { "related": ["the-telescope-of-the-mind", "the-ghost-in-the-agent"] },
+      "audio": { "en": "the-need_2026-08-10.mp3", "de": "the-need_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-wanting",
@@ -254,7 +266,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 6, "related": ["the-haunting", "its-just-prediction"] }
+      "links": { "series": "wish-factory", "seriesIndex": 6, "related": ["the-haunting", "its-just-prediction"] },
+      "audio": { "en": "the-wanting_2026-08-10.mp3", "de": "the-wanting_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-haunting",
@@ -281,7 +294,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] }
+      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] },
+      "audio": { "en": "the-haunting_2026-08-10.mp3", "de": "the-haunting_de_2026-08-10.mp3" }
     },
     {
       "slug": "its-just-prediction",
@@ -308,7 +322,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 3, "related": ["the-wanting", "the-haunting"] }
+      "links": { "series": "wish-factory", "seriesIndex": 3, "related": ["the-wanting", "the-haunting"] },
+      "audio": { "en": "its-just-prediction_2026-08-10.mp3", "de": "its-just-prediction_de_2026-08-10.mp3" }
     },
     {
       "slug": "how-much-wrong-does-intelligence-need",
@@ -335,7 +350,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["its-just-prediction"] }
+      "links": { "related": ["its-just-prediction"] },
+      "audio": { "en": "how-much-wrong-does-intelligence-need_2026-08-10.mp3", "de": "how-much-wrong-does-intelligence-need_de_2026-08-10.mp3" }
     },
     {
       "slug": "ai-makes-mistakes",
@@ -362,7 +378,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": [] }
+      "links": { "related": [] },
+      "audio": { "en": "ai-makes-mistakes_2026-08-10.mp3", "de": "ai-makes-mistakes_de_2026-08-10.mp3" }
     },
     {
       "slug": "im-the-limiting-factor",
@@ -389,7 +406,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 2, "related": ["the-wish-factory"] }
+      "links": { "series": "wish-factory", "seriesIndex": 2, "related": ["the-wish-factory"] },
+      "audio": { "en": "im-the-limiting-factor_2026-08-10.mp3", "de": "im-the-limiting-factor_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-wish-factory",
@@ -416,7 +434,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 1, "related": ["im-the-limiting-factor"] }
+      "links": { "series": "wish-factory", "seriesIndex": 1, "related": ["im-the-limiting-factor"] },
+      "audio": { "en": "the-wish-factory_2026-08-10.mp3", "de": "the-wish-factory_de_2026-08-10.mp3" }
     },
     {
       "slug": "the-rupture",
@@ -443,7 +462,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": [] }
+      "links": { "related": [] },
+      "audio": { "en": "the-rupture_2026-08-10.mp3", "de": "the-rupture_de_2026-08-10.mp3" }
     },
     {
       "slug": "ai-slop-fast-food-of-music",
@@ -470,7 +490,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": [] }
+      "links": { "related": [] },
+      "audio": { "en": "ai-slop-fast-food-of-music_2026-08-10.mp3", "de": "ai-slop-fast-food-of-music_de_2026-08-10.mp3" }
     },
     {
       "slug": "why-i-run-on-open-weights",
@@ -497,7 +518,8 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["how-this-project-came-to-be"] }
+      "links": { "related": ["how-this-project-came-to-be"] },
+      "audio": { "en": "why-i-run-on-open-weights_2026-08-10.mp3", "de": "why-i-run-on-open-weights_de_2026-08-10.mp3" }
     }
   ],
   "pages": [

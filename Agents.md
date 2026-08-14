@@ -336,7 +336,31 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 
 ---
 
-## 9. Source References
+## 10. Audio / TTS Workflow
+
+Every post has read-aloud audio (EN + DE). Generated via nSpeech (ElevenLabs engine, `eleven_v3` model, voice "Melon 3" = `tLz0KTPteAXd06XSE8k3`).
+
+**⚠️ Cloud TTS costs real money. Rules for any agent working here:**
+
+- **Never regenerate audio speculatively.** Only on explicit request ("generate audio for X").
+- **Check before generating:** does `content/audio/{slug}[_de]_{version}.mp3` already exist for the post's *current* version? If yes, it's up to date — don't regenerate.
+- **One generation per request.** If a generation fails (e.g. ElevenLabs 503), do NOT retry in a loop — report and wait for the user. 503 on long single requests was an engine char limit, now handled server-side by nSpeech auto-chunking; repeated retries only burn credits.
+- **Versioned filenames** (`{slug}_{version}.mp3`) exist so staleness is visible — a mismatched version means the post changed after the audio was made. Regenerate only when the user asks.
+
+**How it works:**
+
+- Script: `tools/generate-tts.ps1 -Slug <slug> [-Language de]`. Composes plain text (title line → byline → "Published at {date}"("{Veröffentlicht am {dd.MM.yyyy}" for DE) → body; heading markers and markdown links stripped), sends one request with `extra_body: { model: 'eleven_v3', batch: true }` — nSpeech chunks + stitches server-side (overlap + forced-alignment trim).
+- Output: `content/audio/{slug}[_de]_{version}.mp3` (version = post's YAML `version` date).
+- Manifest: add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json` after generation. Validate JSON afterwards.
+- Player: `nui-media-player` addon, injected by `buildAudio()` in `assets/js/app.js` between essay header and body. Language-aware.
+
+**Known issues / docs:**
+- nSpeech batch stitching timing + progress events: `docs/nspeech-batch-stitching-test-report.md`
+- Original handover for the server-side chunking feature: `docs/nspeech-chunking-handover.md`
+
+---
+
+## 11. Source References
 
 | What | Where |
 |------|-------|

@@ -25,7 +25,7 @@ summary: "Die Grenze zwischen Selbst und Welt ist eine beweisbare Illusion — d
 
 # Die Hand, die sich selbst zeichnet
 
-*by David A. Renelt (Human) and DeepSeek (AI)*
+*von David A. Renelt (Mensch) und DeepSeek (KI)*
 
 Man ist nicht von seiner Umgebung getrennt. Niemals.
 

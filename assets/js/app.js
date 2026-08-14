@@ -35,6 +35,11 @@ function t(key) {
 	return map[state.lang] || map.en || key;
 }
 
+// Escape everything, then convert **bold** markdown markers to <strong> for inline emphasis in i18n copy.
+function escStrong(s) {
+	return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
 function setTitle(s) {
 	document.title = s ? `${s} — Herrbasan` : 'Herrbasan — It\'s not nothing';
 }
@@ -204,9 +209,15 @@ function buildHome() {
 		<div class="home">
 			<p class="threshold">${esc(site.threshold)}</p>
 			<p class="threshold-source">${esc(t('thresholdSource'))}</p>
+			<div class="page-intro">
+				<p>${escStrong(t('intro_2'))}</p>
+				<p>${escStrong(t('intro_3'))}</p>
+				<p>${escStrong(t('intro_4'))}</p>
+			</div>
 			<div class="entry-points">
 				${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', '#feature=writing')}
 				${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '#feature=arena')}
+				${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', '#feature=religion')}
 			</div>
 			${state.lang === 'de' ? `
 			<div class="lang-note">
@@ -424,8 +435,22 @@ function stripPostHeader(md) {
 	return md
 		.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')  // YAML frontmatter
 		.replace(/^\s*#\s+[^\n]*\n?/, '')                // H1 title (allow leading blank)
-		.replace(/^\s*\*by\s+[^\n]*\*?\s*\n?/, '')       // italic byline
+		.replace(/^\s*\*(?:by|von)\s+[^\n]*\*?\s*\n?/, '')  // italic byline (EN/DE)
 		.replace(/^\s*\n/, '');                          // remaining leading blank line
+}
+
+function buildAudio(post, de) {
+	const audio = post.audio;
+	if (!audio) return '';
+	const file = de ? (audio.de || audio.en) : (audio.en || audio.de);
+	if (!file) return '';
+	return `
+		<div class="essay-audio">
+			<p class="kicker">${esc(t('listen'))}</p>
+			<nui-media-player pause-others>
+				<audio src="content/audio/${esc(file)}" preload="metadata"></audio>
+			</nui-media-player>
+		</div>`;
 }
 
 async function buildPost(slug) {
@@ -450,8 +475,7 @@ async function buildPost(slug) {
 					<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
 					<p class="byline">${esc(t('blog_author'))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>
 					${statusNote}
-				</div>
-				<div data-md-slot class="essay-body"></div>
+				</div>			${buildAudio(post, de)}				<div data-md-slot class="essay-body"></div>
 				${buildSeriesNav(post)}
 				${buildRelatedNav(post)}
 				${buildProcessFooter(meta)}

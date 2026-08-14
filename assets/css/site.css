@@ -177,7 +177,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 
 /* ---------- Shared page scaffold ---------- */
 
-.wrap { max-width: 60rem; margin: 0 auto; padding: 0 var(--gutter); }
+/* Note: no bare .wrap rule — it collides with nui-media-player's internal
+   .wrap element. Page sections use their own classes with padding directly. */
 
 .site-footer {
   max-width: 60rem;
@@ -213,7 +214,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   color: var(--text-faint);
   margin: 0 0 clamp(3rem, 8vh, 5rem);
 }
-.entry-points { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
+.entry-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.9rem; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
+@media (max-width: 640px) { .entry-points { grid-template-columns: 1fr; gap: 1.75rem; } }
 .lang-note {
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -237,7 +239,15 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   line-height: 1.6;
   margin: 0;
 }
-.entry { text-decoration: none; display: block; }
+.entry {
+  text-decoration: none;
+  display: block;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  padding: 1.4rem 1.5rem 1.6rem;
+  transition: background 0.2s ease;
+}
+.entry:hover { background: var(--accent-soft); }
 .entry-kicker {
   font-family: var(--sans);
   font-size: 0.75rem;
@@ -278,6 +288,9 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 /* ---------- Writing list ---------- */
 
 .writing { max-width: 46rem; margin: 0 auto; padding: clamp(3rem, 9vh, 5.5rem) var(--gutter) 4rem; }
+.page-intro { max-width: 42rem; color: var(--text-dim); margin: 0 0 3.5rem; }
+.page-intro strong { color: var(--text); font-weight: 600; }
+.page-intro p + p { margin-top: 1rem; }
 .page-title { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 400; letter-spacing: -0.015em; margin: 0 0 0.5rem; }
 .page-author {
   font-family: var(--sans);
@@ -322,6 +335,44 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   padding: clamp(3rem, 9vh, 5.5rem) var(--gutter) 4rem;
 }
 .essay-header { margin-bottom: 3rem; }
+
+/* Audio player */
+.essay-audio { margin-bottom: 3rem; }
+.essay-audio .kicker {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin: 0 0 0.7rem;
+}
+
+/* Bridge NUI media-player variables to RAUM tokens. The component CSS uses
+   light-dark() and NUI theme vars that RAUM doesn't define. Override the
+   --media-* variables directly for both themes, bypassing light-dark().
+   Player and widget get distinct backgrounds for visual separation from page. */
+.essay-audio nui-media-player {
+  --color-highlight: var(--accent);
+  --border-radius1: 4px;
+  --border-radius2: 8px;
+  --system-ui: var(--sans);
+  --font-size-small: 0.8rem;
+  --font-size-xsmall: 0.8rem;
+
+  --media-text: var(--text);
+  --media-text-dim: var(--text-dim);
+  --media-bar-back: var(--border);
+  --media-bar-proz: var(--text-faint);
+  --media-bar-proz-playing: var(--accent);
+  --media-box-back: var(--bg-soft);
+  --media-control-shade: none;
+  --media-text-shadow: none;
+  --media-widget-back: var(--text-faint);
+  --media-widget-text: #fff;
+  font-family: var(--sans);
+  max-width: 100%;
+}
+
 .essay-title {
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   line-height: 1.2;
