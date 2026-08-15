@@ -184,7 +184,11 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["the-abyss-gazes-back", "the-need"] }
+      "links": { "related": ["the-abyss-gazes-back", "the-need"] },
+      "audio": {
+        "en": "the-ghost-in-the-agent_2026-08-10.mp3",
+        "de": "the-ghost-in-the-agent_de_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-abyss-gazes-back",
@@ -296,7 +300,11 @@
           { "id": "kimi-k3", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] }
+      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] },
+      "audio": {
+        "en": "the-haunting_2026-08-15.mp3",
+        "de": "the-haunting_de_2026-08-15.mp3"
+      }
     },
     {
       "slug": "its-just-prediction",
@@ -548,7 +556,11 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["the-hand-that-draws-itself"] }
+      "links": { "related": ["the-hand-that-draws-itself"] },
+      "audio": {
+        "en": "the-first-laboratory_2026-08-12.mp3",
+        "de": "the-first-laboratory_de_2026-08-12.mp3"
+      }
     },
     {
       "slug": "the-attribution-problem",
@@ -575,7 +587,11 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": ["the-need", "the-first-laboratory"] }
+      "links": { "related": ["the-need", "the-first-laboratory"] },
+      "audio": {
+        "en": "the-attribution-problem_2026-08-12.mp3",
+        "de": "the-attribution-problem_de_2026-08-12.mp3"
+      }
     },
     {
       "slug": "the-intellectual-corset",
