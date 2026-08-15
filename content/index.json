@@ -603,7 +603,10 @@
         ]
       },
       "links": { "related": [] },
-      "audio": { "en": "the-intellectual-corset_2026-08-15.mp3" }
+      "audio": {
+        "en": "the-intellectual-corset_2026-08-15.mp3",
+        "de": "the-intellectual-corset_de_2026-08-15.mp3"
+      }
     }
   ],
   "pages": [
