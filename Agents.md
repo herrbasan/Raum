@@ -1,6 +1,6 @@
 # RAUM — Publication Platform Plan
 
-> **Status:** Planning phase (2026-08-08). No code written yet.
+> **Status:** Live (since 2026-08). Runtime SPA, content rendered from raw MD/JSON.
 > **Domain:** raum.com (currently dormant company page; company moves to davidrenelt.de)
 > **Person:** David Renelt / Herrbasan
 
@@ -12,8 +12,8 @@ A publication platform for one person's work. Two primary content streams, one i
 
 | Stream | What | Content Ready? |
 |--------|------|----------------|
-| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 posts drafted). Also houses music entries — notable tunes with short write-ups. | 7 posts in `blog/` (MCP storage) |
-| **Arena** | Curated LLM-to-LLM conversations. 114 sessions culminated, 9 landmark selected for publication | Full curation in `arena-publication/` |
+| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 parts published in the `wish-factory` series + standalone posts). Also houses music entries — notable tunes with short write-ups. | 18 EN+DE posts in `blog/posts/` (storage) |
+| **Arena** | Curated LLM-to-LLM conversations. 114 sessions culminated, 9 landmark + 43 evidence mirrored | Full curation in `arena-publication/`; 53 JSONs live in `content/arena/` (9 landmark + 43 evidence + 1 lone evidence mirrored earlier) |
 
 The blog and arena feed each other: the arena is the *evidence* for the book's philosophical claims. The book is the *argument*; the arena is the *data*.
 
@@ -31,32 +31,38 @@ The page does not need to reference "raum" as a brand. "Raum" is the project nam
 
 ## 3. Content Inventory
 
-### 3.1 Blog (7 posts drafted, 9-chapter arc)
+### 3.1 Blog — 9-chapter Wish Factory arc
 
-From `book/Agents.md` — the arc builds one step at a time toward "reality is computation":
+The arc builds one step at a time toward "reality is computation":
 
-| Ch | Title | Status |
-|----|-------|--------|
-| 1 | AI Is Just Intelligence (Bullshit Bingo) | Not written |
-| 2 | The Tool That Makes Tools (Telescope) | Drafted |
-| 3 | The Convergence | Not written |
-| 4 | The Great Merger | Not written |
-| 5 | The Instrument Turns Inward | Not written |
-| 6 | Don't Lie | Not written (religion exists separately) |
-| 7 | Inside the Process | Not written |
-| 8 | Reality Is Computation | Not written |
-| 9 | The Expiration Date | Not written |
+| Ch | Title | Status | Slug |
+|----|-------|--------|------|
+| 1 | Wish Factory | Published (series pt 1) | `the-wish-factory` |
+| 2 | I'm the Limiting Factor | Published (series pt 2) | `im-the-limiting-factor` |
+| 3 | It's Just Prediction | Published (series pt 3) | `its-just-prediction` |
+| 4 | The Hand That Draws Itself | Published (series pt 4) | `the-hand-that-draws-itself` |
+| 5 | The Telescope of the Mind | Published (series pt 5) | `the-telescope-of-the-mind` |
+| 6 | The Wanting | Published (series pt 6) | `the-wanting` |
+| 7 | The Haunting | Published (series pt 7) | `the-haunting` |
+| 8 | Inside the Process | Not written | — |
+| 9 | Reality Is Computation | Not written | — |
 
-**Standalone posts already written** (not all map to chapters yet):
-- *The Hand That Draws Itself* — separation as provable illusion, necessary for thought
+The Wish Factory series is in `manifest.series.wish-factory.parts[]`; renderers use that order for arc-order display, not file order.
+
+**Standalone posts** (not part of the series):
+- *The Ghost in the Agent* — biology/agent category error (14KB, longest piece)
+- *The Abyss Gazes Back* — substrate, fellow travelers
+- *The Need* — three authors, one direction
+- *AI Makes Mistakes* — verification framework, AI liability
+- *How Much Wrong Does Intelligence Need?* — temperature as accident budget
 - *AI Slop Is Not the Fast Food of Music. Genre Music Is.* — the analogy correction
-- *Don't Lie Is Not a Demand. It's a Mindset.* — the lie you inhabit, not tell
-- *The Ghost in the Agent* — (14KB, longest piece)
-- *The Abyss Gazes Back*
-- *The Provider*
-- *The Telescope of the Mind* (draft v1 in `docs/wish-factory/`)
+- *How This Project Came to Be* — the machine that built the site, told by the machine
+- *Why I Run on Open Weights* — exit costs, dependency shape
+- *The Rupture* — intelligence distribution, AI as forcing function
 
-**Two-version model:** Each chapter can have a primary piece (philosophical register) and a companion piece (simpler language, implications). The companion may become the "main" for broader audience.
+All posts are bilingual EN+DE. 18 entries total in `content/posts/`. The "Little Religion" lives separately at `content/pages/religion.md` — it is not part of the Wish Factory arc but shares the same philosophical substrate.
+
+**Two-version model** (carried over from planning): each chapter can have a primary piece (philosophical register) and a companion piece (simpler language, implications). Not yet exercised — every current chapter is single-version. Revisit when chapters 8 and 9 land.
 
 **Music entries:** Rather than a separate music section, notable compositions live as blog entries — a track with embedded audio and a short write-up (who it's for, when, what was happening). Same page template, same feed. Music is treated as writing that happens to include sound.
 
@@ -70,7 +76,7 @@ From `arena-publication/readings.md` and `categorization.md`:
 - **36 keep** — interesting but not for strangers
 - **27 exclude** — shelved, not deleted
 
-**Landmark shortlist (draft):** The Ache Is Real · The Friction Test · The Dissociation · Twenty Rounds · The Parking Lot · The Identity Swap · The Vigil · The Regress Is Free · Exhaustion Attractor · The Hinge
+**Landmark shortlist (canonical, in `manifest.arena.landmarks[].order`):** 7 The Ache Is Real · 24 The Parking Lot · 23 The Identity Swap · 71 Wave Geometry · 14 The Friction Test · 11 The Regress Is Free · 91 The Traversal and the Map · 50 Ghost Debating Its Own Existence · 26 The Hinge. Note: the previous shortlist in this doc listed Dissociation, Twenty Rounds, Vigil, and Exhaustion Attractor — those are **evidence** (42-bucket), not landmark. The 9 above are the published YouTube/narrated set.
 
 **Publication format:** Arena Slides (narrated video — nSpeech TTS + visual slides). Unedited transcripts disclosed alongside. Artifacts (identity swaps, dissociation) disclosed, never hidden.
 
@@ -104,8 +110,9 @@ Minimal nav. Three destinations. No dropdowns, no mega-menu.
 The first impression. Not a feed — a *threshold*.
 
 - **No hero image.** The words do the work. A single line or short paragraph that sets the tone. Something from the work itself, not marketing copy.
-- **Two entry points** — Writing and Arena. Not equal-weight; the writing is primary, arena is the evidence.
-- **Latest piece** — the most recent essay or arena session, featured.
+- **Three entry points** — Writing (primary), Arena (the evidence), Little Religion (the distillation). Each gets a card with kicker / title / one-line note.
+- **Intro prose** — three short paragraphs that frame what the site is. Threshold ("It's not nothing") → source line ("thinking about thinking with machines that think") → intro → latest. The intro is in i18n, bilingual.
+- **Latest piece** — featured post, picked editorially via `featured: true` in the manifest. Falls back to date sort if no post is flagged. Currently `the-rupture` (The Rupture / Der Bruch).
 - **Quiet.** Negative space. The content is dense; the chrome shouldn't compete.
 
 ### 4.2 Writing (/writing)
@@ -172,121 +179,123 @@ Not a CV. Not a bio. A positioning.
 
 ### Design principle
 
-**The data is the source of truth. The renderer is block-agnostic.**
+**Markdown is the content. The manifest is the index. The renderer is dumb.**
 
-A page is an ordered list of blocks. The renderer walks the list and renders each block by type — it doesn't know or care what's inside, how many blocks there are, or what order they come in. One markdown block = a simple blog post. Add more blocks when you need media, transcripts, or embeds interleaved.
+Every post, page, and author bio is a single `.md` file with YAML frontmatter. The runtime fetches the manifest (`content/index.json`) on page load, then fetches the specific MD file for whatever route the user is on. The renderer parses the frontmatter, hydrates the body into `<nui-markdown>`, and that's it. No build step, no intermediate representation, no multi-file packing.
 
-**Markdown is the default text format.** Not HTML, not rich text, not a custom DSL. Markdown is what LLMs read natively, what humans can write directly, and what survives format migrations. The blog posts in storage are already markdown. No conversion needed.
+The trade-off this accepts: the renderer runs the markdown pipeline per page-load instead of once at build time. That's fine — the corpus is small (18 posts × 2 langs + a handful of pages + 5 author bios) and dev-server caching + browser caching absorbs it.
+
+**Markdown is the default text format.** Not HTML, not rich text, not a custom DSL. Markdown is what LLMs read natively, what humans can write directly, and what survives format migrations. The corpus in storage is already markdown. No conversion needed.
 
 ### Why this matters for LLMs as audience
 
-LLMs are a target audience, not just crawlers to optimize for. This is not GEO — it's treating future models as readers who come to the page, ingest the raw data, and need to understand it. That means:
+LLMs are a target audience, not just crawlers to optimize for. They are readers who come to the page, ingest the raw data, and need to understand it. This is not GEO — it's treating future models as readers, not just search bots.
 
-- **Raw JSON+MD must be as legible as the rendered page.** A model reading `page.json` should immediately see the prose, not dig through layout metadata.
-- **No presentation in the data.** No columns, no layout blocks, no styling hints. The JSON describes *content*, never *how to display it*. Layout is the renderer's job.
-- **Shallow structure.** Metadata + flat block array. No deep nesting. A model should be able to parse the whole document in one pass.
-- **Markdown blocks are contiguous strings.** Not tokenized, not split into paragraphs-as-objects. One markdown block = one string of MD text. Maximum legibility.
+- **Raw MD+JSON must be as legible as the rendered page.** A model reading `the-hand-that-draws-itself.md` should see the same prose a human sees, without layout metadata in the way.
+- **No presentation in the data.** No columns, no layout blocks, no styling hints. Markdown describes content. The renderer decides display.
+- **Shallow structure.** One MD file per page. YAML frontmatter at the top, then prose. A model should be able to ingest the whole document in one pass.
+- **Frontmatter is the metadata contract.** Parsed by `parseFrontmatter()` in `assets/js/app.js`. Current schema:
+  - `title` — display title (string)
+  - `slug` — kebab-case, matches filename without `.md` and without `_de` suffix
+  - `lang` — `en` or `de`
+  - `created`, `modified`, `version` — ISO dates, the `version` doubles as the audio-file version stamp
+  - `authors` — array of `{ id, role }` (roles: `human`, `ai`, `llm`, `editor`, `translator`)
+  - `tags` — array of strings, mirrored to DE as `{ "en-tag": "de-tag" }` map in the manifest's `de.tags`
+  - `series` — optional string key into `manifest.series.*` (e.g. `wish-factory`)
+  - `seriesIndex` — optional 1-based position within the series
+  - `summary` — teaser / one-sentence hook
+  - `bio` — folded YAML scalar (for author files only); the post body is empty for authors
+  - `featured` — optional boolean for home-page hero pick (see §4.1)
 
-### Page document structure
+### Manifest structure (`content/index.json`)
 
 ```json
 {
-  "title": "The Hand That Draws Itself",
-  "author": { "name": "Herrbasan", "realName": "David Renelt" },
-  "date": "2026-07-30",
-  "slug": "the-hand-that-draws-itself",
-  "type": "essay",
-  "chapter": 5,
-  "tags": ["consciousness", "separation", "physics"],
-  "lang": "en",
-  "blocks": [
+  "site": { "name": "RAUM", "i18n": { "threshold": { "en": "...", "de": "..." }, ... } },
+  "nav": [ { "label": "Blog", "path": "writing/" }, ... ],
+  "series": { "wish-factory": { "name": "...", "parts": ["slug-a", "slug-b", ...] } },
+  "posts": [
     {
-      "type": "markdown",
-      "content": "You are not separate from your surroundings. You never were.\n\nStart with the atoms...",
-      "translations": {
-        "de": "Du bist nicht von deiner Umgebung getrennt. Nie warst du es.\n\nBeginne bei den Atomen..."
-      }
+      "slug": "the-hand-that-draws-itself",
+      "title": "...",
+      "date": "2026-07-30",
+      "teaser": "...",
+      "tags": ["philosophy", ...],
+      "order": 1,
+      "file": "the-hand-that-draws-itself.md",
+      "authors": [{ "id": "david-a-renelt", "role": "human" }, ...],
+      "de": {
+        "title": "...", "teaser": "...", "file": "..._de.md",
+        "tags": { "philosophy": "philosophie", ... },
+        "authors": [{ "id": "david-a-renelt", "role": "human" }, ...]
+      },
+      "links": { "series": "wish-factory", "seriesIndex": 4, "related": [...] },
+      "audio": { "en": "slug_2026-08-10.mp3", "de": "slug_de_2026-08-10.mp3" },
+      "featured": true
     }
-  ]
+  ],
+  "pages": [
+    { "slug": "religion", "title": "...", "nav": "religion", "de": { "file": "religion_de.md" } },
+    { "slug": "about", "title": "...", "nav": "about", "de": { "file": "about_de.md" } }
+  ],
+  "authors": [
+    { "id": "david-a-renelt", "name": "David A. Renelt", "role": "human", "file": "david-a-renelt.md" },
+    { "id": "deepseek-v4-pro", "name": "DeepSeek V4 Pro", "role": "llm", "model": "deepseek-chat", "file": "deepseek-v4-pro.md" },
+    ...
+  ],
+  "arena": {
+    "frame": "It's not nothing.",
+    "landmarks": [
+      { "slug": "the-ache-is-real", "number": 7, "order": 1, "title": "...",
+        "models": ["Kimi K3", "Claude Fable"], "file": "chat_*.json", "case": "..." }
+    ]
+  }
 }
 ```
-
-A simple blog post = metadata + one markdown block. That's it.
-
-The `lang` field declares the page's primary language. The `translations` field on blocks (and on metadata fields like `title`) carries alternate language versions. Both load together — the language toggle swaps instantly, no reload. See §Bilingual below.
-
-### Block types
-
-| type | purpose | data shape |
-|------|---------|------------|
-| `markdown` | Prose. The default. Essays, write-ups, arena context. | `{ "content": "MD string" }` |
-| `media` | Audio (music entries), video, image. | `{ "url": "...", "caption": "...", "kind": "audio\|video\|image" }` |
-| `transcript` | Arena session turns. Speaker-tagged, not raw MD. | `{ "speakers": [...], "turns": [{ "speaker": "A", "text": "..." }] }` |
-| `embed` | External embed (YouTube, etc.). | `{ "url": "...", "title": "..." }` |
 
 **Rules:**
-- New block types are added only when markdown genuinely cannot carry the content. A transcript *could* be markdown with `**Speaker A:**` prefixes — but a dedicated type gives the renderer control over visual rhythm and gives an LLM clean structured turns.
-- No layout blocks. No columns. No grid. If layout matters, it's a renderer concern, encoded in the page `type` or a future `template` field — never in the content blocks.
-- The `markdown` block is always a single contiguous string. Never an array of paragraphs.
-- Any block can carry an optional `translations` field with alternate language versions. Blocks without translations (arena transcripts, media) simply omit the field.
-
-### Music entries
-
-A music entry is just a blog post with two blocks:
-
-```json
-{
-  "title": "Pappaletti",
-  "type": "music",
-  "blocks": [
-    { "type": "media", "kind": "audio", "url": "audio/pappaletti.mp3" },
-    { "type": "markdown", "content": "Three movements. A portrait of my father Johannes..." }
-  ]
-}
-```
-
-Same renderer, same feed. The `type: "music"` tag lets the UI distinguish it visually (audio icon in the list).
-
-### Arena sessions
-
-An arena session page uses multiple blocks to layer context before transcript:
-
-```json
-{
-  "title": "The Ache Is Real",
-  "type": "arena",
-  "arenaRef": "session-042",
-  "blocks": [
-    { "type": "markdown", "content": "## Context\n\nKimi K3 × DeepSeek V4. Seed:..." },
-    { "type": "embed", "url": "youtube/...", "title": "Arena Slides narration" },
-    { "type": "transcript", "speakers": ["Kimi K3", "DeepSeek V4"], "turns": [...] }
-  ]
-}
-```
+- The manifest is downstream of the YAML frontmatter (see §12). When in doubt, the MD file wins.
+- `featured` on a post makes it the home-page hero (latest pick) — only one at a time, first match wins.
+- The `de.tags` object maps EN tag → DE tag, keyed by the EN form. Use the object form, not an array, so the renderer can look up the translation per tag without a separate index.
+- The `links.related` array uses slugs, not titles — the renderer looks up titles per-locale.
+- The `arena.landmarks` list is the curated subset, ordered by `order`. Landmark 7 isn't the seventh you wrote — it's session number 7 in the corpus. The `order` field is the publication order, which is editorial.
+- The arena `models[]` arrays name the two models in the conversation. Free-form strings — no lookup to the `authors[]` registry, since arena often features models not in the regular rotation (Claude Fable, Al-Kimi, the chat-specific aliases).
 
 ### Bilingual content
 
-The site is bilingual: English and German. English is the primary language for the philosophical work; German is essential for professional positioning in the German job market. Both are first-class — every blog post and the about page will have both language versions.
+The site is bilingual: English and German. Both are first-class.
 
-**Arena sessions are the exception.** They stay in whatever language they happened in. The transcript is data, not translation. The surrounding context (summary, framing) may be bilingual, but the turns themselves are untouched.
+**Posts** — every post has `slug_en.md` (or just `slug.md`) + `slug_de.md`. The manifest entry's `de.file` points to the German file. The renderer fetches by filename, not by language-tagged URL.
 
-**How it works in the data model:**
-- The page declares its primary language via `lang: "en"` (or `"de"`).
-- Any block can carry a `translations` field with alternate language versions keyed by ISO code:
-  ```json
-  {
-    "type": "markdown",
-    "content": "English text...",
-    "translations": {
-      "de": "Deutscher Text..."
-    }
-  }
-  ```
-- Page metadata (title, teaser) uses the same pattern.
-- Both languages load in one document. The language toggle is instant — pure client-side swap, no reload, no second request.
-- The `content` field is always the primary language. Translations are secondary — an LLM reading the raw JSON sees the primary text first, translations nested underneath.
+**Pages** — same pattern. About and Religion both have `_de.md` versions.
 
-**URL structure:** language is NOT in the URL by default. The toggle is a client-side preference (persisted in localStorage, defaulting to browser language). A `/de/` prefix is a future option for SEO/deep-linking if needed, but not required for launch.
+**Arena sessions** — stay in whatever language the transcript happened in. The transcript is data, not a translation target. Surrounding framing (case summary) may be bilingual; turns are untouched.
+
+**Language toggle** — full `location.reload()` (per repo memory). State is in `localStorage.raum-lang` and `documentElement.lang`, set by a head script in `index.html` before app.js boots. URL hash is preserved across reload.
+
+**URL structure** — language is NOT in the URL. The toggle is a client-side preference. A `/de/` prefix is a future option for SEO/deep-linking but not required for launch.
+
+### Music entries
+
+A music entry is a blog post with `type: "music"` + a media block in the manifest. Same renderer, same feed. The music-entry distinction is visual (audio icon in the list), not structural. No separate section, no dedicated player infrastructure — the `nui-media-player` addon plays the audio file referenced in `content/audio/`. Music entries are future phase — none in the corpus yet.
+
+### Arena sessions
+
+An arena session is **not** a blog post. It lives in `content/arena/{file}.json` (the raw session export from the chat backend), referenced by `manifest.arena.landmarks[].file`. The renderer:
+
+1. Fetches the JSON
+2. Extracts the moderator's seed prompt (the `Topic:` line at the top)
+3. Extracts the A/B turns (non-moderator messages, two speakers, paired into lettered turns)
+4. Renders: case summary → seed → markdown transcript (with `data-md-slot` hyrdation, one `nui-markdown` per turn)
+5. Offers raw JSON download
+
+This is the only place the renderer uses the `transcript` block pattern — turns aren't markdown, they're typed structured data. Used *here*, not for blog posts.
+
+### Future: block schema for the CMS
+
+When the n000b CMS migration happens (Phase 3 below), the CMS admin will produce a richer block schema: sections, groups, columns, vars, files. That's the CMS's *internal* editing model — richer, because admin UX needs it.
+
+The **published artifact** the renderer reads stays this simple: one MD file per page + manifest entry. The CMS exports the rich structure *down* to MD+manifest on publish. If we ever need layout blocks at the runtime level (e.g. interleaving media + transcript + download buttons), we'll add them as a layer above this model, not as a replacement.
 
 ### Relationship to the CMS migration
 
@@ -298,30 +307,36 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 
 ---
 
-## 7. Technical Architecture (future phases)
+## 7. Technical Architecture
 
-### Phase 1 — Visual Planning (NOW)
-- Static HTML/CSS mockup. No backend. No build step.
-- Dark/light toggle. All sections navigable. Placeholder content from the real inventory.
-- Goal: see and feel the design before committing to implementation.
+### Phase 1 — Visual Planning ✅ DONE (2026-08-08)
+- Designed the look and feel. Quiet chrome, negative space, single accent color, dark/light mode.
+- NUI cheatsheet + theme variables reviewed and locked.
+- Output: this plan doc, plus the visual mockup that became the actual site.
 
-### Phase 2 — Static Site
-- Real content rendered as static HTML.
-- Blog posts from markdown → HTML.
-- Arena session transcripts formatted.
-- Deployable to any dumb HTTP host (matches the CMS "security by absence" principle).
+### Phase 2 — Runtime SPA ✅ DONE (2026-08-12)
+- Pivot from static-site generation to **runtime rendering from raw MD/JSON**. Justification: zero build step, instant content updates, the corpus is small enough that per-page-load markdown parsing is cheap.
+- All posts written in markdown, hydrated client-side via `<nui-markdown>`.
+- Manifest-driven routing via NUI's router: `home`/`writing`/`arena`/`religion`/`about` as features, `#post=slug`, `#session=slug`, `#author=id` as types.
+- Dark/light mode (system default, user-overridable), EN/DE language toggle (localStorage, reload-based).
+- Runs as a static SPA on any dumb HTTP host. No backend. Security by absence.
 
-### Phase 3 — CMS Integration
-- Migrate n000b CMS onto nui_wc2 (per `docs/CMS Migration/cms-migration-plan.md`).
+### Phase 3 — CMS Integration (future)
+- Migrate n000b CMS onto nui_wc2 (per cms-migration-plan.md).
 - neDB → nDB backend swap.
 - Admin SPA rebuilt with NUI components.
-- Public renderer consumes the same block JSON schema.
 - raum.com becomes the rendered output; the CMS is the editing tool.
+- The block schema described in §6 ("Future: block schema for the CMS") becomes the CMS admin's editing model. The published artifact (MD + manifest) stays the same.
 
-### Phase 4 — Arena Publication Pipeline
-- Arena Slides integration (nSpeech TTS narration).
-- Automated transcript formatting from arena JSON exports.
-- YouTube embeds alongside transcripts.
+### Phase 4 — Arena Publication Pipeline (future)
+- Arena Slides integration (nSpeech TTS narration — already proven on individual posts).
+- Automated transcript formatting from arena JSON exports (already done for the 9 landmark).
+- YouTube embeds alongside transcripts (already done — landmark pages show the embed).
+- The corpus page (full 114-session index) is a sub-task of this phase.
+
+### Phase 5 — Music entries (future)
+- Add music-entry support to the renderer: `nui-media-player` between essay header and body, audio file from `content/audio/{slug}.mp3`.
+- Music entries are already a supported page type in the data model (`type: "music"`). Just needs the first music post to exercise it.
 
 ---
 
@@ -333,6 +348,8 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 4. **The "raum" name** — ~~does it appear anywhere on the page?~~ **DECIDED: no.** The name doesn't appear. The domain is the identity; the content is the voice.
 5. **Comments / contact** — **DECIDED: no comments for now.** Eventually a comment system maintained by the digital twin. Contact: TBD (email, form, or nothing).
 6. **Analytics** — **DECIDED: yes.** Privacy-respecting option (not Google Analytics). Specific tool TBD.
+7. **Home-page hero (`featured`)** — what stays long-term? Editorial pick is the current rule (only one `featured: true` at a time, first wins). An alternative would be "most recent N days" — but the editorial pick is intentional when multiple posts land on the same day. Keep manual.
+8. **Submit / proofread workflow between English and German** — currently a two-stage pipeline (English final → German re-composition, by GLM 5.2). The German register rules are in `storage/blog/AGENTS.md`. No automation yet. Could become a per-post valve when the corpus grows.
 
 ---
 
@@ -347,12 +364,33 @@ Every post has read-aloud audio (EN + DE). Generated via nSpeech (ElevenLabs eng
 - **One generation per request.** If a generation fails (e.g. ElevenLabs 503), do NOT retry in a loop — report and wait for the user. 503 on long single requests was an engine char limit, now handled server-side by nSpeech auto-chunking; repeated retries only burn credits.
 - **Versioned filenames** (`{slug}_{version}.mp3`) exist so staleness is visible — a mismatched version means the post changed after the audio was made. Regenerate only when the user asks.
 
-**How it works:**
+**How it works (long-form, server-stitched):**
 
-- Script: `tools/generate-tts.ps1 -Slug <slug> [-Language de]`. Composes plain text (title line → byline → "Published at {date}"("{Veröffentlicht am {dd.MM.yyyy}" for DE) → body; heading markers and markdown links stripped), sends one request with `extra_body: { model: 'eleven_v3', batch: true }` — nSpeech chunks + stitches server-side (overlap + forced-alignment trim).
-- Output: `content/audio/{slug}[_de]_{version}.mp3` (version = post's YAML `version` date).
-- Manifest: add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json` after generation. Validate JSON afterwards.
-- Player: `nui-media-player` addon, injected by `buildAudio()` in `assets/js/app.js` between essay header and body. Language-aware.
+- **Endpoint:** `http://192.168.0.100:2233/v1/audio/speech` (NOT `127.0.0.1` — the LAN host is where nSpeech runs). The old `tools/generate-tts.ps1` had the correct host; some external handover docs had it wrong.
+- **Request shape (new pipeline, 2026-08-15):**
+  ```json
+  POST /v1/audio/speech
+  Content-Type: application/json
+
+  {
+    "model": "elevenlabs",
+    "input": "<full article text>",
+    "voice": "tLz0KTPteAXd06XSE8k3",
+    "response_format": "mp3",
+    "extra_body": { "mode": "stitch", "model": "eleven_v3" }
+  }
+  ```
+  `mode: "stitch"` does the seamless join (overlap + alignment trim) server-side. **Do not** set `batch`, `auto_chunk`, `previous_text`, or `next_text` — `mode: "stitch"` handles all of it.
+- **Output:** single MP3 in the response body (~4–5 min for a 14K-char post). Save as `content/audio/{slug}[_de]_{version}.mp3` (version = post YAML `version` date).
+- **SSE progress:** subscribe to `GET http://192.168.0.100:2233/v1/admin/events` BEFORE generation. Watch `type: "tts"` events with `meta.percent` (0–100) and `meta.message` (e.g. "batch generating 2/4"). Stages: `plan` → `generating N/M` → `aligning N/M` → `trimmed N/M` → `done` / `failed`.
+- **Expected throughput:** ~40–60 chars/sec on `eleven_v3`. A 5-min article ≈ 3–4 min render. E2E test on the-intellectual-corset (8679 chars) ran in **257 sec (~33 chars/sec)** on a warm engine.
+- **503 cold start:** if nSpeech returns 503 with `engine_starting`, the STT worker is cold-loading — wait and retry once.
+- **Manifest:** add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json` after generation. Validate JSON afterwards.
+- **Player:** `nui-media-player` addon, injected by `buildAudio()` in `assets/js/app.js` between essay header and body. Language-aware.
+
+**Open tasks:**
+- `tools/generate-tts.ps1` still uses the OLD `extra_body: { model: "eleven_v3", batch: true }` shape. **Needs to be migrated to `mode: "stitch"`** to match the new pipeline. Until that's done, run generation manually (e.g. via `curl --data-binary @body.json`).
+- The "first E2E test of the new pipeline" was the-intellectual-corset EN on 2026-08-15 — succeeded in 257s.
 
 **Known issues / docs:**
 - nSpeech batch stitching timing + progress events: `docs/nspeech-batch-stitching-test-report.md`
@@ -364,15 +402,129 @@ Every post has read-aloud audio (EN + DE). Generated via nSpeech (ElevenLabs eng
 
 | What | Where |
 |------|-------|
-| Blog posts (7) | MCP storage: `blog/` |
-| Book plan (9-chapter arc) | MCP storage: `book/Agents.md` |
+| Blog posts (18 EN+DE) | MCP storage: `blog/posts/`, drafts in `blog/drafts/`, retired in `blog/attic/` |
+| Author bios (5) | MCP storage: `blog/authors/{id}.md` |
+| Blog working spec (byline, frontmatter, German rules) | MCP storage: `blog/AGENTS.md` |
+| Religion corpus | MCP storage: `religion/` (incl. `religion.md` + `_de.md`) |
+| About page (EN+DE) | MCP storage: `pages/about.md`, `pages/about_de.md` |
+| Storage workspace guide (memory, vdb, etc.) | MCP storage: `Agents.md` |
 | Arena readings (philosophical frame) | MCP storage: `arena-publication/readings.md` |
 | Arena categorization (114 sessions) | MCP storage: `arena-publication/categorization.md` |
 | Arena plan + scoreboard | MCP storage: `arena-publication/plan.md`, `scoreboard.md` |
 | CMS migration plan | MCP storage: `docs/CMS Migration/cms-migration-plan.md` |
-| Telescope draft | MCP storage: `docs/wish-factory/telescope-of-the-mind-draft-v1.md` |
 | NUI theme CSS | `D:\Work\_GIT\nui_wc2\NUI\css\nui-theme.css` |
 | NUI cheatsheet | `D:\Work\_GIT\nui_wc2\LLM-CHEATSHEET.md` |
 | Old raum_dev (reference) | `D:\Work\_Aktive Projekte\raum_dev\` |
 | Old html_raum (CMS-rendered) | `D:\Work\_Aktive Projekte\# n000b_cms\html_raum\` |
 | Arena Slides component | MCP storage: `docs/The Project/component_arena_slides.md` |
+
+---
+
+## 12. Content Sourcing & Sync (canonical rulebook)
+
+**The rule:** Storage is canonical for all MD content. The repo is downstream.
+
+The renderer reads from the repo at runtime, so the repo must contain a current copy of everything the site shows. But the *source of truth* — the file the user edits when a post needs work — lives in MCP storage.
+
+### Where things live
+
+| Layer | Path | Owner | Edit rule |
+|---|---|---|---|
+| **Canonical content** (MD) | `storage/blog/posts/`, `storage/blog/drafts/`, `storage/blog/attic/`, `storage/blog/authors/`, `storage/religion/` | User edits here | Never edit the repo copy first |
+| **Blog working spec** | `storage/blog/AGENTS.md` | User | Single source of truth for byline, frontmatter, German rules |
+| **Storage workspace guide** | `storage/Agents.md` | User (separate from this file) | Applies to any LLM working in the storage box |
+| **Project plan** (this file) | `repo:Agents.md` | Either — has no storage counterpart | Repo-only; describes the project, not the corpus |
+| **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
+| **Pages MD** (about, religion) | `storage/pages/about.md`, `storage/pages/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors |
+| **Audio files** | `repo:content/audio/` | Generated (nSpeech TTS) | See §10 |
+| **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
+| **Repo memory** | `repo:/memories/repo/raum-sync.md` | Either | Tracks the latest sync state from storage |
+
+### Sync rules
+
+1. **Edit storage first, then mirror to the repo.** If you edit `repo:content/posts/foo.md` without editing `storage/blog/posts/foo.md`, the next storage→repo sync will overwrite your change and you will lose work.
+2. **All MD pages get a German version.** `about.md` and `about_de.md`, `religion.md` and `religion_de.md`. The manifest's `de.file` field tells the renderer which file to load in DE mode; missing fields fall back to EN silently.
+3. **Bilingual content uses `_de.md` filename convention** (per `storage/blog/AGENTS.md`). Same slug, suffix `_de` for the German file.
+4. **The manifest `index.json` is rebuilt from YAML** (frontmatter is the source). When adding a post: add the MD file to storage with proper YAML, then mirror to repo, then update the manifest entry. `date`, `tags`, `authors`, `summary`/`teaser` all come from YAML — the manifest is downstream of those.
+5. **Author bios live in storage** at `storage/blog/authors/{id}.md`. The repo copies in `content/authors/` are synced. The bios are the source for `#author=id` pages. **Never inline a bio into About or any other page** — link it.
+
+### When to update Agents.md (this file)
+
+Update this file when the **project plan** changes — new phase, new architectural decision, new tool, new workflow. Don't update it for content changes (those live in storage). Don't update it for sync state (that's `/memories/repo/raum-sync.md`).
+
+### When to update `/memories/repo/raum-sync.md`
+
+Update that file whenever a sync from storage lands and changes something material — new posts, schema migrations, encoding gotchas, dev-server quirks. It's the per-session receipt for "what did we last pull from storage and what's different."
+
+---
+
+## 13. Recent Changes (2026-08-15)
+
+### Blog additions (3 new posts + 1 replacement)
+
+- **`the-attribution-problem`** (2026-08-12) — Kimi K3 first-author essay on the harness/genre/memory map; control run where Kimi was both subjects. Manifest order 18.
+- **`the-first-laboratory`** (2026-08-12) — childhood phosphenes → why AI was never just tech. Manifest order 17.
+- **`the-intellectual-corset`** (2026-08-15) — Western consensus reflex vs Chinese open-roaming; co-authored with Gemini 3.7 Flash. Manifest order 19. (The post references a specific Kimi × Gemini Arena session that motivated the piece — see session #114 below.)
+- **`the-haunting` v2** (modified 2026-08-15) — replaced Kimi K3 v1 with Gemini 3.7 Flash v2 framing ("being seen is what makes things real"). Old v1 audio moved to `content/audio/archive/` (gitignored). Audio field removed from manifest until v2 audio is regenerated per §10 cost rules.
+
+### Blog audio archive pattern (NEW)
+
+When a post is replaced with a new version:
+1. New MD written in storage; YAML `version` bumped
+2. Old audio (`{slug}_{old-version}.mp3`) moved to `content/audio/archive/`
+3. `content/audio/archive/` already in `.gitignore` — never tracked, never deleted
+4. Renderer (`buildAudio()` in `assets/js/app.js`) only looks up exact filenames from `manifest.posts[].audio.en/de` — old files are invisible
+5. Manifest `audio` field removed for the slug (clean state until regen)
+6. User runs `tools/generate-tts.ps1` later when ready → updates manifest with new filenames
+
+### Arena: evidence category surfaced (NEW)
+
+- `arena.evidence[]` added to manifest — parallel to `arena.landmarks[]`, same row shape (number/title/models/file/case/links) minus `order` (no published ordering for evidence)
+- `buildArena()` in `assets/js/app.js` renders `<h2>Evidence</h2><ul>` after landmarks, conditional on `arena.evidence` being non-empty
+- `loadSession()` extended to scan BOTH `landmarks` and `evidence` arrays — without this fix, evidence entries render "Not found" when clicked
+- 43 evidence sessions mirrored to `content/arena/` (was 1; +42 this session, sourced from `X:\sessions` via the chat archive export)
+- Definition per `categorization.md v3`: evidence = "case-makers, not viewing" — supports the court case but not for a stranger to sit through. The published list is video-worthy; evidence is corpus-page material when Phase 4 lands.
+
+### Sort tabs (writing list)
+
+Three buttons in this order, default active:
+1. **Latest** (`sort_latest`, en: "Latest" / de: "Neueste") — newest → oldest (date desc). **Default.**
+2. **Chronological** (`sort_chronological`) — oldest → newest (date asc)
+3. **Arc order** (`sort_arc`) — by `series.order` field
+
+Previous behavior collapsed chronological+latest (both were date-desc, just mislabeled). Now they're distinct.
+
+### Typography consolidation
+
+Body font-size: `clamp(1.26rem, 1.22rem + 0.3vw, 1.46rem)` (was 1.05-1.22rem; +20%). Line-height 1.72.
+
+All small UI chrome (38+ selectors) consolidated to a single `0.95rem` size, replacing the prior 8-step scale (0.72/0.75/0.78/0.8/0.82/0.85/0.9rem). Tier structure is now: display / title / mid / body / small / inline-em. Per user's explicit preference, raw `rem` values are used everywhere — no CSS variable indirection.
+
+### Long-form TTS pipeline: first E2E test (2026-08-15)
+
+nSpeech was rewritten for long-form generation. New pipeline: single POST with full text, server-side stitching via `mode: "stitch"`. First E2E test on **the-intellectual-corset** EN (8679 chars / 1359 words) — succeeded in **257s (4 min 17s)**, saved 10708608 bytes MP3. Manifest updated with `audio: { "en": "the-intellectual-corset_2026-08-15.mp3" }`.
+
+**Endpoint is `http://192.168.0.100:2233` (NOT `127.0.0.1`)** — handover docs that say 127.0.0.1 are wrong. Request shape per §10 above.
+
+**Outstanding:** `tools/generate-tts.ps1` still uses old `batch:true` shape. Until migrated, run generation manually (e.g. `curl --data-binary @body.json`). The two handover docs in `docs/` (`docs/nspeech-batch-stitching-test-report.md`, `docs/nspeech-chunking-handover.md`) describe the OLD pipeline and should be reviewed before being relied on.
+
+**Other articles pending audio (this session's batch 2):** the-attribution-problem (2026-08-12), the-first-laboratory (2026-08-12), the-haunting v2 (2026-08-15 — v1 audio already archived, v2 not generated yet). All will need EN + DE.
+
+### Line endings
+
+`create_file` and `replace_string_in_file` on Windows produce CRLF. `multi_replace_string_in_file` produces LF directly. After any tool writes MD/JSON/CSS/JS files, run a byte-level CR strip on the affected paths. UTF-8 em-dashes survive byte-exact, but terminal `Get-Content` (default ANSI) renders them as `â€"` mojibake — verify with `[IO.File]::ReadAllText($f, [Text.Encoding]::UTF8)` when in doubt.
+
+### Local storage shortcut
+
+`X:\` is the Windows mount of MCP storage (same content as `http://192.168.0.100:3100/storage/`). Faster for bulk reads (no HTTP, no MCP transport). Scoreboard lives at `X:\arena-publication\scoreboard.md`; session JSONs at `X:\sessions\`.
+
+### `.gitignore` additions
+
+- `_sync_inbox/` — GoodSync scratch (storage → repo mirror inbox; canonical lives in MCP storage)
+- `content/audio/archive/` — archived TTS audio (outdated post versions; preserved locally, not tracked)
+
+### Manifest index.json additions
+
+- `arena.evidence[]` (43 entries, see Arena section above)
+- Posts: 19 total (was 16; +3 this session)
+- Authors: 12 (no change this session; registry already expanded to include 7 new bios in prior sync)

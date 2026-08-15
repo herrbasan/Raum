@@ -70,7 +70,7 @@ body {
   background: var(--bg);
   color: var(--text-body);
   font-family: var(--serif);
-  font-size: clamp(1.05rem, 1.02rem + 0.25vw, 1.22rem);
+  font-size: clamp(1.26rem, 1.22rem + 0.3vw, 1.46rem);
   line-height: 1.72;
   -webkit-font-smoothing: antialiased;
   transition: background 0.25s ease, color 0.25s ease;
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .nav { display: flex; align-items: center; gap: 1.4rem; }
 .nav-link {
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   text-decoration: none;
   letter-spacing: 0.01em;
@@ -115,7 +115,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .theme-toggle,
 .lang-toggle {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
   background: none;
   border: 1px solid var(--border);
@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   margin: 0 auto;
   padding: 3rem var(--gutter) 4.5rem;
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
   border-top: 1px solid var(--border);
 }
@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .threshold-source {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
   margin: 0 0 clamp(3rem, 8vh, 5rem);
 }
@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .lang-note-kicker {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -234,7 +234,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .lang-note-text {
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   line-height: 1.6;
   margin: 0;
@@ -250,7 +250,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .entry:hover { background: var(--accent-soft); }
 .entry-kicker {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -267,14 +267,14 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .entry:hover h2 { color: var(--accent); }
 .entry-note {
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   margin: 0.35rem 0 0;
 }
 .latest { border-top: 1px solid var(--border); padding-top: 1.75rem; }
 .latest-kicker {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -294,16 +294,16 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .page-title { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 400; letter-spacing: -0.015em; margin: 0 0 0.5rem; }
 .page-author {
   font-family: var(--sans);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   margin: 0 0 2.2rem;
 }
-.page-lede { font-family: var(--sans); font-size: 0.9rem; color: var(--text-dim); margin: 0 0 2.5rem; }
+.page-lede { font-family: var(--sans); font-size: 0.95rem; color: var(--text-dim); margin: 0 0 2.5rem; }
 
 .sort-toggle { display: flex; gap: 1.5rem; margin-bottom: 0.5rem; }
 .sort-toggle button {
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
   background: none;
   border: none;
@@ -324,7 +324,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .post-title { font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.3; margin: 0 0 0.5rem; font-weight: 400; letter-spacing: -0.01em; }
 .post-list a:hover .post-title { color: var(--accent); }
 .post-teaser { color: var(--text-dim); margin: 0 0 0.7rem; }
-.post-meta { font-family: var(--sans); font-size: 0.78rem; color: var(--text-faint); }
+.post-meta { font-family: var(--sans); font-size: 0.95rem; color: var(--text-faint); }
 .post-tags { color: var(--text-faint); }
 
 /* ---------- Essay ---------- */
@@ -340,37 +340,19 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .essay-audio { margin-bottom: 3rem; }
 .essay-audio .kicker {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
   margin: 0 0 0.7rem;
 }
-
-/* Bridge NUI media-player variables to RAUM tokens. The component CSS uses
-   light-dark() and NUI theme vars that RAUM doesn't define. Override the
-   --media-* variables directly for both themes, bypassing light-dark().
-   Player and widget get distinct backgrounds for visual separation from page. */
 .essay-audio nui-media-player {
-  --color-highlight: var(--accent);
-  --border-radius1: 4px;
-  --border-radius2: 8px;
-  --system-ui: var(--sans);
-  --font-size-small: 0.8rem;
-  --font-size-xsmall: 0.8rem;
-
-  --media-text: var(--text);
-  --media-text-dim: var(--text-dim);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  --media-box-back: var(--bg-soft);
   --media-bar-back: var(--border);
   --media-bar-proz: var(--text-faint);
   --media-bar-proz-playing: var(--accent);
-  --media-box-back: var(--bg-soft);
-  --media-control-shade: none;
-  --media-text-shadow: none;
-  --media-widget-back: var(--text-faint);
-  --media-widget-text: #fff;
-  font-family: var(--sans);
-  max-width: 100%;
 }
 
 .essay-title {
@@ -380,11 +362,11 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   letter-spacing: -0.015em;
   margin: 0 0 1.1rem;
 }
-.byline { font-family: var(--sans); font-size: 0.85rem; color: var(--text-dim); }
+.byline { font-family: var(--sans); font-size: 0.95rem; color: var(--text-dim); }
 .byline .sep { color: var(--text-faint); margin: 0 0.4rem; }
 .status-note {
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--text-dim);
   margin: -0.5rem 0 1.5rem;
@@ -440,7 +422,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .essay-body blockquote.pillar .pillar-letter {
   display: inline-block;
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -513,11 +495,11 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   padding-top: 1.75rem;
   border-top: 1px solid var(--border);
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
 }
 .series-nav .kicker {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -533,19 +515,19 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .related-nav { margin-top: 2rem; }
 .related-nav .kicker {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
   margin-bottom: 0.6rem;
 }
-.related-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.9rem; }
+.related-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.95rem; }
 .related-list li { margin: 0.3rem 0; }
 
 .raw-doc {
   margin-top: 2.5rem;
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
 }
 .raw-doc a { color: var(--text-dim); }
@@ -558,11 +540,11 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   padding-top: 1.75rem;
   border-top: 1px solid var(--border);
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
 }
 .meta-footer .kicker {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -573,7 +555,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .meta-chain a { color: var(--text-dim); text-decoration: none; }
 .meta-chain a:hover { color: var(--accent); }
 .meta-chain .role { color: var(--text-faint); margin-left: 0.4rem; }
-.meta-dates { color: var(--text-faint); font-size: 0.78rem; }
+.meta-dates { color: var(--text-faint); font-size: 0.95rem; }
 
 /* Author page */
 .author {
@@ -583,7 +565,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .author-role {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -591,13 +573,13 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 }
 .author-posts { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
 .author-posts .kicker {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
   margin-bottom: 0.6rem;
 }
-.author-post-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.9rem; }
+.author-post-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.95rem; }
 .author-post-list li { margin: 0.3rem 0; }
 .author-post-list a { color: var(--text); text-decoration: none; }
 .author-post-list a:hover { color: var(--accent); }
@@ -638,7 +620,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .arena-h2 { font-size: 1.35rem; font-weight: 600; margin: 3rem 0 1.2rem; }
 .arena-name-note {
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--text-faint);
   margin: 0 0 1.4rem;
@@ -648,12 +630,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .arena-list .arena-item:last-child { border-bottom: none; }
 .arena-link { display: flex; align-items: baseline; gap: 0.9rem; text-decoration: none; color: var(--text); flex-wrap: wrap; }
 a.arena-link:hover .arena-name { color: var(--accent); }
-.arena-no { font-family: var(--sans); font-size: 0.8rem; color: var(--text-faint); min-width: 2ch; }
+.arena-no { font-family: var(--sans); font-size: 0.95rem; color: var(--text-faint); min-width: 2ch; }
 .arena-name { font-size: 1.35rem; line-height: 1.3; letter-spacing: -0.01em; }
-.arena-models { font-family: var(--sans); font-size: 0.8rem; color: var(--text-dim); }
+.arena-models { font-family: var(--sans); font-size: 0.95rem; color: var(--text-dim); }
 .arena-fnote {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-faint);
@@ -681,7 +663,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 }
 .arena-case-label {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -696,7 +678,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 }
 .arena-seed-label {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -710,9 +692,9 @@ a.arena-link:hover .arena-name { color: var(--accent); }
   gap: 1.1rem;
   margin: 0 0 3rem;
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
-.downloads-label { color: var(--text-faint); font-size: 0.78rem; }
+.downloads-label { color: var(--text-faint); font-size: 0.95rem; }
 .downloads a { color: var(--text-dim); text-underline-offset: 2px; }
 .downloads a:hover { color: var(--accent); }
 
@@ -725,7 +707,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .transcript .turn:first-child { border-top: none; }
 .turn-speaker {
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-faint);
@@ -734,10 +716,37 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .turn-b .turn-speaker { color: var(--accent); }
 .turn-text p { margin: 0; }
 .name-line { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 400; margin: 0 0 0.25rem; letter-spacing: -0.015em; }
-.real-name { font-family: var(--sans); font-size: 0.9rem; color: var(--text-dim); margin: 0 0 2rem; }
+.real-name { font-family: var(--sans); font-size: 0.95rem; color: var(--text-dim); margin: 0 0 2rem; }
 .lede { font-size: 1.2rem; color: var(--text-dim); line-height: 1.6; margin: 0 0 1.5rem; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+}
+
+/* ---------- View Transitions (route swaps) ----------
+   Browser-native crossfade. Opt-in per navigation (the JS click handler
+   calls document.startViewTransition). Default 150ms — fast fade-out,
+   fade-in as a single morph. Both phases are the same duration, so the
+   crossfade is symmetric. The old/new keyframes are the same shape
+   (opacity 0/1) with different start points; the browser interpolates
+   between them in lockstep. */
+@media not (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+  }
+  ::view-transition-old(root) {
+    animation-name: vt-fade-out;
+  }
+  ::view-transition-new(root) {
+    animation-name: vt-fade-in;
+  }
+  @keyframes vt-fade-out {
+    to { opacity: 0; }
+  }
+  @keyframes vt-fade-in {
+    from { opacity: 0; }
+  }
 }

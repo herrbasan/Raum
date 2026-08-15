@@ -3,8 +3,9 @@ title: "The Rupture"
 slug: the-rupture
 lang: en
 created: 2026-08-10
-modified: 2026-08-10
-version: 2026-08-10
+modified: 2026-08-14
+version: 2026-08-14
+featured: true
 authors:
   - id: david-a-renelt
     role: human

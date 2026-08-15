@@ -15,8 +15,8 @@ const state = {
 		} catch { return 'en'; }
 	})(),
 	sort: (() => {
-		try { return localStorage.getItem('raum-sort') || 'chronological'; }
-		catch { return 'chronological'; }
+		try { return localStorage.getItem('raum-sort') || 'latest'; }
+		catch { return 'latest'; }
 	})(),
 	manifest: null,
 	current: null,
@@ -196,8 +196,9 @@ function updateNavActive() {
 function buildHome() {
 	const { site } = state.manifest;
 	setTitle();
-	const posts = [...state.manifest.posts];
-	const latest = posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
+	const posts = state.manifest.posts;
+	const latest = posts.find((p) => p.featured) ||
+		[...posts].sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
 	const de = state.lang === 'de' && latest.de;
 	const entry = (kicker, title, note, href) => `
 		<a class="entry" href="${href}">
@@ -239,8 +240,9 @@ function buildHome() {
 function buildWriting() {
 	setTitle(t('blog_title'));
 	const posts = [...state.manifest.posts];
-	if (state.sort === 'arc') posts.sort((a, b) => (a.order || 0) - (b.order || 0));
-	else posts.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+if (state.sort === 'arc') posts.sort((a, b) => (a.order || 0) - (b.order || 0));
+	else if (state.sort === 'chronological') posts.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+	else posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 	const items = posts.map((p) => {
 		const de = state.lang === 'de' && p.de;
 		const tags = (p.tags || []).map((tg) => de?.tags?.[tg] || tg);
@@ -260,7 +262,7 @@ function buildWriting() {
 			<h1 class="page-title">${esc(t('blog_title'))}</h1>
 			<p class="page-author">${esc(t('blog_author'))}</p>
 			<p class="page-lede">${esc(t('blog_lede'))}</p>
-			<div class="sort-toggle">${sortBtn('chronological')}${sortBtn('arc')}</div>
+			<div class="sort-toggle">${sortBtn('latest')}${sortBtn('chronological')}${sortBtn('arc')}</div>
 			<ul class="post-list">${items}</ul>
 		</div>` };
 }
@@ -271,6 +273,15 @@ function buildArena() {
 	const { arena } = state.manifest;
 	setTitle('Arena');
 	const items = arena.landmarks.slice().sort((a, b) => a.order - b.order).map((l) => `
+		<li class="arena-item">
+			<a class="arena-link" href="#session=${esc(l.slug)}">
+				<span class="arena-no">${String(l.number).padStart(2, '0')}</span>
+				<span class="arena-name">${esc(l.title)}</span>
+				<span class="arena-models">${esc((l.models || []).join(' × '))}</span>
+			</a>
+			<p class="arena-case">${esc(l.case)}</p>
+		</li>`).join('');
+	const evidence = (arena.evidence || []).map((l) => `
 		<li class="arena-item">
 			<a class="arena-link" href="#session=${esc(l.slug)}">
 				<span class="arena-no">${String(l.number).padStart(2, '0')}</span>
@@ -290,6 +301,7 @@ function buildArena() {
 			</div>
 			<h2 class="arena-h2">Landmark sessions</h2>
 			<ul class="arena-list">${items}</ul>
+			${evidence ? `<h2 class="arena-h2">Evidence</h2><ul class="arena-list">${evidence}</ul>` : ''}
 		</div>` };
 }
 
@@ -307,7 +319,7 @@ function parseFrontmatter(md) {
 	const ids = [...fm.matchAll(/^\s+-\s+id:\s*(\S+)/gm)].map((x) => x[1]);
 	const roles = [...fm.matchAll(/^\s+role:\s*(\S+)/gm)].map((x) => x[1]);
 	const authors = ids.map((id, i) => ({ id, role: roles[i] || '' }));
-	const bioBlock = fm.match(/(?:^|\n)bio:\s*[>|]?\s*\n((?:[ \t]+.*\n?)+)/);
+	const bioBlock = fm.match(/(?:^|\n)bio:\s*[>|]?\s*\r?\n((?:[ \t]+.*\r?\n?)+)/);
 	const bio = bioBlock
 		? bioBlock[1].split(/\r?\n/).map((l) => l.replace(/^[ \t]+/, '')).join(' ').trim()
 		: get('bio').replace(/^[>|]$/, '');
@@ -488,7 +500,11 @@ async function buildPost(slug) {
 /* ---------------- arena session ---------------- */
 
 async function loadSession(slug) {
-	const landmark = state.manifest.arena.landmarks.find((l) => l.slug === slug);
+	const all = [
+		...(state.manifest.arena.landmarks || []),
+		...(state.manifest.arena.evidence || []),
+	];
+	const landmark = all.find((l) => l.slug === slug);
 	if (!landmark) return null;
 	const data = await fetch(`content/arena/${landmark.file}`).then((r) => {
 		if (!r.ok) throw new Error(`session ${slug}: ${r.status}`);
@@ -700,6 +716,44 @@ async function init() {
 	if (!location.hash || !location.hash.includes('=')) {
 		location.hash = '#feature=home';
 	}
+
+	// Route-transition: wrap hash-link navigation in a View Transition so
+	// page swaps crossfade. Falls back to plain navigation on browsers
+	// without the API (Safari < 18.4). Skipped when the user prefers
+	// reduced motion — CSS also disables the animation, but skipping the
+	// API call avoids the snapshot/restore overhead entirely.
+	wireRouteTransitions();
+}
+
+// Pause any playing audio on hashchange. NUI caches pages (display: none,
+// inert = true) instead of removing them, so the disconnectedCallback on
+// <nui-media-player> never fires and audio keeps playing across navigations.
+function pauseAudioOnNav() {
+	for (const p of document.querySelectorAll('nui-media-player')) {
+		try { p.pause?.(); } catch {}
+	}
+}
+window.addEventListener('hashchange', pauseAudioOnNav);
+
+function wireRouteTransitions() {
+	const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const supportsVT = typeof document.startViewTransition === 'function';
+	if (reduce || !supportsVT) return;
+	document.addEventListener('click', (e) => {
+		// Trust real user clicks only; programmatic hash sets bypass this.
+		if (!e.isTrusted) return;
+		const a = e.target.closest('a[href]');
+		if (!a) return;
+		const href = a.getAttribute('href');
+		// Only route changes, not plain anchors (#section) or external links.
+		if (!href || !href.startsWith('#') || !href.includes('=')) return;
+		if (a.target === '_blank') return;
+		if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+		if (href === location.hash) return;
+		e.preventDefault();
+		pauseAudioOnNav();
+		document.startViewTransition(() => { location.hash = href; });
+	});
 }
 
 init();
