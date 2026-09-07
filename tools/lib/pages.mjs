@@ -321,12 +321,12 @@ ${this.footer(lang)}
 		</div>
 	</div>`;
 		return this.doc({
-			lang, title: '', description: site.description,
+			lang, title: '', description: this.t(lang, 'site_description'),
 			alternates: [{ hreflang: 'en', href: '/' }, { hreflang: 'de', href: '/de/' }],
 			graph: [...this.siteNodes(), {
 				'@type': faq.length ? ['WebPage', 'FAQPage'] : 'WebPage',
 				'@id': `${this.canonical}#webpage`, url: this.canonical,
-				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: site.description,
+				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: this.t(lang, 'site_description'),
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 				...(faq.length ? { mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q[lang] || f.q.en,
 					acceptedAnswer: { '@type': 'Answer', text: f.a[lang] || f.a.en } })) } : {}),
@@ -403,7 +403,7 @@ ${this.footer(lang)}
 		${evidence ? `<h2 class="arena-h2">Evidence</h2><ul class="arena-list">${evidence}</ul>` : ''}
 	</div>`;
 		return this.doc({
-			lang: 'en', title: 'Arena', description: arena.frame, alternates: [],
+			lang: 'en', title: 'Arena', description: `${arena.frame} ${arena.frameNote}`, alternates: [],
 			graph: [...this.siteNodes(),
 				{ '@type': 'CollectionPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
 					name: 'Arena', description: `${arena.frame} ${arena.frameNote}`,
@@ -442,15 +442,17 @@ ${this.footer(lang)}
 		${authorList}
 	</div>`;
 		const hasAudio = !!(de ? (page.audio?.de || page.audio?.en) : (page.audio?.en || page.audio?.de));
+		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
+			: (page.teaser || this.manifest.site.description);
 		const graph = [...this.siteNodes()];
 		if (isAbout) {
 			graph.push({ '@type': 'AboutPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
-				name: title, description: page.teaser || this.manifest.site.description,
+				name: title, description: pageDesc,
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 				mainEntity: this.publisherRef() });
 		} else {
 			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
-				headline: title, description: page.teaser || this.manifest.site.description,
+				headline: title, description: pageDesc,
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
 				publisher: this.publisherRef(),
 				...(meta.created ? { datePublished: meta.created } : {}),
@@ -462,7 +464,7 @@ ${this.footer(lang)}
 		return this.doc({
 			lang,
 			title: title || this.t(lang, 'nav_' + slug),
-			description: page.teaser || this.manifest.site.description,
+			description: pageDesc,
 			audio: hasAudio,
 			ogType: isAbout ? 'website' : 'article',
 			times: isAbout ? null : { published: meta.created, modified: meta.modified },
@@ -717,15 +719,17 @@ ${this.footer(lang)}
 		${postsHtml}
 	</div>`;
 		const bioPlain = bio.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\s+/g, ' ').trim();
+		const bioExcerpt = bioPlain.length > 200 ? bioPlain.slice(0, 197) + '…' : bioPlain;
 		return this.doc({
-			lang: 'en', title: author.name, description: `${author.name} — ${author.role}`,
+			lang: 'en', title: author.name,
+			description: bioExcerpt || `${author.name} — ${author.role}`,
 			alternates: [{ type: 'text/markdown', href: `/content/authors/${author.file}` }],
 			graph: [...this.siteNodes(),
 				{ '@type': 'ProfilePage', '@id': `${this.canonical}#webpage`, url: this.canonical,
 					name: author.name, inLanguage: 'en', isPartOf: { '@id': `${this.baseUrl}/#website` },
 					mainEntity: { '@type': 'Person', '@id': `${this.baseUrl}/authors/${id}/#person`,
 						name: author.name, url: `${this.baseUrl}/authors/${id}/`,
-						...(bioPlain ? { description: bioPlain.length > 300 ? bioPlain.slice(0, 297) + '…' : bioPlain } : {}) } },
+						...(bioExcerpt ? { description: bioExcerpt } : {}) } },
 				this.breadcrumbList([this.homeCrumb('en'), { name: author.name }]),
 			],
 			body,

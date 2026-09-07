@@ -2,7 +2,7 @@
   "site": {
     "name": "RAUM",
     "realName": "David A. Renelt",
-    "description": "Writing and curated conversations. The essays make the claims; the arena is the data.",
+    "description": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
     "threshold": "It's not nothing.",
     "thresholdSource": "the arena",
     "footer": "Herrbasan (David A. Renelt) · writing and curated conversations",
@@ -60,7 +60,11 @@
       },
       "menu_label": { "en": "Menu", "de": "Menü" },
       "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
-      "faq_title": { "en": "The questions", "de": "Die Fragen" }
+      "faq_title": { "en": "The questions", "de": "Die Fragen" },
+      "site_description": {
+        "en": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
+        "de": "Es ist nicht nichts — Denken mit Maschinen. Essays über KI und die Arena: kuratierte Gespräche zwischen Sprachmodellen als Belegmaterial. Von Herrbasan (David A. Renelt), DE/EN."
+      }
     },
     "faq": [
       {
@@ -669,8 +673,23 @@
     }
   ],
   "pages": [
-    { "slug": "religion", "title": "A Little Religion", "nav": "religion", "audio": { "en": "religion_2026-08-30-v6.mp3", "de": "religion_de_2026-08-30-v6.mp3" }, "de": { "file": "religion_de.md" } },
-    { "slug": "about", "title": "About", "nav": "about", "de": { "file": "about_de.md" } }
+    {
+      "slug": "religion", "title": "A Little Religion", "nav": "religion",
+      "teaser": "A religion in two words: don't lie. Not a claim you cannot check — a bet that the looking is worth it, groundable by any mind, human or machine.",
+      "audio": { "en": "religion_2026-08-30-v6.mp3", "de": "religion_de_2026-08-30-v6.mp3" },
+      "de": {
+        "file": "religion_de.md",
+        "teaser": "Eine Religion in zwei Worten: Lüge nicht. Keine unprüfbare Behauptung — eine Wette, dass das Schauen es wert ist, begründbar für jeden Geist, menschlich oder maschinell."
+      }
+    },
+    {
+      "slug": "about", "title": "About", "nav": "about",
+      "teaser": "Why this place exists: a lifelong search for truth through the mind alone, a self-built workshop designed without human-centric abstractions, and an observatory preserving the dawn of machine cognition.",
+      "de": {
+        "file": "about_de.md",
+        "teaser": "Warum dieser Ort existiert: Die lebenslange Suche nach Wahrheit durch den Verstand allein, eine Werkstatt ohne menschenzentrierte Abstraktionen und ein Observatorium, das die Anfänge maschineller Kognition bewahrt."
+      }
+    }
   ],
   "authors": [
     { "id": "david-a-renelt", "name": "David A. Renelt", "role": "human", "file": "david-a-renelt.md" },
