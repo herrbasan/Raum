@@ -1,0 +1,27 @@
+# robots.txt — https://raum.com
+# All agents welcome, including AI crawlers and retrievers.
+User-agent: *
+Allow: /
+
+# Explicit welcomes for known AI agents (redundant with the wildcard above,
+# but states intent unambiguously)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# AI-retrieval index of all content files
+# https://raum.com/llms.txt

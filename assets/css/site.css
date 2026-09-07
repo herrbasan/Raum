@@ -94,6 +94,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   justify-content: space-between;
   gap: var(--gutter);
 }
+.brand-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  gap: 0.15rem;
+}
 .brand {
   font-family: var(--sans);
   font-size: 1rem;
@@ -101,6 +107,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   letter-spacing: 0.01em;
   color: var(--text);
   text-decoration: none;
+}
+.brand-sub {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
 }
 .nav { display: flex; align-items: center; gap: 1.4rem; }
 .nav-link {
@@ -127,6 +139,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 .theme-toggle:hover,
 .lang-toggle:hover { color: var(--text); border-color: var(--text-dim); }
 .nav-controls { display: flex; align-items: center; gap: 1.4rem; margin-left: -0.8rem; }
+a.lang-toggle { display: inline-block; text-decoration: none; }
 
 /* Mobile menu toggle (hamburger) — hidden on desktop */
 .menu-toggle {

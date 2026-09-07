@@ -1,0 +1,50 @@
+#KONSOLEH AREA START - PLEASE DO NOT EDIT MANUALLY BETWEEN THESE LINES
+DirectoryIndex index.html
+#KONSOLEH AREA END - PLEASE ADD MANUAL CHANGES BELOW
+
+<IfModule mod_mime.c>
+AddType text/javascript js mjs
+# Serve .md files cleanly as text for AI bots
+AddType text/plain .md
+AddCharset UTF-8 .md .json .txt
+</IfModule>
+
+<IfModule mod_headers.c>
+Header set Cache-Control "no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires 0
+</IfModule>
+
+# 1. EXCLUDED '.md' FROM THIS LIST to protect its crucial headers
+<FilesMatch "\.(css|flv|gif|htm|html|ico|jpe|jpeg|jpg|js|mp3|mp4|png|pdf|swf|txt|json)$">
+<IfModule mod_expires.c>
+ExpiresActive Off
+</IfModule>
+<IfModule mod_headers.c>
+FileETag None
+Header unset ETag
+Header unset Pragma
+Header unset Cache-Control
+Header unset Last-Modified
+Header set Pragma "no-cache"
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Expires "Thu, 1 Jan 1970 00:00:00 GMT"
+</IfModule>
+</FilesMatch>
+
+# 2. SPECIFIC CRAWLER RULES FOR MARKDOWN 
+<FilesMatch "\.md$">
+<IfModule mod_headers.c>
+# Let crawlers know the file is fresh and clear to read
+Header set Cache-Control "public, max-age=3600"
+</IfModule>
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+        SetOutputFilter DEFLATE
+        BrowserMatch ^Mozilla/4 gzip-only-text/html
+        BrowserMatch ^Mozilla/4\.0[678] no-gzip
+        BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+        SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+        Header append Vary User-Agent env=!dont-vary
+</IfModule>

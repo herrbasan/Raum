@@ -314,7 +314,10 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 - NUI cheatsheet + theme variables reviewed and locked.
 - Output: this plan doc, plus the visual mockup that became the actual site.
 
-### Phase 2 — Runtime SPA ✅ DONE (2026-08-12)
+### Phase 2 — Runtime SPA ✅ DONE (2026-08-12) → **SUPERSEDED by static build (2026-09-06)**
+- Originally a runtime SPA rendering from raw MD/JSON via NUI router + `nui-markdown`.
+- **Pivoted to pre-rendered flat HTML** (machine readability: full content in the initial response, real URLs). See `tools/build.mjs`.
+- Chrome/audio/theme logic lives in `assets/js/chrome.js` (progressive enhancement only).
 - Pivot from static-site generation to **runtime rendering from raw MD/JSON**. Justification: zero build step, instant content updates, the corpus is small enough that per-page-load markdown parsing is cheap.
 - All posts written in markdown, hydrated client-side via `<nui-markdown>`.
 - Manifest-driven routing via NUI's router: `home`/`writing`/`arena`/`religion`/`about` as features, `#post=slug`, `#session=slug`, `#author=id` as types.
@@ -458,7 +461,20 @@ Update that file whenever a sync from storage lands and changes something materi
 
 ---
 
-## 13. Recent Changes (2026-08-15)
+## 13. Static Build Pivot (2026-09-06)
+
+The runtime SPA was replaced by a **static build** — content is baked into flat HTML at build time, in place, at the repo root.
+
+- **Build:** `node tools/build.mjs` (one-shot, ~164 pages incl. DE tree + arena transcripts + regenerated `llms.txt`). `--watch` rebuilds on `content/`, `tools/`, `assets/` changes. Zero dependencies (Node stdlib only).
+- **Code path:** `tools/lib/pages.mjs` (Site class — all page builders ported from the old `assets/js/app.js`) + `tools/lib/md.mjs` (markdownToHtml ported from `modules/nui_wc2/NUI/nui.js` so baked pages render identically to the old client-side `nui-markdown`; fenced code emits plain `<pre><code>`, frontmatter stripped).
+- **URL map (EN):** `/`, `/writing/`, `/writing/{slug}/`, `/arena/`, `/arena/{slug}/` (+ `transcript.md` per session), `/religion/`, `/about/`, `/authors/{id}/`. **DE mirrors under `/de/`** except arena + authors (original language). No hash routing; Apache `DirectoryIndex index.html` resolves the pretty dirs — no rewrite rules needed.
+- **Machine readability:** every page carries `<link rel="alternate" type="text/markdown">` to its raw MD, `hreflang` alternates for DE, and a canonical. `llms.txt` is regenerated from the manifest each build (HTML links primary, `[MD]`/`[DE]`/`[JSON]` alternates inline) — it cannot drift.
+- **Runtime JS:** `assets/js/chrome.js` only (theme cycle + mobile menu). Audio is native `<audio controls>` (no `nui-media-player`). Sort toggle on `/writing/` was dropped — list is baked in latest-first order.
+- **Old SPA deleted:** `assets/js/app.js` removed; root `index.html` is now build output. `modules/nui_wc2/` stays vendored (build ports from it; not deployed as runtime).
+- **Generated artifacts** (removed + rewritten each build): `index.html`, `writing/`, `arena/`, `religion/`, `about/`, `authors/`, `de/`, `llms.txt`. Never hand-edit these — edit content or `tools/lib/pages.mjs` and rebuild.
+- **Local preview:** any static server at repo root (root-absolute paths), e.g. the one-liner `http.createServer` used during verification, or `npx serve`.
+
+## 14. Recent Changes (2026-08-15)
 
 ### Blog additions (3 new posts + 1 replacement)
 

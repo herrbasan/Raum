@@ -20,8 +20,13 @@ site/
 # VS Code GitLens workspace data
 _gsdata_/
 
+# Copilot repo-memory scratch (local notes, not project content)
+memories/
+
 # GoodSync sync scratch (storage → repo mirror inbox; canonical lives in MCP storage)
 _sync_inbox/
 
 # Archived TTS audio (outdated post versions — preserved locally, not tracked)
 content/audio/archive/
+
+dist/

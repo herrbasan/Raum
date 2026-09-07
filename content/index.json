@@ -15,7 +15,7 @@
       },
       "nav_writing": { "en": "Blog", "de": "Blog" },
       "nav_arena": { "en": "Arena", "de": "Arena" },
-      "nav_religion": { "en": "Little Religion", "de": "Die kleine Religion" },
+      "nav_religion": { "en": "A Little Religion", "de": "Eine kleine Religion" },
       "nav_about": { "en": "About", "de": "Über mich" },
       "entry_blog_kicker": { "en": "Primary", "de": "Primär" },
       "entry_blog_note": { "en": "Essays, conversations, the music.", "de": "Essays, Gespräche, die Musik." },
@@ -65,7 +65,7 @@
   "nav": [
     { "label": "Blog", "path": "writing/" },
     { "label": "Arena", "path": "arena/" },
-    { "label": "Little Religion", "path": "religion/" },
+    { "label": "A Little Religion", "path": "religion/" },
     { "label": "About", "path": "about/" }
   ],
   "series": {
@@ -626,7 +626,7 @@
     }
   ],
   "pages": [
-    { "slug": "religion", "title": "The Little Religion", "nav": "religion", "de": { "file": "religion_de.md" } },
+    { "slug": "religion", "title": "A Little Religion", "nav": "religion", "audio": { "en": "religion_2026-08-30-v6.mp3", "de": "religion_de_2026-08-30-v6.mp3" }, "de": { "file": "religion_de.md" } },
     { "slug": "about", "title": "About", "nav": "about", "de": { "file": "about_de.md" } }
   ],
   "authors": [
