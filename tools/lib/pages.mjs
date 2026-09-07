@@ -150,8 +150,8 @@ ${this.footer(lang)}
 			`<meta property="og:locale:alternate" content="${lang === 'de' ? 'en_US' : 'de_DE'}">`,
 			`<meta name="twitter:card" content="summary">`,
 		];
-		if (times?.published) m.push(`<meta property="article:published_time" content="${esc(times.published)}">`);
-		if (times?.modified) m.push(`<meta property="article:modified_time" content="${esc(times.modified)}">`);
+		if (times?.published) m.push(`<meta property="article:published_time" content="${esc(this.isoDateTime(times.published))}">`);
+		if (times?.modified) m.push(`<meta property="article:modified_time" content="${esc(this.isoDateTime(times.modified))}">`);
 		return m.filter(Boolean).join('\n');
 	}
 
@@ -190,6 +190,16 @@ ${this.footer(lang)}
 	}
 
 	homeCrumb(lang) { return { name: this.manifest.site.name, url: `${this.baseUrl}${this.homeHref(lang)}` }; }
+
+	// '2026-08-10' → '2026-08-10T00:00:00+02:00' (Europe/Berlin offset on that date).
+	// Google's Article parser wants a full DateTime; date-only triggers non-critical issues.
+	isoDateTime(d) {
+		if (!d || d.includes('T')) return d;
+		const tz = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Berlin', timeZoneName: 'longOffset' })
+			.formatToParts(new Date(`${d}T12:00:00Z`))
+			.find((p) => p.type === 'timeZoneName').value; // 'GMT+02:00' | 'GMT+01:00'
+		return `${d}T00:00:00${tz.replace('GMT', '') || '+00:00'}`;
+	}
 
 	chrome(lang, alternates) {
 		const navItems = this.manifest.nav.map((n) => {
@@ -455,8 +465,8 @@ ${this.footer(lang)}
 				headline: title, description: pageDesc,
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
 				publisher: this.publisherRef(),
-				...(meta.created ? { datePublished: meta.created } : {}),
-				...(meta.modified ? { dateModified: meta.modified } : {}),
+				...(meta.created ? { datePublished: this.isoDateTime(meta.created) } : {}),
+				...(meta.modified ? { dateModified: this.isoDateTime(meta.modified) } : {}),
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical } });
 		}
@@ -515,8 +525,8 @@ ${this.footer(lang)}
 			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
 				headline: de?.title || post.title,
 				description: de?.teaser || post.teaser,
-				datePublished: post.date,
-				...(meta.modified ? { dateModified: meta.modified } : {}),
+				datePublished: this.isoDateTime(post.date),
+				...(meta.modified ? { dateModified: this.isoDateTime(meta.modified) } : {}),
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
 				publisher: this.publisherRef(),
 				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical },
