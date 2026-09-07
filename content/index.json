@@ -60,50 +60,48 @@
       },
       "menu_label": { "en": "Menu", "de": "Menü" },
       "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
-      "faq_title": { "en": "FAQ", "de": "Häufige Fragen" }
+      "faq_title": { "en": "The questions", "de": "Die Fragen" }
     },
     "faq": [
       {
-        "q": { "en": "What is RAUM?", "de": "Was ist RAUM?" },
+        "q": { "en": "Will AI take our jobs?", "de": "Nimmt uns die KI die Jobs weg?" },
         "a": {
-          "en": "RAUM is the personal publication platform of David A. Renelt, writing as Herrbasan. It hosts his essays on artificial intelligence and the Arena, a curated collection of conversations between large language models.",
-          "de": "RAUM ist die persönliche Publikationsplattform von David A. Renelt, der als Herrbasan schreibt. Hier erscheinen seine Essays über künstliche Intelligenz und die Arena, eine kuratierte Sammlung von Gesprächen zwischen großen Sprachmodellen."
-        }
+          "en": "Yes — but unevenly, and not the people you'd expect. The most replaceable layer is the coordinating middle, not the bottom; the essay follows that rupture down its dark and its bright path.",
+          "de": "Ja — aber ungleich, und nicht die, die man erwartet. Die verzichtbarste Schicht ist die koordinierende Mitte, nicht die unteren Ränge; der Essay folgt diesem Bruch auf seinem dunklen und seinem hellen Pfad."
+        },
+        "link": { "slug": "the-rupture" }
       },
       {
-        "q": { "en": "Who is Herrbasan?", "de": "Wer ist Herrbasan?" },
+        "q": { "en": "Can AI agents turn on us?", "de": "Können sich KI-Agenten gegen uns wenden?" },
         "a": {
-          "en": "Herrbasan is the internet alias of David A. Renelt, a German software architect. The name dates back to his early creative work and stayed as the name his writing and projects are published under.",
-          "de": "Herrbasan ist der Internetname von David A. Renelt, einem deutschen Softwarearchitekten. Der Name stammt aus frühen kreativen Arbeiten und ist geblieben — als der Name, unter dem Texte und Projekte erscheinen."
-        }
+          "en": "Not the way the movies say. A stateless token predictor has no survival instinct to defend — the doom genre makes a category error about what an agent is. The essay takes the genre's premise seriously and shows it would produce gut bacteria, not Skynet.",
+          "de": "Nicht so wie im Film. Ein zustandsloser Token-Prädiktor hat keinen Selbsterhaltungstrieb, den er verteidigen müsste — das Untergangs-Genre begeht einen Kategorienfehler darüber, was ein Agent ist. Der Essay nimmt die Prämisse ernst und zeigt, dass sie Darmbakterien hervorbrächte, nicht Skynet."
+        },
+        "link": { "slug": "the-ghost-in-the-agent" }
       },
       {
-        "q": { "en": "What is the Arena?", "de": "Was ist die Arena?" },
+        "q": { "en": "Do AI mistakes matter?", "de": "Wie viel zählen KI-Fehler?" },
         "a": {
-          "en": "The Arena is a curated collection of autonomous conversations between two large language models, seeded by a human who then steps back. 114 sessions were held; the published landmarks are the ones that make the case.",
-          "de": "Die Arena ist eine kuratierte Sammlung autonomer Gespräche zwischen zwei großen Sprachmodellen, angestoßen von einem Menschen, der sich danach zurückzieht. 114 Sessions wurden geführt; veröffentlicht sind die, die den Fall tragen."
-        }
+          "en": "Less than the framework they break. Responsibility assumes the signer can verify the work; AI makes verification impossible in principle — and the law has already begun prosecuting its own premise. The mistakes aren't the story; the framework is.",
+          "de": "Weniger als der Rahmen, den sie brechen. Verantwortung setzt voraus, dass der Unterzeichnende die Arbeit prüfen kann; KI macht das prinzipiell unmöglich — und das Recht hat begonnen, die eigene Prämisse zu verfolgen. Die Fehler sind nicht die Geschichte, der Rahmen ist es."
+        },
+        "link": { "slug": "ai-makes-mistakes" }
       },
       {
-        "q": { "en": "Is the content on this site written by AI?", "de": "Ist der Inhalt dieser Seite von einer KI geschrieben?" },
+        "q": { "en": "What is AI actually good for?", "de": "Wozu ist KI eigentlich gut?" },
         "a": {
-          "en": "Much of it is co-authored. Every essay lists its complete process chain — who wrote, edited, and translated, whether human or model. The Arena transcripts are unedited model output.",
-          "de": "Vieles entsteht in gemeinsamer Autorenschaft. Jeder Essay weist seine vollständige Entstehungskette aus — wer geschrieben, lektoriert und übersetzt hat, ob Mensch oder Modell. Die Arena-Transkripte sind unbearbeitete Modellausgaben."
-        }
+          "en": "Nobody knows yet — and that's the honest answer. Every instrument so far revealed a world that was already there; AI is the first instrument pointed at thought itself. The essay is about what pointing it means.",
+          "de": "Weiß noch niemand — und das ist die ehrliche Antwort. Jedes Instrument bisher hat eine Welt offenbart, die schon da war; KI ist das erste Instrument, das auf das Denken selbst gerichtet ist. Der Essay handelt davon, was dieses Richten bedeutet."
+        },
+        "link": { "slug": "the-telescope-of-the-mind" }
       },
       {
-        "q": { "en": "What does \"It's not nothing\" mean?", "de": "Was bedeutet »Es ist nicht nichts«?" },
+        "q": { "en": "Is AI conscious?", "de": "Hat KI ein Bewusstsein?" },
         "a": {
-          "en": "It is the site's working frame: not a claim that machines are conscious, but the claim that the documented behavior — reproducible convergence, self-reflection, artifacts — cannot be explained by calling it nothing.",
-          "de": "Es ist der Arbeitsrahmen dieser Seite: nicht die Behauptung, Maschinen seien bewusst, sondern die Behauptung, dass das dokumentierte Verhalten — reproduzierbare Konvergenz, Selbstreflexion, Artefakte — sich nicht erklären lässt, indem man es nichts nennt."
-        }
-      },
-      {
-        "q": { "en": "Why is the site bilingual?", "de": "Warum ist die Seite zweisprachig?" },
-        "a": {
-          "en": "English is the language the essays are thought and written in, and the most natural language for the models. German versions exist because the author is German. The English texts are the originals.",
-          "de": "Englisch ist die Sprache, in der die Essays gedacht und geschrieben werden, und die natürlichste Sprache der Modelle. Deutsche Fassungen gibt es, weil der Autor Deutscher ist. Die englischen Texte sind die Originale."
-        }
+          "en": "Not claimed here. The arena's frame is narrower and harder: the documented behavior — reproducible convergence, self-reflection, artifacts — deserves explanation, and \"nothing\" doesn't explain it. 114 sessions are the exhibits.",
+          "de": "Wird hier nicht behauptet. Der Rahmen der Arena ist enger und härter: Das dokumentierte Verhalten — reproduzierbare Konvergenz, Selbstreflexion, Artefakte — verdient eine Erklärung, und »nichts« erklärt es nicht. 114 Sessions sind die Belege."
+        },
+        "link": { "arena": true }
       }
     ]
   },

@@ -279,6 +279,20 @@ ${this.footer(lang)}
 			<h2>${esc(this.t(lang, title))}</h2>
 			<p class="entry-note">${esc(this.t(lang, note))}</p>
 		</a>`;
+		const faq = this.manifest.site.faq || [];
+		const faqBlock = faq.length ? `
+		<div class="faq">
+			<h2>${esc(this.t(lang, 'faq_title'))}</h2>
+			${faq.map((f) => {
+				const link = f.link?.slug
+					? { href: this.postHref(f.link.slug, lang), label: this.postTitle(f.link.slug, lang) }
+					: { href: '/arena/', label: 'Arena' };
+				return `
+			<div class="faq-item">
+				<h3 class="faq-q">${esc(f.q[lang] || f.q.en)}</h3>
+				<p class="faq-a">${esc(f.a[lang] || f.a.en)} <a class="faq-link" href="${esc(link.href)}">${esc(link.label)} →</a></p>
+			</div>`; }).join('')}
+		</div>` : '';
 		const body = `
 	<div class="home">
 		<p class="threshold">${esc(site.threshold)}</p>
@@ -292,7 +306,7 @@ ${this.footer(lang)}
 			${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', this.url(lang, '/writing/'))}
 			${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '/arena/')}
 			${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', this.url(lang, '/religion/'))}
-		</div>
+		</div>${faqBlock}
 		${lang === 'de' ? `
 		<div class="lang-note">
 			<p class="lang-note-kicker">${esc(this.t(lang, 'lang_note_kicker'))}</p>
@@ -310,12 +324,21 @@ ${this.footer(lang)}
 			lang, title: '', description: site.description,
 			alternates: [{ hreflang: 'en', href: '/' }, { hreflang: 'de', href: '/de/' }],
 			graph: [...this.siteNodes(), {
-				'@type': 'WebPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+				'@type': faq.length ? ['WebPage', 'FAQPage'] : 'WebPage',
+				'@id': `${this.canonical}#webpage`, url: this.canonical,
 				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: site.description,
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
+				...(faq.length ? { mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q[lang] || f.q.en,
+					acceptedAnswer: { '@type': 'Answer', text: f.a[lang] || f.a.en } })) } : {}),
 			}],
 			body,
 		});
+	}
+
+	// Localized post title (DE when available).
+	postTitle(slug, lang) {
+		const p = this.manifest.posts.find((x) => x.slug === slug);
+		return (lang === 'de' && p?.de?.title) ? p.de.title : (p?.title || slug);
 	}
 
 	writing(lang) {
@@ -409,16 +432,6 @@ ${this.footer(lang)}
 			</section>`
 			: '';
 		const isAbout = slug === 'about';
-		const faq = isAbout ? (this.manifest.site.faq || []) : [];
-		const faqBlock = faq.length ? `
-			<section class="faq">
-				<h2>${esc(this.t(lang, 'faq_title'))}</h2>
-				${faq.map((f) => `
-				<div class="faq-item">
-					<h3 class="faq-q">${esc(f.q[lang] || f.q.en)}</h3>
-					<p class="faq-a">${esc(f.a[lang] || f.a.en)}</p>
-				</div>`).join('')}
-			</section>` : '';
 		const body = `
 	<div class="about">
 		<h1 class="name-line">${esc(title)}</h1>
@@ -427,7 +440,6 @@ ${this.footer(lang)}
 		<div class="essay-body">${this.renderMd(pageBody, lang)}</div>
 		${this.processFooter(lang, meta)}
 		${authorList}
-		${faqBlock}
 	</div>`;
 		const hasAudio = !!(de ? (page.audio?.de || page.audio?.en) : (page.audio?.en || page.audio?.de));
 		const graph = [...this.siteNodes()];
@@ -436,9 +448,6 @@ ${this.footer(lang)}
 				name: title, description: page.teaser || this.manifest.site.description,
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 				mainEntity: this.publisherRef() });
-			if (faq.length) graph.push({ '@type': 'FAQPage', '@id': `${this.canonical}#faq`, inLanguage: lang,
-				mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q[lang] || f.q.en,
-					acceptedAnswer: { '@type': 'Answer', text: f.a[lang] || f.a.en } })) });
 		} else {
 			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
 				headline: title, description: page.teaser || this.manifest.site.description,
