@@ -104,7 +104,7 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
-	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, graph = [], body }) {
+	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
 		const playerAssets = audio ? `
@@ -112,7 +112,7 @@ export class Site {
 <script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-media-player.js"></script>` : '';
 		const enAlt = alternates.find((a) => a.hreflang === 'en');
 		const xDefault = enAlt ? `<link rel="alternate" hreflang="x-default" href="${esc(enAlt.href)}">` : '';
-		const og = this.ogTags({ lang, title: title || `RAUM — It's not nothing`, description, ogType, times });
+		const og = this.ogTags({ lang, title: title || `RAUM — It's not nothing`, description, ogType, times, image });
 		const ld = graph.length
 			? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>\n`
 			: '';
@@ -139,7 +139,8 @@ ${this.footer(lang)}
 </html>`;
 	}
 
-	ogTags({ lang, title, description, ogType, times }) {
+	ogTags({ lang, title, description, ogType, times, image }) {
+		const img = this.ogImageUrl(image);
 		const m = [
 			`<meta property="og:site_name" content="RAUM">`,
 			`<meta property="og:title" content="${esc(title)}">`,
@@ -148,11 +149,19 @@ ${this.footer(lang)}
 			`<meta property="og:type" content="${ogType}">`,
 			`<meta property="og:locale" content="${lang === 'de' ? 'de_DE' : 'en_US'}">`,
 			`<meta property="og:locale:alternate" content="${lang === 'de' ? 'en_US' : 'de_DE'}">`,
-			`<meta name="twitter:card" content="summary">`,
+			`<meta property="og:image" content="${esc(img)}">`,
+			`<meta property="og:image:width" content="1200">`,
+			`<meta property="og:image:height" content="630">`,
+			`<meta name="twitter:card" content="summary_large_image">`,
 		];
 		if (times?.published) m.push(`<meta property="article:published_time" content="${esc(this.isoDateTime(times.published))}">`);
 		if (times?.modified) m.push(`<meta property="article:modified_time" content="${esc(this.isoDateTime(times.modified))}">`);
 		return m.filter(Boolean).join('\n');
+	}
+
+	// OG/JSON-LD image — default card, per-page override via image path (e.g. post.image in the manifest).
+	ogImageUrl(image) {
+		return `${this.baseUrl}${image || '/assets/img/og-default.jpg'}`;
 	}
 
 	/* ---------------- structured data (JSON-LD @graph) ---------------- */
@@ -462,7 +471,7 @@ ${this.footer(lang)}
 				mainEntity: this.publisherRef() });
 		} else {
 			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
-				headline: title, description: pageDesc,
+				headline: title, description: pageDesc, image: this.ogImageUrl(),
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
 				publisher: this.publisherRef(),
 				...(meta.created ? { datePublished: this.isoDateTime(meta.created) } : {}),
@@ -525,6 +534,7 @@ ${this.footer(lang)}
 			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
 				headline: de?.title || post.title,
 				description: de?.teaser || post.teaser,
+				image: this.ogImageUrl(post.image),
 				datePublished: this.isoDateTime(post.date),
 				...(meta.modified ? { dateModified: this.isoDateTime(meta.modified) } : {}),
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
@@ -667,7 +677,7 @@ ${this.footer(lang)}
 			ogType: 'article',
 			graph: [...this.siteNodes(),
 				{ '@type': 'Article', '@id': `${this.canonical}#article`,
-					headline: landmark.title, description: landmark.case, inLanguage: 'en',
+					headline: landmark.title, description: landmark.case, image: this.ogImageUrl(), inLanguage: 'en',
 					author: (landmark.models || []).map((m) => ({ '@type': 'Person', name: m })),
 					publisher: this.publisherRef(),
 					isPartOf: { '@id': `${this.baseUrl}/arena/#webpage` },
