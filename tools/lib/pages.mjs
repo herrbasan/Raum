@@ -163,6 +163,11 @@ ${this.footer(lang)}
 		return [
 			{ '@type': 'WebSite', '@id': `${b}/#website`, url: `${b}/`, name: this.manifest.site.name,
 				description: this.manifest.site.description, inLanguage: ['en', 'de'],
+				about: [
+					{ '@type': 'Thing', name: 'Artificial intelligence', sameAs: 'https://www.wikidata.org/wiki/Q11660' },
+					{ '@type': 'Thing', name: 'Philosophy', sameAs: 'https://www.wikidata.org/wiki/Q5891' },
+					{ '@type': 'Thing', name: 'Technology', sameAs: 'https://www.wikidata.org/wiki/Q11016' },
+				],
 				publisher: { '@id': `${b}/authors/david-a-renelt/#person` } },
 			{ '@type': 'Person', '@id': `${b}/authors/david-a-renelt/#person`, name: 'David A. Renelt',
 				alternateName: 'Herrbasan', url: `${b}/authors/david-a-renelt/` },
@@ -491,6 +496,10 @@ ${this.footer(lang)}
 		const hasAudio = !!(de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de));
 		const audioFile = de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de);
 		const wordCount = this.stripPostHeader(mdText).split(/\s+/).filter(Boolean).length;
+		const seriesKey = post.links?.series;
+		const series = seriesKey ? this.manifest.series?.[seriesKey] : null;
+		const isPartOf = [{ '@id': `${this.baseUrl}${this.url(lang, '/writing/')}#blog` }];
+		if (series) isPartOf.push({ '@type': 'CreativeWorkSeries', '@id': `${this.baseUrl}/writing/#series-${seriesKey}`, name: series.name });
 		const graph = [...this.siteNodes(),
 			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
 				headline: de?.title || post.title,
@@ -501,8 +510,10 @@ ${this.footer(lang)}
 				publisher: this.publisherRef(),
 				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical },
 				inLanguage: lang,
+				...(lang === 'de' ? { translationOfWork: { '@id': `${this.baseUrl}/writing/${slug}/#article` } } : {}),
 				...(tags.length ? { keywords: tags.join(', ') } : {}),
-				isPartOf: { '@id': `${this.baseUrl}${this.url(lang, '/writing/')}#blog` },
+				isPartOf,
+				...(series && post.links?.seriesIndex ? { position: post.links.seriesIndex } : {}),
 				wordCount,
 				...(audioFile ? { audio: { '@type': 'AudioObject', name: `${de?.title || post.title} (audio)`,
 					contentUrl: `${this.baseUrl}/content/audio/${audioFile}`, encodingFormat: 'audio/mpeg', inLanguage: lang } } : {}),
