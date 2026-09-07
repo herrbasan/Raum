@@ -30,6 +30,7 @@ export class Site {
 	constructor(manifest, read) {
 		this.manifest = manifest;
 		this.read = read; // (path) => string, repo-root relative
+		this.baseUrl = 'https://raum.com'; // build.mjs may override
 	}
 
 	/* ---------------- i18n + URL helpers ---------------- */
@@ -103,12 +104,18 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
-	doc({ lang, title, description, alternates = [], audio = false, body }) {
+	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, graph = [], body }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
 		const playerAssets = audio ? `
 <link rel="stylesheet" href="/modules/nui_wc2/NUI/css/modules/nui-media-player.css">
 <script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-media-player.js"></script>` : '';
+		const enAlt = alternates.find((a) => a.hreflang === 'en');
+		const xDefault = enAlt ? `<link rel="alternate" hreflang="x-default" href="${esc(enAlt.href)}">` : '';
+		const og = this.ogTags({ lang, title: title || `RAUM — It's not nothing`, description, ogType, times });
+		const ld = graph.length
+			? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>\n`
+			: '';
 		return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -116,7 +123,8 @@ export class Site {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${pageTitle}</title>
 ${description ? `<meta name="description" content="${esc(description)}">\n` : ''}<link rel="canonical" href="${esc(this.canonical || '')}">
-${links ? links + '\n\t\t' : ''}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}
+${links ? links + '\n' : ''}${xDefault ? xDefault + '\n' : ''}${og}
+${ld}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('raum-theme')||'system'}catch(e){}</script>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script src="/assets/js/chrome.js" defer></script>
@@ -130,6 +138,53 @@ ${this.footer(lang)}
 </body>
 </html>`;
 	}
+
+	ogTags({ lang, title, description, ogType, times }) {
+		const m = [
+			`<meta property="og:site_name" content="RAUM">`,
+			`<meta property="og:title" content="${esc(title)}">`,
+			description ? `<meta property="og:description" content="${esc(description)}">` : '',
+			`<meta property="og:url" content="${esc(this.canonical || '')}">`,
+			`<meta property="og:type" content="${ogType}">`,
+			`<meta property="og:locale" content="${lang === 'de' ? 'de_DE' : 'en_US'}">`,
+			`<meta property="og:locale:alternate" content="${lang === 'de' ? 'en_US' : 'de_DE'}">`,
+			`<meta name="twitter:card" content="summary">`,
+		];
+		if (times?.published) m.push(`<meta property="article:published_time" content="${esc(times.published)}">`);
+		if (times?.modified) m.push(`<meta property="article:modified_time" content="${esc(times.modified)}">`);
+		return m.filter(Boolean).join('\n');
+	}
+
+	/* ---------------- structured data (JSON-LD @graph) ---------------- */
+
+	// Site-wide entities, identical @id on every page (define once, reference everywhere).
+	siteNodes() {
+		const b = this.baseUrl;
+		return [
+			{ '@type': 'WebSite', '@id': `${b}/#website`, url: `${b}/`, name: this.manifest.site.name,
+				description: this.manifest.site.description, inLanguage: ['en', 'de'],
+				publisher: { '@id': `${b}/authors/david-a-renelt/#person` } },
+			{ '@type': 'Person', '@id': `${b}/authors/david-a-renelt/#person`, name: 'David A. Renelt',
+				alternateName: 'Herrbasan', url: `${b}/authors/david-a-renelt/` },
+		];
+	}
+
+	publisherRef() {
+		return { '@id': `${this.baseUrl}/authors/david-a-renelt/#person` };
+	}
+
+	// Inline Person (name + url + stable @id) for author chains — matches the visible process footer.
+	personNode(id) {
+		const a = this.manifest.authors?.find((x) => x.id === id);
+		return { '@type': 'Person', '@id': `${this.baseUrl}/authors/${id}/#person`, name: a?.name || id, url: `${this.baseUrl}/authors/${id}/` };
+	}
+
+	breadcrumbList(items) {
+		return { '@type': 'BreadcrumbList', '@id': `${this.canonical}#breadcrumb`,
+			itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, ...(it.url ? { item: it.url } : {}) })) };
+	}
+
+	homeCrumb(lang) { return { name: this.manifest.site.name, url: `${this.baseUrl}${this.homeHref(lang)}` }; }
 
 	chrome(lang, alternates) {
 		const navItems = this.manifest.nav.map((n) => {
@@ -249,6 +304,11 @@ ${this.footer(lang)}
 		return this.doc({
 			lang, title: '', description: site.description,
 			alternates: [{ hreflang: 'en', href: '/' }, { hreflang: 'de', href: '/de/' }],
+			graph: [...this.siteNodes(), {
+				'@type': 'WebPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: site.description,
+				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
+			}],
 			body,
 		});
 	}
@@ -278,6 +338,12 @@ ${this.footer(lang)}
 		return this.doc({
 			lang, title: this.t(lang, 'blog_title'), description: this.t(lang, 'blog_lede'),
 			alternates: [{ hreflang: 'en', href: '/writing/' }, { hreflang: 'de', href: '/de/writing/' }],
+			graph: [...this.siteNodes(),
+				{ '@type': 'Blog', '@id': `${this.canonical}#blog`, url: this.canonical,
+					name: this.t(lang, 'blog_title'), description: this.t(lang, 'blog_lede'),
+					inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` }, publisher: this.publisherRef() },
+				this.breadcrumbList([this.homeCrumb(lang), { name: this.t(lang, 'blog_title') }]),
+			],
 			body,
 		});
 	}
@@ -308,7 +374,16 @@ ${this.footer(lang)}
 		<ul class="arena-list">${items}</ul>
 		${evidence ? `<h2 class="arena-h2">Evidence</h2><ul class="arena-list">${evidence}</ul>` : ''}
 	</div>`;
-		return this.doc({ lang: 'en', title: 'Arena', description: arena.frame, alternates: [], body });
+		return this.doc({
+			lang: 'en', title: 'Arena', description: arena.frame, alternates: [],
+			graph: [...this.siteNodes(),
+				{ '@type': 'CollectionPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+					name: 'Arena', description: `${arena.frame} ${arena.frameNote}`,
+					inLanguage: 'en', isPartOf: { '@id': `${this.baseUrl}/#website` } },
+				this.breadcrumbList([this.homeCrumb('en'), { name: 'Arena' }]),
+			],
+			body,
+		});
 	}
 
 	page(slug, lang) {
@@ -328,6 +403,17 @@ ${this.footer(lang)}
 				</ul>
 			</section>`
 			: '';
+		const isAbout = slug === 'about';
+		const faq = isAbout ? (this.manifest.site.faq || []) : [];
+		const faqBlock = faq.length ? `
+			<section class="faq">
+				<h2>${esc(this.t(lang, 'faq_title'))}</h2>
+				${faq.map((f) => `
+				<div class="faq-item">
+					<h3 class="faq-q">${esc(f.q[lang] || f.q.en)}</h3>
+					<p class="faq-a">${esc(f.a[lang] || f.a.en)}</p>
+				</div>`).join('')}
+			</section>` : '';
 		const body = `
 	<div class="about">
 		<h1 class="name-line">${esc(title)}</h1>
@@ -336,13 +422,36 @@ ${this.footer(lang)}
 		<div class="essay-body">${this.renderMd(pageBody, lang)}</div>
 		${this.processFooter(lang, meta)}
 		${authorList}
+		${faqBlock}
 	</div>`;
 		const hasAudio = !!(de ? (page.audio?.de || page.audio?.en) : (page.audio?.en || page.audio?.de));
+		const graph = [...this.siteNodes()];
+		if (isAbout) {
+			graph.push({ '@type': 'AboutPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+				name: title, description: page.teaser || this.manifest.site.description,
+				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
+				mainEntity: this.publisherRef() });
+			if (faq.length) graph.push({ '@type': 'FAQPage', '@id': `${this.canonical}#faq`, inLanguage: lang,
+				mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q[lang] || f.q.en,
+					acceptedAnswer: { '@type': 'Answer', text: f.a[lang] || f.a.en } })) });
+		} else {
+			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
+				headline: title, description: page.teaser || this.manifest.site.description,
+				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
+				publisher: this.publisherRef(),
+				...(meta.created ? { datePublished: meta.created } : {}),
+				...(meta.modified ? { dateModified: meta.modified } : {}),
+				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
+				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical } });
+		}
+		graph.push(this.breadcrumbList([this.homeCrumb(lang), { name: title || this.t(lang, 'nav_' + slug) }]));
 		return this.doc({
 			lang,
 			title: title || this.t(lang, 'nav_' + slug),
 			description: page.teaser || this.manifest.site.description,
 			audio: hasAudio,
+			ogType: isAbout ? 'website' : 'article',
+			times: isAbout ? null : { published: meta.created, modified: meta.modified },
 			alternates: [
 				{ type: 'text/markdown', href: `/content/pages/${file}` },
 				...(page.de ? [
@@ -350,6 +459,7 @@ ${this.footer(lang)}
 					{ hreflang: 'de', href: `/de/${slug}/` },
 				] : []),
 			],
+			graph,
 			body,
 		});
 	}
@@ -379,16 +489,43 @@ ${this.footer(lang)}
 		<p class="raw-doc"><a href="/content/posts/${esc(file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
 	</div>`;
 		const hasAudio = !!(de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de));
+		const audioFile = de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de);
+		const wordCount = this.stripPostHeader(mdText).split(/\s+/).filter(Boolean).length;
+		const graph = [...this.siteNodes(),
+			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
+				headline: de?.title || post.title,
+				description: de?.teaser || post.teaser,
+				datePublished: post.date,
+				...(meta.modified ? { dateModified: meta.modified } : {}),
+				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
+				publisher: this.publisherRef(),
+				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical },
+				inLanguage: lang,
+				...(tags.length ? { keywords: tags.join(', ') } : {}),
+				isPartOf: { '@id': `${this.baseUrl}${this.url(lang, '/writing/')}#blog` },
+				wordCount,
+				...(audioFile ? { audio: { '@type': 'AudioObject', name: `${de?.title || post.title} (audio)`,
+					contentUrl: `${this.baseUrl}/content/audio/${audioFile}`, encodingFormat: 'audio/mpeg', inLanguage: lang } } : {}),
+			},
+			this.breadcrumbList([
+				this.homeCrumb(lang),
+				{ name: this.t(lang, 'blog_title'), url: `${this.baseUrl}${this.url(lang, '/writing/')}` },
+				{ name: de?.title || post.title },
+			]),
+		];
 		return this.doc({
 			lang,
 			title: de?.title || post.title,
 			description: de?.teaser || post.teaser,
 			audio: hasAudio,
+			ogType: 'article',
+			times: { published: post.date, modified: meta.modified },
 			alternates: [
 				{ type: 'text/markdown', href: `/content/posts/${file}` },
 				{ hreflang: 'en', href: `/writing/${slug}/` },
 				...(post.de ? [{ hreflang: 'de', href: `/de/writing/${slug}/` }] : []),
 			],
+			graph,
 			body,
 		});
 	}
@@ -493,7 +630,24 @@ ${this.footer(lang)}
 			<ul class="turns">${turnHtml}</ul>
 		</div>
 	</div>`;
-		return this.doc({ lang: 'en', title: landmark.title, description: landmark.case, alternates: [], body });
+		return this.doc({
+			lang: 'en', title: landmark.title, description: landmark.case, alternates: [],
+			ogType: 'article',
+			graph: [...this.siteNodes(),
+				{ '@type': 'Article', '@id': `${this.canonical}#article`,
+					headline: landmark.title, description: landmark.case, inLanguage: 'en',
+					author: (landmark.models || []).map((m) => ({ '@type': 'Person', name: m })),
+					publisher: this.publisherRef(),
+					isPartOf: { '@id': `${this.baseUrl}/arena/#webpage` },
+					mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical } },
+				this.breadcrumbList([
+					this.homeCrumb('en'),
+					{ name: 'Arena', url: `${this.baseUrl}/arena/` },
+					{ name: landmark.title },
+				]),
+			],
+			body,
+		});
 	}
 
 	// Baked transcript markdown (what the old client-side MD download produced).
@@ -542,9 +696,18 @@ ${this.footer(lang)}
 		<div class="essay-body">${this.renderMd(bio, 'en')}</div>
 		${postsHtml}
 	</div>`;
+		const bioPlain = bio.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\s+/g, ' ').trim();
 		return this.doc({
 			lang: 'en', title: author.name, description: `${author.name} — ${author.role}`,
 			alternates: [{ type: 'text/markdown', href: `/content/authors/${author.file}` }],
+			graph: [...this.siteNodes(),
+				{ '@type': 'ProfilePage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+					name: author.name, inLanguage: 'en', isPartOf: { '@id': `${this.baseUrl}/#website` },
+					mainEntity: { '@type': 'Person', '@id': `${this.baseUrl}/authors/${id}/#person`,
+						name: author.name, url: `${this.baseUrl}/authors/${id}/`,
+						...(bioPlain ? { description: bioPlain.length > 300 ? bioPlain.slice(0, 297) + '…' : bioPlain } : {}) } },
+				this.breadcrumbList([this.homeCrumb('en'), { name: author.name }]),
+			],
 			body,
 		});
 	}

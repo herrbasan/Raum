@@ -25,3 +25,5 @@ Allow: /
 
 # AI-retrieval index of all content files
 # https://raum.com/llms.txt
+
+Sitemap: https://raum.com/sitemap.xml

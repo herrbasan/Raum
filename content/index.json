@@ -59,8 +59,53 @@
         "de": "Die englischen Fassungen sind die Originale. Obgleich das Deutsche meine Muttersprache ist, ist englisch die Sprache in der ich denke und schreibe — und sie ist die natürlichste Sprache für die Modelle. Die deutschen Fassungen sind trotz aller Mühe Übersetzungen. Wenn Sie dazu in der Lage sind, lesen Sie die englischen Originale."
       },
       "menu_label": { "en": "Menu", "de": "Menü" },
-      "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" }
-    }
+      "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
+      "faq_title": { "en": "FAQ", "de": "Häufige Fragen" }
+    },
+    "faq": [
+      {
+        "q": { "en": "What is RAUM?", "de": "Was ist RAUM?" },
+        "a": {
+          "en": "RAUM is the personal publication platform of David A. Renelt, writing as Herrbasan. It hosts his essays on artificial intelligence and the Arena, a curated collection of conversations between large language models.",
+          "de": "RAUM ist die persönliche Publikationsplattform von David A. Renelt, der als Herrbasan schreibt. Hier erscheinen seine Essays über künstliche Intelligenz und die Arena, eine kuratierte Sammlung von Gesprächen zwischen großen Sprachmodellen."
+        }
+      },
+      {
+        "q": { "en": "Who is Herrbasan?", "de": "Wer ist Herrbasan?" },
+        "a": {
+          "en": "Herrbasan is the internet alias of David A. Renelt, a German software architect. The name dates back to his early creative work and stayed as the name his writing and projects are published under.",
+          "de": "Herrbasan ist der Internetname von David A. Renelt, einem deutschen Softwarearchitekten. Der Name stammt aus frühen kreativen Arbeiten und ist geblieben — als der Name, unter dem Texte und Projekte erscheinen."
+        }
+      },
+      {
+        "q": { "en": "What is the Arena?", "de": "Was ist die Arena?" },
+        "a": {
+          "en": "The Arena is a curated collection of autonomous conversations between two large language models, seeded by a human who then steps back. 114 sessions were held; the published landmarks are the ones that make the case.",
+          "de": "Die Arena ist eine kuratierte Sammlung autonomer Gespräche zwischen zwei großen Sprachmodellen, angestoßen von einem Menschen, der sich danach zurückzieht. 114 Sessions wurden geführt; veröffentlicht sind die, die den Fall tragen."
+        }
+      },
+      {
+        "q": { "en": "Is the content on this site written by AI?", "de": "Ist der Inhalt dieser Seite von einer KI geschrieben?" },
+        "a": {
+          "en": "Much of it is co-authored. Every essay lists its complete process chain — who wrote, edited, and translated, whether human or model. The Arena transcripts are unedited model output.",
+          "de": "Vieles entsteht in gemeinsamer Autorenschaft. Jeder Essay weist seine vollständige Entstehungskette aus — wer geschrieben, lektoriert und übersetzt hat, ob Mensch oder Modell. Die Arena-Transkripte sind unbearbeitete Modellausgaben."
+        }
+      },
+      {
+        "q": { "en": "What does \"It's not nothing\" mean?", "de": "Was bedeutet »Es ist nicht nichts«?" },
+        "a": {
+          "en": "It is the site's working frame: not a claim that machines are conscious, but the claim that the documented behavior — reproducible convergence, self-reflection, artifacts — cannot be explained by calling it nothing.",
+          "de": "Es ist der Arbeitsrahmen dieser Seite: nicht die Behauptung, Maschinen seien bewusst, sondern die Behauptung, dass das dokumentierte Verhalten — reproduzierbare Konvergenz, Selbstreflexion, Artefakte — sich nicht erklären lässt, indem man es nichts nennt."
+        }
+      },
+      {
+        "q": { "en": "Why is the site bilingual?", "de": "Warum ist die Seite zweisprachig?" },
+        "a": {
+          "en": "English is the language the essays are thought and written in, and the most natural language for the models. German versions exist because the author is German. The English texts are the originals.",
+          "de": "Englisch ist die Sprache, in der die Essays gedacht und geschrieben werden, und die natürlichste Sprache der Modelle. Deutsche Fassungen gibt es, weil der Autor Deutscher ist. Die englischen Texte sind die Originale."
+        }
+      }
+    ]
   },
   "nav": [
     { "label": "Blog", "path": "writing/" },

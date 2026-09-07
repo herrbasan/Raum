@@ -612,6 +612,18 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 .author-list a:hover { color: var(--accent); }
 .author-list .role { color: var(--text-faint); margin-left: 0.4rem; }
 
+/* About — FAQ (AEO: question lines carry citation weight) */
+.faq { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--border); }
+.faq h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.75rem;
+}
+.faq-item { margin-bottom: 1.75rem; }
+.faq-q { font-size: 1.08rem; font-weight: 600; margin: 0 0 0.4rem; }
+.faq-a { margin: 0; color: var(--text-dim); }
+
 /* ---------- About / Arena ---------- */
 
 .about, .arena {

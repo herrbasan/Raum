@@ -463,15 +463,16 @@ Update that file whenever a sync from storage lands and changes something materi
 
 ## 13. Static Build Pivot (2026-09-06)
 
-The runtime SPA was replaced by a **static build** — content is baked into flat HTML at build time, in place, at the repo root.
+The runtime SPA was replaced by a **static build** — content is baked into flat HTML at build time and assembled in `dist/` (the deployable website; published by folder sync).
 
-- **Build:** `node tools/build.mjs` (one-shot, ~164 pages incl. DE tree + arena transcripts + regenerated `llms.txt`). `--watch` rebuilds on `content/`, `tools/`, `assets/` changes. Zero dependencies (Node stdlib only).
+- **Build:** `node tools/build.mjs` (one-shot, ~165 pages incl. DE tree + arena transcripts + regenerated `llms.txt` + `sitemap.xml`). `--watch` rebuilds on `content/`, `tools/`, `assets/` changes. Zero dependencies (Node stdlib only). **Output goes to `dist/`** — that folder is the deployable website (folder sync to the webserver); never hand-edit.
+- **SEO/GEO layer (2026-09-07):** every page carries a single JSON-LD `@graph` (stable `@id`s: `/#website`, `/authors/{id}/#person`) — WebSite + Person sitewide, BlogPosting (posts: full author chain from YAML, datePublished/Modified, keywords, wordCount, AudioObject when audio exists), Article (religion + arena sessions), ProfilePage (authors), AboutPage + FAQPage (about), CollectionPage (arena index), BreadcrumbList everywhere except home. Open Graph + Twitter card meta, `hreflang` incl. `x-default`. Bilingual FAQ lives in `manifest.site.faq` (single source for visible section on About + FAQPage schema — answers must stay plain text, no markdown, so both match exactly). Validate with `node tools/validate-jsonld.mjs`. `sitemap.xml` is generated per build with hreflang pairs; `robots.txt` points to it. Best-practice basis: GEO project specs (`D:\Work\_GIT\GEO\docs\collection\schema-org-best-practices.md`, `content-substance.md`).
 - **Code path:** `tools/lib/pages.mjs` (Site class — all page builders ported from the old `assets/js/app.js`) + `tools/lib/md.mjs` (markdownToHtml ported from `modules/nui_wc2/NUI/nui.js` so baked pages render identically to the old client-side `nui-markdown`; fenced code emits plain `<pre><code>`, frontmatter stripped).
 - **URL map (EN):** `/`, `/writing/`, `/writing/{slug}/`, `/arena/`, `/arena/{slug}/` (+ `transcript.md` per session), `/religion/`, `/about/`, `/authors/{id}/`. **DE mirrors under `/de/`** except arena + authors (original language). No hash routing; Apache `DirectoryIndex index.html` resolves the pretty dirs — no rewrite rules needed.
 - **Machine readability:** every page carries `<link rel="alternate" type="text/markdown">` to its raw MD, `hreflang` alternates for DE, and a canonical. `llms.txt` is regenerated from the manifest each build (HTML links primary, `[MD]`/`[DE]`/`[JSON]` alternates inline) — it cannot drift.
 - **Runtime JS:** `assets/js/chrome.js` only (theme cycle + mobile menu). Audio is native `<audio controls>` (no `nui-media-player`). Sort toggle on `/writing/` was dropped — list is baked in latest-first order.
 - **Old SPA deleted:** `assets/js/app.js` removed; root `index.html` is now build output. `modules/nui_wc2/` stays vendored (build ports from it; not deployed as runtime).
-- **Generated artifacts** (removed + rewritten each build): `index.html`, `writing/`, `arena/`, `religion/`, `about/`, `authors/`, `de/`, `llms.txt`. Never hand-edit these — edit content or `tools/lib/pages.mjs` and rebuild.
+- **Generated artifacts** (removed + rewritten each build, all inside `dist/`): `index.html`, `writing/`, `arena/`, `religion/`, `about/`, `authors/`, `de/`, `llms.txt`, `sitemap.xml`. Never hand-edit these — edit content or `tools/lib/pages.mjs` and rebuild.
 - **Local preview:** any static server at repo root (root-absolute paths), e.g. the one-liner `http.createServer` used during verification, or `npx serve`.
 
 ## 14. Recent Changes (2026-08-15)

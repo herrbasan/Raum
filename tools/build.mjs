@@ -72,6 +72,7 @@ function build() {
 	}
 
 	add('llms.txt', buildLlmsTxt(manifest));
+	add('sitemap.xml', buildSitemap(manifest, [...pages.keys()]));
 
 	// --- write generated pages ---
 	for (const [out, content] of pages) {
@@ -109,6 +110,27 @@ function build() {
 	})(DIST);
 	console.log(`[build] ${pages.size} pages + assets → dist/ (${files} files, ${(bytes / 1048576).toFixed(1)} MB)`);
 	return pages.size;
+}
+
+// sitemap.xml — one <url> per baked page (EN + DE trees), hreflang pairs + x-default.
+function buildSitemap(manifest, outPaths) {
+	const postDate = new Map(manifest.posts.map((p) => [`writing/${p.slug}/`, p.date]));
+	const urls = [];
+	for (const out of outPaths) {
+		if (!out.endsWith('index.html')) continue;
+		const path = out.replace(/index\.html$/, '');
+		const enPath = path.startsWith('de/') ? path.slice(3) : path;
+		const dePath = `de/${enPath}`;
+		const hasDe = outPaths.includes(`${dePath}index.html`);
+		const links = [
+			`\t\t<xhtml:link rel="alternate" hreflang="en" href="${BASE_URL}/${enPath}"/>`,
+			...(hasDe ? [`\t\t<xhtml:link rel="alternate" hreflang="de" href="${BASE_URL}/${dePath}"/>`] : []),
+			`\t\t<xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/${enPath}"/>`,
+		];
+		const lastmod = postDate.get(enPath) || '';
+		urls.push(`\t<url>\n\t\t<loc>${BASE_URL}/${path}</loc>${lastmod ? `\n\t\t<lastmod>${lastmod}</lastmod>` : ''}\n${links.join('\n')}\n\t</url>`);
+	}
+	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`;
 }
 
 function buildLlmsTxt(manifest) {
