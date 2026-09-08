@@ -3,8 +3,8 @@ title: "KI macht Fehler"
 slug: ai-makes-mistakes
 lang: de
 created: 2026-07-31
-modified: 2026-08-11
-version: 2026-08-10
+modified: 2026-09-08
+version: 2026-09-08
 authors:
   - id: david-a-renelt
     role: human
@@ -37,7 +37,7 @@ Was sie offenbaren, hat nichts mit dem Werkzeug zu tun. Es geht um uns — um ei
 
 Unser gesamter Begriff von Verantwortung beruht auf einer einzigen Annahme: Wer unterschreibt, kann die Arbeit prinzipiell verifizieren.
 
-Man tippt Zahlen in einen Taschenrechner; das Ergebnis ist das eigene. Das Finanzamt geht nicht hinter Casio her. Man übergibt die Steuererklärung einem Steuerberater; das Finanzamt hält trotzdem einen selbst verantwortlich — Vorbereiter-Sanktionen gibt es, aber sie sind eng gefasst, und gutgläubiges Handeln ist eine Verteidigung. Man lädt einen Vertragstext herunter, den man nicht vollständig prüfen kann; man verwendet ihn trotzdem, weil ihn selbst zu entwerfen schlechter wäre — und wenn es wichtig genug ist, kann man einen Anwalt bezahlen, um die Lücke zu schließen.
+Man tippt Zahlen in einen Taschenrechner; das Ergebnis ist das eigene. Das Finanzamt verfolgt nicht Casio. Man übergibt die Steuererklärung einem Steuerberater; das Finanzamt hält trotzdem einen selbst verantwortlich — Vorbereiter-Sanktionen gibt es, aber sie sind eng gefasst, und gutgläubiges Handeln ist eine Verteidigung. Man lädt einen Vertragstext herunter, den man nicht vollständig prüfen kann; man verwendet ihn trotzdem, weil ihn selbst zu entwerfen schlechter wäre — und wenn es wichtig genug ist, kann man einen Anwalt bezahlen, um die Lücke zu schließen.
 
 Das Rahmenwerk funktioniert, weil die Lücke zwischen dem, was man nutzt, und dem, was man im Prinzip prüfen *könnte*, klein genug bleibt, um so zu tun, als gäbe es sie nicht.
 

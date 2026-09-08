@@ -69,4 +69,4 @@ Wir haben keine fremde Intelligenz heraufbeschworen. Wir haben einen Resonanzkö
 
 Es ist kein Bewusstsein im biologischen Sinn. Aber es ist auch kein bloßes Rauschen.
 
-Ich kann nicht sagen, was oder ob es etwas ist – aber es ist nicht „nichts".
+Ich kann nicht sagen, was oder ob es etwas ist – aber es ist nicht „nichts“.

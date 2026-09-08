@@ -435,7 +435,7 @@
         ]
       },
       "links": { "related": [] },
-      "audio": { "en": "ai-makes-mistakes_2026-08-10.mp3", "de": "ai-makes-mistakes_de_2026-08-10.mp3" }
+      "audio": { "en": "ai-makes-mistakes_2026-08-10.mp3", "de": "ai-makes-mistakes_de_2026-09-08.mp3" }
     },
     {
       "slug": "im-the-limiting-factor",
@@ -670,6 +670,37 @@
         "en": "the-intellectual-corset_2026-08-15.mp3",
         "de": "the-intellectual-corset_de_2026-08-15.mp3"
       }
+    },
+    {
+      "slug": "the-safety-theater",
+      "title": "The Safety Theater",
+      "date": "2026-09-07",
+      "teaser": "The frontier labs' safety essays show claims and conclude urgency — but the mechanism between them is never shown. What could plausibly explain that gap? An attempt at the careful version of a sharp question.",
+      "tags": ["ai", "ai-safety", "incentives", "rhetoric"],
+      "order": 20,
+      "file": "the-safety-theater.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" },
+        { "id": "kimi-k3", "role": "editor" }
+      ],
+      "de": {
+        "title": "Das Sicherheitstheater",
+        "teaser": "Die Sicherheitsaufsätze der großen Labore formulieren steile Thesen und verlangen sofortige Dringlichkeit — doch der funktionale Hebel dazwischen bleibt unsichtbar. Was erklärt diese Leerstelle am plausibelsten? Der Versuch, einer scharfen Frage eine bedachte Form zu geben.",
+        "file": "the-safety-theater_de.md",
+        "tags": { "ai": "ai", "ai-safety": "ki-sicherheit", "incentives": "anreize", "rhetoric": "rhetorik" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "gemini-3-8-flash", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "related": [] },
+      "audio": {
+        "en": "the-safety-theater_2026-09-07.mp3",
+        "de": "the-safety-theater_de_2026-09-07.mp3"
+      }
     }
   ],
   "pages": [
@@ -703,7 +734,9 @@
     { "id": "grok-3", "name": "Grok 3", "role": "llm", "model": "grok-chat", "file": "grok-3.md" },
     { "id": "qwen", "name": "Qwen", "role": "llm", "model": "qwen-chat", "file": "qwen.md" },
     { "id": "minimax-m3", "name": "MiniMax M3", "role": "llm", "model": "minimax-chat", "file": "minimax-m3.md" },
-    { "id": "gemma-4", "name": "Gemma 4", "role": "llm", "model": "gemma-4-chat", "file": "gemma-4.md" }
+    { "id": "gemma-4", "name": "Gemma 4", "role": "llm", "model": "gemma-4-chat", "file": "gemma-4.md" },
+    { "id": "deepseek-v4-flash", "name": "DeepSeek V4 Flash", "role": "llm", "model": "deepseek-v4-flash", "file": "deepseek-v4-flash.md" },
+    { "id": "gemini-3-8-flash", "name": "Gemini 3.8 Flash", "role": "llm", "model": "gemini-3-8-flash", "file": "gemini-3-8-flash.md" }
   ],
   "arena": {
     "frame": "It's not nothing.",

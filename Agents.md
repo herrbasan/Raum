@@ -476,9 +476,12 @@ A post is **publishable** when it sits in `storage/blog/posts/` (elevated from `
 
 ### Update pipeline (existing post changes)
 
-1. **Edit in storage only**, bump YAML `modified` (and `version` when the change is substantive — `version` doubles as the audio stamp).
-2. **Diff against the repo copy** (byte-compare). If changed: carry over to the repo.
-3. **Invalidate audio:** move `content/audio/{slug}[_de]_{old-version}.mp3` to `content/audio/archive/` and remove the `audio` field from the manifest entry. New audio is generated only on explicit request (§10 cost rules).
+1. **Edit in storage only**, bump YAML `modified`.
+2. **Classify the edit:**
+   - **Cosmetic** — whitespace, punctuation/quote glyphs, typo-level fixes, re-paragraphing that doesn't change the sentences: sync only. `version` and audio stay untouched. **Do not re-render audio for minor edits.**
+   - **Substantive** — sentences added, removed, or rewritten (the spoken text changes): bump `version` (it doubles as the audio stamp), archive `content/audio/{slug}[_de]_{old-version}.mp3` to `content/audio/archive/`, remove the `audio` field from the manifest entry. New audio is generated only on explicit request (§10 cost rules).
+   - Judgment call per edit; when unsure, ask the user.
+3. **Diff against the repo copy** (byte-compare). If changed: carry over to the repo.
 4. Update the manifest from the new YAML, build, validate, deploy — same as publish steps 3–6.
 
 ### When to update Agents.md (this file)
