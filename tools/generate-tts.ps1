@@ -1,17 +1,14 @@
 <#
 .SYNOPSIS
-  Generate TTS audio for a RAUM blog post via nSpeech (ElevenLabs, Melon 3).
+  Generate TTS audio for a RAUM blog post via nSpeech (default: MiniMax 2.8 Turbo).
 
 .DESCRIPTION
-  Reads a post markdown file, strips YAML frontmatter + H1 + byline,
-  sends the clean prose to nSpeech, and saves the MP3 to content/audio/.
+  Reads a post markdown file, strips YAML frontmatter + heading markers,
+  injects a spoken publication-date line, and sends the text to nSpeech.
+  Server-side stitch mode produces one seamless MP3, saved to content/audio/.
 
-  The audio filename follows the same convention as the markdown:
-    EN: content/audio/{slug}.mp3
-    DE: content/audio/{slug}_de.mp3
-
-  After generation, the script prints a reminder to add the audio path
-  to content/index.json if not already present.
+  Engine/voice map (Agents.md §10): default tier is MiniMax Speech 2.8 Turbo
+  (Melon_best EN / Simon_DE DE). -Tier hd|eleven switches to premium engines.
 
 .PARAMETER Slug
   The post slug (matches the filename without .md and the index.json slug field).
@@ -20,12 +17,16 @@
   Optional. "en" (default) or "de". Determines which markdown file to read
   and what audio filename to produce.
 
+.PARAMETER Tier
+  Optional. turbo (default) | hd | eleven. Premium tiers only on explicit request.
+
 .PARAMETER NSpeechUrl
   Optional. Defaults to http://192.168.0.100:2233.
 
 .EXAMPLE
   .\tools\generate-tts.ps1 -Slug the-hand-that-draws-itself
   .\tools\generate-tts.ps1 -Slug the-hand-that-draws-itself -Language de
+  .\tools\generate-tts.ps1 -Slug the-rupture -Tier eleven
 #>
 
 param(
@@ -35,14 +36,22 @@ param(
     [ValidateSet('en', 'de')]
     [string]$Language = 'en',
 
+    [ValidateSet('turbo', 'hd', 'eleven')]
+    [string]$Tier = 'turbo',
+
     [string]$NSpeechUrl = 'http://192.168.0.100:2233'
 )
 
 $ErrorActionPreference = 'Stop'
 
-# --- Config ---
-$VoiceId   = 'tLz0KTPteAXd06XSE8k3'   # Melon 3 (ElevenLabs)
-$Model     = 'elevenlabs'
+# --- Engine / voice map (Agents.md §10) ---
+$Tiers = @{
+    turbo  = @{ Model = 'minimax_speech_2_8_turbo'; Voices = @{ en = 'Melon_best';           de = 'Simon_DE' } }
+    hd     = @{ Model = 'minimax_speech_2_8_hd';    Voices = @{ en = 'Melon_best';           de = 'Simon_DE' } }
+    eleven = @{ Model = 'eleven_v3';                Voices = @{ en = 'tLz0KTPteAXd06XSE8k3'; de = 'XUk2s7njTDG9hbcyjzP1' } }
+}
+$Model   = $Tiers[$Tier].Model
+$VoiceId = $Tiers[$Tier].Voices[$Language]
 $ProjectRoot = $PSScriptRoot | Split-Path -Parent
 
 # --- Resolve markdown file ---
@@ -119,10 +128,9 @@ $langSuffix = if ($Language -eq 'de') { '_de' } else { '' }
 $AudioFile = "${Slug}${langSuffix}_${version}.mp3"
 $AudioPath = Join-Path $AudioDir $AudioFile
 
-# --- Generate (server-side auto-chunking) ---
-# nSpeech handles chunking transparently when text exceeds engine limits.
-# batch=true enables seamless stitching: overlap paragraph + forced-alignment
-# trim via the local MMS aligner (eliminates cold-start artifact at joints).
+# --- Generate (server-side stitch pipeline) ---
+# mode:stitch = seamless joins (overlap + forced-alignment trim) server-side.
+# clean:true = server-authoritative markdown cleaning on top of our light pre-clean.
 $apiUrl = "$NSpeechUrl/v1/audio/speech"
 
 $body = @{
@@ -131,13 +139,13 @@ $body = @{
     voice           = $VoiceId
     response_format = 'mp3'
     extra_body      = @{
-        model = 'eleven_v3'
-        batch = $true
+        mode  = 'stitch'
+        clean = $true
     }
 } | ConvertTo-Json -Depth 5
 $bodyBytes = [System.Text.Encoding]::UTF8.GetBytes($body)
 
-Write-Host "Generating audio via nSpeech ($Model / Melon 3, batch stitching)..." -ForegroundColor Yellow
+Write-Host "Generating audio via nSpeech ($Model / $VoiceId, stitch)..." -ForegroundColor Yellow
 
 try {
     $response = Invoke-WebRequest -Uri $apiUrl -Method Post `

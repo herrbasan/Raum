@@ -1,23 +1,24 @@
 <#
 .SYNOPSIS
-  Generate TTS audio for a RAUM page (religion/about) via nSpeech (MiniMax 2.8 HD, Melon_DE).
+  Generate TTS audio for a RAUM page (religion/about) via nSpeech (default: MiniMax 2.8 Turbo).
 
 .DESCRIPTION
-  Long-form stitch pipeline: single POST with full text, server-side seamless
-  stitching via extra_body.mode = "stitch". Sends the RAW markdown and lets the
-  server clean it for TTS (extra_body.clean = true — the server-authoritative
-  cleaner strips frontmatter + markdown syntax). Saves the MP3 to content/audio/.
+  Long-form stitch pipeline: single POST with the RAW markdown; the server
+  cleans it (extra_body.clean = true — strips frontmatter + markdown syntax)
+  and stitches chunks seamlessly (extra_body.mode = "stitch"). Saves the MP3
+  to content/audio/.
 
-  GOTCHA: MiniMax's async batch method (t2a-v2) needs the HYPHENATED MiniMax
-  model name in extra_body.model (speech-2.8-hd), NOT the nSpeech underscore
-  alias (minimax_speech_2_8_hd) — the latter 503s with "method t2a-v2 not
-  have model".
+  Engine/voice map (Agents.md §10): default tier is MiniMax Speech 2.8 Turbo
+  (Melon_best EN / Simon_DE DE). -Tier hd|eleven switches to premium engines.
 
 .PARAMETER Slug
   The page slug (e.g. religion). Reads content/pages/{slug}.md / {slug}_de.md.
 
 .PARAMETER Language
   Optional. "en" (default) or "de".
+
+.PARAMETER Tier
+  Optional. turbo (default) | hd | eleven. Premium tiers only on explicit request.
 
 .EXAMPLE
   .\tools\generate-page-tts.ps1 -Slug religion
@@ -31,15 +32,22 @@ param(
     [ValidateSet('en', 'de')]
     [string]$Language = 'en',
 
+    [ValidateSet('turbo', 'hd', 'eleven')]
+    [string]$Tier = 'turbo',
+
     [string]$NSpeechUrl = 'http://192.168.0.100:2233'
 )
 
 $ErrorActionPreference = 'Stop'
 
-# --- Config ---
-$VoiceId   = 'Melon_DE'            # MiniMax cloned narrator voice
-$Model     = 'minimax_speech_2_8_hd'  # nSpeech model id
-$MiniMaxApiModel = 'speech-2.8-hd'    # MiniMax t2a-v2 API model name (hyphenated)
+# --- Engine / voice map (Agents.md §10) ---
+$Tiers = @{
+    turbo  = @{ Model = 'minimax_speech_2_8_turbo'; Voices = @{ en = 'Melon_best';           de = 'Simon_DE' } }
+    hd     = @{ Model = 'minimax_speech_2_8_hd';    Voices = @{ en = 'Melon_best';           de = 'Simon_DE' } }
+    eleven = @{ Model = 'eleven_v3';                Voices = @{ en = 'tLz0KTPteAXd06XSE8k3'; de = 'XUk2s7njTDG9hbcyjzP1' } }
+}
+$Model   = $Tiers[$Tier].Model
+$VoiceId = $Tiers[$Tier].Voices[$Language]
 $ProjectRoot = $PSScriptRoot | Split-Path -Parent
 
 # --- Resolve markdown file (pages live in content/pages/) ---
@@ -101,7 +109,6 @@ $body = @{
     response_format = 'mp3'
     extra_body      = @{
         mode  = 'stitch'
-        model = $MiniMaxApiModel
         clean = $true
     }
 } | ConvertTo-Json -Depth 5

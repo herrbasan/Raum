@@ -271,7 +271,7 @@ The site is bilingual: English and German. Both are first-class.
 
 **Arena sessions** — stay in whatever language the transcript happened in. The transcript is data, not a translation target. Surrounding framing (case summary) may be bilingual; turns are untouched.
 
-**Language toggle** — full `location.reload()` (per repo memory). State is in `localStorage.raum-lang` and `documentElement.lang`, set by a head script in `index.html` before app.js boots. URL hash is preserved across reload.
+**Language toggle** — full `location.reload()`. State is in `localStorage.raum-lang` and `documentElement.lang`, set by a head script in `index.html` before app.js boots. URL hash is preserved across reload.
 
 **URL structure** — language is NOT in the URL. The toggle is a client-side preference. A `/de/` prefix is a future option for SEO/deep-linking but not required for launch.
 
@@ -358,46 +358,58 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 
 ## 10. Audio / TTS Workflow
 
-Every post has read-aloud audio (EN + DE). Generated via nSpeech (ElevenLabs engine, `eleven_v3` model, voice "Melon 3" = `tLz0KTPteAXd06XSE8k3`).
+Every post has read-aloud audio (EN + DE). Generated via nSpeech (`http://192.168.0.100:2233` — the LAN host, NOT `127.0.0.1`).
+
+### Engine & voice map (2026-09-08)
+
+| Tier | Model slug | EN voice | DE voice |
+|---|---|---|---|
+| **Default** | `minimax_speech_2_8_turbo` (MiniMax) | `Melon_best` | `Simon_DE` |
+| Premium (explicit request only) | `minimax_speech_2_8_hd` (MiniMax) | `Melon_best` | `Simon_DE` |
+| Premium (explicit request only) | `eleven_v3` (ElevenLabs) | `Melon 3` = `tLz0KTPteAXd06XSE8k3` | `Simon` = `XUk2s7njTDG9hbcyjzP1` |
+
+Premium tiers are per-article and only when the user explicitly asks ("generate X in HD" / "with ElevenLabs"). Everything else is Turbo. `GET /v1/models` on the server is the authoritative slug list; `GET /v1/voices?engine=minimax|elevenlabs` lists voices.
 
 **⚠️ Cloud TTS costs real money. Rules for any agent working here:**
 
-- **Never regenerate audio speculatively.** Only on explicit request ("generate audio for X").
+- **Never generate audio speculatively.** Only on explicit request ("generate audio for X").
 - **Check before generating:** does `content/audio/{slug}[_de]_{version}.mp3` already exist for the post's *current* version? If yes, it's up to date — don't regenerate.
-- **One generation per request.** If a generation fails (e.g. ElevenLabs 503), do NOT retry in a loop — report and wait for the user. 503 on long single requests was an engine char limit, now handled server-side by nSpeech auto-chunking; repeated retries only burn credits.
-- **Versioned filenames** (`{slug}_{version}.mp3`) exist so staleness is visible — a mismatched version means the post changed after the audio was made. Regenerate only when the user asks.
+- **One generation per request.** If a generation fails, do NOT retry in a loop — report and wait for the user.
+- **Versioned filenames** (`{slug}_{version}.mp3`) make staleness visible — a mismatched version means the post changed after the audio was made. Regenerate only when the user asks.
 
-**How it works (long-form, server-stitched):**
+### How it works (long-form, server-stitched)
 
-- **Endpoint:** `http://192.168.0.100:2233/v1/audio/speech` (NOT `127.0.0.1` — the LAN host is where nSpeech runs). The old `tools/generate-tts.ps1` had the correct host; some external handover docs had it wrong.
-- **Request shape (new pipeline, 2026-08-15):**
+- **Endpoint:** `POST http://192.168.0.100:2233/v1/audio/speech`
+- **Request shape (nSpeech V3):**
   ```json
-  POST /v1/audio/speech
-  Content-Type: application/json
-
   {
-    "model": "elevenlabs",
-    "input": "<full article text>",
-    "voice": "tLz0KTPteAXd06XSE8k3",
+    "model": "minimax_speech_2_8_turbo",
+    "input": "<article text>",
+    "voice": "Melon_best",
     "response_format": "mp3",
-    "extra_body": { "mode": "stitch", "model": "eleven_v3" }
+    "extra_body": { "mode": "stitch", "clean": true }
   }
   ```
-  `mode: "stitch"` does the seamless join (overlap + alignment trim) server-side. **Do not** set `batch`, `auto_chunk`, `previous_text`, or `next_text` — `mode: "stitch"` handles all of it.
-- **Output:** single MP3 in the response body (~4–5 min for a 14K-char post). Save as `content/audio/{slug}[_de]_{version}.mp3` (version = post YAML `version` date).
-- **SSE progress:** subscribe to `GET http://192.168.0.100:2233/v1/admin/events` BEFORE generation. Watch `type: "tts"` events with `meta.percent` (0–100) and `meta.message` (e.g. "batch generating 2/4"). Stages: `plan` → `generating N/M` → `aligning N/M` → `trimmed N/M` → `done` / `failed`.
-- **Expected throughput:** ~40–60 chars/sec on `eleven_v3`. A 5-min article ≈ 3–4 min render. E2E test on the-intellectual-corset (8679 chars) ran in **257 sec (~33 chars/sec)** on a warm engine.
-- **503 cold start:** if nSpeech returns 503 with `engine_starting`, the STT worker is cold-loading — wait and retry once.
-- **Manifest:** add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json` after generation. Validate JSON afterwards.
-- **Player:** `nui-media-player` addon, injected by `buildAudio()` in `assets/js/app.js` between essay header and body. Language-aware.
+  - The top-level `model` slug selects engine AND sub-model in one field. The older `extra_body.model` provider-native form (hyphenated, e.g. `speech-2.8-hd`) still works but the slug form is canonical.
+  - `mode: "stitch"` = seamless joins (overlap + forced-alignment trim) server-side. **Do not** set `batch` / `auto_chunk` (deprecated aliases).
+  - `clean: true` = server-authoritative markdown cleaning (frontmatter strip, syntax removal, acronym spelling). Send raw MD; don't pre-clean beyond what the scripts already do.
+- **Output:** single MP3 in the response body. Save as `content/audio/{slug}[_de]_{version}.mp3` (version = post YAML `version`).
+- **Throughput:** MiniMax ≈ 17–26s per long-form piece; ElevenLabs ~40–60 chars/sec (a 5-min article ≈ 3–4 min).
+- **SSE progress:** subscribe to `GET /v1/admin/events` BEFORE generation — `tts` events with `meta.percent` (0–100), stages `plan → generating N/M → aligning N/M → trimmed N/M → done/failed`.
+- **503 cold start:** `engine_starting` = STT worker cold-loading — wait and retry once.
+- **Manifest:** add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json`, then rebuild.
+- **Player:** native `<audio controls>` baked into the page at build time (no runtime addon).
 
-**Open tasks:**
-- `tools/generate-tts.ps1` still uses the OLD `extra_body: { model: "eleven_v3", batch: true }` shape. **Needs to be migrated to `mode: "stitch"`** to match the new pipeline. Until that's done, run generation manually (e.g. via `curl --data-binary @body.json`).
-- The "first E2E test of the new pipeline" was the-intellectual-corset EN on 2026-08-15 — succeeded in 257s.
+### Scripts
 
-**Known issues / docs:**
-- nSpeech batch stitching timing + progress events: `docs/nspeech-batch-stitching-test-report.md`
-- Original handover for the server-side chunking feature: `docs/nspeech-chunking-handover.md`
+- `tools/generate-tts.ps1` — posts (`content/posts/`)
+- `tools/generate-page-tts.ps1` — pages (`content/pages/`: religion, about)
+
+Both take `-Slug`, `-Language en|de`, and optional `-Tier turbo|hd|eleven` (default `turbo`); voices resolve from the map above.
+
+### Known mismatch
+
+- Religion audio (2026-08-30) was generated with `Melon_DE` on MiniMax HD — predates the voice map. **Do not regenerate with MiniMax:** religion is the centerpiece and is planned for a full ElevenLabs re-render (EN + DE) once the German text is finalized. Existing files stay until then.
 
 ---
 
@@ -409,7 +421,7 @@ Every post has read-aloud audio (EN + DE). Generated via nSpeech (ElevenLabs eng
 | Author bios (5) | MCP storage: `blog/authors/{id}.md` |
 | Blog working spec (byline, frontmatter, German rules) | MCP storage: `blog/AGENTS.md` |
 | Religion corpus | MCP storage: `religion/` (incl. `religion.md` + `_de.md`) |
-| About page (EN+DE) | MCP storage: `pages/about.md`, `pages/about_de.md` |
+| About page (EN+DE) | MCP storage: `blog/authors/about.md`, `blog/authors/about_de.md` |
 | Storage workspace guide (memory, vdb, etc.) | MCP storage: `Agents.md` |
 | Arena readings (philosophical frame) | MCP storage: `arena-publication/readings.md` |
 | Arena categorization (114 sessions) | MCP storage: `arena-publication/categorization.md` |
@@ -438,10 +450,10 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 | **Storage workspace guide** | `storage/Agents.md` | User (separate from this file) | Applies to any LLM working in the storage box |
 | **Project plan** (this file) | `repo:Agents.md` | Either — has no storage counterpart | Repo-only; describes the project, not the corpus |
 | **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
-| **Pages MD** (about, religion) | `storage/pages/about.md`, `storage/pages/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors |
+| **Pages MD** (about, religion) | `storage/blog/authors/about.md`, `storage/blog/authors/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors. About lives in `blog/authors/` (user's choice — there is no `storage/pages/`) |
 | **Audio files** | `repo:content/audio/` | Generated (nSpeech TTS) | See §10 |
 | **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
-| **Repo memory** | `repo:/memories/repo/raum-sync.md` | Either | Tracks the latest sync state from storage |
+| **Cross-session memory** | workshop memory (`mcp_workshop_tools` → `memory.*`, category `raum`) | Either | Sync receipts, gotchas, project state. Local `/memories/repo/` was retired 2026-09-08 — do not recreate |
 
 ### Sync rules
 
@@ -451,13 +463,31 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 4. **The manifest `index.json` is rebuilt from YAML** (frontmatter is the source). When adding a post: add the MD file to storage with proper YAML, then mirror to repo, then update the manifest entry. `date`, `tags`, `authors`, `summary`/`teaser` all come from YAML — the manifest is downstream of those.
 5. **Author bios live in storage** at `storage/blog/authors/{id}.md`. The repo copies in `content/authors/` are synced. The bios are the source for `#author=id` pages. **Never inline a bio into About or any other page** — link it.
 
+### Publish pipeline (new post)
+
+A post is **publishable** when it sits in `storage/blog/posts/` (elevated from `drafts/`) AND its German version exists. **Publishing itself is user-triggered** — the user says "publish X", never publish on your own initiative.
+
+1. **QA the canonical (storage, not repo):** read the EN + DE files. Check frontmatter completeness (`title, slug, lang, created, modified, version, authors(id+role), tags, summary`, `series`/`seriesIndex` when applicable), EN/DE metadata consistency, and scan the prose for leftovers (chunk markers, editor notes, broken formatting). **Fix errors in the canonical storage file** — never patch the repo copy.
+2. **Mirror to repo:** copy EN + DE byte-exact to `content/posts/` (pages → `content/pages/`, bios → `content/authors/`).
+3. **Manifest:** add/update the entry in `content/index.json` from the YAML (date=created, teaser=summary, tags, authors, `de.*`, `links.series/seriesIndex`).
+4. **Build + validate:** `node tools/build.mjs`, then `node tools/validate-jsonld.mjs`. Spot-check the built page.
+5. **Deploy:** commit + push (GitHub Pages) or folder sync to the webhoster.
+6. **Receipt:** `memory.store` (category `raum`) — what landed, gotchas hit.
+
+### Update pipeline (existing post changes)
+
+1. **Edit in storage only**, bump YAML `modified` (and `version` when the change is substantive — `version` doubles as the audio stamp).
+2. **Diff against the repo copy** (byte-compare). If changed: carry over to the repo.
+3. **Invalidate audio:** move `content/audio/{slug}[_de]_{old-version}.mp3` to `content/audio/archive/` and remove the `audio` field from the manifest entry. New audio is generated only on explicit request (§10 cost rules).
+4. Update the manifest from the new YAML, build, validate, deploy — same as publish steps 3–6.
+
 ### When to update Agents.md (this file)
 
-Update this file when the **project plan** changes — new phase, new architectural decision, new tool, new workflow. Don't update it for content changes (those live in storage). Don't update it for sync state (that's `/memories/repo/raum-sync.md`).
+Update this file when the **project plan** changes — new phase, new architectural decision, new tool, new workflow. Don't update it for content changes (those live in storage). Don't update it for sync state (that's workshop memory).
 
-### When to update `/memories/repo/raum-sync.md`
+### Sync receipts → workshop memory
 
-Update that file whenever a sync from storage lands and changes something material — new posts, schema migrations, encoding gotchas, dev-server quirks. It's the per-session receipt for "what did we last pull from storage and what's different."
+Whenever a sync from storage lands something material — new posts, schema migrations, encoding gotchas — `memory.store` it (category `raum`). That's the per-session receipt for "what did we last pull from storage and what's different." Before any sync, `memory.recall` for recent raum receipts.
 
 ---
 
@@ -524,7 +554,7 @@ nSpeech was rewritten for long-form generation. New pipeline: single POST with f
 
 **Endpoint is `http://192.168.0.100:2233` (NOT `127.0.0.1`)** — handover docs that say 127.0.0.1 are wrong. Request shape per §10 above.
 
-**Outstanding:** `tools/generate-tts.ps1` still uses old `batch:true` shape. Until migrated, run generation manually (e.g. `curl --data-binary @body.json`). The two handover docs in `docs/` (`docs/nspeech-batch-stitching-test-report.md`, `docs/nspeech-chunking-handover.md`) describe the OLD pipeline and should be reviewed before being relied on.
+**Resolved 2026-09-08:** both TTS scripts migrated to the V3 slug-model + `mode:stitch` shape (default MiniMax Turbo; `-Tier hd|eleven` for premium). The two handover docs in `docs/` (`docs/nspeech-batch-stitching-test-report.md`, `docs/nspeech-chunking-handover.md`) describe the OLD pipeline — historical only.
 
 **Other articles pending audio (this session's batch 2):** the-attribution-problem (2026-08-12), the-first-laboratory (2026-08-12), the-haunting v2 (2026-08-15 — v1 audio already archived, v2 not generated yet). All will need EN + DE.
 
