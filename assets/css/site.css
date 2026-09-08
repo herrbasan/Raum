@@ -369,6 +369,15 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
   --media-bar-proz: var(--text-faint);
   --media-bar-proz-playing: var(--accent);
 }
+/* Pre-upgrade window (custom element not yet :defined): reserve the final
+   geometry and keep it invisible — kills both the native-control flicker
+   and the layout shift. Host's own `transition: opacity .3s` fades it in. */
+.essay-audio nui-media-player:not(:defined) {
+  display: block;
+  min-height: var(--media-control-height);
+  margin-bottom: var(--nui-space);
+  opacity: 0;
+}
 
 .essay-title {
   font-size: clamp(1.9rem, 3.4vw, 2.6rem);
