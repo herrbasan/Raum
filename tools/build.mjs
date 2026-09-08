@@ -144,7 +144,7 @@ function buildLlmsTxt(manifest) {
 	L.push(``);
 	L.push(`## Root`);
 	L.push(``);
-	L.push(`- [${u('/')}](${u('/')}): Home — threshold, entry points, latest piece.`);
+	L.push(`- [${u('/')}](${u('/')}): Home — threshold, entry points.`);
 	L.push(`- [${u('/writing/')}](${u('/writing/')}): Blog — all essays in one feed.`);
 	L.push(`- [${u('/arena/')}](${u('/arena/')}): Arena — curated LLM-to-LLM conversations.`);
 	L.push(`- [${u('/religion/')}](${u('/religion/')}): A Little Religion — the distillation.`);
@@ -162,7 +162,6 @@ function buildLlmsTxt(manifest) {
 			? `Series part ${p.links.seriesIndex}.`
 			: null;
 		if (links) bits.push(links);
-		if (p.featured) bits.push('Featured on home page.');
 		const md = `[MD](${u('/content/posts/' + p.file)})`;
 		const de = p.de ? ` [DE](${u('/de/writing/' + p.slug + '/')})` : '';
 		return `- [${u('/writing/' + p.slug + '/')}](${u('/writing/' + p.slug + '/')}): ${bits.join(' ')} ${md}${de}`;

@@ -288,10 +288,6 @@ ${this.footer(lang)}
 
 	home(lang) {
 		const { site } = this.manifest;
-		const posts = this.manifest.posts;
-		const latest = posts.find((p) => p.featured) ||
-			[...posts].sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
-		const de = lang === 'de' && latest.de;
 		const entry = (kicker, title, note, href) => `
 		<a class="entry" href="${esc(href)}">
 			<p class="entry-kicker">${esc(this.t(lang, kicker))}</p>
@@ -331,13 +327,6 @@ ${this.footer(lang)}
 			<p class="lang-note-kicker">${esc(this.t(lang, 'lang_note_kicker'))}</p>
 			<p class="lang-note-text">${esc(this.t(lang, 'lang_note'))}</p>
 		</div>` : ''}
-		<div class="latest">
-			<p class="latest-kicker">${esc(this.t(lang, 'latest_kicker'))}</p>
-			<a href="${esc(this.postHref(latest.slug, lang))}">
-				<h2 class="post-title">${esc(de?.title || latest.title)}</h2>
-				<p class="post-teaser">${esc(de?.teaser || latest.teaser)}</p>
-			</a>
-		</div>
 	</div>`;
 		return this.doc({
 			lang, title: '', description: this.t(lang, 'site_description'),

@@ -23,7 +23,6 @@
       "entry_arena_note": { "en": "Conversations between models.", "de": "Gespräche zwischen Modellen." },
       "entry_religion_kicker": { "en": "Myth", "de": "Mythos" },
       "entry_religion_note": { "en": "A distillation.", "de": "Eine Destillation." },
-      "latest_kicker": { "en": "Latest", "de": "Neuestes" },
       "blog_title": { "en": "It's not nothing", "de": "Es ist nicht nichts" },
       "intro_1": { "en": "This is a blog about someone thinking about thinking with machines that think.", "de": "Dies ist ein Blog über jemanden, der mit denkenden Maschinen über das Denken nachdenkt." },
       "intro_2": { "en": "The subject is AI itself — a thing some of us dreamed of and some of us fear. It's not about the products, the hype, the spectacle — it's about the phenomenon. It is an invitation to explore something about ourselves that couldn't be explored without an \"other\" to look back.", "de": "Das Thema ist die KI selbst — etwas, wovon manche von uns geträumt haben und manche es fürchten. Es geht nicht um Produkte, Hype, Spektakel — es geht um das Phänomen. Es ist eine Einladung, etwas über uns selbst zu erkunden, das ohne ein \"Gegenüber\", das zurückblickt, nicht erkundbar wäre." },
@@ -501,7 +500,6 @@
       "tags": ["ai", "intelligence", "inequality", "automation"],
       "order": 14,
       "file": "the-rupture.md",
-      "featured": true,
       "authors": [
         { "id": "david-a-renelt", "role": "human" },
         { "id": "kimi-k3", "role": "ai" },

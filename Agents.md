@@ -111,8 +111,7 @@ The first impression. Not a feed — a *threshold*.
 
 - **No hero image.** The words do the work. A single line or short paragraph that sets the tone. Something from the work itself, not marketing copy.
 - **Three entry points** — Writing (primary), Arena (the evidence), Little Religion (the distillation). Each gets a card with kicker / title / one-line note.
-- **Intro prose** — three short paragraphs that frame what the site is. Threshold ("It's not nothing") → source line ("thinking about thinking with machines that think") → intro → latest. The intro is in i18n, bilingual.
-- **Latest piece** — featured post, picked editorially via `featured: true` in the manifest. Falls back to date sort if no post is flagged. Currently `the-rupture` (The Rupture / Der Bruch).
+- **Intro prose** — three short paragraphs that frame what the site is. Threshold ("It's not nothing") → source line ("thinking about thinking with machines that think") → intro. The intro is in i18n, bilingual.
 - **Quiet.** Negative space. The content is dense; the chrome shouldn't compete.
 
 ### 4.2 Writing (/writing)
@@ -205,7 +204,6 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
   - `seriesIndex` — optional 1-based position within the series
   - `summary` — teaser / one-sentence hook
   - `bio` — folded YAML scalar (for author files only); the post body is empty for authors
-  - `featured` — optional boolean for home-page hero pick (see §4.1)
 
 ### Manifest structure (`content/index.json`)
 
@@ -230,8 +228,7 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
         "authors": [{ "id": "david-a-renelt", "role": "human" }, ...]
       },
       "links": { "series": "wish-factory", "seriesIndex": 4, "related": [...] },
-      "audio": { "en": "slug_2026-08-10.mp3", "de": "slug_de_2026-08-10.mp3" },
-      "featured": true
+      "audio": { "en": "slug_2026-08-10.mp3", "de": "slug_de_2026-08-10.mp3" }
     }
   ],
   "pages": [
@@ -255,7 +252,6 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
 
 **Rules:**
 - The manifest is downstream of the YAML frontmatter (see §12). When in doubt, the MD file wins.
-- `featured` on a post makes it the home-page hero (latest pick) — only one at a time, first match wins.
 - The `de.tags` object maps EN tag → DE tag, keyed by the EN form. Use the object form, not an array, so the renderer can look up the translation per tag without a separate index.
 - The `links.related` array uses slugs, not titles — the renderer looks up titles per-locale.
 - The `arena.landmarks` list is the curated subset, ordered by `order`. Landmark 7 isn't the seventh you wrote — it's session number 7 in the corpus. The `order` field is the publication order, which is editorial.
@@ -351,7 +347,7 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 4. **The "raum" name** — ~~does it appear anywhere on the page?~~ **DECIDED: no.** The name doesn't appear. The domain is the identity; the content is the voice.
 5. **Comments / contact** — **DECIDED: no comments for now.** Eventually a comment system maintained by the digital twin. Contact: TBD (email, form, or nothing).
 6. **Analytics** — **DECIDED: yes.** Privacy-respecting option (not Google Analytics). Specific tool TBD.
-7. **Home-page hero (`featured`)** — what stays long-term? Editorial pick is the current rule (only one `featured: true` at a time, first wins). An alternative would be "most recent N days" — but the editorial pick is intentional when multiple posts land on the same day. Keep manual.
+7. **Home-page hero (`featured`)** — **DECIDED: removed.** There is no latest/featured piece on the home page anymore (removed 2026-09-08). The home page is threshold → intro → three entry points → FAQ. If a single feature paragraph is ever wanted back, reintroduce a `featured` pick then.
 8. **Submit / proofread workflow between English and German** — currently a two-stage pipeline (English final → German re-composition, by GLM 5.2). The German register rules are in `storage/blog/AGENTS.md`. No automation yet. Could become a per-post valve when the corpus grows.
 
 ---
