@@ -17,7 +17,8 @@ tags:
   - ai-safety
   - incentives
   - rhetoric
-series: null
+series: safety-trilogy
+seriesIndex: 1
 status: final
 summary: "The frontier labs' safety essays show claims and conclude urgency — but the mechanism between them is never shown. What could plausibly explain that gap? An attempt at the careful version of a sharp question."
 ---

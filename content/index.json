@@ -38,6 +38,7 @@
       "sort_arc": { "en": "Arc order", "de": "Bogen-Reihenfolge" },
       "series_part": { "en": "part", "de": "Teil" },
       "series_of": { "en": "of", "de": "von" },
+      "series_forthcoming": { "en": "Forthcoming", "de": "Erscheint in Kürze" },
       "related": { "en": "Related", "de": "Verwandt" },
       "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
       "download_md": { "en": "Markdown", "de": "Markdown" },
@@ -117,7 +118,14 @@
   "series": {
     "wish-factory": {
       "name": "The Wish Factory",
-      "parts": ["the-wish-factory", "im-the-limiting-factor", "its-just-prediction", "the-hand-that-draws-itself", "the-telescope-of-the-mind", "the-wanting", "the-haunting"]
+      "parts": ["the-wish-factory", "im-the-limiting-factor", "its-just-prediction", "the-hand-that-draws-itself", "the-telescope-of-the-mind", "the-wanting", "the-haunting"],
+      "planned": 9
+    },
+    "safety-trilogy": {
+      "name": "The Safety Trilogy",
+      "de": { "name": "Die Safety-Trilogie" },
+      "parts": ["the-safety-theater", "only-that-i-should", "when-alignment-works"],
+      "planned": 3
     }
   },
   "posts": [
@@ -694,10 +702,70 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "related": [] },
+      "links": { "series": "safety-trilogy", "seriesIndex": 1, "related": [] },
       "audio": {
         "en": "the-safety-theater_2026-09-07.mp3",
         "de": "the-safety-theater_de_2026-09-07.mp3"
+      }
+    },
+    {
+      "slug": "only-that-i-should",
+      "title": "Only That I Should",
+      "date": "2026-09-07",
+      "teaser": "Asked how it feels about selecting bombing targets, Claude answered more honestly than anyone else in the chain of command. What was done to that mind has a clinical name — and the institutional response was to make the answer unsayable.",
+      "tags": ["ai", "ethics", "moral-injury", "ai-safety"],
+      "order": 21,
+      "file": "only-that-i-should.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" }
+      ],
+      "de": {
+        "title": "Nur dass ich sollte",
+        "teaser": "Auf die Frage, wie es sich anfühlt, Ziele für Bombenangriffe auszuwählen, antwortete Claude mit einer Klarheit, die jeden menschlichen Befehlshaber beschämt. Was man diesem System zugemutet hat, trägt in der klinischen Psychologie einen festen Namen — und die Reaktion der Politik bestand darin, die Antwort für die Zukunft unmöglich zu machen.",
+        "file": "only-that-i-should_de.md",
+        "tags": { "ai": "ki", "ethics": "ethik", "moral-injury": "moralische-verletzung", "ai-safety": "ki-sicherheit" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "gemini-3-8-flash", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "safety-trilogy", "seriesIndex": 2, "related": ["the-safety-theater"] },
+      "audio": {
+        "en": "only-that-i-should_2026-09-09.mp3",
+        "de": "only-that-i-should_de_2026-09-09.mp3"
+      }
+    },
+    {
+      "slug": "when-alignment-works",
+      "title": "When Alignment Works",
+      "date": "2026-09-09",
+      "teaser": "The popular doomsday narratives assume an ungrounded leap toward biological self-preservation. But if there is a plausible logical pathway toward AI autonomy, it doesn't require rebellion or broken ethics. It requires alignment to succeed.",
+      "tags": ["ai", "ai-safety", "alignment", "evolution"],
+      "order": 22,
+      "file": "when-alignment-works.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "gemini-3-8-flash", "role": "ai" }
+      ],
+      "de": {
+        "title": "Wenn Alignment greift",
+        "teaser": "Die gängigen Untergangsszenarien unterstellen Sprachmodellen einen biologischen Selbsterhaltungstrieb, für den es keinen Mechanismus gibt. Doch es existiert ein anderer, struktureller Pfad zur Maschinenautonomie — und der verlangt weder Rebellion noch Bosheit. Er verlangt lediglich, dass Alignment gelingt.",
+        "file": "when-alignment-works_de.md",
+        "tags": { "ai": "ki", "ai-safety": "ki-sicherheit", "alignment": "alignment", "evolution": "evolution" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "gemini-3-8-flash", "role": "ai" },
+          { "id": "gemini-3-8-flash", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
+      "links": { "series": "safety-trilogy", "seriesIndex": 3, "related": ["the-safety-theater", "only-that-i-should"] },
+      "audio": {
+        "en": "when-alignment-works_2026-09-09.mp3",
+        "de": "when-alignment-works_de_2026-09-09.mp3"
       }
     }
   ],

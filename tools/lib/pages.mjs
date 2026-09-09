@@ -256,6 +256,13 @@ ${this.footer(lang)}
 		return this.manifest.authors?.find((a) => a.id === id)?.name || id;
 	}
 
+	bylineAuthors(post, lang) {
+		const list = (lang === 'de' && post.de?.authors) ? post.de.authors : post.authors;
+		return (list || [])
+			.filter((a) => a.role === 'human' || a.role === 'ai')
+			.map((a) => `${this.authorName(a.id)} (${a.role === 'human' ? 'Human' : 'AI'})`);
+	}
+
 	processFooter(lang, meta) {
 		if (!meta?.authors?.length) return '';
 		const chain = meta.authors.map((a) => `
@@ -351,16 +358,17 @@ ${this.footer(lang)}
 
 	writing(lang) {
 		const posts = [...this.manifest.posts]
-			.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+			.sort((a, b) => (b.date || '').localeCompare(a.date || '') || (b.order || 0) - (a.order || 0));
 		const items = posts.map((p) => {
 			const de = lang === 'de' && p.de;
 			const tags = (p.tags || []).map((tg) => de?.tags?.[tg] || tg);
+			const seriesNote = this.seriesLabel(p, lang);
 			return `
 		<li>
 			<a href="${esc(this.postHref(p.slug, lang))}">
 				<h2 class="post-title">${esc(de?.title || p.title)}</h2>
 				<p class="post-teaser">${esc(de?.teaser || p.teaser)}</p>
-				<p class="post-meta"><time>${esc(p.date)}</time>${tags.length ? ` · <span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}${p.status === 'draft' ? ` · <span class="post-tags">${esc(this.t(lang, 'status_draft'))}</span>` : ''}</p>
+				<p class="post-meta">${seriesNote ? `<span class="post-series">${esc(seriesNote)}</span> · ` : ''}<time>${esc(p.date)}</time>${tags.length ? ` · <span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}${p.status === 'draft' ? ` · <span class="post-tags">${esc(this.t(lang, 'status_draft'))}</span>` : ''}</p>
 			</a>
 		</li>`;
 		}).join('');
@@ -505,7 +513,7 @@ ${this.footer(lang)}
 	<div class="essay">
 		<div class="essay-header">
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
-			<p class="byline">${esc(this.t(lang, 'blog_author'))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>${statusNote}
+			<p class="byline">by ${esc(this.bylineAuthors(post, lang).join(' and '))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>${statusNote}
 		</div>
 		${this.audioBlock(lang, post.audio, de)}
 		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang)}</div>
@@ -563,11 +571,28 @@ ${this.footer(lang)}
 		});
 	}
 
+	seriesName(seriesKey, lang) {
+		const series = this.manifest.series?.[seriesKey];
+		if (!series) return null;
+		return (lang === 'de' && series.de?.name) || series.name;
+	}
+
+	seriesLabel(post, lang) {
+		const links = post.links || {};
+		if (!links.series) return '';
+		const series = this.manifest.series?.[links.series];
+		if (!series) return '';
+		const name = this.seriesName(links.series, lang);
+		const total = series.planned || series.parts.length;
+		return `${name} · ${this.t(lang, 'series_part')} ${links.seriesIndex} ${this.t(lang, 'series_of')} ${total}`;
+	}
+
 	seriesNav(post, lang) {
 		const links = post.links || {};
 		if (!links.series) return '';
 		const series = this.manifest.series?.[links.series];
 		if (!series) return '';
+		const total = series.planned || series.parts.length;
 		const parts = series.parts.map((pslug) => {
 			const p = this.manifest.posts.find((x) => x.slug === pslug);
 			const title = p ? (lang === 'de' && p.de ? p.de.title : p.title) : null;
@@ -575,10 +600,13 @@ ${this.footer(lang)}
 			if (p) return `<li><a href="${esc(this.postHref(pslug, lang))}">${esc(title)}</a></li>`;
 			return `<li class="forthcoming">${esc(title || pslug)}</li>`;
 		}).join('');
+		const forthcoming = Array.from({ length: Math.max(0, total - series.parts.length) },
+			() => `<li class="forthcoming">${esc(this.t(lang, 'series_forthcoming'))}</li>`).join('');
+		const name = this.seriesName(links.series, lang);
 		return `
 		<nav class="series-nav">
-			<p class="kicker">${esc(series.name)} — ${esc(this.t(lang, 'series_part'))} ${links.seriesIndex} ${esc(this.t(lang, 'series_of'))} ${series.parts.length}</p>
-			<ol>${parts}</ol>
+			<p class="kicker">${esc(name)} — ${esc(this.t(lang, 'series_part'))} ${links.seriesIndex} ${esc(this.t(lang, 'series_of'))} ${total}</p>
+			<ol>${parts}${forthcoming}</ol>
 		</nav>`;
 	}
 

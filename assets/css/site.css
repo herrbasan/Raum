@@ -327,6 +327,7 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 .post-teaser { color: var(--text-dim); margin: 0 0 0.7rem; }
 .post-meta { font-family: var(--sans); font-size: 0.95rem; color: var(--text-faint); }
 .post-tags { color: var(--text-faint); }
+.post-series { color: var(--accent); }
 
 /* ---------- Essay ---------- */
 
@@ -520,7 +521,6 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 .series-nav li.current { color: var(--text); }
 .series-nav li.current::before { content: "— "; color: var(--accent); }
 .series-nav .forthcoming { color: var(--text-faint); }
-.series-nav .forthcoming::after { content: " (forthcoming)"; }
 
 .related-nav { margin-top: 2rem; }
 .related-nav .kicker {

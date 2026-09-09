@@ -19,7 +19,8 @@ tags:
   - ai-safety
   - incentives
   - rhetoric
-series: null
+series: safety-trilogy
+seriesIndex: 1
 status: final
 summary: "Die Sicherheitsaufsätze der großen Labore formulieren steile Thesen und verlangen sofortige Dringlichkeit — doch der funktionale Hebel dazwischen bleibt unsichtbar. Was erklärt diese Leerstelle am plausibelsten? Der Versuch, einer scharfen Frage eine bedachte Form zu geben."
 ---
