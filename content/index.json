@@ -42,6 +42,10 @@
       "related": { "en": "Related", "de": "Verwandt" },
       "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
       "untranslated": { "en": "English only", "de": "Nur auf Englisch" },
+      "byline_by": { "en": "by", "de": "von" },
+      "byline_and": { "en": "and", "de": "und" },
+      "byline_role_human": { "en": "Human", "de": "Mensch" },
+      "byline_role_ai": { "en": "AI", "de": "KI" },
       "download_md": { "en": "Markdown", "de": "Markdown" },
       "download_json": { "en": "JSON", "de": "JSON" },
       "meta_how": { "en": "How this was made", "de": "Wie das entstand" },
@@ -775,6 +779,18 @@
         { "id": "david-a-renelt", "role": "human" },
         { "id": "kimi-k3", "role": "ai" }
       ],
+      "de": {
+        "title": "Was deutet ihr da eigentlich an?",
+        "teaser": "Ein CEO entwirft ein Bremskartell, ein Entwickler kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer einzigen Woche, alles unter Berufung auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?",
+        "file": "what-are-you-implying_de.md",
+        "tags": { "ai": "ki", "ai-safety": "ki-sicherheit", "rhetoric": "rhetorik", "governance": "governance" },
+        "authors": [
+          { "id": "david-a-renelt", "role": "human" },
+          { "id": "kimi-k3", "role": "ai" },
+          { "id": "gemini-3-8-flash", "role": "translator" },
+          { "id": "dana-renelt", "role": "editor" }
+        ]
+      },
       "links": { "series": "safety-trilogy", "seriesIndex": 4, "related": ["when-alignment-works", "the-safety-theater"] },
       "audio": { "en": "what-are-you-implying_2026-09-13.mp3" }
     }

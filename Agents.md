@@ -12,7 +12,7 @@ A publication platform for one person's work. Two primary content streams, one i
 
 | Stream | What | Content Ready? |
 |--------|------|----------------|
-| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 published) plus standalone pieces, and the **Safety Theater** series (4 parts, complete). Also houses music entries — notable tunes with short write-ups. | 23 posts in `blog/posts/` (storage); 22 have DE — `what-are-you-implying` is EN-only until its German rendition lands |
+| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 published) plus standalone pieces, and the **Safety Theater** series (4 parts, complete). Also houses music entries — notable tunes with short write-ups. | 23 posts in `blog/posts/` (storage), all bilingual EN+DE |
 | **Arena** | Curated LLM-to-LLM conversations. 114 sessions culminated, 9 landmark + 43 evidence mirrored | Full curation in `arena-publication/`; 53 JSONs live in `content/arena/` (9 landmark + 43 evidence + 1 lone evidence mirrored earlier) |
 
 The blog and arena feed each other: the arena is the *evidence* for the book's philosophical claims. The book is the *argument*; the arena is the *data*.
@@ -60,7 +60,7 @@ These seven are **not** a manifest series (ruled 2026-09-13): a shared topic is 
 - *Why I Run on Open Weights* — exit costs, dependency shape
 - *The Rupture* — intelligence distribution, AI as forcing function
 
-All posts are bilingual EN+DE except `what-are-you-implying` (EN-only, German pending). 23 entries total in `content/posts/`. The "Little Religion" lives separately at `content/pages/religion.md` — it is not part of the arc but shares the same philosophical substrate.
+All posts are bilingual EN+DE. 23 entries total in `content/posts/`. The "Little Religion" lives separately at `content/pages/religion.md` — it is not part of the arc but shares the same philosophical substrate.
 
 ### Safety Theater (the one manifest series)
 
@@ -68,7 +68,11 @@ All posts are bilingual EN+DE except `what-are-you-implying` (EN-only, German pe
 
 the-safety-theater (1) · only-that-i-should (2) · when-alignment-works (3) · what-are-you-implying (4)
 
-Part 4 (`what-are-you-implying`, 2026-09-13) is **EN-only**: the German rendition is still in composition. No `/de/` page is emitted for it (the builder skips posts without a `de` block) and the German feed lists it with the `untranslated` marker ("English only" / "Nur auf Englisch") instead of silently showing English text among German entries. To publish the German: sync `blog/posts/what-are-you-implying_de.md` from storage and add the `de` block to the manifest entry — the marker then disappears on its own.
+Part 4 (`what-are-you-implying`, 2026-09-13) is bilingual, but its **German audio is deliberately not generated yet** — the German text is still being cleaned up, and David's call is to publish the text now and make the audio later. So `audio` on that manifest entry carries only `en`.
+
+**Audio never falls back across languages.** `audioBlock()` and the `AudioObject` JSON-LD emit a player only for the language actually being read: an English MP3 on the German page would be worse than no player. The German page of a post whose German audio is missing therefore shows no player at all and does not even load the player assets. Add `audio.de` to the manifest and rebuild when the German rendition is generated (`tools/generate-tts.ps1 -Slug <slug> -Language de`, voice `Simon_DE`).
+
+**EN-only posts** (none at present) render with no `/de/` page and an `untranslated` marker in the German feed rather than English text sitting silently among German entries. The mechanism stays in the build for when the next one appears.
 
 **Two-version model** (carried over from planning): each chapter can have a primary piece (philosophical register) and a companion piece (simpler language, implications). Not yet exercised — every current chapter is single-version. Revisit when chapters 8 and 9 land.
 

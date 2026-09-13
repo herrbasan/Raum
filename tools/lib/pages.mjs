@@ -104,7 +104,7 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
-	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body }) {
+	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
 		const playerAssets = audio ? `
@@ -130,7 +130,7 @@ ${ld}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}
 <script src="/assets/js/chrome.js" defer></script>
 </head>
 <body>
-${this.chrome(lang, alternates)}
+${this.chrome(lang, alternates, langFallback)}
 <main id="app">
 ${body}
 </main>
@@ -210,19 +210,24 @@ ${this.footer(lang)}
 		return `${d}T00:00:00${tz.replace('GMT', '') || '+00:00'}`;
 	}
 
-	chrome(lang, alternates) {
+	chrome(lang, alternates, langFallback) {
 		const navItems = this.manifest.nav.map((n) => {
 			const id = n.path.replace('/', '');
 			// Arena keeps its original language — no DE tree
 			const target = id === 'arena' ? '/arena/' : this.url(lang, '/' + id + '/');
 			return `<a class="nav-link" href="${esc(target)}">${esc(this.t(lang, 'nav_' + id))}</a>`;
 		}).join('\n				');
-		// Language toggle: link to the alternate page (fallback: other-language home)
+		// Language toggle: link to the alternate page. When the page has no
+		// counterpart in the other language, fall back to the same section
+		// there rather than the language home — a reader on an English-only
+		// post should land in the German blog, not be dropped on the homepage
+		// with their place lost. Callers whose section has no other-language
+		// tree (arena, authors) leave langFallback null and keep the home.
 		const deAlt = alternates.find((a) => a.hreflang === 'de');
 		const enAlt = alternates.find((a) => a.hreflang === 'en');
 		const langTarget = lang === 'en'
-			? (deAlt ? deAlt.href : '/de/')
-			: (enAlt ? enAlt.href : '/');
+			? (deAlt ? deAlt.href : (langFallback || '/de/'))
+			: (enAlt ? enAlt.href : (langFallback || '/'));
 		const langLabel = lang === 'de' ? 'EN' : 'DE';
 		return `<header class="site-header" id="site-header">
 	<div class="site-header-inner">
@@ -260,7 +265,7 @@ ${this.footer(lang)}
 		const list = (lang === 'de' && post.de?.authors) ? post.de.authors : post.authors;
 		return (list || [])
 			.filter((a) => a.role === 'human' || a.role === 'ai')
-			.map((a) => `${this.authorName(a.id)} (${a.role === 'human' ? 'Human' : 'AI'})`);
+			.map((a) => `${this.authorName(a.id)} (${this.t(lang, 'byline_role_' + a.role)})`);
 	}
 
 	processFooter(lang, meta) {
@@ -278,9 +283,13 @@ ${this.footer(lang)}
 		</footer>`;
 	}
 
+	// A rendition belongs to the language it was made in. Never fall back
+	// across languages: an English MP3 on the German page is worse than no
+	// player at all. A post whose German audio is not generated yet shows
+	// nothing on the German page rather than someone else's voice.
 	audioBlock(lang, audio, de) {
 		if (!audio) return '';
-		const file = de ? (audio.de || audio.en) : (audio.en || audio.de);
+		const file = de ? audio.de : audio.en;
 		if (!file) return '';
 		return `
 		<div class="essay-audio">
@@ -462,7 +471,7 @@ ${this.footer(lang)}
 		${this.processFooter(lang, meta)}
 		${authorList}
 	</div>`;
-		const hasAudio = !!(de ? (page.audio?.de || page.audio?.en) : (page.audio?.en || page.audio?.de));
+		const hasAudio = !!(de ? page.audio?.de : page.audio?.en);
 		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
 			: (page.teaser || this.manifest.site.description);
 		const graph = [...this.siteNodes()];
@@ -516,7 +525,7 @@ ${this.footer(lang)}
 	<div class="essay">
 		<div class="essay-header">
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
-			<p class="byline">by ${esc(this.bylineAuthors(post, lang).join(' and '))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>${statusNote}
+			<p class="byline">${esc(this.t(lang, 'byline_by'))} ${esc(this.bylineAuthors(post, lang).join(' ' + this.t(lang, 'byline_and') + ' '))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>${statusNote}
 		</div>
 		${this.audioBlock(lang, post.audio, de)}
 		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang)}</div>
@@ -525,8 +534,8 @@ ${this.footer(lang)}
 		${this.processFooter(lang, meta)}
 		<p class="raw-doc"><a href="/content/posts/${esc(file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
 	</div>`;
-		const hasAudio = !!(de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de));
-		const audioFile = de ? (post.audio?.de || post.audio?.en) : (post.audio?.en || post.audio?.de);
+		const hasAudio = !!(de ? post.audio?.de : post.audio?.en);
+		const audioFile = de ? post.audio?.de : post.audio?.en;
 		const wordCount = this.stripPostHeader(mdText).split(/\s+/).filter(Boolean).length;
 		const seriesKey = post.links?.series;
 		const series = seriesKey ? this.manifest.series?.[seriesKey] : null;
@@ -569,6 +578,7 @@ ${this.footer(lang)}
 				{ hreflang: 'en', href: `/writing/${slug}/` },
 				...(post.de ? [{ hreflang: 'de', href: `/de/writing/${slug}/` }] : []),
 			],
+			langFallback: '/de/writing/',
 			graph,
 			body,
 		});
