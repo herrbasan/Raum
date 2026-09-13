@@ -363,6 +363,7 @@ The old n000b CMS has a richer block schema (sections, groups, columns, vars, fi
 6. **Analytics** — **DECIDED: yes.** Privacy-respecting option (not Google Analytics). Specific tool TBD.
 7. **Home-page hero (`featured`)** — **DECIDED: removed.** There is no latest/featured piece on the home page anymore (removed 2026-09-08). The home page is threshold → intro → three entry points → FAQ. If a single feature paragraph is ever wanted back, reintroduce a `featured` pick then.
 8. **Submit / proofread workflow between English and German** — currently a two-stage pipeline (English final → German re-composition, by GLM 5.2). The German register rules are in `storage/blog/AGENTS.md`. No automation yet. Could become a per-post valve when the corpus grows.
+9. **Per-article social cards** — **DECIDED: wanted, but deferred** (David, 2026-09-13: "we can go into having special cards for each article. not today tho"). Not started. The plumbing already exists: set `image` on a post in the manifest and it flows to `og:image` and the Article JSON-LD `image`. What's missing is the artwork (one 1200×630 card per post) and a decision on what each shows — the title on the dark background, or a line pulled from the text. Until then every post shares the site default `assets/img/og-default.jpg`, which is the homepage threshold card. Two things to do when it lands: generate the cards (nMedia handles resize/convert), and emit `twitter:image` alongside `og:image` — today only `og:image` is written, so X renders a card image only by falling back to it.
 
 ---
 
