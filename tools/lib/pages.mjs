@@ -292,8 +292,11 @@ ${this.beacon()}
 	}
 
 	footer(lang) {
+		// The imprint lives in the footer, not the header nav: it is a legal
+		// requirement rather than a destination. Present on every page and in
+		// both languages, which is the whole point of it.
 		return `<footer class="site-footer" id="site-footer">
-	<div class="foot-inner"><span>${esc(this.t(lang, 'footer'))}</span></div>
+	<div class="foot-inner"><span>${esc(this.t(lang, 'footer'))}</span> · <a href="${esc(this.url(lang, '/imprint/'))}">${esc(this.t(lang, 'footer_imprint'))}</a></div>
 </footer>`;
 	}
 
@@ -504,6 +507,10 @@ ${this.beacon()}
 			</section>`
 			: '';
 		const isAbout = slug === 'about';
+		// Informational pages (about, imprint) are not articles: they carry no
+		// author and no publication date, and an Article node for them invites a
+		// Search Console "missing author" warning while misdescribing the page.
+		const isInfoPage = isAbout || slug === 'imprint';
 		const body = `
 	<div class="about">
 		<h1 class="name-line">${esc(title)}</h1>
@@ -522,6 +529,10 @@ ${this.beacon()}
 				name: title, description: pageDesc,
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 				mainEntity: this.publisherRef() });
+		} else if (isInfoPage) {
+			graph.push({ '@type': 'WebPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+				name: title, description: pageDesc,
+				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` } });
 		} else {
 			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
 				headline: title, description: pageDesc, image: this.ogImageUrl(),
@@ -538,8 +549,8 @@ ${this.beacon()}
 			title: title || this.t(lang, 'nav_' + slug),
 			description: pageDesc,
 			audio: hasAudio,
-			ogType: isAbout ? 'website' : 'article',
-			times: isAbout ? null : { published: meta.created, modified: meta.modified },
+			ogType: isInfoPage ? 'website' : 'article',
+			times: isInfoPage ? null : { published: meta.created, modified: meta.modified },
 			alternates: [
 				{ type: 'text/markdown', href: `/content/pages/${file}` },
 				...(page.de ? [

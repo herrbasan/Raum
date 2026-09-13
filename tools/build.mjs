@@ -38,6 +38,8 @@ function build() {
 	add('religion/index.html', site.page('religion', 'en'));
 	site.canonical = `${BASE_URL}/about/`;
 	add('about/index.html', site.page('about', 'en'));
+	site.canonical = `${BASE_URL}/imprint/`;
+	add('imprint/index.html', site.page('imprint', 'en'));
 
 	for (const p of manifest.posts) {
 		site.canonical = `${BASE_URL}/writing/${p.slug}/`;
@@ -64,6 +66,8 @@ function build() {
 	add('de/religion/index.html', site.page('religion', 'de'));
 	site.canonical = `${BASE_URL}/de/about/`;
 	add('de/about/index.html', site.page('about', 'de'));
+	site.canonical = `${BASE_URL}/de/imprint/`;
+	add('de/imprint/index.html', site.page('imprint', 'de'));
 
 	for (const p of manifest.posts) {
 		if (!p.de) continue;

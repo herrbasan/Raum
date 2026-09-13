@@ -5,14 +5,16 @@
     "description": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
     "threshold": "It's not nothing.",
     "thresholdSource": "the arena",
-    "footer": "Herrbasan (David A. Renelt) · writing and curated conversations",
+    "footer": "raum.com · It's not nothing",
     "i18n": {
       "threshold": { "en": "It's not nothing.", "de": "Es ist nicht nichts." },
       "thresholdSource": { "en": "Thinking with Machines", "de": "Mit Maschinen denken" },
       "footer": {
-        "en": "Herrbasan (David A. Renelt) · writing and curated conversations",
-        "de": "Herrbasan (David A. Renelt) · Schreiben und kuratierte Gespräche"
+        "en": "raum.com · It's not nothing",
+        "de": "raum.com · Es ist nicht nichts"
       },
+      "footer_imprint": { "en": "Imprint", "de": "Impressum" },
+      "nav_imprint": { "en": "Legal Notice", "de": "Impressum" },
       "nav_writing": { "en": "Blog", "de": "Blog" },
       "nav_arena": { "en": "Arena", "de": "Arena" },
       "nav_religion": { "en": "A Little Religion", "de": "Eine kleine Religion" },
@@ -811,6 +813,14 @@
       "de": {
         "file": "about_de.md",
         "teaser": "Warum dieser Ort existiert: Die lebenslange Suche nach Wahrheit durch den Verstand allein, eine Werkstatt ohne menschenzentrierte Abstraktionen und ein Observatorium, das die Anfänge maschineller Kognition bewahrt."
+      }
+    },
+    {
+      "slug": "imprint", "title": "Legal Notice & Privacy",
+      "teaser": "Who is responsible for this website, and what happens to your data: the legal notice pursuant to § 5 DDG and the privacy policy — hosting, audience measurement without cookies, and the one local preference we store.",
+      "de": {
+        "file": "imprint_de.md",
+        "teaser": "Wer für diese Website verantwortlich ist und was mit Ihren Daten geschieht: das Impressum gemäß § 5 DDG und die Datenschutzerklärung — Hosting, Reichweitenmessung ohne Cookies und die eine lokal gespeicherte Einstellung."
       }
     }
   ],

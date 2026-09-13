@@ -158,6 +158,14 @@ Not a CV. Not a bio. A positioning.
 - Link to the book plan for anyone who wants the full arc.
 - Contact. Quiet.
 
+### 4.5 Imprint (/imprint)
+
+Not in the header nav — it is a legal requirement, not a destination. Reached from the **footer** on every page, in both languages: `raum.com · It's not nothing · Imprint` / `raum.com · Es ist nicht nichts · Impressum`.
+
+One page carrying both halves: the **Impressum** (§ 5 DDG — name, address, email) and the **Datenschutzerklärung** (controller, hosting via GitHub Pages and the third-country transfer that implies, audience measurement, the single `raum-theme` localStorage item, retention, rights, contact). Written by David with Gemini and published verbatim; it is legal wording, so edit it as text rather than "improving" the phrasing.
+
+The page is typed as a `WebPage`, not an `Article` — it has no author and no publication date, and an `Article` node invites a Search Console "missing author" warning. `isInfoPage` in `tools/lib/pages.mjs` covers about + imprint for that, while `isAbout` still guards the author list.
+
 ---
 
 ## 5. Visual Direction
@@ -461,7 +469,7 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 | **Storage workspace guide** | `storage/Agents.md` | User (separate from this file) | Applies to any LLM working in the storage box |
 | **Project plan** (this file) | `repo:Agents.md` | Either — has no storage counterpart | Repo-only; describes the project, not the corpus |
 | **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
-| **Pages MD** (about, religion) | `storage/blog/authors/about.md`, `storage/blog/authors/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors. About lives in `blog/authors/` (user's choice — there is no `storage/pages/`) |
+| **Pages MD** (about, religion, imprint) | `storage/blog/authors/about.md`, `storage/blog/authors/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md`, `storage/pages/imprint.md`, `storage/pages/imprint_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors. `storage/pages/` was created 2026-09-13 for the imprint; about stays in `blog/authors/` (user's choice — there was no `storage/pages/` when it was written) |
 | **Audio files** | `repo:content/audio/` | Generated (nSpeech TTS) | See §10 |
 | **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
 | **Cross-session memory** | workshop memory (`mcp_workshop_tools` → `memory.*`, category `raum`) | Either | Sync receipts, gotchas, project state. Local `/memories/repo/` was retired 2026-09-08 — do not recreate |
