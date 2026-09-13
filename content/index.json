@@ -780,8 +780,8 @@
         { "id": "kimi-k3", "role": "ai" }
       ],
       "de": {
-        "title": "Was deutet ihr da eigentlich an?",
-        "teaser": "Ein CEO entwirft ein Bremskartell, ein Entwickler kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer einzigen Woche, alles unter Berufung auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?",
+        "title": "Was wollen Sie damit sagen?",
+        "teaser": "Ein CEO entwirft ein Bremskartell, ein Forscher kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer Woche, alles mit Verweis auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?",
         "file": "what-are-you-implying_de.md",
         "tags": { "ai": "ki", "ai-safety": "ki-sicherheit", "rhetoric": "rhetorik", "governance": "governance" },
         "authors": [
