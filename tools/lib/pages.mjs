@@ -104,33 +104,15 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
-	// Analytics beacon (nPort edge). Deliberately minimal — one plain fetch,
-	// fired on load, and nothing that reads or writes the visitor's device: no
-	// cookies, no storage, no fingerprint. That is what keeps the banner-free
-	// Reichweitenmessung lawful; anything added here makes a consent banner
-	// necessary. The server does GeoIP, daily-salted visit dedup, device
-	// classification and referrer reduction — none of it is duplicated here.
-	// `keepalive` survives fast click-throughs; the empty catch is deliberate,
-	// analytics must never surface an error to a reader. Design doc:
-	// scratch/raum-beacon-analytics-plan.md in MCP storage.
-	beacon() {
-		return `<script>
-window.addEventListener('load', function () {
-  fetch('https://nport.raum.com/analytics/ping', {
-    method: 'POST',
-    keepalive: true,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      path: location.pathname,
-      referrer: document.referrer || '',
-      lang: navigator.language || '',
-      w: window.innerWidth | 0
-    })
-  }).catch(function () {});
-});
-</script>`;
-	}
-
+	// No analytics beacon here. One was added 2026-09-13 (commit 86bdefe) and
+	// removed the same day. Reason: nport.raum.com resolves to a PRIVATE LAN
+	// address from inside the home network (split-horizon DNS behind a local
+	// proxy), so a public page beaconing to it makes Chrome raise its Local
+	// Network Access prompt — "raum.com wants to access other devices on your
+	// local network" — for anyone on the LAN. Visitors outside are unaffected
+	// (public DNS gives 79.245.134.129), but the prompt is not acceptable on
+	// this site. To bring it back, the beacon needs a host that resolves
+	// publicly from the LAN too; the snippet itself is in git show 86bdefe.
 	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
@@ -162,7 +144,6 @@ ${this.chrome(lang, alternates, langFallback)}
 ${body}
 </main>
 ${this.footer(lang)}
-${this.beacon()}
 </body>
 </html>`;
 	}
