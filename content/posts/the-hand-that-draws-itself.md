@@ -17,7 +17,7 @@ tags:
   - consciousness
   - separation
   - illusion
-series: wish-factory
+series: null
 summary: "The boundary between self and world is a provable illusion — yet thought itself depends on it. A structured lie that produces a real capacity is the most suspicious fact in the universe."
 ---
 

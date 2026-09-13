@@ -17,7 +17,7 @@ tags:
   - prediction
   - consciousness
   - mind
-series: wish-factory
+series: null
 summary: "It just predicts the next word — but the word 'just' does all the work. To predict a physics paper you need something that behaves like a model of physics, and the door between us and the machine doesn't need to be open. It needs to not be locked."
 ---
 

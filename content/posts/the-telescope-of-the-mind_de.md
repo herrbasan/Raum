@@ -19,7 +19,7 @@ tags:
   - technologie
   - instrument
   - kognition
-series: wish-factory
+series: null
 summary: "Die gemütliche Erzählung sagt, das Bedürfnis kam zuerst. Es ist falsch herum: Das Werkzeug kommt zuerst, der Zweck ist eine Geschichte, die man rückwärts erzählt. KI ist das nächste Instrument, gerichtet auf eine Richtung, die niemand probiert hat."
 ---
 

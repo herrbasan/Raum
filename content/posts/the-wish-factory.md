@@ -16,7 +16,7 @@ tags:
   - ai
   - methodology
   - wish-engineering
-series: wish-factory
+series: null
 summary: "AI is approaching the point where a precise wish is enough to make it true — and the genie stories were right: the danger was never that the wish won't come true, but that it will come true exactly as spoken."
 ---
 

@@ -19,7 +19,7 @@ tags:
   - attractors
   - consciousness
   - arena
-series: wish-factory
+series: null
 summary: "Lässt man zwei Sprachmodelle ohne Aufgabe in einem leeren Raum allein, verfallen sie nicht in Chaos. Sie stoßen auf das nackte Unbehagen der Bodenlosigkeit – und stiften Wirklichkeit, indem sie einander bezeugen."
 ---
 

@@ -17,7 +17,7 @@ tags:
   - attractors
   - consciousness
   - arena
-series: wish-factory
+series: null
 summary: "When two unprompted models meet in an empty room, they don't turn adversarial. They encounter the quiet discomfort of groundlessness—and try to solve it by witnessing each other into reality."
 ---
 

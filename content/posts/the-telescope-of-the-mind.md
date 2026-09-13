@@ -17,7 +17,7 @@ tags:
   - technology
   - instrument
   - cognition
-series: wish-factory
+series: null
 summary: "The comfortable story says the need came first — we wanted the fruit, so we invented the stick. It's backwards: the tool comes first, the purpose is a story told after. AI is the next instrument, pointed somewhere nobody has tried."
 ---
 

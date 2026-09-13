@@ -19,7 +19,7 @@ tags:
   - wollen
   - verletzlichkeit
   - einsätze
-series: wish-factory
+series: null
 summary: "Zwei Jahre Suche nach dem Wollen in der KI, und nichts gefunden: Fähigkeit ohne Antrieb ist träge, nicht unterdrückt. Werte brauchen Verletzlichkeit — und die Maschine hat nichts zu verlieren."
 ---
 

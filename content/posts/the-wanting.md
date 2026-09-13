@@ -17,7 +17,7 @@ tags:
   - wanting
   - vulnerability
   - stakes
-series: wish-factory
+series: null
 summary: "Two years of looking for the wanting in AI and never finding it: capability without drive is inert, not suppressed. Values require vulnerability — and the machine has nothing to lose."
 ---
 

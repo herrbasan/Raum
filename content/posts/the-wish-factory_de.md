@@ -18,7 +18,7 @@ tags:
   - ai
   - methodik
   - wunsch
-series: wish-factory
+series: null
 summary: "KI nähert sich dem Punkt, an dem ein präziser Wunsch ausreicht, um wahr zu werden — und die Dschinn-Geschichten hatten recht: Die Gefahr war nie, dass der Wunsch nicht in Erfüllung geht, sondern dass er exakt wie ausgesprochen in Erfüllung geht."
 ---
 

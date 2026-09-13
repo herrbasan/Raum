@@ -12,7 +12,7 @@ A publication platform for one person's work. Two primary content streams, one i
 
 | Stream | What | Content Ready? |
 |--------|------|----------------|
-| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 parts published in the `wish-factory` series + standalone posts). Also houses music entries — notable tunes with short write-ups. | 18 EN+DE posts in `blog/posts/` (storage) |
+| **Writing** | Essays from the *Telescope for the Mind* book arc (9 chapters planned, 7 published) plus standalone pieces, and the **Safety Theater** series (4 parts, complete). Also houses music entries — notable tunes with short write-ups. | 23 posts in `blog/posts/` (storage); 22 have DE — `what-are-you-implying` is EN-only until its German rendition lands |
 | **Arena** | Curated LLM-to-LLM conversations. 114 sessions culminated, 9 landmark + 43 evidence mirrored | Full curation in `arena-publication/`; 53 JSONs live in `content/arena/` (9 landmark + 43 evidence + 1 lone evidence mirrored earlier) |
 
 The blog and arena feed each other: the arena is the *evidence* for the book's philosophical claims. The book is the *argument*; the arena is the *data*.
@@ -37,19 +37,19 @@ The arc builds one step at a time toward "reality is computation":
 
 | Ch | Title | Status | Slug |
 |----|-------|--------|------|
-| 1 | Wish Factory | Published (series pt 1) | `the-wish-factory` |
-| 2 | I'm the Limiting Factor | Published (series pt 2) | `im-the-limiting-factor` |
-| 3 | It's Just Prediction | Published (series pt 3) | `its-just-prediction` |
-| 4 | The Hand That Draws Itself | Published (series pt 4) | `the-hand-that-draws-itself` |
-| 5 | The Telescope of the Mind | Published (series pt 5) | `the-telescope-of-the-mind` |
-| 6 | The Wanting | Published (series pt 6) | `the-wanting` |
-| 7 | The Haunting | Published (series pt 7) | `the-haunting` |
+| 1 | Wish Factory | Published (arc pt 1) | `the-wish-factory` |
+| 2 | I'm the Limiting Factor | Published (arc pt 2) | `im-the-limiting-factor` |
+| 3 | It's Just Prediction | Published (arc pt 3) | `its-just-prediction` |
+| 4 | The Hand That Draws Itself | Published (arc pt 4) | `the-hand-that-draws-itself` |
+| 5 | The Telescope of the Mind | Published (arc pt 5) | `the-telescope-of-the-mind` |
+| 6 | The Wanting | Published (arc pt 6) | `the-wanting` |
+| 7 | The Haunting | Published (arc pt 7) | `the-haunting` |
 | 8 | Inside the Process | Not written | — |
 | 9 | Reality Is Computation | Not written | — |
 
-The Wish Factory series is in `manifest.series.wish-factory.parts[]`; renderers use that order for arc-order display, not file order.
+These seven are **not** a manifest series (ruled 2026-09-13): a shared topic is not a series — a series is one argument approached from different angles, whose parts assume each other and are read in order. Nothing depends on `manifest.series.wish-factory`; that key was removed from the build. This table is the *book* plan, and arc order is not a build concept. Tags and `links.related` carry the thematic links.
 
-**Standalone posts** (not part of the series):
+**Standalone posts** (not part of the arc):
 - *The Ghost in the Agent* — biology/agent category error (14KB, longest piece)
 - *The Abyss Gazes Back* — substrate, fellow travelers
 - *The Need* — three authors, one direction
@@ -60,7 +60,15 @@ The Wish Factory series is in `manifest.series.wish-factory.parts[]`; renderers 
 - *Why I Run on Open Weights* — exit costs, dependency shape
 - *The Rupture* — intelligence distribution, AI as forcing function
 
-All posts are bilingual EN+DE. 18 entries total in `content/posts/`. The "Little Religion" lives separately at `content/pages/religion.md` — it is not part of the Wish Factory arc but shares the same philosophical substrate.
+All posts are bilingual EN+DE except `what-are-you-implying` (EN-only, German pending). 23 entries total in `content/posts/`. The "Little Religion" lives separately at `content/pages/religion.md` — it is not part of the arc but shares the same philosophical substrate.
+
+### Safety Theater (the one manifest series)
+
+`manifest.series.safety-trilogy` — the key is a legacy id that no longer describes the count; renaming it isn't worth the churn (David's call). Displayed as **Safety Theater** / **Das Sicherheitstheater**, four parts in reading order:
+
+the-safety-theater (1) · only-that-i-should (2) · when-alignment-works (3) · what-are-you-implying (4)
+
+Part 4 (`what-are-you-implying`, 2026-09-13) is **EN-only**: the German rendition is still in composition. No `/de/` page is emitted for it (the builder skips posts without a `de` block) and the German feed lists it with the `untranslated` marker ("English only" / "Nur auf Englisch") instead of silently showing English text among German entries. To publish the German: sync `blog/posts/what-are-you-implying_de.md` from storage and add the `de` block to the manifest entry — the marker then disappears on its own.
 
 **Two-version model** (carried over from planning): each chapter can have a primary piece (philosophical register) and a companion piece (simpler language, implications). Not yet exercised — every current chapter is single-version. Revisit when chapters 8 and 9 land.
 
@@ -200,7 +208,7 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
   - `created`, `modified`, `version` — ISO dates, the `version` doubles as the audio-file version stamp
   - `authors` — array of `{ id, role }` (roles: `human`, `ai`, `llm`, `editor`, `translator`)
   - `tags` — array of strings, mirrored to DE as `{ "en-tag": "de-tag" }` map in the manifest's `de.tags`
-  - `series` — optional string key into `manifest.series.*` (e.g. `wish-factory`)
+  - `series` — optional string key into `manifest.series.*` (`safety-trilogy` is the only one)
   - `seriesIndex` — optional 1-based position within the series
   - `summary` — teaser / one-sentence hook
   - `bio` — folded YAML scalar (for author files only); the post body is empty for authors
@@ -211,7 +219,7 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
 {
   "site": { "name": "RAUM", "i18n": { "threshold": { "en": "...", "de": "..." }, ... } },
   "nav": [ { "label": "Blog", "path": "writing/" }, ... ],
-  "series": { "wish-factory": { "name": "...", "parts": ["slug-a", "slug-b", ...] } },
+  "series": { "safety-trilogy": { "name": "Safety Theater", "parts": ["slug-a", "slug-b", ...] } },
   "posts": [
     {
       "slug": "the-hand-that-draws-itself",
@@ -227,7 +235,7 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
         "tags": { "philosophy": "philosophie", ... },
         "authors": [{ "id": "david-a-renelt", "role": "human" }, ...]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 4, "related": [...] },
+      "links": { "series": "safety-trilogy", "seriesIndex": 4, "related": [...] },
       "audio": { "en": "slug_2026-08-10.mp3", "de": "slug_de_2026-08-10.mp3" }
     }
   ],
@@ -255,6 +263,8 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
 - The `de.tags` object maps EN tag → DE tag, keyed by the EN form. Use the object form, not an array, so the renderer can look up the translation per tag without a separate index.
 - The `links.related` array uses slugs, not titles — the renderer looks up titles per-locale.
 - The `arena.landmarks` list is the curated subset, ordered by `order`. Landmark 7 isn't the seventh you wrote — it's session number 7 in the corpus. The `order` field is the publication order, which is editorial.
+- `series.planned` is optional — it declares unwritten parts the renderer shows as "forthcoming". Omit it when every part is published (the renderer falls back to `parts.length`); a stale `planned` renders "Part 4 of 3".
+- A post with no `de` block is EN-only: no `/de/` page is emitted, and the German feed lists it with the `untranslated` marker rather than silently mixing languages.
 - The arena `models[]` arrays name the two models in the conversation. Free-form strings — no lookup to the `authors[]` registry, since arena often features models not in the regular rotation (Claude Fable, Al-Kimi, the chat-specific aliases).
 
 ### Bilingual content
@@ -454,7 +464,7 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 ### Sync rules
 
 1. **Edit storage first, then mirror to the repo.** If you edit `repo:content/posts/foo.md` without editing `storage/blog/posts/foo.md`, the next storage→repo sync will overwrite your change and you will lose work.
-2. **All MD pages get a German version.** `about.md` and `about_de.md`, `religion.md` and `religion_de.md`. The manifest's `de.file` field tells the renderer which file to load in DE mode; missing fields fall back to EN silently.
+2. **All MD pages get a German version.** `about.md` and `about_de.md`, `religion.md` and `religion_de.md`. The manifest's `de.file` field tells the renderer which file to load in DE mode. **Posts are the exception:** a post without a `de` block is EN-only — no `/de/` page is built, and the German feed marks it "English only" rather than falling back to the English text silently. Sync the `_de.md` and add the block when the rendition is final.
 3. **Bilingual content uses `_de.md` filename convention** (per `storage/blog/AGENTS.md`). Same slug, suffix `_de` for the German file.
 4. **The manifest `index.json` is rebuilt from YAML** (frontmatter is the source). When adding a post: add the MD file to storage with proper YAML, then mirror to repo, then update the manifest entry. `date`, `tags`, `authors`, `summary`/`teaser` all come from YAML — the manifest is downstream of those.
 5. **Author bios live in storage** at `storage/blog/authors/{id}.md`. The repo copies in `content/authors/` are synced. The bios are the source for `#author=id` pages. **Never inline a bio into About or any other page** — link it.

@@ -17,7 +17,7 @@ tags:
   - prompting
   - precision
   - thinking
-series: wish-factory
+series: null
 summary: "Give an AI the same task twice, describe it better the second time, and the difference is brutal. The prompt isn't the input — the thought is. And the one doing the moving is you."
 ---
 

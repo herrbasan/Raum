@@ -41,6 +41,7 @@
       "series_forthcoming": { "en": "Forthcoming", "de": "Erscheint in Kürze" },
       "related": { "en": "Related", "de": "Verwandt" },
       "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
+      "untranslated": { "en": "English only", "de": "Nur auf Englisch" },
       "download_md": { "en": "Markdown", "de": "Markdown" },
       "download_json": { "en": "JSON", "de": "JSON" },
       "meta_how": { "en": "How this was made", "de": "Wie das entstand" },
@@ -116,16 +117,10 @@
     { "label": "About", "path": "about/" }
   ],
   "series": {
-    "wish-factory": {
-      "name": "The Wish Factory",
-      "parts": ["the-wish-factory", "im-the-limiting-factor", "its-just-prediction", "the-hand-that-draws-itself", "the-telescope-of-the-mind", "the-wanting", "the-haunting"],
-      "planned": 9
-    },
     "safety-trilogy": {
-      "name": "The Safety Trilogy",
-      "de": { "name": "Die Safety-Trilogie" },
-      "parts": ["the-safety-theater", "only-that-i-should", "when-alignment-works"],
-      "planned": 3
+      "name": "Safety Theater",
+      "de": { "name": "Das Sicherheitstheater" },
+      "parts": ["the-safety-theater", "only-that-i-should", "when-alignment-works", "what-are-you-implying"]
     }
   },
   "posts": [
@@ -154,7 +149,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 4, "related": ["the-abyss-gazes-back"] },
+      "links": { "related": ["the-abyss-gazes-back"] },
       "audio": { "en": "the-hand-that-draws-itself_2026-08-10.mp3", "de": "the-hand-that-draws-itself_de_2026-08-10.mp3" }
     },
     {
@@ -210,7 +205,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 5, "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] },
+      "links": { "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] },
       "audio": { "en": "the-telescope-of-the-mind_2026-08-10.mp3", "de": "the-telescope-of-the-mind_de_2026-08-10.mp3" }
     },
     {
@@ -325,7 +320,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 6, "related": ["the-haunting", "its-just-prediction"] },
+      "links": { "related": ["the-haunting", "its-just-prediction"] },
       "audio": { "en": "the-wanting_2026-08-10.mp3", "de": "the-wanting_de_2026-08-10.mp3" }
     },
     {
@@ -354,7 +349,7 @@
           { "id": "kimi-k3", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 7, "related": ["the-wanting", "its-just-prediction"] },
+      "links": { "related": ["the-wanting", "its-just-prediction"] },
       "audio": {
         "en": "the-haunting_2026-08-15.mp3",
         "de": "the-haunting_de_2026-08-15.mp3"
@@ -385,7 +380,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 3, "related": ["the-wanting", "the-haunting"] },
+      "links": { "related": ["the-wanting", "the-haunting"] },
       "audio": { "en": "its-just-prediction_2026-08-10.mp3", "de": "its-just-prediction_de_2026-08-10.mp3" }
     },
     {
@@ -469,7 +464,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 2, "related": ["the-wish-factory"] },
+      "links": { "related": ["the-wish-factory"] },
       "audio": { "en": "im-the-limiting-factor_2026-08-10.mp3", "de": "im-the-limiting-factor_de_2026-08-10.mp3" }
     },
     {
@@ -497,7 +492,7 @@
           { "id": "dana-renelt", "role": "editor" }
         ]
       },
-      "links": { "series": "wish-factory", "seriesIndex": 1, "related": ["im-the-limiting-factor"] },
+      "links": { "related": ["im-the-limiting-factor"] },
       "audio": { "en": "the-wish-factory_2026-08-10.mp3", "de": "the-wish-factory_de_2026-08-10.mp3" }
     },
     {
@@ -767,6 +762,21 @@
         "en": "when-alignment-works_2026-09-09.mp3",
         "de": "when-alignment-works_de_2026-09-09.mp3"
       }
+    },
+    {
+      "slug": "what-are-you-implying",
+      "title": "What Are You Implying?",
+      "date": "2026-09-13",
+      "teaser": "A CEO publishes a plan, a researcher resigns, a senator legislates, a rival postpones an IPO — all in one week, all citing the same unspecified danger. This piece asks each of them the question none of them answered: what, exactly, are you implying?",
+      "tags": ["ai", "ai-safety", "rhetoric", "governance"],
+      "order": 23,
+      "file": "what-are-you-implying.md",
+      "authors": [
+        { "id": "david-a-renelt", "role": "human" },
+        { "id": "kimi-k3", "role": "ai" }
+      ],
+      "links": { "series": "safety-trilogy", "seriesIndex": 4, "related": ["when-alignment-works", "the-safety-theater"] },
+      "audio": { "en": "what-are-you-implying_2026-09-13.mp3" }
     }
   ],
   "pages": [

@@ -19,7 +19,7 @@ tags:
   - vorhersage
   - bewusstsein
   - geist
-series: wish-factory
+series: null
 summary: "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist."
 ---
 

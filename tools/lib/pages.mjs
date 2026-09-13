@@ -361,6 +361,9 @@ ${this.footer(lang)}
 			.sort((a, b) => (b.date || '').localeCompare(a.date || '') || (b.order || 0) - (a.order || 0));
 		const items = posts.map((p) => {
 			const de = lang === 'de' && p.de;
+			// A post with no German rendition is listed, never hidden — but marked,
+			// so the German feed never presents English text as a translation.
+			const untranslated = lang === 'de' && !p.de;
 			const tags = (p.tags || []).map((tg) => de?.tags?.[tg] || tg);
 			const seriesNote = this.seriesLabel(p, lang);
 			return `
@@ -368,7 +371,7 @@ ${this.footer(lang)}
 			<a href="${esc(this.postHref(p.slug, lang))}">
 				<h2 class="post-title">${esc(de?.title || p.title)}</h2>
 				<p class="post-teaser">${esc(de?.teaser || p.teaser)}</p>
-				<p class="post-meta">${seriesNote ? `<span class="post-series">${esc(seriesNote)}</span> · ` : ''}<time>${esc(p.date)}</time>${tags.length ? ` · <span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}${p.status === 'draft' ? ` · <span class="post-tags">${esc(this.t(lang, 'status_draft'))}</span>` : ''}</p>
+				<p class="post-meta">${seriesNote ? `<span class="post-series">${esc(seriesNote)}</span> · ` : ''}<time>${esc(p.date)}</time>${tags.length ? ` · <span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}${p.status === 'draft' ? ` · <span class="post-tags">${esc(this.t(lang, 'status_draft'))}</span>` : ''}${untranslated ? ` · <span class="post-tags">${esc(this.t(lang, 'untranslated'))}</span>` : ''}</p>
 			</a>
 		</li>`;
 		}).join('');

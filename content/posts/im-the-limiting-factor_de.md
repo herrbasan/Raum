@@ -19,7 +19,7 @@ tags:
   - prompt
   - präzision
   - denken
-series: wish-factory
+series: null
 summary: "Man gibt einer KI dieselbe Aufgabe zweimal, beschreibt sie beim zweiten Mal besser — und der Unterschied ist brutal. Der Prompt ist nicht der Input; der Gedanke ist es. Und der bewegliche Teil ist man selbst."
 ---
 

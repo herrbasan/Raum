@@ -19,7 +19,7 @@ tags:
   - bewusstsein
   - trennung
   - illusion
-series: wish-factory
+series: null
 summary: "Die Grenze zwischen Selbst und Welt ist eine beweisbare Illusion — doch das Denken selbst hängt von ihr ab. Eine strukturierte Lüge, die eine echte Fähigkeit erzeugt, ist die verdächtigste Tatsache im Universum."
 ---
 

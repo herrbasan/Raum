@@ -154,8 +154,6 @@ function buildLlmsTxt(manifest) {
 	L.push(``);
 	L.push(`## Writing (${u('/writing/')})`);
 	L.push(``);
-	const series = manifest.series?.['wish-factory']?.parts || [];
-	const inSeries = new Set(series);
 	const postLine = (p) => {
 		const bits = [`${p.title} (${p.date})`];
 		const links = (p.links?.series)
@@ -166,10 +164,17 @@ function buildLlmsTxt(manifest) {
 		const de = p.de ? ` [DE](${u('/de/writing/' + p.slug + '/')})` : '';
 		return `- [${u('/writing/' + p.slug + '/')}](${u('/writing/' + p.slug + '/')}): ${bits.join(' ')} ${md}${de}`;
 	};
-	if (series.length) {
-		L.push(`Wish Factory series (in reading order):`);
+	// Series blocks come first, in the manifest's declared reading order;
+	// everything not in a series follows as standalone. Driven by the series
+	// registry, never by a hardcoded key.
+	const inSeries = new Set();
+	for (const s of Object.values(manifest.series || {})) {
+		const parts = s.parts || [];
+		if (!parts.length) continue;
+		for (const slug of parts) inSeries.add(slug);
+		L.push(`${s.name} series (in reading order):`);
 		L.push(``);
-		for (const slug of series) {
+		for (const slug of parts) {
 			const p = manifest.posts.find((x) => x.slug === slug);
 			if (p) L.push(postLine(p));
 		}
