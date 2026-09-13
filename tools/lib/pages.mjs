@@ -104,6 +104,33 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
+	// Analytics beacon (nPort edge). Deliberately minimal — one plain fetch,
+	// fired on load, and nothing that reads or writes the visitor's device: no
+	// cookies, no storage, no fingerprint. That is what keeps the banner-free
+	// Reichweitenmessung lawful; anything added here makes a consent banner
+	// necessary. The server does GeoIP, daily-salted visit dedup, device
+	// classification and referrer reduction — none of it is duplicated here.
+	// `keepalive` survives fast click-throughs; the empty catch is deliberate,
+	// analytics must never surface an error to a reader. Design doc:
+	// scratch/raum-beacon-analytics-plan.md in MCP storage.
+	beacon() {
+		return `<script>
+window.addEventListener('load', function () {
+  fetch('https://nport.raum.com/analytics/ping', {
+    method: 'POST',
+    keepalive: true,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      path: location.pathname,
+      referrer: document.referrer || '',
+      lang: navigator.language || '',
+      w: window.innerWidth | 0
+    })
+  }).catch(function () {});
+});
+</script>`;
+	}
+
 	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
@@ -135,6 +162,7 @@ ${this.chrome(lang, alternates, langFallback)}
 ${body}
 </main>
 ${this.footer(lang)}
+${this.beacon()}
 </body>
 </html>`;
 	}
