@@ -104,15 +104,24 @@ export class Site {
 
 	/* ---------------- document shell ---------------- */
 
-	// Analytics beacon (nPort edge). Deliberately minimal — one plain fetch,
-	// fired on load, and nothing that reads or writes the visitor's device: no
-	// cookies, no storage, no fingerprint. That is what keeps the banner-free
-	// Reichweitenmessung lawful; anything added here makes a consent banner
-	// necessary. The server does GeoIP, daily-salted visit dedup, device
-	// classification and referrer reduction — none of it is duplicated here.
-	// `keepalive` survives fast click-throughs; the empty catch is deliberate,
-	// analytics must never surface an error to a reader. Design doc:
-	// scratch/raum-beacon-analytics-plan.md in MCP storage.
+	// Analytics beacon (nAlytics, served by the nPort edge). Deliberately
+	// minimal — one plain fetch, fired on parse, and nothing that reads or
+	// writes the visitor's device: no cookies, no storage, no fingerprint. That
+	// is what keeps the banner-free Reichweitenmessung lawful; anything added
+	// here makes a consent banner necessary. The server derives GeoIP, device
+	// class, browser family, referrer reduction and the daily-salted visit dedup,
+	// and rounds the numeric fields (viewport to 100px steps, dpr to 0.5) before
+	// storing — none of it is duplicated here. Nothing is required beyond `path`:
+	// a field the browser cannot supply (Firefox/Safari have no
+	// `navigator.connection`) is sent empty and lands in the server's `??`
+	// bucket rather than failing the ping. This sits as high in <head> as the
+	// charset allows so a visitor who leaves immediately is still measured;
+	// `keepalive` lets the request outlive the page, and the empty catch is
+	// deliberate — analytics must never surface an error to a reader. The
+	// endpoint answers 204 always (success, rejection and DNT alike), so the
+	// page never reacts and never retries. Visitors sending DNT or Sec-GPC are
+	// not measured at all. Design doc: scratch/raum-beacon-analytics-plan.md in
+	// MCP storage; snippet spec: nAlytics `docs/beacon-snippet.md`.
 	//
 	// KNOWN AND ACCEPTED (2026-09-13): on the home LAN this makes Chrome raise
 	// its Local Network Access prompt — "raum.com wants to access other devices
@@ -129,19 +138,22 @@ export class Site {
 	// publicly from the LAN too (a subdomain outside the local proxy's zone).
 	beacon() {
 		return `<script>
-window.addEventListener('load', function () {
-  fetch('https://nport.raum.com/analytics/ping', {
-    method: 'POST',
-    keepalive: true,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      path: location.pathname,
-      referrer: document.referrer || '',
-      lang: navigator.language || '',
-      w: window.innerWidth | 0
-    })
-  }).catch(function () {});
-});
+(function () {
+	fetch('https://nport.raum.com/analytics/ping', {
+		method: 'POST',
+		keepalive: true,
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			path: location.pathname,
+			referrer: document.referrer || '',
+			lang: navigator.language,
+			w: innerWidth,
+			h: innerHeight,
+			dpr: devicePixelRatio,
+			conn: navigator.connection ? navigator.connection.effectiveType : ''
+		})
+	}).catch(function () {});
+})();
 </script>`;
 	}
 
@@ -163,6 +175,7 @@ window.addEventListener('load', function () {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${pageTitle}</title>
+${this.beacon()}
 ${description ? `<meta name="description" content="${esc(description)}">\n` : ''}<link rel="canonical" href="${esc(this.canonical || '')}">
 ${links ? links + '\n' : ''}${xDefault ? xDefault + '\n' : ''}${og}
 ${ld}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}
@@ -176,7 +189,6 @@ ${this.chrome(lang, alternates, langFallback)}
 ${body}
 </main>
 ${this.footer(lang)}
-${this.beacon()}
 </body>
 </html>`;
 	}
