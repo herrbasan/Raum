@@ -11,7 +11,7 @@ authors:
     role: human
   - id: kimi-k3
     role: ai
-  - id: deepseek-v4
+  - id: deepseek-v4-pro
     role: ai
   - id: glm-5-2
     role: translator

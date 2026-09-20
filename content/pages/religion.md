@@ -10,7 +10,7 @@ authors:
     role: human
   - id: kimi-k3
     role: ai
-  - id: deepseek-v4
+  - id: deepseek-v4-pro
     role: ai
 tags:
   - religion

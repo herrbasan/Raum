@@ -8,7 +8,7 @@ version: 2026-09-09
 authors:
   - id: david-a-renelt
     role: human
-  - id: gemini-3.8-flash
+  - id: gemini-3-8-flash
     role: ai
 tags:
   - ai

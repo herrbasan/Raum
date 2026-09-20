@@ -244,7 +244,8 @@ ${this.footer(lang)}
 	// Inline Person (name + url + stable @id) for author chains — matches the visible process footer.
 	personNode(id) {
 		const a = this.manifest.authors?.find((x) => x.id === id);
-		return { '@type': 'Person', '@id': `${this.baseUrl}/authors/${id}/#person`, name: a?.name || id, url: `${this.baseUrl}/authors/${id}/` };
+		if (!a) throw new Error(`Unknown author id "${id}" — fix the frontmatter or add it to manifest.authors.`);
+		return { '@type': 'Person', '@id': `${this.baseUrl}/authors/${id}/#person`, name: a.name, url: `${this.baseUrl}/authors/${id}/` };
 	}
 
 	breadcrumbList(items) {
@@ -315,7 +316,9 @@ ${this.footer(lang)}
 	/* ---------------- shared blocks ---------------- */
 
 	authorName(id) {
-		return this.manifest.authors?.find((a) => a.id === id)?.name || id;
+		const a = this.manifest.authors?.find((x) => x.id === id);
+		if (!a) throw new Error(`Unknown author id "${id}" — fix the frontmatter or add it to manifest.authors.`);
+		return a.name;
 	}
 
 	bylineAuthors(post, lang) {
