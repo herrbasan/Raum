@@ -75,7 +75,7 @@ function build() {
 		add(`de/writing/${p.slug}/index.html`, site.post(p.slug, 'de'));
 	}
 
-	add('llms.txt', buildLlmsTxt(manifest));
+	add('llms.txt', buildLlmsTxt(manifest, site));
 	add('sitemap.xml', buildSitemap(manifest, [...pages.keys()]));
 
 	// --- write generated pages ---
@@ -137,7 +137,7 @@ function buildSitemap(manifest, outPaths) {
 	return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`;
 }
 
-function buildLlmsTxt(manifest) {
+function buildLlmsTxt(manifest, site) {
 	const u = (p) => `${BASE_URL}${p}`;
 	const L = [];
 	L.push(`# RAUM`);
@@ -204,7 +204,7 @@ function buildLlmsTxt(manifest) {
 	L.push(``);
 	L.push(`## Arena (${u('/arena/')})`);
 	L.push(``);
-	L.push(`Frame: ${manifest.arena.frame}`);
+	L.push(`Frame: ${site.frag('arena-lead', 'en').subtitle}`);
 	L.push(``);
 	L.push(`Landmark sessions:`);
 	L.push(``);

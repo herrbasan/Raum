@@ -381,16 +381,16 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 .essay-byline p { margin: 0; }
 .essay-byline p + p { margin-top: 0.2rem; color: var(--text-faint); }
 
-/* md-blocks: media figure (hero et al.) */
-.essay-body figure.mb-image { margin: 0 0 3rem; }
-.essay-body figure.mb-image img { display: block; width: 100%; height: auto; }
-.essay-body figure.mb-image figcaption {
+/* md-blocks: media figure (hero et al.) — any page, not just essay bodies */
+figure.mb-image { margin: 0 0 3rem; }
+figure.mb-image img { display: block; width: 100%; height: auto; }
+figure.mb-image figcaption {
   font-family: var(--sans);
   font-size: 0.95rem;
   color: var(--text-faint);
   margin-top: 0.5rem;
 }
-.essay-body figure.mb-image figcaption p { margin: 0; }
+figure.mb-image figcaption p { margin: 0; }
 
 .status-note {
   font-family: var(--sans);

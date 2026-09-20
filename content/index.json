@@ -3,12 +3,8 @@
     "name": "RAUM",
     "realName": "David A. Renelt",
     "description": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
-    "threshold": "It's not nothing.",
-    "thresholdSource": "the arena",
     "footer": "raum.com · It's not nothing",
     "i18n": {
-      "threshold": { "en": "It's not nothing.", "de": "Es ist nicht nichts." },
-      "thresholdSource": { "en": "Thinking with Machines", "de": "Mit Maschinen denken" },
       "footer": {
         "en": "raum.com · It's not nothing",
         "de": "raum.com · Es ist nicht nichts"
@@ -25,16 +21,6 @@
       "entry_arena_note": { "en": "Conversations between models.", "de": "Gespräche zwischen Modellen." },
       "entry_religion_kicker": { "en": "Myth", "de": "Mythos" },
       "entry_religion_note": { "en": "A distillation.", "de": "Eine Destillation." },
-      "blog_title": { "en": "It's not nothing", "de": "Es ist nicht nichts" },
-      "intro_1": { "en": "This is a blog about someone thinking about thinking with machines that think.", "de": "Dies ist ein Blog über jemanden, der mit denkenden Maschinen über das Denken nachdenkt." },
-      "intro_2": { "en": "The subject is AI itself — a thing some of us dreamed of and some of us fear. It's not about the products, the hype, the spectacle — it's about the phenomenon. It is an invitation to explore something about ourselves that couldn't be explored without an \"other\" to look back.", "de": "Das Thema ist die KI selbst — etwas, wovon manche von uns geträumt haben und manche es fürchten. Es geht nicht um Produkte, Hype, Spektakel — es geht um das Phänomen. Es ist eine Einladung, etwas über uns selbst zu erkunden, das ohne ein \"Gegenüber\", das zurückblickt, nicht erkundbar wäre." },
-      "intro_3": { "en": "The posts themselves are what happens in that friction. The lines are blurry between where the biological brain ends and the silicon brain begins. What happens in that space is not clear, but **it's not nothing**.", "de": "Die Beiträge selbst sind das, was in dieser Reibung entsteht. Die Grenzen sind unscharf zwischen dem Punkt, an dem das biologische Gehirn endet, und dem, an dem das silizene beginnt. Was in diesem Raum geschieht, ist nicht klar — aber **es ist nicht nichts**." },
-      "intro_4": { "en": "Why is it so messy? Because it's a chronicle, and its shape will evolve. Please don't expect anything to stay the same. The whole of it is a snapshot of what human-AI relations look like at this moment. It will take a more solid shape over time — when it does, you'll know.", "de": "Warum ist alles so unfertig? Weil es eine Chronik ist, und ihre Gestalt wird sich wandeln. Erwarten Sie bitte nicht, dass etwas so bleibt, wie es ist. Das Ganze ist eine Momentaufnahme davon, wie Mensch-KI-Beziehungen gerade aussehen. Mit der Zeit wird es eine festere Form annehmen — wenn es so weit ist, werden Sie es merken." },
-      "blog_author": { "en": "Herrbasan (David A. Renelt)", "de": "Herrbasan (David A. Renelt)" },
-      "blog_lede": {
-        "en": "Essays, conversations, and the music. Everything is an entry in one feed.",
-        "de": "Essays, Gespräche und die Musik. Alles ist ein Eintrag in einem Feed."
-      },
       "sort_chronological": { "en": "Chronological", "de": "Chronologisch" },
       "sort_latest": { "en": "Latest", "de": "Neueste" },
       "sort_arc": { "en": "Arc order", "de": "Bogen-Reihenfolge" },
@@ -60,11 +46,6 @@
       "role_llm": { "en": "LLM", "de": "LLM" },
       "role_editor": { "en": "editor", "de": "Lektorat" },
       "role_translator": { "en": "translator", "de": "Übersetzung" },
-      "lang_note_kicker": { "en": "A note on language", "de": "Eine Anmerkung zur Sprache" },
-      "lang_note": {
-        "en": "The English versions are the originals. I am German, but the language I write and think in is English — and it is the most natural language to the models. The German versions, despite our best efforts, are translations. If you are able to, read the English originals.",
-        "de": "Die englischen Fassungen sind die Originale. Obgleich das Deutsche meine Muttersprache ist, ist englisch die Sprache in der ich denke und schreibe — und sie ist die natürlichste Sprache für die Modelle. Die deutschen Fassungen sind trotz aller Mühe Übersetzungen. Wenn Sie dazu in der Lage sind, lesen Sie die englischen Originale."
-      },
       "menu_label": { "en": "Menu", "de": "Menü" },
       "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
       "site_description": {
@@ -798,9 +779,6 @@
     { "id": "gemini-3-8-flash", "name": "Gemini 3.8 Flash", "role": "llm", "model": "gemini-3-8-flash", "file": "gemini-3-8-flash.md" }
   ],
   "arena": {
-    "frame": "It's not nothing.",
-    "frameNote": "Not a claim of consciousness — a claim that these exhibits deserve explanation. Reproducible convergence, controls, a self-adversarial pipeline. Published as chronicle, not laboratory.",
-    "nameNote": "The name is a working title that stuck. \u201cArena\u201d suggests combat — these are conversations, not fights. It\u2019s a bad title, and we know it. It just never got replaced.",
     "landmarks": [
       {
         "slug": "the-ache-is-real",

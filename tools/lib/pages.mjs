@@ -10,8 +10,6 @@ import { markdownToHtml } from './md.mjs';
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
 	(c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-const escStrong = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-
 // Minimal frontmatter scrape for the process footer (authors/dates).
 function scrapeMeta(md) {
 	const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -108,6 +106,46 @@ export class Site {
 		if (s) { subtitle = s[1].trim(); i++; }
 		return { title, subtitle, body: lines.slice(i).join('\n').trim() };
 	}
+
+	/* ---------------- page fragments ---------------- */
+
+	// Page chrome as canonical markdown (canonical in storage raum.com/,
+	// mirrored to content/pages/). Format: optional frontmatter, an H1 title,
+	// an italic subtitle line, then the body. A root-level `---` opens an extra
+	// section, each optionally titled by an H2 (used as that block's label).
+	parseFragment(mdText) {
+		const { title, subtitle, body } = this.splitPage(mdText);
+		const chunks = body.split(/^\s*---\s*$/m);
+		const sections = chunks.slice(1).map((s) => {
+			const m = s.trim().match(/^##\s+(.+?)\r?\n([\s\S]*)$/);
+			return m ? { heading: m[1].trim(), body: m[2].trim() } : { heading: '', body: s.trim() };
+		});
+		return { title, subtitle, body: chunks[0].trim(), sections };
+	}
+
+	// Memoized loader. `name` is the file base in content/pages/ (home,
+	// writing-lead, arena-lead); DE reads `{name}_de.md`. The file set is part
+	// of the build — a missing fragment throws from read().
+	frag(name, lang) {
+		if (!this._frags) this._frags = new Map();
+		const key = `${name}:${lang}`;
+		if (!this._frags.has(key)) {
+			const file = lang === 'de' ? `${name}_de.md` : `${name}.md`;
+			this._frags.set(key, this.parseFragment(this.read(`content/pages/${file}`)));
+		}
+		return this._frags.get(key);
+	}
+
+	// Inline markdown for single-paragraph slots (ledes, notes): render, then
+	// unwrap the single outer <p>.
+	mdInline(md) {
+		const html = markdownToHtml(md).trim();
+		const m = html.match(/^<p>([\s\S]*)<\/p>$/);
+		return m ? m[1] : html;
+	}
+
+	// Plain text for meta descriptions: render inline, strip tags.
+	mdText(md) { return this.mdInline(md).replace(/<[^>]+>/g, ''); }
 
 	/* ---------------- document shell ---------------- */
 
@@ -362,6 +400,8 @@ ${this.footer(lang)}
 
 	home(lang) {
 		const { site } = this.manifest;
+		const frag = this.frag('home', lang);
+		const langNote = frag.sections[0];
 		const entry = (kicker, title, note, href) => `
 		<a class="entry" href="${esc(href)}">
 			<p class="entry-kicker">${esc(this.t(lang, kicker))}</p>
@@ -370,31 +410,31 @@ ${this.footer(lang)}
 		</a>`;
 		const body = `
 	<div class="home">
-		<p class="threshold">${esc(site.threshold)}</p>
-		<p class="threshold-source">${esc(this.t(lang, 'thresholdSource'))}</p>
-		<div class="page-intro">
-			<p>${escStrong(this.t(lang, 'intro_2'))}</p>
-			<p>${escStrong(this.t(lang, 'intro_3'))}</p>
-			<p>${escStrong(this.t(lang, 'intro_4'))}</p>
-		</div>
+		<p class="threshold">${esc(frag.title)}</p>
+		<p class="threshold-source">${esc(frag.subtitle)}</p>
+		<div class="page-intro">${this.renderMd(frag.body, lang, { images: '/content/pages/images/', tts: '/content/audio/' })}</div>
 		<div class="entry-points">
 			${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', this.url(lang, '/writing/'))}
 			${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '/arena/')}
 			${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', this.url(lang, '/religion/'))}
 		</div>
-		${lang === 'de' ? `
+		${langNote ? `
 		<div class="lang-note">
-			<p class="lang-note-kicker">${esc(this.t(lang, 'lang_note_kicker'))}</p>
-			<p class="lang-note-text">${esc(this.t(lang, 'lang_note'))}</p>
+			<p class="lang-note-kicker">${esc(langNote.heading)}</p>
+			<p class="lang-note-text">${this.mdInline(langNote.body)}</p>
 		</div>` : ''}
 	</div>`;
 		return this.doc({
 			lang, title: '', description: this.t(lang, 'site_description'),
-			alternates: [{ hreflang: 'en', href: '/' }, { hreflang: 'de', href: '/de/' }],
+			alternates: [
+				{ type: 'text/markdown', href: `/content/pages/${lang === 'de' ? 'home_de.md' : 'home.md'}` },
+				{ hreflang: 'en', href: '/' },
+				{ hreflang: 'de', href: '/de/' },
+			],
 			graph: [...this.siteNodes(), {
 				'@type': 'WebPage',
 				'@id': `${this.canonical}#webpage`, url: this.canonical,
-				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: this.t(lang, 'site_description'),
+				name: `${site.name} — ${frag.title}`, description: this.t(lang, 'site_description'),
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 			}],
 			body,
@@ -426,21 +466,22 @@ ${this.footer(lang)}
 			</a>
 		</li>`;
 		}).join('');
+		const frag = this.frag('writing-lead', lang);
 		const body = `
 	<div class="writing">
-		<h1 class="page-title">${esc(this.t(lang, 'blog_title'))}</h1>
-		<p class="page-author">${esc(this.t(lang, 'blog_author'))}</p>
-		<p class="page-lede">${esc(this.t(lang, 'blog_lede'))}</p>
+		<h1 class="page-title">${esc(frag.title)}</h1>
+		<p class="page-author">${esc(frag.subtitle)}</p>
+		<p class="page-lede">${this.mdInline(frag.body)}</p>
 		<ul class="post-list">${items}</ul>
 	</div>`;
 		return this.doc({
-			lang, title: this.t(lang, 'blog_title'), description: this.t(lang, 'blog_lede'),
+			lang, title: frag.title, description: this.mdText(frag.body),
 			alternates: [{ hreflang: 'en', href: '/writing/' }, { hreflang: 'de', href: '/de/writing/' }],
 			graph: [...this.siteNodes(),
 				{ '@type': 'Blog', '@id': `${this.canonical}#blog`, url: this.canonical,
-					name: this.t(lang, 'blog_title'), description: this.t(lang, 'blog_lede'),
+					name: frag.title, description: this.mdText(frag.body),
 					inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` }, publisher: this.publisherRef() },
-				this.breadcrumbList([this.homeCrumb(lang), { name: this.t(lang, 'blog_title') }]),
+				this.breadcrumbList([this.homeCrumb(lang), { name: frag.title }]),
 			],
 			body,
 		});
@@ -448,6 +489,9 @@ ${this.footer(lang)}
 
 	arena() {
 		const { arena } = this.manifest;
+		const frag = this.frag('arena-lead', 'en');
+		const frame = frag.sections[0];
+		const description = `${frag.subtitle} ${this.mdText(frame.body)}`;
 		const row = (l) => `
 		<li class="arena-item">
 			<a class="arena-link" href="/arena/${esc(l.slug)}/">
@@ -461,22 +505,22 @@ ${this.footer(lang)}
 		const evidence = (arena.evidence || []).map(row).join('');
 		const body = `
 	<div class="arena">
-		<h1 class="page-title">Arena</h1>
-		<p class="page-lede">${esc(arena.frame)}</p>
-		<p class="arena-name-note">${esc(arena.nameNote)}</p>
+		<h1 class="page-title">${esc(frag.title)}</h1>
+		<p class="page-lede">${esc(frag.subtitle)}</p>
+		<p class="arena-name-note">${this.mdInline(frag.body)}</p>
 		<div class="arena-case">
-			<p class="arena-case-label">The frame</p>
-			<p>${esc(arena.frameNote)}</p>
+			<p class="arena-case-label">${esc(frame.heading)}</p>
+			${this.renderMd(frame.body, 'en')}
 		</div>
 		<h2 class="arena-h2">Landmark sessions</h2>
 		<ul class="arena-list">${items}</ul>
 		${evidence ? `<h2 class="arena-h2">Evidence</h2><ul class="arena-list">${evidence}</ul>` : ''}
 	</div>`;
 		return this.doc({
-			lang: 'en', title: 'Arena', description: `${arena.frame} ${arena.frameNote}`, alternates: [],
+			lang: 'en', title: frag.title, description, alternates: [],
 			graph: [...this.siteNodes(),
 				{ '@type': 'CollectionPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
-					name: 'Arena', description: `${arena.frame} ${arena.frameNote}`,
+					name: frag.title, description,
 					inLanguage: 'en', isPartOf: { '@id': `${this.baseUrl}/#website` },
 					hasPart: [...(arena.landmarks || []), ...(arena.evidence || [])]
 						.map((l) => ({ '@id': `${this.baseUrl}/arena/${l.slug}/#dataset` })) },
@@ -612,7 +656,7 @@ ${this.footer(lang)}
 			},
 			this.breadcrumbList([
 				this.homeCrumb(lang),
-				{ name: this.t(lang, 'blog_title'), url: `${this.baseUrl}${this.url(lang, '/writing/')}` },
+				{ name: this.frag('writing-lead', lang).title, url: `${this.baseUrl}${this.url(lang, '/writing/')}` },
 				{ name: de?.title || post.title },
 			]),
 		];

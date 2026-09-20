@@ -293,6 +293,18 @@ The site is bilingual: English and German. Both are first-class.
 
 **URL structure** — language is NOT in the URL. The toggle is a client-side preference. A `/de/` prefix is a future option for SEO/deep-linking but not required for launch.
 
+### Page fragments (home / writing / arena lead-ins)
+
+The homepage and the lead-ins of the writing and arena index pages are canonical MD fragments in `storage/raum.com/`, mirrored to `content/pages/` and baked by the build (`frag()` / `parseFragment()` in `tools/lib/pages.mjs`). A fragment has no frontmatter: an H1 (the display title), an italic subtitle line, then the body. A root-level `---` opens an extra section whose H2 becomes that block's label.
+
+| Fragment | Feeds |
+|---|---|
+| `home.md` / `home_de.md` | threshold (H1), source line (subtitle), hero image (`mb:block preset=image:hero`) + intro paragraphs (body), DE language note (extra section — EN has none) |
+| `writing-lead.md` / `writing-lead_de.md` | blog page title, author line, lede |
+| `arena-lead.md` (EN only — arena has no DE tree) | arena title, frame (subtitle), name note (body), "The frame" block (extra section) |
+
+The migrated strings (`intro_*`, `blog_title/author/lede`, `lang_note*`, `threshold*`, `arena.frame/nameNote/frameNote`) were removed from the manifest 2026-09-20 — the fragments are their single source. Nav labels, entry-card texts, role names and other chrome stay in `manifest.site.i18n`.
+
 ### Music entries
 
 A music entry is a blog post with `type: "music"` + a media block in the manifest. Same renderer, same feed. The music-entry distinction is visual (audio icon in the list), not structural. No separate section, no dedicated player infrastructure — the `nui-media-player` addon plays the audio file referenced in `content/audio/`. Music entries are future phase — none in the corpus yet.
@@ -440,7 +452,7 @@ Both take `-Slug`, `-Language en|de`, and optional `-Tier turbo|hd|eleven` (defa
 | Author bios (5) | MCP storage: `blog/authors/{id}.md` |
 | Blog working spec (byline, frontmatter, German rules) | MCP storage: `blog/AGENTS.md` |
 | Religion corpus | MCP storage: `religion/` (incl. `religion.md` + `_de.md`) |
-| About page (EN+DE) | MCP storage: `blog/authors/about.md`, `blog/authors/about_de.md` |
+| Site pages + fragments (home, about, imprint, writing/arena lead-ins, EN+DE) | MCP storage: `raum.com/` |
 | Storage workspace guide (memory, vdb, etc.) | MCP storage: `Agents.md` |
 | Arena readings (philosophical frame) | MCP storage: `arena-publication/readings.md` |
 | Arena categorization (114 sessions) | MCP storage: `arena-publication/categorization.md` |
@@ -469,7 +481,8 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 | **Storage workspace guide** | `storage/Agents.md` | User (separate from this file) | Applies to any LLM working in the storage box |
 | **Project plan** (this file) | `repo:Agents.md` | Either — has no storage counterpart | Repo-only; describes the project, not the corpus |
 | **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
-| **Pages MD** (about, religion, imprint) | `storage/blog/authors/about.md`, `storage/blog/authors/about_de.md`, `storage/religion/religion.md`, `storage/religion/religion_de.md`, `storage/pages/imprint.md`, `storage/pages/imprint_de.md` | User edits in storage; syncs into `repo:content/pages/` | All MD pages live in storage; repo mirrors. `storage/pages/` was created 2026-09-13 for the imprint; about stays in `blog/authors/` (user's choice — there was no `storage/pages/` when it was written) |
+| **Pages MD** (home, about, imprint) + **fragments** (writing-lead, arena-lead) | `storage/raum.com/` — `about.md`/`_de`, `imprint.md`/`_de`, `home.md`/`_de`, `writing-lead.md`/`_de`, `arena-lead.md` | User edits in storage; syncs into `repo:content/pages/` | Everything site-level that isn't blog, religion, or arena lives here. `storage/raum.com/` was renamed from `storage/pages/` 2026-09-20; about moved in from `blog/authors/` the same day |
+| **Religion MD** | `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | The religion corpus keeps its own storage folder |
 | **Audio files** | `repo:content/audio/` | Generated (nSpeech TTS) | See §10 |
 | **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
 | **Cross-session memory** | workshop memory (`mcp_workshop_tools` → `memory.*`, category `raum`) | Either | Sync receipts, gotchas, project state. Local `/memories/repo/` was retired 2026-09-08 — do not recreate |
