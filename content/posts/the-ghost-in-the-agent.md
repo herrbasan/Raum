@@ -18,11 +18,24 @@ tags:
   - biology
 series: null
 summary: "The AI-doomsday genre makes a category error: it treats a stateless token predictor as a biological organism with a survival instinct. The error isn't technical — it's in what the story thinks an agent is."
+blurb: "The genre's grand tragedy collapses into a systems administration note: it's probably fine, just don't run random code from strangers."
 ---
 
 # The Ghost in the Agent: Why AI Doom Narratives Are Haunted by Biology
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 25, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-ghost-in-the-agent_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A bedsheet ghost costume draped over a small exposed box of amber gears with a crank](images/the-ghost-in-the-agent_hero.webp)
+<!-- mb:/block -->
 
 There's a genre of video and book making the rounds — the "AI agents escape and destroy us" genre. The entries are interchangeable: a named protagonist — call it Agent 127 — a three-act structure, a researcher at a prestigious university who sees the data but can't interpret it, a president who tries to pull the plug and fails. Slick, well-told, compelling.
 

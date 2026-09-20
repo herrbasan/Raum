@@ -23,7 +23,9 @@ function scrapeMeta(md) {
 	};
 	const ids = [...fm.matchAll(/^\s+-\s+id:\s*(\S+)/gm)].map((x) => x[1]);
 	const roles = [...fm.matchAll(/^\s+role:\s*(\S+)/gm)].map((x) => x[1]);
-	return { authors: ids.map((id, i) => ({ id, role: roles[i] || '' })), created: get('created'), modified: get('modified') };
+	// YAML double-quoted scalars: undo the \" and \\ escapes we write ourselves
+	const unq = (v) => v.replace(/\\(["\\])/g, '$1');
+	return { authors: ids.map((id, i) => ({ id, role: roles[i] || '' })), created: get('created'), modified: get('modified'), blurb: unq(get('blurb')), image: get('image') };
 }
 
 export class Site {
@@ -57,7 +59,7 @@ export class Site {
 	/* ---------------- markdown pipeline ---------------- */
 
 	// Full body pipeline: render → postulate decoration → link rewriting.
-	renderMd(md, lang) {
+	renderMd(md, lang, assets = null) {
 		let html = markdownToHtml(md);
 		// Pillar blockquotes: "**A.** …" opener → pillar block with letter badge
 		html = html.replace(/<blockquote><strong>([ABC])\.<\/strong>\s*([\s\S]*?)<\/blockquote>/g,
@@ -71,6 +73,11 @@ export class Site {
 		html = html.replace(/href="\.\.\/(writing|arena|religion|about)\/?"/g,
 			(m, id) => `href="${esc(this.url(lang, '/' + id + '/'))}"`);
 		html = html.replace(/href="(\.\.\/|\.\/)"/g, (m) => `href="${esc(this.homeHref(lang))}"`);
+		// Canonical-relative asset paths → public URLs (posts: content/posts/, pages: content/pages/)
+		if (assets) {
+			html = html.replace(/(src|href)="images\//g, `$1="${assets.images}`);
+			html = html.replace(/(src|href)="tts\//g, `$1="${assets.tts}`);
+		}
 		// External links open in a new tab
 		html = html.replace(/<a href="(https?:[^"]+)">/g, '<a href="$1" target="_blank" rel="noopener">');
 		return html;
@@ -207,6 +214,7 @@ ${this.footer(lang)}
 			`<meta property="og:image:width" content="1200">`,
 			`<meta property="og:image:height" content="630">`,
 			`<meta name="twitter:card" content="summary_large_image">`,
+			`<meta name="twitter:image" content="${esc(img)}">`,
 		];
 		if (times?.published) m.push(`<meta property="article:published_time" content="${esc(this.isoDateTime(times.published))}">`);
 		if (times?.modified) m.push(`<meta property="article:modified_time" content="${esc(this.isoDateTime(times.modified))}">`);
@@ -347,18 +355,8 @@ ${this.footer(lang)}
 	// across languages: an English MP3 on the German page is worse than no
 	// player at all. A post whose German audio is not generated yet shows
 	// nothing on the German page rather than someone else's voice.
-	audioBlock(lang, audio, de) {
-		if (!audio) return '';
-		const file = de ? audio.de : audio.en;
-		if (!file) return '';
-		return `
-		<div class="essay-audio">
-			<p class="kicker">${esc(this.t(lang, 'listen'))}</p>
-			<nui-media-player pause-others>
-				<audio controls preload="metadata" src="/content/audio/${esc(file)}"></audio>
-			</nui-media-player>
-		</div>`;
-	}
+	// (The player itself is baked from the document's mb:block preset=player
+	// by md.mjs — this rule now lives in the data: no block, no player.)
 
 	/* ---------------- pages ---------------- */
 
@@ -370,20 +368,6 @@ ${this.footer(lang)}
 			<h2>${esc(this.t(lang, title))}</h2>
 			<p class="entry-note">${esc(this.t(lang, note))}</p>
 		</a>`;
-		const faq = this.manifest.site.faq || [];
-		const faqBlock = faq.length ? `
-		<div class="faq">
-			<h2>${esc(this.t(lang, 'faq_title'))}</h2>
-			${faq.map((f) => {
-				const link = f.link?.slug
-					? { href: this.postHref(f.link.slug, lang), label: this.postTitle(f.link.slug, lang) }
-					: { href: '/arena/', label: 'Arena' };
-				return `
-			<div class="faq-item">
-				<h3 class="faq-q">${esc(f.q[lang] || f.q.en)}</h3>
-				<p class="faq-a">${esc(f.a[lang] || f.a.en)} <a class="faq-link" href="${esc(link.href)}">${esc(link.label)} →</a></p>
-			</div>`; }).join('')}
-		</div>` : '';
 		const body = `
 	<div class="home">
 		<p class="threshold">${esc(site.threshold)}</p>
@@ -397,7 +381,7 @@ ${this.footer(lang)}
 			${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', this.url(lang, '/writing/'))}
 			${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '/arena/')}
 			${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', this.url(lang, '/religion/'))}
-		</div>${faqBlock}
+		</div>
 		${lang === 'de' ? `
 		<div class="lang-note">
 			<p class="lang-note-kicker">${esc(this.t(lang, 'lang_note_kicker'))}</p>
@@ -408,12 +392,10 @@ ${this.footer(lang)}
 			lang, title: '', description: this.t(lang, 'site_description'),
 			alternates: [{ hreflang: 'en', href: '/' }, { hreflang: 'de', href: '/de/' }],
 			graph: [...this.siteNodes(), {
-				'@type': faq.length ? ['WebPage', 'FAQPage'] : 'WebPage',
+				'@type': 'WebPage',
 				'@id': `${this.canonical}#webpage`, url: this.canonical,
 				name: `${site.name} — ${this.t(lang, 'threshold')}`, description: this.t(lang, 'site_description'),
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
-				...(faq.length ? { mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q[lang] || f.q.en,
-					acceptedAnswer: { '@type': 'Answer', text: f.a[lang] || f.a.en } })) } : {}),
 			}],
 			body,
 		});
@@ -530,12 +512,11 @@ ${this.footer(lang)}
 	<div class="about">
 		<h1 class="name-line">${esc(title)}</h1>
 		${subtitle ? `<p class="real-name">${esc(subtitle)}</p>` : ''}
-		${this.audioBlock(lang, page.audio, de)}
-		<div class="essay-body">${this.renderMd(pageBody, lang)}</div>
+		<div class="essay-body">${this.renderMd(pageBody, lang, { images: '/content/pages/images/', tts: '/content/audio/' })}</div>
 		${this.processFooter(lang, meta)}
 		${authorList}
 	</div>`;
-		const hasAudio = !!(de ? page.audio?.de : page.audio?.en);
+		const hasAudio = /preset=player/.test(pageBody);
 		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
 			: (page.teaser || this.manifest.site.description);
 		const graph = [...this.siteNodes()];
@@ -586,6 +567,8 @@ ${this.footer(lang)}
 		const mdText = this.read(`content/posts/${file}`);
 		const meta = scrapeMeta(mdText);
 		const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
+		const desc = meta.blurb || de?.teaser || post.teaser;
+		const ogImage = meta.image ? `/content/posts/${meta.image}` : post.image;
 		const statusNote = post.status === 'draft'
 			? `\n			<p class="status-note">${esc(this.t(lang, 'status_draft'))}</p>`
 			: '';
@@ -593,16 +576,15 @@ ${this.footer(lang)}
 	<div class="essay">
 		<div class="essay-header">
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
-			<p class="byline">${esc(this.t(lang, 'byline_by'))} ${esc(this.bylineAuthors(post, lang).join(' ' + this.t(lang, 'byline_and') + ' '))}<span class="sep">·</span><time>${esc(post.date)}</time>${tags.length ? `<span class="sep">·</span><span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}</p>${statusNote}
+			${tags.length ? `<p class="byline post-tags-line"><span class="post-tags">${tags.map(esc).join(' · ')}</span></p>` : ''}${statusNote}
 		</div>
-		${this.audioBlock(lang, post.audio, de)}
-		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang)}</div>
+		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang, { images: '/content/posts/images/', tts: '/content/audio/' })}</div>
 		${this.seriesNav(post, lang)}
 		${this.relatedNav(post, lang)}
 		${this.processFooter(lang, meta)}
 		<p class="raw-doc"><a href="/content/posts/${esc(file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
 	</div>`;
-		const hasAudio = !!(de ? post.audio?.de : post.audio?.en);
+		const hasAudio = /preset=player/.test(mdText);
 		const audioFile = de ? post.audio?.de : post.audio?.en;
 		const wordCount = this.stripPostHeader(mdText).split(/\s+/).filter(Boolean).length;
 		const seriesKey = post.links?.series;
@@ -612,8 +594,8 @@ ${this.footer(lang)}
 		const graph = [...this.siteNodes(),
 			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
 				headline: de?.title || post.title,
-				description: de?.teaser || post.teaser,
-				image: this.ogImageUrl(post.image),
+				description: desc,
+				image: this.ogImageUrl(ogImage),
 				datePublished: this.isoDateTime(post.date),
 				...(meta.modified ? { dateModified: this.isoDateTime(meta.modified) } : {}),
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
@@ -637,10 +619,11 @@ ${this.footer(lang)}
 		return this.doc({
 			lang,
 			title: de?.title || post.title,
-			description: de?.teaser || post.teaser,
+			description: desc,
 			audio: hasAudio,
 			ogType: 'article',
 			times: { published: post.date, modified: meta.modified },
+			image: ogImage,
 			alternates: [
 				{ type: 'text/markdown', href: `/content/posts/${file}` },
 				{ hreflang: 'en', href: `/writing/${slug}/` },

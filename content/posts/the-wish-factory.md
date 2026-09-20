@@ -18,11 +18,24 @@ tags:
   - wish-engineering
 series: null
 summary: "AI is approaching the point where a precise wish is enough to make it true — and the genie stories were right: the danger was never that the wish won't come true, but that it will come true exactly as spoken."
+blurb: "We've had thousands of years of practice being careful what we wish for — in stories. Now we practice for real, at production scale."
 ---
 
 # The Wish Factory
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 28, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-wish-factory_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A loose amber scribble funneled through a dark monolith, emerging as a measured row of identical wireframe cubes](images/the-wish-factory_hero.webp)
+<!-- mb:/block -->
 
 We used to tell children that having a wish doesn't make it true. It was a gentle lesson in the limits of desire. The world doesn't bend to what you want. Wanting is easy. Doing is hard.
 

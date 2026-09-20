@@ -19,11 +19,24 @@ tags:
   - regulation
 series: null
 summary: "The whole framework of responsibility assumes the signer can verify the work — and AI breaks that assumption. The mistakes aren't the story; the framework is."
+blurb: "A million road deaths a year is a statistic; a single autonomous-vehicle death is a scandal."
 ---
 
 # AI Makes Mistakes
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 31, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/ai-makes-mistakes_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A large amber rubber stamp pressing a seal onto a page of dense unreadable scrawl, an unused magnifying glass lying beside it](images/ai-makes-mistakes_hero.webp)
+<!-- mb:/block -->
 
 Everyone is staring at the mistakes. "AI makes mistakes" — true, and almost completely uninteresting. Humans make mistakes too. The interesting question was never whether the tool errs. It's what the errors reveal.
 

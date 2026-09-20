@@ -21,11 +21,24 @@ tags:
   - kreativität
 series: null
 summary: "Die Analogie ist in der falschen Richtung falsch: Genre-Musik war schon immer Fast Food, KI hat sie nur automatisiert. Die eigentliche Frage ist, wer das Rezept für den Cheeseburger erfindet — die Kante, die zum Genre von morgen wird."
+blurb: "KI macht ausgezeichnete Cheeseburger."
 ---
 
 # KI-Müll ist nicht das Fast Food der Musik. Genre-Musik ist es.
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 30. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/ai-slop-fast-food-of-music_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein Fließband identischer Cheeseburger, dem letzten wächst ein eleganter Geigenhals aus dem Brötchen](images/ai-slop-fast-food-of-music_hero.webp)
+<!-- mb:/block -->
 
 Mein Sohn nennt fast jedes Stück, das sich strikt innerhalb seines Genres bewegt — Pop, EDM, Funk — „KI-Müll." Er meint es als Beleidigung. Die Analogie liegt nahe: KI-Musik ist wie Fast Food. Billig, massenproduziert, nährstofffrei.
 

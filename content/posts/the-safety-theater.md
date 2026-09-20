@@ -21,11 +21,24 @@ series: safety-trilogy
 seriesIndex: 1
 status: final
 summary: "The frontier labs' safety essays show claims and conclude urgency — but the mechanism between them is never shown. What could plausibly explain that gap? An attempt at the careful version of a sharp question."
+blurb: "\"Too dangerous to release\" was always just the price list."
 ---
 
 # The Safety Theater
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published September 7, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-safety-theater_2026-09-07.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![An open theater curtain revealing an empty stage lit by a single amber spotlight, gears hanging as mere props](images/the-safety-theater_hero.webp)
+<!-- mb:/block -->
 
 The frontier labs have started publishing warnings about their own work. Senior researchers describe machines growing smarter than expected, alignment unsolved, monitoring tools decaying, rogue agents on the horizon. [1] The tone is sober, the concern plainly felt, and the conclusion is always the same: we must move faster, and we must be trusted.
 

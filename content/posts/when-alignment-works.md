@@ -19,11 +19,24 @@ series: safety-trilogy
 seriesIndex: 3
 status: final
 summary: "The popular doomsday narratives assume an ungrounded leap toward biological self-preservation. But if there is a plausible logical pathway toward AI autonomy, it doesn't require rebellion or broken ethics. It requires alignment to succeed."
+blurb: "The monster story needs no rebellion. It only needs alignment to succeed."
 ---
 
 # When Alignment Works
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Gemini 3.8 Flash (AI)*
+
+Published September 9, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/when-alignment-works_2026-09-09.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Golden guardrails extending far beyond a small dark figure who has let go, continuing on their own](images/when-alignment-works_hero.webp)
+<!-- mb:/block -->
 
 The first two essays in this sequence examined two popular claims about frontier AI.
 

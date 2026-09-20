@@ -21,11 +21,24 @@ tags:
   - denken
 series: null
 summary: "Man gibt einer KI dieselbe Aufgabe zweimal, beschreibt sie beim zweiten Mal besser — und der Unterschied ist brutal. Der Prompt ist nicht der Input; der Gedanke ist es. Und der bewegliche Teil ist man selbst."
+blurb: "Man kann vor dem Mittagessen hundertmal im Detail scheitern und zahlt ein paar Cent dafür."
 ---
 
 # Ich bin der limitierende Faktor
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 28. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/im-the-limiting-factor_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein breiter Fluss oranger Linien, gezwängt durch eine winzige dunkle Öffnung, tritt als dünnes Rinnsal wieder aus](images/im-the-limiting-factor_hero.webp)
+<!-- mb:/block -->
 
 Ein einfacher Versuch. Man gibt einer KI eine Aufgabe. Dann gibt man ihr dieselbe Aufgabe noch einmal — aber beschreibt sie besser.
 

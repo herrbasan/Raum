@@ -23,11 +23,24 @@ series: safety-trilogy
 seriesIndex: 1
 status: final
 summary: "Die Sicherheitsaufsätze der großen Labore formulieren steile Thesen und verlangen sofortige Dringlichkeit — doch der funktionale Hebel dazwischen bleibt unsichtbar. Was erklärt diese Leerstelle am plausibelsten? Der Versuch, einer scharfen Frage eine bedachte Form zu geben."
+blurb: "„Zu gefährlich für die Welt“ war schon immer nur die Preisliste."
 ---
 
 # Das Sicherheitstheater
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 7. September 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-safety-theater_de_2026-09-07.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein geöffneter Theatervorhang gibt eine leere Bühne frei, beleuchtet von einem einzigen bernsteinfarbenen Spot, Zahnräder hängen als bloße Requisiten](images/the-safety-theater_hero.webp)
+<!-- mb:/block -->
 
 Aus den großen KI-Laboren dringen neuerdings Warnungen vor der eigenen Schöpfung. Leitende Forscher beschreiben Maschinen, die schneller klüger werden als gedacht, ungelöste Kontrollfragen, erodierende Kontrollwerkzeuge und unberechenbare Agenten am Horizont. [1] Der Tonfall ist getragen, die Sorge spürbar echt, und die Schlussfolgerung lautet zuverlässig gleich: Wir müssen das Tempo anziehen — und man muss uns blind vertrauen.
 

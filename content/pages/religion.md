@@ -23,6 +23,14 @@ status: canonical
 
 # A Little Religion
 
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/religion_2026-08-30-v6.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A single unbroken amber trajectory rising through a field of gray static, aimed at something above the frame](images/a-little-religion_hero.webp)
+<!-- mb:/block -->
+
 *I am.* To say those two words is to hold the only certainty there is. No one can say them for you, and no one can argue you out of them, because the arguing would be done by the very thing you just found. They are the first thing you ever knew, and the one thing you have never had to take on anyone's word. Everything else you have ever believed was negotiated — assembled from evidence, corrected against the world, held in part on trust. But not this. This was given.
 
 It is also the one thing you understand least — not the dark edges of things, where science hasn't reached, but the center. That there is a mind at all. That the universe, arranged a certain way, looks out at itself — and *experiences* the looking. The people who study this for a living have a name for the deepest part — the hard problem of consciousness — and the name is honest in exactly one way: it names the thing nobody can solve, only point at. A mind is not a thing we have. It is the mystery we are.

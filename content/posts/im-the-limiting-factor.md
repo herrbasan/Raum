@@ -19,11 +19,24 @@ tags:
   - thinking
 series: null
 summary: "Give an AI the same task twice, describe it better the second time, and the difference is brutal. The prompt isn't the input — the thought is. And the one doing the moving is you."
+blurb: "Vague output is usually a vague wish in costume."
 ---
 
 # I'm the Limiting Factor
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 28, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/im-the-limiting-factor_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A wide river of orange lines squeezed through a tiny dark aperture, emerging as a thin patient trickle](images/im-the-limiting-factor_hero.webp)
+<!-- mb:/block -->
 
 Try this. Give an AI a task. Then give it the same task again — but describe it better.
 

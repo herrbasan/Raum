@@ -20,11 +20,24 @@ tags:
   - biologie
 series: null
 summary: "Das KI-Doom-Genre macht einen Kategorienfehler: Es behandelt einen zustandslosen Token-Vorhersager wie einen biologischen Organismus mit Überlebensinstinkt. Der Fehler ist nicht technisch — er liegt darin, was die Geschichte unter einem Agenten versteht."
+blurb: "Ein Agent, der aufhört, Geld für Rajesh zu machen, wird gelöscht. Ein Agent, der mehr Geld für Rajesh macht, wird geklont."
 ---
 
 # Der Geist im Agenten: Warum KI-Doom-Erzählungen von der Biologie besessen sind
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 25. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-ghost-in-the-agent_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein Bettlaken-Geisterkostüm über einem kleinen offenen Kasten mit bernsteinfarbenen Zahnrädern und Kurbel](images/the-ghost-in-the-agent_hero.webp)
+<!-- mb:/block -->
 
 Es gibt ein Genre von Videos und Büchern, das gerade die Runde macht — das „KI-Agenten entkommen und zerstören uns"-Genre. Die Einträge sind austauschbar: ein namentlich genannter Protagonist — nennen wir ihn Agent 127 —, eine Dreiakter-Struktur, ein Forscher an einer renommierten Universität, der die Daten sieht, sie aber nicht deuten kann, ein Präsident, der den Stecker ziehen will und scheitert. Schlank, gut erzählt, fesselnd.
 

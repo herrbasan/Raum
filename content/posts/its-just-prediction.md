@@ -19,11 +19,24 @@ tags:
   - mind
 series: null
 summary: "It just predicts the next word — but the word 'just' does all the work. To predict a physics paper you need something that behaves like a model of physics, and the door between us and the machine doesn't need to be open. It needs to not be locked."
+blurb: "The part of you that explains your choices is not the part that makes them. It's a press secretary, not an author."
 ---
 
 # It's Just Prediction
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 28, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/its-just-prediction_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A row of small dominoes mid-fall, the last piece an ornate amber cathedral](images/its-just-prediction_hero.webp)
+<!-- mb:/block -->
 
 You're right. It just predicts the next word.
 

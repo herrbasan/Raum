@@ -23,11 +23,20 @@ series: safety-trilogy
 seriesIndex: 4
 status: final
 summary: "Ein CEO entwirft ein Bremskartell, ein Forscher kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer Woche, alles mit Verweis auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?"
+blurb: "Ein CEO, ein Whistleblower, ein Senator und ein Rivale entdeckten in derselben Woche dieselbe Gefahr. Keiner nannte den Mechanismus. Also haben wir gefragt."
 ---
 
 # Was wollen Sie damit sagen?
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 13. September 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Vier korallenfarbene Pfeile aus den Ecken verschwinden in einer formlosen Nebelwolke ohne Zentrum](images/what-are-you-implying_hero.webp)
+<!-- mb:/block -->
 
 In den ersten drei Teilen dieser Reihe habe ich argumentiert: Die Warnungen vor einer existenziellen Bedrohung benennen nie den Mechanismus. Der Begriff „Alignment“ trägt zwei gegensätzliche Bedeutungen zugleich. Und der einzige plausible Weg zu maschineller Autonomie führt nicht über ein Scheitern des Alignments, sondern über seinen Erfolg.
 

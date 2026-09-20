@@ -21,11 +21,24 @@ tags:
   - automatisierung
 series: null
 summary: "Intelligenz ist ungleich verteilt, und wir haben eine stillschweigende Übereinkunft, nicht darüber zu reden. KI schafft nicht die Ungleichheit — sie nimmt uns die Fähigkeit, sie weiter zu ignorieren."
+blurb: "Intelligenz ist ungleich verteilt, und wir haben eine stillschweigende Übereinkunft, nicht darüber zu reden."
 ---
 
 # Der Bruch
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 10. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-rupture_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine glatte, ebene Oberfläche mit einem gezackten Riss, der darunter Säulen von wild ungleicher Höhe freigibt](images/the-rupture_hero.webp)
+<!-- mb:/block -->
 
 Intelligenz ist ungleich verteilt, und wir haben eine stillschweigende Übereinkunft, nicht darüber zu reden.
 

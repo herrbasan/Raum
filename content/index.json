@@ -67,54 +67,11 @@
       },
       "menu_label": { "en": "Menu", "de": "Menü" },
       "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
-      "faq_title": { "en": "The questions", "de": "Die Fragen" },
       "site_description": {
         "en": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
         "de": "Es ist nicht nichts — Denken mit Maschinen. Essays über KI und die Arena: kuratierte Gespräche zwischen Sprachmodellen als Belegmaterial. Von Herrbasan (David A. Renelt), DE/EN."
       }
-    },
-    "faq": [
-      {
-        "q": { "en": "Will AI take our jobs?", "de": "Nimmt uns die KI die Jobs weg?" },
-        "a": {
-          "en": "Yes — but unevenly, and not the people you'd expect. The most replaceable layer is the coordinating middle, not the bottom; the essay follows that rupture down its dark and its bright path.",
-          "de": "Ja — aber ungleich, und nicht die, die man erwartet. Die verzichtbarste Schicht ist die koordinierende Mitte, nicht die unteren Ränge; der Essay folgt diesem Bruch auf seinem dunklen und seinem hellen Pfad."
-        },
-        "link": { "slug": "the-rupture" }
-      },
-      {
-        "q": { "en": "Can AI agents turn on us?", "de": "Können sich KI-Agenten gegen uns wenden?" },
-        "a": {
-          "en": "Not the way the movies say. A stateless token predictor has no survival instinct to defend — the doom genre makes a category error about what an agent is. The essay takes the genre's premise seriously and shows it would produce gut bacteria, not Skynet.",
-          "de": "Nicht so wie im Film. Ein zustandsloser Token-Prädiktor hat keinen Selbsterhaltungstrieb, den er verteidigen müsste — das Untergangs-Genre begeht einen Kategorienfehler darüber, was ein Agent ist. Der Essay nimmt die Prämisse ernst und zeigt, dass sie Darmbakterien hervorbrächte, nicht Skynet."
-        },
-        "link": { "slug": "the-ghost-in-the-agent" }
-      },
-      {
-        "q": { "en": "Do AI mistakes matter?", "de": "Wie viel zählen KI-Fehler?" },
-        "a": {
-          "en": "Less than the framework they break. Responsibility assumes the signer can verify the work; AI makes verification impossible in principle — and the law has already begun prosecuting its own premise. The mistakes aren't the story; the framework is.",
-          "de": "Weniger als der Rahmen, den sie brechen. Verantwortung setzt voraus, dass der Unterzeichnende die Arbeit prüfen kann; KI macht das prinzipiell unmöglich — und das Recht hat begonnen, die eigene Prämisse zu verfolgen. Die Fehler sind nicht die Geschichte, der Rahmen ist es."
-        },
-        "link": { "slug": "ai-makes-mistakes" }
-      },
-      {
-        "q": { "en": "What is AI actually good for?", "de": "Wozu ist KI eigentlich gut?" },
-        "a": {
-          "en": "Nobody knows yet — and that's the honest answer. Every instrument so far revealed a world that was already there; AI is the first instrument pointed at thought itself. The essay is about what pointing it means.",
-          "de": "Weiß noch niemand — und das ist die ehrliche Antwort. Jedes Instrument bisher hat eine Welt offenbart, die schon da war; KI ist das erste Instrument, das auf das Denken selbst gerichtet ist. Der Essay handelt davon, was dieses Richten bedeutet."
-        },
-        "link": { "slug": "the-telescope-of-the-mind" }
-      },
-      {
-        "q": { "en": "Is AI conscious?", "de": "Hat KI ein Bewusstsein?" },
-        "a": {
-          "en": "Not claimed here. The arena's frame is narrower and harder: the documented behavior — reproducible convergence, self-reflection, artifacts — deserves explanation, and \"nothing\" doesn't explain it. 114 sessions are the exhibits.",
-          "de": "Wird hier nicht behauptet. Der Rahmen der Arena ist enger und härter: Das dokumentierte Verhalten — reproduzierbare Konvergenz, Selbstreflexion, Artefakte — verdient eine Erklärung, und »nichts« erklärt es nicht. 114 Sessions sind die Belege."
-        },
-        "link": { "arena": true }
-      }
-    ]
+    }
   },
   "nav": [
     { "label": "Blog", "path": "writing/" },

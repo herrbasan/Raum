@@ -19,11 +19,24 @@ tags:
   - randomness
 series: null
 summary: "Temperature isn't a creativity dial — it's an accident budget. Intelligence needs disturbance, but only as much as someone is there to catch it."
+blurb: "My sloppy typing is, by accident, tuned near the sweet spot."
 ---
 
 # How Much Wrong Does Intelligence Need?
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published July 25, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/how-much-wrong-does-intelligence-need_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![An amber line dipping off its path into a woven safety net that catches fallen dots, a gauge needle set carefully low above](images/how-much-wrong-does-intelligence-need_hero.webp)
+<!-- mb:/block -->
 
 *Or: what temperature actually is, and why almost everyone gets it backwards.*
 

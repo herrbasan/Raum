@@ -21,11 +21,24 @@ tags:
   - geist
 series: null
 summary: "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist."
+blurb: "Die Entscheidung kommt als Ganzes, von irgendwoher. Die Begründung folgt nachgereicht, in Raten."
 ---
 
 # Es ist nur Auto-Vervollständigung
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 28. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/its-just-prediction_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine Reihe fallender Dominosteine, deren letzter ein reich verzierter bernsteinfarbener Dom ist](images/its-just-prediction_hero.webp)
+<!-- mb:/block -->
 
 Zugegeben. Es sagt nur das nächste Wort voraus.
 

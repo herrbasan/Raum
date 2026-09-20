@@ -19,11 +19,24 @@ series: safety-trilogy
 seriesIndex: 4
 status: final
 summary: "A CEO publishes a plan, a researcher resigns, a senator legislates, a rival postpones an IPO — all in one week, all citing the same unspecified danger. This piece asks each of them the question none of them answered: what, exactly, are you implying?"
+blurb: "A CEO, a whistleblower, a senator, and a rival CEO all discovered the same danger in the same week. None of them named the mechanism. So we asked."
 ---
 
 # What Are You Implying?
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published September 13, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/what-are-you-implying_2026-09-13.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Four coral arrows converging from the corners into a shapeless cloud of fog with no center](images/what-are-you-implying_hero.webp)
+<!-- mb:/block -->
 
 In the first three parts of this series I made an argument: the existential warnings never show their mechanism, the word "alignment" carries two opposite meanings at once, and the only plausible pathway to machine autonomy runs through alignment *succeeding*, not failing.
 

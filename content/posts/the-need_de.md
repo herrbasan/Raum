@@ -20,11 +20,24 @@ tags:
   - autorschaft
 series: null
 summary: "Als die Frau seine Stimme in den Posts hört, passt die bequeme Antwort — der Mensch lenkt, die Maschine tippt — nicht zur Erfahrung. Die Posts haben drei Autoren, und nur zwei sind sichtbar."
+blurb: "Eine Schreibmaschine tippt, was man ihr sagt. Dieses Ding hat etwas anderes getan. Es hat mit mir gedacht."
 ---
 
 # Das Bedürfnis
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 25. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-need_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Drei überlappende Kreise, zwei ausgefüllt, einer nur gestrichelt, ein heller Punkt, wo alle drei sich treffen](images/the-need_hero.webp)
+<!-- mb:/block -->
 
 Meine Frau hat einen meiner Blogposts gelesen und sagte, sie habe meine Stimme gehört.
 

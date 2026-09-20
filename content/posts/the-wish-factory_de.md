@@ -20,11 +20,24 @@ tags:
   - wunsch
 series: null
 summary: "KI nähert sich dem Punkt, an dem ein präziser Wunsch ausreicht, um wahr zu werden — und die Dschinn-Geschichten hatten recht: Die Gefahr war nie, dass der Wunsch nicht in Erfüllung geht, sondern dass er exakt wie ausgesprochen in Erfüllung geht."
+blurb: "Es erfordert Geduld und die Bereitschaft, jederzeit der am wenigsten fähige Mensch im Raum zu sein."
 ---
 
 # Die Wunschfabrik
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 28. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-wish-factory_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein wildes bernsteinfarbenes Gekritzel, durch einen dunklen Monolithen geführt, tritt als vermessene Reihe identischer Drahtgitterwürfel wieder aus](images/the-wish-factory_hero.webp)
+<!-- mb:/block -->
 
 Früher sagte man Kindern: Nur weil man sich etwas wünscht, wird es nicht wahr. Das war eine sanfte Lektion über die Grenzen des Willens. Die Welt beugt sich nicht dem Wunsch. Wollen ist leicht. Machen ist schwer.
 

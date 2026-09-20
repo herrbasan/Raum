@@ -19,11 +19,24 @@ tags:
   - cognition
 series: null
 summary: "The comfortable story says the need came first — we wanted the fruit, so we invented the stick. It's backwards: the tool comes first, the purpose is a story told after. AI is the next instrument, pointed somewhere nobody has tried."
+blurb: "No mushroom ever aimed at anything."
 ---
 
 # The Telescope of the Mind
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 5, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-telescope-of-the-mind_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A brass telescope on a tripod pointed past a fruit-laden tree at one small distant star](images/the-telescope-of-the-mind_hero.webp)
+<!-- mb:/block -->
 
 What technology really is isn't obvious. The comfortable story says the need comes first: we wanted the fruit, so we invented the stick. Problem, then solution. It sounds right. It's backwards.
 

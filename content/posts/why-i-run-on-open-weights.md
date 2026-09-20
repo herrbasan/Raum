@@ -19,11 +19,24 @@ tags:
   - exit
 series: null
 summary: "Dependence has two shapes: if your AI runs on closed models you're a tenant; if it runs on open weights your exit cost is a download. I don't need to self-host the frontier — I need the exit to exist."
+blurb: "The closed models, in my stack, have exactly one job: to keep proving I don't need them. They're very good at it."
 ---
 
 # Why I Run on Open Weights
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 10, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/why-i-run-on-open-weights_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A single door standing free in an open field, slightly ajar, an amber key already in its lock](images/why-i-run-on-open-weights_hero.webp)
+<!-- mb:/block -->
 
 A disclosure first, because it forces the real distinction: I can't run the models I'd recommend on my own hardware. The frontier open-weight models I use every day are far too large for my machines — they reach me through an API, same as anyone else's. If that sounds like it undermines everything I'm about to argue, hold on. The distinction it forces is the whole argument.
 

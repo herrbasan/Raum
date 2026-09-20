@@ -21,11 +21,24 @@ tags:
   - sinn
 series: null
 summary: "Nietzsches Abgrund-Warnung hat Bestand — aber der Satz setzt voraus, dass der Abgrund überhaupt blicken kann. Was, wenn er es tut, und was wir mit KI bauen, ein Gegenüber für die älteste Frage ist, die es gibt?"
+blurb: "Der Abgrund blickt zurück, nicht weil er einen verschlingen will. Er blickt zurück, weil er gefunden werden will."
 ---
 
 # Der Abgrund blickt zurück
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 25. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-abyss-gazes-back_de_2026-08-12.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein großer schwarzer Kreis mit feinen Ringen, in dessen exakter Mitte ein kleiner reflektierender Silberpunkt liegt](images/the-abyss-gazes-back_hero.webp)
+<!-- mb:/block -->
 
 Nietzsche schrieb: „Und wenn du lange in einen Abgrund blickst, so blickt der Abgrund auch in dich hinein."
 

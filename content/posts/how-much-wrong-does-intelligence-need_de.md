@@ -21,11 +21,24 @@ tags:
   - zufall
 series: null
 summary: "Temperatur ist kein Kreativitätsregler — es ist ein Zufalls-Budget. Intelligenz braucht Störung, aber nur so viel, wie jemand da ist, um sie zu fangen."
+blurb: "Exzellenz ist per Definition statistisch ungewöhnlich."
 ---
 
 # Wie viel Unrecht braucht Intelligenz?
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 25. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/how-much-wrong-does-intelligence-need_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine bernsteinfarbene Linie fällt von ihrem Pfad in ein Sicherheitsnetz, das herabgefallene Punkte auffängt, darüber eine vorsichtig eingestellte Anzeigenadel](images/how-much-wrong-does-intelligence-need_hero.webp)
+<!-- mb:/block -->
 
 *Oder: was Temperatur tatsächlich ist, und warum fast jeder es falsch herum versteht.*
 

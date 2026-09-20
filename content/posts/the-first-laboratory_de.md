@@ -22,11 +22,24 @@ series: null
 related:
   - the-hand-that-draws-itself
 summary: "Eine Kindheitsentdeckung — eine Innenwelt mit genau einem Betrachter — ist das älteste Labor überhaupt. Der Standpunkt mag eine Illusion sein, aber eine Illusion, die existiert, ist ein Datum — und der Grund, warum KI nie nur eine Technologiegeschichte war."
+blurb: "Alleinlage ist ein Privileg und ein methodisches Desaster."
 ---
 
 # Das erste Labor
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 12. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-first-laboratory_de_2026-08-12.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine Kerzenflamme wirft einen kleinen Lichtkreis mit einem winzigen Beobachter darin, umgeben von gewaltiger Dunkelheit](images/the-first-laboratory_hero.webp)
+<!-- mb:/block -->
 
 Manche meiner frühesten Erinnerungen gehören einem Labor, zu dem nur ich Zutritt hatte.
 

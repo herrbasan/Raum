@@ -21,11 +21,24 @@ tags:
   - regulierung
 series: null
 summary: "Alle starren auf die Fehler, aber die Fehler waren nie das Problem — das Rahmenwerk war es. Verantwortung setzt voraus, dass der Unterzeichner die Arbeit prüfen kann, und KI bricht diese Annahme."
+blurb: "Das Theater hat nicht mit KI begonnen."
 ---
 
 # KI macht Fehler
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Veröffentlicht am 31. Juli 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/ai-makes-mistakes_de_2026-09-08.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein großer bernsteinfarbener Stempel drückt ein Siegel auf eine Seite dichten, unleserlichen Gekritzels, eine unbenutzte Lupe liegt daneben](images/ai-makes-mistakes_hero.webp)
+<!-- mb:/block -->
 
 Alle starren auf die Fehler. „KI macht Fehler" — stimmt, und fast völlig uninteressant. Menschen machen auch Fehler. Die interessante Frage war nie, ob das Werkzeug irrt. Sondern, was die Irrtümer offenbaren.
 

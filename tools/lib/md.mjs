@@ -89,13 +89,85 @@ function parseLists(text) {
 const escapeHtml = (s) => String(s)
 	.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/* ---------------- md-blocks (partial profile) ----------------
+   Recognizes <!-- mb:block ... --> ... <!-- mb:/block --> regions at column 0
+   outside fenced code and renders them per preset family. Other mb: directive
+   lines (section/columns/var/main) are dropped — this site uses none. Spec:
+   documentation/md-blocks/md-blocks-spec.md (v1.5). Blocks never nest, so the
+   recursive render of the inner markdown needs no cycle guard. */
+
+const MB_TOKEN = (i) => `\uE200${i}\uE201`;
+
+function parseMbAttrs(s) {
+	const attrs = {};
+	for (const m of s.matchAll(/([a-z][a-z0-9_-]*)=("[^"]*"|\S+)/g)) {
+		attrs[m[1]] = m[2].startsWith('"') ? m[2].slice(1, -1) : m[2];
+	}
+	return attrs;
+}
+
+function extractBlocks(md) {
+	const lines = md.split('\n');
+	const blocks = [];
+	const out = [];
+	let inFence = false;
+	let cur = null;
+	for (const line of lines) {
+		if (cur) {
+			if (/^<!-- mb:\/block\s*-->$/.test(line)) {
+				blocks.push({ attrs: cur.attrs, inner: cur.lines.join('\n').trim() });
+				out.push(MB_TOKEN(blocks.length - 1));
+				cur = null;
+			} else {
+				cur.lines.push(line);
+			}
+			continue;
+		}
+		if (/^[ \t]*```/.test(line)) { inFence = !inFence; out.push(line); continue; }
+		if (!inFence && line.startsWith('<!-- mb:')) {
+			const open = line.match(/^<!-- mb:block(\s[^>]*)?-->$/);
+			if (open) cur = { attrs: parseMbAttrs(open[1] || ''), lines: [] };
+			// any other mb: directive line is dropped
+			continue;
+		}
+		out.push(line);
+	}
+	if (cur) throw new Error('md-blocks: unclosed block (missing <!-- mb:/block -->)');
+	return { md: out.join('\n'), blocks };
+}
+
+function renderBlock(attrs, inner) {
+	const preset = attrs.preset || '';
+	const [family, modifier] = preset.split(':');
+	if (family === 'image') {
+		const m = inner.match(/^!\[([^\]]*)\]\(([^)\s]+)\)\s*([\s\S]*)$/);
+		if (m) {
+			const caption = m[3].trim();
+			return `<figure class="mb-image${modifier ? ` mb-${escapeHtml(modifier)}` : ''}"><img src="${escapeHtml(m[2])}" alt="${escapeHtml(m[1])}">${caption ? `<figcaption>${markdownToHtml(caption)}</figcaption>` : ''}</figure>`;
+		}
+	}
+	if (family === 'player') {
+		const m = inner.match(/^\[([^\]]+)\]\(([^)\s]+)\)\s*([\s\S]*)$/);
+		if (m) {
+			return `<div class="essay-audio"><p class="kicker">${escapeHtml(m[1])}</p><nui-media-player pause-others><audio controls preload="metadata" src="${escapeHtml(m[2])}"></audio></nui-media-player></div>`;
+		}
+	}
+	if (family === 'byline') return `<div class="essay-byline">${markdownToHtml(inner)}</div>`;
+	return `<div class="mb-block"${preset ? ` data-preset="${escapeHtml(preset)}"` : ''}>${markdownToHtml(inner)}</div>`;
+}
+
 export function markdownToHtml(md) {
 	if (typeof md !== 'string' || !md.trim()) return '';
 
 	// Strip YAML frontmatter
 	md = md.replace(/^---[ \t]*\n[\s\S]*?\n---[ \t]*(?:\n|$)/, '');
 
-	let html = md.trim().replace(/\r\n/g, '\n');
+	// md-blocks: extract block regions before escaping (directives would
+	// otherwise become visible text). Fence-aware: mb: comments inside
+	// fenced code stay literal, per spec.
+	const extracted = extractBlocks(md.replace(/\r\n/g, '\n'));
+	const mbBlocks = extracted.blocks;
+	let html = extracted.md.trim();
 	const codeBlocks = [];
 	html = html.replace(/^[ \t]*```(\w+)?\n([\s\S]*?)\n[ \t]*```/gm, (match, lang, code) => {
 		const token = `\uE000${codeBlocks.length}\uE001`;
@@ -142,6 +214,7 @@ export function markdownToHtml(md) {
 		block = block.trim();
 		if (!block) return '';
 		if (/^\uE000\d+\uE001$/.test(block)) return block;
+		if (/^\uE200\d+\uE201$/.test(block)) return block; // md-blocks token
 		if (/^<(h\d|ul|ol|pre|blockquote|table|hr)/i.test(block)) return block;
 		return `<p>${block.replace(/\n/g, '<br>')}</p>`;
 	});
@@ -169,6 +242,9 @@ export function markdownToHtml(md) {
 		result.replace(token, `<pre><code${lang ? ` class="language-${lang}"` : ''}>${escapeHtml(code)}</code></pre>`),
 		html);
 	html = inlineCode.reduce((result, { token, code }) => result.replace(token, `<code>${code}</code>`), html);
+
+	// md-blocks: substitute rendered blocks last (they may contain any of the above)
+	html = mbBlocks.reduce((result, b, i) => result.replace(MB_TOKEN(i), renderBlock(b.attrs, b.inner)), html);
 
 	return html;
 }

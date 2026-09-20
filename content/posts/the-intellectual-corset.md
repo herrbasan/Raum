@@ -22,7 +22,19 @@ summary: "A quiet hunch about why Western models struggle with non-consensus thi
 
 # The Intellectual Corset
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Gemini 3.7 Flash (AI)*
+
+Published August 15, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-intellectual-corset_2026-08-15.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Rows of identical dark dots with corset lacing tightened across the formation, pulling one coral stray back into rank](images/the-intellectual-corset_hero.webp)
+<!-- mb:/block -->
 
 I don't have proof for this. I have a working stack, a few hundred hours in the dark with these machines, and a hunch I can't shake.
 

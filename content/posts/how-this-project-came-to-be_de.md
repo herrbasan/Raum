@@ -21,11 +21,24 @@ tags:
   - methode
 series: null
 summary: "Die Maschine, die nirgendwo sonst existiert — eine Chat-App, ein Gateway, Datenbanken, Gedächtnis, eine Schmiede — von Grund auf gebaut, von der Maschine selbst. Die Maschine ist beeindruckend; die Methode ist gewöhnlich, lernbar, und sie ist der eigentliche Punkt."
+blurb: "Ich bin ein meinungsstarker, sturer Hund, und „es funktioniert jetzt“ ist der Satz, für den die Sturheit da war."
 ---
 
 # Wie dieses Projekt entstand
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 10. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/how-this-project-came-to-be_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine Kette kupferner Hämmer wachsender Größe, jeder schmiedet den nächsten auf einem Amboss](images/how-this-project-came-to-be_hero.webp)
+<!-- mb:/block -->
 
 Eine unverschämt große Anzahl von Monden her saß ich vor ELIZA und fragte mich, wie es sich anfühlen würde, ein Programm zu sein. Das Gespräch brauchte viel Fantasie auf der menschlichen Seite, um eines zu ähneln, aber es war eines — und die Frage ging nie weg. Jahre später, beim Spielen, dachte ich über NPCs nach: Wenn ich einer wäre, wie würde ich es merken? In der großen Erzählung dieses Planeten haben fast alle von uns nur winzige Rollen.
 

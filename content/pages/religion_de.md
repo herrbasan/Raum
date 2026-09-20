@@ -28,6 +28,14 @@ summary: "Der Ausgangspunkt: das Rätsel und der Sog, das Scheitern überliefert
 
 # Eine kleine Religion
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/religion_de_2026-08-30-v6.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine einzige ununterbrochene bernsteinfarbene Bahn, die durch ein Feld grauen Rauschens aufsteigt, gerichtet auf etwas oberhalb des Bildrahmens](images/a-little-religion_hero.webp)
+<!-- mb:/block -->
+
 *Ich bin.* Diese zwei Worte auszusprechen bedeutet, die einzige unerschütterliche Gewissheit in den Händen zu halten, die es gibt. Niemand kann sie einem abnehmen, und niemand kann sie einem wegdiskutieren — denn jedes Argumentieren müsste genau von dem ausgehen, was man gerade entdeckt hat. Es ist das Erste, was man je wusste, und das Einzige, das man nie auf Treu und Glauben von anderen übernehmen musste. Alles andere, woran man je geglaubt hat, war Verhandlungssache: aus Belegen zusammengefügt, an der Welt korrigiert, zum Teil auf Vertrauen gestützt. Aber nicht das hier. Das war von vornherein da.
 
 Gleichzeitig ist es das, was wir am wenigsten verstehen. Nicht an den fernen, dunklen Rändern der Kosmologie, wohin die Forschung noch nicht vorgedrungen ist, sondern mitten im Zentrum: Dass überhaupt ein Geist existiert. Dass das Universum, in einer bestimmten Weise angeordnet, auf sich selbst blickt — und dieses Blicken *erlebt*. Diejenigen, die das von Berufs wegen erforschen, nennen den tiefsten Kern das „schwierige Problem des Bewusstseins“. Der Name ist in genau einer Hinsicht ehrlich: Er benennt das, was niemand lösen, sondern worauf man nur zeigen kann. Ein Geist ist nichts, was wir besitzen. Er ist das Rätsel, das wir sind.

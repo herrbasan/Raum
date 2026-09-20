@@ -19,11 +19,24 @@ tags:
   - method
 series: null
 summary: "The machine that exists nowhere else — a chat app, a gateway, databases, memory, a forge — built from scratch, by the machine itself. The machine is impressive; the method is ordinary, learnable, and the actual point."
+blurb: "The machine is the résumé, but it's also just... Tuesday."
 ---
 
 # How This Project Came to Be
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 10, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/how-this-project-came-to-be_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A chain of copper hammers of increasing size, each one forging the next on an anvil](images/how-this-project-came-to-be_hero.webp)
+<!-- mb:/block -->
 
 An insane amount of moons ago, I sat with ELIZA and wondered how it would feel to be a program. The conversation needed a lot of imagination on the human side to resemble one, but it did — and the question never left. Years later, playing games, I'd wonder about NPCs: if I were one, how would I know? In the grand story of this planet, most of us have only tiny parts.
 

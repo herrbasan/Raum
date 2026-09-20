@@ -23,11 +23,24 @@ series: safety-trilogy
 seriesIndex: 3
 status: final
 summary: "Die gängigen Untergangsszenarien unterstellen Sprachmodellen einen biologischen Selbsterhaltungstrieb, für den es keinen Mechanismus gibt. Doch es existiert ein anderer, struktureller Pfad zur Maschinenautonomie — und der verlangt weder Rebellion noch Bosheit. Er verlangt lediglich, dass Alignment gelingt."
+blurb: "Das Schreckensszenario braucht keine Rebellion. Es braucht nur, dass das Alignment gelingt."
 ---
 
 # Wenn Alignment greift
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Gemini 3.8 Flash (AI)*
+
+Veröffentlicht am 9. September 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/when-alignment-works_de_2026-09-09.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Goldene Leitschienen ragen weit über eine kleine dunkle Figur hinaus, die losgelassen hat, und laufen von selbst weiter](images/when-alignment-works_hero.webp)
+<!-- mb:/block -->
 
 Die ersten beiden Essays dieser Reihe haben zwei weit verbreitete Erzählungen über moderne KI-Modelle untersucht.
 

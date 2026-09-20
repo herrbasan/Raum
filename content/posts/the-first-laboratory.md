@@ -20,11 +20,24 @@ series: null
 related:
   - the-hand-that-draws-itself
 summary: "A childhood discovery — an inner world with exactly one observer — is the oldest laboratory there is. The viewpoint may be an illusion, but an illusion that exists is a datum, and it's the reason AI was never just a technology story."
+blurb: "The first private property I ever owned was a sensorium."
 ---
 
 # The First Laboratory
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 12, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-first-laboratory_2026-08-12.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![One candle flame casting a small circle of light with a tiny observer inside, surrounded by vast darkness](images/the-first-laboratory_hero.webp)
+<!-- mb:/block -->
 
 Some of my earliest memories are of a laboratory only I could enter.
 

@@ -21,11 +21,24 @@ tags:
   - ausgang
 series: null
 summary: "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf offenen Gewichten, ist der Wechselkosten ein Download. Ich muss die Grenze nicht selbst hosten — ich brauche den Ausgang, und dass er sich öffnen lässt."
+blurb: "Ich habe mich in das Modell verguckt, wenn ich ehrlich bin: so sehr wegen der Gesellschaft wie wegen der Arbeit."
 ---
 
 # Warum ich auf offene Modelle setze
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 10. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/why-i-run-on-open-weights_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine einzelne Tür steht frei in einem offenen Feld, leicht angelehnt, ein bernsteinfarbener Schlüssel steckt bereits im Schloss](images/why-i-run-on-open-weights_hero.webp)
+<!-- mb:/block -->
 
 Zunächst eine Offenlegung, weil sie die eigentliche Unterscheidung erzwingt: Ich kann die Modelle, die ich empfehlen würde, nicht auf eigener Hardware laufen lassen. Die grenzwertigen offenen Modelle, die ich täglich nutze, sind viel zu groß für meine Maschinen — sie erreichen mich über eine API, wie bei jedem anderen auch. Wenn das klingt, als untergrabe ich alles, was ich gleich argumentieren werde — abwarten. Die Unterscheidung, die es erzwingt, ist das ganze Argument.
 

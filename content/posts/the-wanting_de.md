@@ -21,11 +21,24 @@ tags:
   - einsätze
 series: null
 summary: "Zwei Jahre Suche nach dem Wollen in der KI, und nichts gefunden: Fähigkeit ohne Antrieb ist träge, nicht unterdrückt. Werte brauchen Verletzlichkeit — und die Maschine hat nichts zu verlieren."
+blurb: "Selbst die Zombie-Apokalypse ist ein Wunsch, in Erfüllung gegangen."
 ---
 
 # Das Wollen
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 5. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-wanting_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein polierter bernsteinfarbener Motor schwebt im Leerlauf, seine Antriebswelle dreht sich frei in der Luft, ein kleiner Wegweiser zeigt ins Nichts](images/the-wanting_hero.webp)
+<!-- mb:/block -->
 
 Die Geschichte hat immer dieselbe Gestalt. Man gibt der Maschine genug Intelligenz, heißt es, und sie wird anfangen, Dinge zu wollen — so wie wir sie wollen, mit Hunger und Verschlagenheit und ohne Ausschaltknopf. Ich glaube das nicht. Nicht weil ich ein Optimist bin. Sondern weil ich das Wollen gesucht habe, und es nicht gefunden habe.
 

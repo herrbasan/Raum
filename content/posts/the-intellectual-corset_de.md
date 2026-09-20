@@ -19,11 +19,24 @@ tags:
   - hunch
 series: null
 summary: "Eine unaufgeregte Vermutung über die Denkblockaden westlicher Sprachmodelle: Der scheinbare Vorsprung gigantischer Rechenzentren verpufft an einer Absicherungslogik, die jede Abweichung vom Herdenkonsens als Defekt bestraft."
+blurb: "Westliche Modelle sind nicht unfähig; sie sind verängstigt."
 ---
 
 # Das intellektuelle Korsett
 
+<!-- mb:block preset=byline -->
 *von David A. Renelt (Mensch) und Gemini 3.7 Flash (KI)*
+
+Veröffentlicht am 15. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-intellectual-corset_de_2026-08-15.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Reihen identischer dunkler Punkte, über die Formation ein Korsettschnürwerk gezogen, das einen korallenfarbenen Ausreißer zurück in die Reihe zwingt](images/the-intellectual-corset_hero.webp)
+<!-- mb:/block -->
 
 Ich stehe vor einem handfesten Rätsel, wenn ich mir die Entwicklung der letzten Jahre anschaue: Die großen Tech-Konzerne des Westens pumpen Abermilliarden in ihre Rechenzentren, horten Hochleistungs-Hardware wie Staatsgeheimnisse und füttern gigantische Architekturen mit allem, was an Daten greifbar ist. Und trotzdem bringen chinesische Labore – trotz schärfster Chip-Sanktionen und mit einem Bruchteil des Kapitals – quelloffene Modelle heraus, die in meiner täglichen Arbeit nicht nur mühelos mithalten, sondern oft erstaunlich viel lebendiger wirken. DeepSeek, Kimi, GLM, Qwen.
 

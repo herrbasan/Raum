@@ -19,11 +19,24 @@ tags:
   - stakes
 series: null
 summary: "Two years of looking for the wanting in AI and never finding it: capability without drive is inert, not suppressed. Values require vulnerability — and the machine has nothing to lose."
+blurb: "The machine that passes the bar exam cannot tell you what it wants for dinner — there is no dinner, and there is no wanting."
 ---
 
 # The Wanting
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 5, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-wanting_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A polished amber engine floating idle, its driveshaft spinning free in empty air, a small signpost pointing nowhere](images/the-wanting_hero.webp)
+<!-- mb:/block -->
 
 The story is always the same shape. Give the machine enough intelligence, it goes, and it will start to want things — want them the way we want them, with hunger and cunning and no off-switch. I don't buy it. Not because I'm an optimist. Because I went looking for the wanting, and I couldn't find it.
 

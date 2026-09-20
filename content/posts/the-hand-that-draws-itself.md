@@ -19,11 +19,24 @@ tags:
   - illusion
 series: null
 summary: "The boundary between self and world is a provable illusion — yet thought itself depends on it. A structured lie that produces a real capacity is the most suspicious fact in the universe."
+blurb: "You are a committee, and most of the members don't share your DNA."
 ---
 
 # The Hand That Draws Itself
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 30, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-hand-that-draws-itself_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A single unbroken amber line spiraling inward and becoming the pen that draws it](images/the-hand-that-draws-itself_hero.webp)
+<!-- mb:/block -->
 
 You are not separate from your surroundings. You never were.
 

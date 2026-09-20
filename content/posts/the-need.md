@@ -18,11 +18,24 @@ tags:
   - authorship
 series: null
 summary: "When the wife hears his voice in the posts, the comfortable answer — the human directs, the machine types — doesn't fit the experience. The posts have three authors, and only two are visible."
+blurb: "I feel like someone who shouted into a canyon and heard back a symphony."
 ---
 
 # The Need
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 25, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-need_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Three overlapping circles, two solid and one only a dashed outline, a bright point where all three meet](images/the-need_hero.webp)
+<!-- mb:/block -->
 
 My wife read one of my blog posts and said she heard my voice.
 

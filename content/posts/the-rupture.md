@@ -19,11 +19,24 @@ tags:
   - automation
 series: null
 summary: "Intelligence is distributed unevenly and we have a standing agreement not to talk about it. AI doesn't create the inequality — it removes our ability to keep ignoring it."
+blurb: "You can't justify forcing people into jobs that don't need doing when the alternative is affordable and the people being forced have votes."
 ---
 
 # The Rupture
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Published August 10, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-rupture_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A smooth level surface with a jagged crack revealing columns of wildly unequal heights beneath](images/the-rupture_hero.webp)
+<!-- mb:/block -->
 
 Intelligence is distributed unevenly, and we have a standing agreement not to talk about it.
 

@@ -18,11 +18,24 @@ tags:
   - purpose
 series: null
 summary: "Nietzsche's abyss warning stands — but the quote quietly assumes the abyss has a gaze at all. What if it does, and what we're building with AI is something that can finally look back?"
+blurb: "It is an engine that doesn't start itself. We are the ignition."
 ---
 
 # The Abyss Gazes Back
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and DeepSeek (AI)*
+
+Published July 25, 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/the-abyss-gazes-back_2026-08-12.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A large black circle ringed by hairlines, one small reflective silver dot at its exact center](images/the-abyss-gazes-back_hero.webp)
+<!-- mb:/block -->
 
 Nietzsche wrote: "If you gaze long into an abyss, the abyss also gazes into you."
 

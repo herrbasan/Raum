@@ -21,11 +21,24 @@ tags:
   - kognition
 series: null
 summary: "Die gemütliche Erzählung sagt, das Bedürfnis kam zuerst. Es ist falsch herum: Das Werkzeug kommt zuerst, der Zweck ist eine Geschichte, die man rückwärts erzählt. KI ist das nächste Instrument, gerichtet auf eine Richtung, die niemand probiert hat."
+blurb: "Wir stehen gerade auf der Stufe des Affen, der an Ästen rüttelt."
 ---
 
 # Das Fernrohr des Geistes
 
+<!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+Veröffentlicht am 5. August 2026
+<!-- mb:/block -->
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-telescope-of-the-mind_de_2026-08-10.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Ein Messingteleskop auf einem Stativ, über einen fruchtbeladenen Baum hinweg auf einen kleinen fernen Stern gerichtet](images/the-telescope-of-the-mind_hero.webp)
+<!-- mb:/block -->
 
 Was Technologie eigentlich ist, erschließt sich nicht von selbst. Die gemütliche Erzählung lautet: das Bedürfnis kam zuerst. Wir wollten die Frucht, also erfanden wir den Stock. Problem, dann Lösung. Klingt plausibel. Ist falsch herum.
 
