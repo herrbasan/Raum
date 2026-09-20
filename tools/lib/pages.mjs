@@ -107,6 +107,14 @@ export class Site {
 		return { title, subtitle, body: lines.slice(i).join('\n').trim() };
 	}
 
+	// First mb:block preset=image:hero image source (canonical-relative, e.g.
+	// images/foo.webp), or null. Feeds og:image + the Article JSON-LD image —
+	// the document is the single source for its own sharing card.
+	heroImageSrc(mdText) {
+		const m = mdText.match(/<!--\s*mb:block\s+preset=image:hero[^>]*-->\s*!\[[^\]]*\]\(([^)\s]+)\)/);
+		return m ? m[1] : null;
+	}
+
 	/* ---------------- page fragments ---------------- */
 
 	// Page chrome as canonical markdown (canonical in storage raum.com/,
@@ -249,8 +257,12 @@ ${this.footer(lang)}
 			`<meta property="og:locale" content="${lang === 'de' ? 'de_DE' : 'en_US'}">`,
 			`<meta property="og:locale:alternate" content="${lang === 'de' ? 'en_US' : 'de_DE'}">`,
 			`<meta property="og:image" content="${esc(img)}">`,
-			`<meta property="og:image:width" content="1200">`,
-			`<meta property="og:image:height" content="630">`,
+			// Dimensions only for the default card — the one image whose size
+			// we actually know. Wrong dims are worse than none.
+			...(image ? [] : [
+				`<meta property="og:image:width" content="1200">`,
+				`<meta property="og:image:height" content="630">`,
+			]),
 			`<meta name="twitter:card" content="summary_large_image">`,
 			`<meta name="twitter:image" content="${esc(img)}">`,
 		];
@@ -561,6 +573,8 @@ ${this.footer(lang)}
 		${authorList}
 	</div>`;
 		const hasAudio = /preset=player/.test(pageBody);
+		const heroSrc = this.heroImageSrc(mdText);
+		const pageOgImage = heroSrc ? `/content/pages/${heroSrc}` : null;
 		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
 			: (page.teaser || this.manifest.site.description);
 		const graph = [...this.siteNodes()];
@@ -575,7 +589,7 @@ ${this.footer(lang)}
 				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` } });
 		} else {
 			graph.push({ '@type': 'Article', '@id': `${this.canonical}#article`,
-				headline: title, description: pageDesc, image: this.ogImageUrl(),
+				headline: title, description: pageDesc, image: this.ogImageUrl(pageOgImage),
 				author: [...new Map((meta.authors || []).map((a) => [a.id, this.personNode(a.id)])).values()],
 				publisher: this.publisherRef(),
 				...(meta.created ? { datePublished: this.isoDateTime(meta.created) } : {}),
@@ -591,6 +605,7 @@ ${this.footer(lang)}
 			audio: hasAudio,
 			ogType: isInfoPage ? 'website' : 'article',
 			times: isInfoPage ? null : { published: meta.created, modified: meta.modified },
+			image: pageOgImage,
 			alternates: [
 				{ type: 'text/markdown', href: `/content/pages/${file}` },
 				...(page.de ? [
@@ -612,7 +627,9 @@ ${this.footer(lang)}
 		const meta = scrapeMeta(mdText);
 		const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
 		const desc = meta.blurb || de?.teaser || post.teaser;
-		const ogImage = meta.image ? `/content/posts/${meta.image}` : post.image;
+		const heroSrc = this.heroImageSrc(mdText);
+		const ogImage = meta.image ? `/content/posts/${meta.image}`
+			: (post.image || (heroSrc ? `/content/posts/${heroSrc}` : null));
 		const statusNote = post.status === 'draft'
 			? `\n			<p class="status-note">${esc(this.t(lang, 'status_draft'))}</p>`
 			: '';
