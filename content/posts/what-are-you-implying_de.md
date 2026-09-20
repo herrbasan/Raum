@@ -34,6 +34,10 @@ blurb: "Ein CEO, ein Whistleblower, ein Senator und ein Rivale entdeckten in der
 Veröffentlicht am 13. September 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/what-are-you-implying_de_2026-09-13.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Vier korallenfarbene Pfeile aus den Ecken verschwinden in einer formlosen Nebelwolke ohne Zentrum](images/what-are-you-implying_hero.webp)
 <!-- mb:/block -->

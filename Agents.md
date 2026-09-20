@@ -68,9 +68,9 @@ All posts are bilingual EN+DE. 23 entries total in `content/posts/`. The "Little
 
 the-safety-theater (1) · only-that-i-should (2) · when-alignment-works (3) · what-are-you-implying (4)
 
-Part 4 (`what-are-you-implying`, 2026-09-13) is bilingual, but its **German audio is deliberately not generated yet** — the German text is still being cleaned up, and David's call is to publish the text now and make the audio later. So `audio` on that manifest entry carries only `en`.
+Part 4 (`what-are-you-implying`, 2026-09-13) shipped text-first — its German audio was generated on 2026-09-20, the first run of the storage-canonical audio workflow (see §10).
 
-**Audio never falls back across languages.** `audioBlock()` and the `AudioObject` JSON-LD emit a player only for the language actually being read: an English MP3 on the German page would be worse than no player. The German page of a post whose German audio is missing therefore shows no player at all and does not even load the player assets. Add `audio.de` to the manifest and rebuild when the German rendition is generated (`tools/generate-tts.ps1 -Slug <slug> -Language de`, voice `Simon_DE`).
+**Audio never falls back across languages.** The player block in the post MD and the `AudioObject` JSON-LD (driven by the manifest `audio` field) exist only for the language actually being read: an English MP3 on the German page would be worse than no player. A post whose German audio is missing shows no player on its German page and doesn't even load the player assets there.
 
 **EN-only posts** (none at present) render with no `/de/` page and an `untranslated` marker in the German feed rather than English text sitting silently among German entries. The mechanism stays in the build for when the next one appears.
 
@@ -404,7 +404,7 @@ Premium tiers are per-article and only when the user explicitly asks ("generate 
 **⚠️ Cloud TTS costs real money. Rules for any agent working here:**
 
 - **Never generate audio speculatively.** Only on explicit request ("generate audio for X").
-- **Check before generating:** does `content/audio/{slug}[_de]_{version}.mp3` already exist for the post's *current* version? If yes, it's up to date — don't regenerate.
+- **Check before generating:** does `storage/blog/posts/tts/{slug}[_de]_{version}.mp3` already exist for the post's *current* version? If yes, it's up to date — don't regenerate. (The script refuses to overwrite an existing version file.)
 - **One generation per request.** If a generation fails, do NOT retry in a loop — report and wait for the user.
 - **Versioned filenames** (`{slug}_{version}.mp3`) make staleness visible — a mismatched version means the post changed after the audio was made. Regenerate only when the user asks.
 
@@ -424,17 +424,17 @@ Premium tiers are per-article and only when the user explicitly asks ("generate 
   - The top-level `model` slug selects engine AND sub-model in one field. The older `extra_body.model` provider-native form (hyphenated, e.g. `speech-2.8-hd`) still works but the slug form is canonical.
   - `mode: "stitch"` = seamless joins (overlap + forced-alignment trim) server-side. **Do not** set `batch` / `auto_chunk` (deprecated aliases).
   - `clean: true` = server-authoritative markdown cleaning (frontmatter strip, syntax removal, acronym spelling). Send raw MD; don't pre-clean beyond what the scripts already do.
-- **Output:** single MP3 in the response body. Save as `content/audio/{slug}[_de]_{version}.mp3` (version = post YAML `version`).
+- **Output:** single MP3 in the response body. Saved canonically to `storage/blog/posts/tts/{slug}[_de]_{version}.mp3` (version = post YAML `version`), mirrored to `repo:content/audio/` by the script.
 - **Throughput:** MiniMax ≈ 17–26s per long-form piece; ElevenLabs ~40–60 chars/sec (a 5-min article ≈ 3–4 min).
 - **SSE progress:** subscribe to `GET /v1/admin/events` BEFORE generation — `tts` events with `meta.percent` (0–100), stages `plan → generating N/M → aligning N/M → trimmed N/M → done/failed`.
 - **503 cold start:** `engine_starting` = STT worker cold-loading — wait and retry once.
 - **Manifest:** add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json`, then rebuild.
-- **Player:** native `<audio controls>` baked into the page at build time (no runtime addon).
+- **Player:** the post MD carries the player as data — a `mb:block preset=player` (link text `Listen to this article` / `Diesen Artikel anhören`, target `tts/{file}`) directly after the byline block, before the hero image. The build renders it as `nui-media-player` and loads the player assets only on pages that have the block. No block, no player — and never a cross-language fallback.
 
 ### Scripts
 
-- `tools/generate-tts.ps1` — posts (`content/posts/`)
-- `tools/generate-page-tts.ps1` — pages (`content/pages/`: religion, about)
+- `tools/generate-tts.ps1` — posts. Storage-first: reads the canonical from `storage/blog/posts/`, writes the MP3 to `storage/blog/posts/tts/`, mirrors it into `content/audio/`, and warns loudly when the repo mirror of the post has drifted from the canonical. Requires the `X:\` storage mount.
+- `tools/generate-page-tts.ps1` — pages (`content/pages/`: religion, about). Still repo-first — page audio has no canonical storage home yet (religion audio lives only in `content/audio/`; revisit when religion moves or gets its own `tts/`).
 
 Both take `-Slug`, `-Language en|de`, and optional `-Tier turbo|hd|eleven` (default `turbo`); voices resolve from the map above.
 
@@ -483,7 +483,7 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 | **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
 | **Pages MD** (home, about, imprint) + **fragments** (writing-lead, arena-lead) | `storage/raum.com/` — `about.md`/`_de`, `imprint.md`/`_de`, `home.md`/`_de`, `writing-lead.md`/`_de`, `arena-lead.md` | User edits in storage; syncs into `repo:content/pages/` | Everything site-level that isn't blog, religion, or arena lives here. `storage/raum.com/` was renamed from `storage/pages/` 2026-09-20; about moved in from `blog/authors/` the same day |
 | **Religion MD** | `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | The religion corpus keeps its own storage folder |
-| **Audio files** | `repo:content/audio/` | Generated (nSpeech TTS) | See §10 |
+| **Audio files** | `storage/blog/posts/tts/` (canonical), mirrored to `repo:content/audio/` | Generated (nSpeech TTS) | See §10. Posts reference the audio as `tts/{file}` in their player block; the build rewrites that to `/content/audio/` |
 | **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
 | **Cross-session memory** | workshop memory (`mcp_workshop_tools` → `memory.*`, category `raum`) | Either | Sync receipts, gotchas, project state. Local `/memories/repo/` was retired 2026-09-08 — do not recreate |
 

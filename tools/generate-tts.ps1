@@ -1,11 +1,12 @@
-<#
+﻿<#
 .SYNOPSIS
   Generate TTS audio for a RAUM blog post via nSpeech (default: MiniMax 2.8 Turbo).
 
 .DESCRIPTION
-  Reads a post markdown file, strips YAML frontmatter + heading markers,
-  injects a spoken publication-date line, and sends the text to nSpeech.
-  Server-side stitch mode produces one seamless MP3, saved to content/audio/.
+  Reads a post markdown file from MCP storage (canonical), strips YAML
+  frontmatter + heading markers, injects a spoken publication-date line, and
+  sends the text to nSpeech. Server-side stitch mode produces one seamless MP3,
+  saved canonically to storage blog/posts/tts/ and mirrored to content/audio/.
 
   Engine/voice map (Agents.md §10): default tier is MiniMax Speech 2.8 Turbo
   (Melon_best EN / Simon_DE DE). -Tier hd|eleven switches to premium engines.
@@ -18,7 +19,8 @@
   and what audio filename to produce.
 
 .PARAMETER Tier
-  Optional. turbo (default) | hd | eleven. Premium tiers only on explicit request.
+  Optional. hd (default, MiniMax Speech 2.8 HD) | turbo | eleven.
+  ElevenLabs only on explicit request.
 
 .PARAMETER NSpeechUrl
   Optional. Defaults to http://192.168.0.100:2233.
@@ -37,7 +39,7 @@ param(
     [string]$Language = 'en',
 
     [ValidateSet('turbo', 'hd', 'eleven')]
-    [string]$Tier = 'turbo',
+    [string]$Tier = 'hd',
 
     [string]$NSpeechUrl = 'http://192.168.0.100:2233'
 )
@@ -54,13 +56,38 @@ $Model   = $Tiers[$Tier].Model
 $VoiceId = $Tiers[$Tier].Voices[$Language]
 $ProjectRoot = $PSScriptRoot | Split-Path -Parent
 
-# --- Resolve markdown file ---
+# --- Canonical locations (storage is the source of truth, the repo mirrors) ---
+$StoragePosts = 'X:\blog\posts'   # MCP storage mount
+$StorageTts   = Join-Path $StoragePosts 'tts'
+$RepoPosts    = Join-Path $ProjectRoot 'content\posts'
+$RepoAudio    = Join-Path $ProjectRoot 'content\audio'
+
+if (-not (Test-Path $StoragePosts)) {
+    Write-Error "Storage not reachable at $StoragePosts — is the X: mount up?"
+    exit 1
+}
+
+# --- Resolve markdown file (canonical: storage) ---
 $MdFile = if ($Language -eq 'de') { "${Slug}_de.md" } else { "${Slug}.md" }
-$MdPath = Join-Path $ProjectRoot "content\posts\$MdFile"
+$MdPath = Join-Path $StoragePosts $MdFile
 
 if (-not (Test-Path $MdPath)) {
-    Write-Error "Post not found: $MdPath"
+    Write-Error "Post not found in storage: $MdPath"
     exit 1
+}
+
+# Drift check: the repo mirror should be byte-identical to the canonical.
+# Audio is generated from the storage text; a stale repo copy means the
+# published page and the audio would disagree.
+$RepoCopy = Join-Path $RepoPosts $MdFile
+if (Test-Path $RepoCopy) {
+    $a = [System.IO.File]::ReadAllBytes($MdPath)
+    $b = [System.IO.File]::ReadAllBytes($RepoCopy)
+    if (-not ($a.Length -eq $b.Length -and -not (Compare-Object $a $b))) {
+        Write-Host "WARNING: repo mirror differs from storage canonical ($MdFile) — sync before publishing." -ForegroundColor Red
+    }
+} else {
+    Write-Host "WARNING: no repo mirror at $RepoCopy — sync before publishing." -ForegroundColor Red
 }
 
 Write-Host "Reading: $MdPath" -ForegroundColor Cyan
@@ -117,16 +144,26 @@ $charCount = $clean.Length
 $wordCount = ($clean -split '\s+').Count
 Write-Host "Text: $wordCount words, $charCount characters" -ForegroundColor Cyan
 
-# --- Prepare output path ---
-$AudioDir = Join-Path $ProjectRoot 'content\audio'
-if (-not (Test-Path $AudioDir)) {
-    New-Item -ItemType Directory -Path $AudioDir | Out-Null
-    Write-Host "Created: $AudioDir" -ForegroundColor DarkGray
+# --- Prepare output path (canonical: storage posts/tts/, mirrored to repo) ---
+if (-not (Test-Path $StorageTts)) {
+    New-Item -ItemType Directory -Path $StorageTts | Out-Null
+    Write-Host "Created: $StorageTts" -ForegroundColor DarkGray
+}
+if (-not (Test-Path $RepoAudio)) {
+    New-Item -ItemType Directory -Path $RepoAudio | Out-Null
+    Write-Host "Created: $RepoAudio" -ForegroundColor DarkGray
 }
 
 $langSuffix = if ($Language -eq 'de') { '_de' } else { '' }
 $AudioFile = "${Slug}${langSuffix}_${version}.mp3"
-$AudioPath = Join-Path $AudioDir $AudioFile
+$AudioPath = Join-Path $StorageTts $AudioFile
+
+# Cost rule (Agents.md §10): one version, one file — never regenerate over an
+# existing rendition of the same version.
+if (Test-Path $AudioPath) {
+    Write-Host "Audio already exists for version $version — nothing to do: $AudioPath" -ForegroundColor Yellow
+    exit 0
+}
 
 # --- Generate (server-side stitch pipeline) ---
 # mode:stitch = seamless joins (overlap + forced-alignment trim) server-side.
@@ -154,19 +191,25 @@ try {
         -TimeoutSec 600 `
         -UseBasicParsing
 } catch {
-    Write-Error ("nSpeech request failed: " + $_.Exception.Message)
     if ($_.ErrorDetails) { Write-Host $_.ErrorDetails.Message -ForegroundColor Red }
+    Write-Error ("nSpeech request failed: " + $_.Exception.Message)
     exit 1
 }
 
-# --- Save audio ---
+# --- Save audio (storage canonical, then mirror to repo) ---
 [System.IO.File]::WriteAllBytes($AudioPath, $response.RawContentStream.ToArray())
+Copy-Item $AudioPath (Join-Path $RepoAudio $AudioFile) -Force
 $sizeKb = [math]::Round((Get-Item $AudioPath).Length / 1KB)
 
 Write-Host ""
 Write-Host "Done! Saved: $AudioPath ($sizeKb KB)" -ForegroundColor Green
+Write-Host "Mirrored: $(Join-Path $RepoAudio $AudioFile)" -ForegroundColor Green
 Write-Host ""
-Write-Host "Next: add to content/index.json under this post:" -ForegroundColor Cyan
-$langKey = $Language
-Write-Host ('  "audio": { "' + $langKey + '": "' + $AudioFile + '" }') -ForegroundColor White
-Write-Host "(merge into existing audio object if one already exists)" -ForegroundColor DarkGray
+Write-Host "Next steps:" -ForegroundColor Cyan
+$label = if ($Language -eq 'de') { 'Diesen Artikel anhören' } else { 'Listen to this article' }
+Write-Host "  1. Player block in the canonical post (blog/posts/$MdFile), after the byline block:" -ForegroundColor White
+Write-Host "       <!-- mb:block preset=player kind=audio -->" -ForegroundColor DarkGray
+Write-Host "       [$label](tts/$AudioFile)" -ForegroundColor DarkGray
+Write-Host "       <!-- mb:/block -->" -ForegroundColor DarkGray
+Write-Host "  2. Manifest: add `"$Language`": `"$AudioFile`" to the post's audio object in content/index.json" -ForegroundColor White
+Write-Host "  3. Mirror the post into the repo, then rebuild (node tools/build.mjs)" -ForegroundColor White
