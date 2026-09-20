@@ -351,10 +351,20 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 .essay-audio nui-media-player {
   font-family: var(--sans);
   font-size: 0.95rem;
+  /* Every color pinned to the site palette. The component's own defaults
+     resolve via light-dark() against color-scheme — but NUI's init() writes
+     an INLINE color-scheme on <html> from the OS preference (nui.js), which
+     stomps the site toggle and rendered the player white-on-white in light
+     mode. Pinned vars ignore color-scheme and follow data-theme instead. */
+  --media-text: var(--text);
+  --media-text-dim: var(--text-dim);
+  --media-text-shadow: none;
   --media-box-back: var(--bg-soft);
   --media-bar-back: var(--border);
   --media-bar-proz: var(--text-faint);
   --media-bar-proz-playing: var(--accent);
+  --media-widget-back: var(--bg-soft);
+  --media-widget-text: var(--text);
 }
 /* Pre-upgrade window (custom element not yet :defined): reserve the final
    geometry and keep it invisible — kills both the native-control flicker
