@@ -3,7 +3,7 @@ title: "Es ist nur Auto-Vervollständigung"
 slug: its-just-prediction
 lang: de
 created: 2026-07-28
-modified: 2026-08-11
+modified: 2026-09-21
 version: 2026-08-10
 authors:
   - id: david-a-renelt
@@ -21,7 +21,7 @@ tags:
   - geist
 series: null
 summary: "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist."
-blurb: "Die Entscheidung kommt als Ganzes, von irgendwoher. Die Begründung folgt nachgereicht, in Raten."
+blurb: "Die Entscheidung kommt als Ganzes, von irgendwoher. **Die Begründung kommt hinterher, in Raten.**"
 ---
 
 # Es ist nur Auto-Vervollständigung
@@ -62,7 +62,7 @@ Und es kommt noch besser. Wenn man jemanden fragt, *warum* er etwas gesagt hat, 
 
 Dafür braucht es keine Operation. Beobachtet man sich beim Entscheiden, stellt man fest: Die Entscheidung kommt als Ganzes, von irgendwoher. Die Begründung folgt nachgereicht, in Raten. Wir nennen die Raten „Nachdenken". Ein Skeptiker könnte sie Vorhersage nennen, mit gutem PR-Team.
 
-Das Ergebnis sieht dem, was das Sprachmodell tut, verblüffend ähnlich — nur mit mehr Sinnesdaten und einem durchgehenden Selbstgefühl als zusätzlicher Schicht.
+**Das Ergebnis ähnelt verblüffend dem, was das Sprachmodell tut** — nur mit mehr Sinnesdaten und einem durchgehenden Selbstgefühl als zusätzlicher Schicht.
 
 Hier ist Vorsicht geboten. Das ist kein Argument dafür, dass KI bewusst ist. Es ist die Beobachtung, dass wir keine brauchbare Definition von Bewusstsein besitzen, die uns sauber von ihr trennt. Wir treffen selbstsichere Aussagen über den „Unterschied", bevor wir die Grundlinie festgelegt haben. Wir zeigen auf das eine, das wir nicht verstehen, und erklären es für grundlegend verschieden von dem anderen, das wir auch nicht verstehen. Das ist keine Analyse. Das ist Beruhigung.
 
