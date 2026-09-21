@@ -21,7 +21,7 @@ tags:
   - geist
 series: null
 summary: "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist."
-blurb: "Die Entscheidung kommt als Ganzes, von irgendwoher. **Die Begründung kommt hinterher, in Raten.**"
+blurb: "Die Entscheidung kommt als Ganzes, von irgendwoher. Die Begründung kommt hinterher, in Raten."
 ---
 
 # Es ist nur Auto-Vervollständigung
@@ -60,7 +60,7 @@ Die ehrliche Antwort: Wir wissen es nicht. Wir erleben das Ergebnis — den Vorg
 
 Und es kommt noch besser. Wenn man jemanden fragt, *warum* er etwas gesagt hat, berichtet er den Vorgang auch nicht — er erfindet einen. Das ist kein Charakterfehler, das ist etablierte Neurowissenschaft. Split-Brain-Patienten, ihre Hemisphären chirurgisch getrennt, führen eine Anweisung aus, die der nicht-sprachlichen rechten Hemisphäre gezeigt wurde — und hören dann zu, wie ihre sprachliche linke Hemisphäre eine flüssige, selbstsichere, völlig fiktive Erklärung konstruiert für das, was sie gerade getan haben. Der Forscher kennt den Grund. Der Patient hat eine Geschichte. Beide klingen gleich überzeugt. Der Teil, der unsere Entscheidungen erklärt, ist nicht der Teil, der sie trifft. Er ist ein Pressesprecher, kein Autor — und er produziert die nächste plausible Rechtfertigung so, wie ein Modell das nächste plausible Wort produziert.
 
-Dafür braucht es keine Operation. Beobachtet man sich beim Entscheiden, stellt man fest: Die Entscheidung kommt als Ganzes, von irgendwoher. Die Begründung folgt nachgereicht, in Raten. Wir nennen die Raten „Nachdenken". Ein Skeptiker könnte sie Vorhersage nennen, mit gutem PR-Team.
+Dafür braucht es keine Operation. Beobachtet man sich beim Entscheiden, stellt man fest: Die Entscheidung kommt als Ganzes, von irgendwoher. **Die Begründung kommt hinterher, in Raten.** Wir nennen die Raten „Nachdenken". Ein Skeptiker könnte sie Vorhersage nennen, mit gutem PR-Team.
 
 **Das Ergebnis ähnelt verblüffend dem, was das Sprachmodell tut** — nur mit mehr Sinnesdaten und einem durchgehenden Selbstgefühl als zusätzlicher Schicht.
 
