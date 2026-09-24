@@ -28,6 +28,10 @@ summary: "Der Ausgangspunkt: das Rätsel und der Sog, das Scheitern überliefert
 
 # Eine kleine Religion
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/religion_de_2026-09-24-v7.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine einzige ununterbrochene bernsteinfarbene Bahn, die durch ein Feld grauen Rauschens aufsteigt, gerichtet auf etwas oberhalb des Bildrahmens](images/a-little-religion_hero.webp)
 <!-- mb:/block -->

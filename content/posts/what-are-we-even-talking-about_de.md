@@ -32,6 +32,10 @@ status: final
 
 Veröffentlicht am 23. September 2026
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/what-are-we-even-talking-about_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Fünf verzierte Urteile – ein Richterhammer, eine Medaille, ein Siegel, eine Urkunde, eine Krone – liegen ungenutzt auf dem Boden verstreut um einen schlichten, leeren, wartenden Tisch](images/what-are-we-even-talking-about_hero.webp)
 <!-- mb:/block -->

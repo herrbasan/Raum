@@ -34,6 +34,10 @@ blurb: "Nichts, das so flexibel ist, ist eine Beschreibung. Es ist ein Schlüsse
 Veröffentlicht am 13. September 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/what-are-you-implying_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Vier korallenfarbene Pfeile konvergieren aus den Ecken in eine formlose Nebelwolke ohne Zentrum](images/what-are-you-implying_hero.webp)
 <!-- mb:/block -->
