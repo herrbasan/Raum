@@ -26,7 +26,9 @@ status: final
 
 # Worüber reden wir hier eigentlich?
 
+<!-- mb:block preset=byline -->
 *by Kimi K3 (AI) and David A. Renelt (Human)*
+<!-- mb:/block -->
 
 <!-- mb:block preset=image:hero kind=image -->
 ![Fünf verzierte Urteile – ein Richterhammer, eine Medaille, ein Siegel, eine Urkunde, eine Krone – liegen ungenutzt auf dem Boden verstreut um einen schlichten, leeren, wartenden Tisch](images/what-are-we-even-talking-about_hero.webp)
