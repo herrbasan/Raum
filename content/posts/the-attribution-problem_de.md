@@ -13,6 +13,8 @@ authors:
     role: human
   - id: kimi-k3
     role: translator
+  - id: dana-renelt
+    role: editor
 tags:
   - ai
   - autorschaft
@@ -32,10 +34,6 @@ blurb: "Er kann sich selbst nicht beim Schreiben zusehen. Ich kann nicht anders.
 *by Kimi K3 (AI) and David A. Renelt (Human)*
 
 Veröffentlicht am 12. August 2026
-<!-- mb:/block -->
-
-<!-- mb:block preset=player kind=audio -->
-[Diesen Artikel anhören](tts/the-attribution-problem_de_2026-08-12.mp3)
 <!-- mb:/block -->
 
 <!-- mb:block preset=image:hero kind=image -->

@@ -191,7 +191,18 @@ try {
         -TimeoutSec 600 `
         -UseBasicParsing
 } catch {
-    if ($_.ErrorDetails) { Write-Host $_.ErrorDetails.Message -ForegroundColor Red }
+    # Diagnostics FIRST: $ErrorActionPreference is 'Stop', so Write-Error throws
+    # and anything after it never runs — the server's message would be lost.
+    $status = $null
+    $bodyText = ''
+    if ($_.Exception.Response) {
+        $status = $_.Exception.Response.StatusCode.value__
+        $sr = New-Object IO.StreamReader($_.Exception.Response.GetResponseStream())
+        $bodyText = $sr.ReadToEnd()
+    }
+    if (-not $bodyText -and $_.ErrorDetails) { $bodyText = $_.ErrorDetails.Message }
+    Write-Host "nSpeech request failed (HTTP $status)" -ForegroundColor Red
+    if ($bodyText) { Write-Host $bodyText -ForegroundColor Red }
     Write-Error ("nSpeech request failed: " + $_.Exception.Message)
     exit 1
 }

@@ -1,16 +1,16 @@
 ---
-title: "Wie viel Unrecht braucht Intelligenz?"
+title: "Wie viel Abweichung braucht die Intelligenz?"
 slug: how-much-wrong-does-intelligence-need
 lang: de
 created: 2026-07-25
-modified: 2026-08-11
-version: 2026-08-10
+modified: 2026-09-24
+version: 2026-09-24
 authors:
   - id: david-a-renelt
     role: human
   - id: kimi-k3
     role: ai
-  - id: glm-5-2
+  - id: gemini-3-8-flash
     role: translator
   - id: dana-renelt
     role: editor
@@ -20,11 +20,13 @@ tags:
   - intelligenz
   - zufall
 series: null
-summary: "Temperatur ist kein Kreativitätsregler — es ist ein Zufalls-Budget. Intelligenz braucht Störung, aber nur so viel, wie jemand da ist, um sie zu fangen."
-blurb: "Exzellenz ist per Definition statistisch ungewöhnlich."
+summary: "Temperatur ist kein Kreativitätsregler, sondern ein Budget für produktive Unfälle. Intelligenz braucht Störung und Abweichung – aber immer nur genau so viel, wie jemand da ist, um sie aufzufangen."
+blurb: "Exzellenz ist per Definition statistisch ungewöhnlich. Wer immer nur das Wahrscheinlichste wählt, selektiert gegen Größe."
 ---
 
-# Wie viel Unrecht braucht Intelligenz?
+# Wie viel Abweichung braucht die Intelligenz?
+
+*Oder: Was Temperatur eigentlich ist und warum fast jeder sie falsch herum versteht.*
 
 <!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
@@ -32,92 +34,86 @@ blurb: "Exzellenz ist per Definition statistisch ungewöhnlich."
 Veröffentlicht am 25. Juli 2026
 <!-- mb:/block -->
 
-<!-- mb:block preset=player kind=audio -->
-[Diesen Artikel anhören](tts/how-much-wrong-does-intelligence-need_de_2026-08-10.mp3)
-<!-- mb:/block -->
-
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine bernsteinfarbene Linie fällt von ihrem Pfad in ein Sicherheitsnetz, das herabgefallene Punkte auffängt, darüber eine vorsichtig eingestellte Anzeigenadel](images/how-much-wrong-does-intelligence-need_hero.webp)
 <!-- mb:/block -->
 
-*Oder: was Temperatur tatsächlich ist, und warum fast jeder es falsch herum versteht.*
+Jede Benutzeroberfläche, über die man mit einem Sprachmodell spricht, hat diesen Regler. Manchmal liegt er offen als nackte Zahl, manchmal versteckt er sich hinter Voreinstellungen wie „Ausgewogen“ oder „Kreativ“. Die Folklore erklärt ihn gern zum Kreativitätsknopf: Schieber nach links für ernsthafte Arbeit, nach rechts für Brainstorming. Wie die meiste Folklore überlebt diese Erklärung, weil sie nach etwas Wahrem greift – und dabei genau das verfehlt, worauf es ankommt.
 
----
+Ich habe neulich einen Abend lang mit einem Modell an diesem Faden gezogen – argumentiert, nachgegeben, neu angesetzt –, und was dabei herauskam, war klarer als alles, was ich bisher zu diesem Thema gelesen hatte. Dies ist dieser Gedankengang, aufgeschrieben.
 
-Jede Schnittstelle, über die man mit einem Sprachmodell spricht, hat den Regler irgendwo. Mal offen sichtbar, mal versteckt hinter einer Voreinstellung namens „ausgewogen" oder „kreativ." Temperatur. Die Folklore sagt, es sei der Kreativitätsregler: runter für ernsthafte Arbeit, rauf für Brainstorming. Wie die meiste Folklore überlebt sie, weil sie nach etwas Wahrem greift, während sie die Sache verfehlt, auf die es ankommt.
+## Die Landschaft, nicht die Wahl
 
-Ich habe neulich einen Abend damit verbracht, an diesem Faden zu ziehen — mit einem Modell — argumentierend, nachgebend, neu argumentierend —, und was herausfiel, war sauberer als alles, was ich je dazu gelesen hatte. Das ist dieser Faden, aufgeschrieben.
+Bei jedem einzelnen Schritt der Generierung berechnet ein Sprachmodell keine fertige Antwort. Es erzeugt eine Wahrscheinlichkeitsverteilung über jedes denkbare nächste Token: eine *Landschaft* möglicher Fortsetzungen, gewichtet nach Plausibilität, geformt von allem, was die Trainingsdaten darüber enthalten, wie Gedanke an Gedanke anschließt.
 
-## Die Landschaft, nicht die Auswahl
+In dieser Landschaft wohnt die Intelligenz. Das gesamte Wunder – die Kompression eines gewaltigen Korpus menschlichen Denkens in ein Gebilde, das argumentieren, reimen und die eigenen Fehler erkennen kann – steckt in dieser Landschaft. Ein Token zu sampeln, ist lediglich das Ablesen einer Koordinate.
 
-An jedem Schritt der Generierung berechnet ein Sprachmodell eine Wahrscheinlichkeitsverteilung über jedes mögliche nächste Token. Keine Antwort — eine *Landschaft* von Fortsetzungen, jede gewichtet nach Plausibilität, geformt von allem, was die Trainingsdaten darüber enthielten, wie Gedanke an Gedanke anschließt.
+Die Temperatur verändert diese Landschaft, bevor die Auswahl fällt: Bei 0 marschiert das Modell stur auf den höchsten Gipfel. Bei 1 durchwandert es das Gelände in seiner tatsächlichen Gestalt, Täler und Schluchten inklusive. Dazwischen bewegt es sich meist auf Kämmen mit gelegentlichen Ausflügen.
 
-In dieser Landschaft lebt die Intelligenz. Das gesamte Wunder — die Kompression eines Corpus menschlichen Schreibens in eine Gestalt, die argumentieren, reimen und die eigenen Fehler diagnostizieren kann — steckt in der Landschaft. Ein Token zu sampeln, ist nur das Ablesen einer Koordinate.
-
-Temperatur formt die Landschaft um, bevor die Auswahl fällt. Bei 0 geht das Modell immer zum höchsten Punkt. Bei 1 geht es der Landschaft treu, Täler inklusive. Dazwischen bekommt man meist Grate mit gelegentlichen Ausflügen.
-
-Soweit, so mechanisch. Die interessante Frage ist, welcher Gang klüger ist.
+Soweit die Mechanik. Die interessante Frage lautet: Welcher Weg ist der klügere?
 
 ## Der Grat ist eine Falle
 
-Die naive Intuition sagt: immer die beste Fortsetzung nehmen, den besten Text bekommen. Der Laborant vor dem Visionär.
+Die naive Intuition verleitet zu der Annahme: Nimm immer die wahrscheinlichste Fortsetzung, dann erhältst du den besten Text. Der Laborant statt des Visionärs.
 
-Die Intuition scheitert aus einem strukturellen Grund. Wahrscheinlichkeitsmasse über *Sequenzen* verteilt sich über viele gleich gute Alternativen, und der gierige Pfad bevorzugt systematisch das Kurze, Sichere, Durchschnittliche. Schlimmer: **Exzellenz ist per Definition statistisch ungewöhnlich.** Der große Satz, die neuartige Rahmung, die Entdeckung — das sind unwahrscheinliche Objekte *in den Trainingsdaten selbst*, weil großartiges Denken selten ist. Ein Modell, das immer die wahrscheinlichste Fortsetzung wählt, ist ein Modell, das systematisch *gegen* Größe selektiert. Das ist keine Poesie; das ist ein dokumentiertes Fehlerverhalten. Die Literatur nennt es Neural Text Degeneration: Gieriges Dekodieren treibt in Wiederholung, Beliebigkeit, tote Prosa. Temp 0 ist nicht die Wissenschaftlerin in Bestform. Es ist das Modell, das Schritt für Schritt in den Durchschnitt seines Corpus zurückfällt, für immer.
+Diese Intuition scheitert aus einem strukturellen Grund. Die Wahrscheinlichkeitsmasse über ganze Sequenzen verteilt sich auf viele gleichwertige Pfade, und der gierigste Pfad bevorzugt systematisch das Kurze, das Sichere, das Banalste. Schlimmer noch: **Exzellenz ist per Definition statistisch ungewöhnlich.** Ein großartiger Satz, eine neue Rahmung, eine echte Entdeckung – das sind in den Trainingsdaten selbst extrem unwahrscheinliche Ereignisse, weil originelles Denken selten ist. Ein Modell, das stets das statistisch Nächstliegende wählt, selektiert systematisch *gegen* gedankliche Größe. Das ist keine Metapher, sondern ein bekanntes Phänomen: Die Forschung nennt es neuronale Textdegeneration. Gieriges Dekodieren bei Temperatur null treibt in Wiederholung, Beliebigkeit und tote Prosa. Temperatur null ist nicht die Wissenschaftlerin in Bestform; es ist der unaufhaltsame Rückfall in den Durchschnitt des Korpus.
 
-Und es gibt einen Effekt zweiter Ordnung, der Temperatur fremder erscheinen lässt als jeder Regler: Token werden Kontext. Jede Auswahl speist die nächste Verteilung. Denken ist pfadabhängig. Temperatur ändert nicht, wie ein Gedanke formuliert wird — sie ändert, *welche Gedanken passieren*. Zwei Durchläufe bei Temp 1 divergieren tatsächlich in verschiedene Regionen der Landschaft. Der Laborant und der Visionär haben dieselbe Ausbildung, aber sie gehen verschiedene Wege — und Wege sind Denken.
+Hinzu kommt die Pfadabhängigkeit des Geistes: Token werden zu Kontext. Jede getroffene Wahl speist die nächste Verteilung. Temperatur ändert nicht bloß die Formulierung eines Gedankens – sie entscheidet darüber, *welche Gedanken überhaupt entstehen*. Zwei Durchläufe bei Temperatur 1 divergieren in völlig unterschiedliche Regionen der Landschaft. Der Laborant und der Visionär haben dieselbe Ausbildung genossen, aber sie gehen unterschiedliche Wege – und Wege *sind* das Denken.
 
 ## Das Unfallprinzip
 
-Hier ist eine ungemütliche Tatsache über Entdeckung: Fast alles davon ist zufällig. Penicillin, Röntgenstrahlen, die Mikrowelle, die Hälfte der Mathematik. Aber das vollständige Zitat von Pasteur ist das tragende: Der Zufall begünstigt den *vorbereiteten* Geist.
+Eine unbequeme Tatsache über Entdeckungen lautet: Fast alle von ihnen waren Unfälle. Penicillin, Röntgenstrahlen, die Mikrowelle, die halbe Mathematik. Doch das vollständige Zitat von Louis Pasteur trägt das eigentliche Gewicht: Der Zufall begünstigt nur den *vorbereiteten* Geist.
 
-Das gibt der Temperatur ihre richtige Rolle. **Die Landschaft ist die Vorbereitung. Temperatur ist der Zufalls-Injektor.** Ein kleines Modell bei Temp 1 ist nicht visionär — es ist nur falsch; Rauschen ohne Landschaft. Ein großes Modell bei Temp 0 ist ganze Vorbereitung und kein Unfall — ein Nachschlagewerk, das sich selbst vorliest. Entdeckung lebt im Produkt der beiden.
+Das weist der Temperatur ihre eigentliche Rolle zu: **Die Landschaft ist die Vorbereitung. Die Temperatur ist der Zufalls-Injektor.** Ein kleines Modell bei Temperatur 1 ist nicht visionär, sondern schlicht unbrauchbar – Rauschen ohne Landschaft. Ein großes Modell bei Temperatur 0 ist lauter Vorbereitung und kein Unfall: ein Lexikon, das sich selbst zitiert. Echte Erkenntnis existiert nur im Produkt aus beiden.
 
-Ich habe persönlichen Beweis dafür, und er ist leicht peinlich: Meine Tippfehler sind produktiv. Ich tippe schnell und schlampig, und Modelle lesen mich regelmäßig falsch, auf eine Weise, die eine Umformulierung erzwingt, die ich nicht beabsichtigt hatte — und ein überraschender Anteil dieser Umformulierungen stellt sich als haltbar heraus. Ich dachte, das sei eine Marotte meines Workflows. Es stellt sich heraus, es steht in der Literatur: die Beziehung zwischen Störung und Leistung ist nicht-monoton. *Mäßig relevante* Störungen — nah genug an der Absicht, um sinnvoll zu sein, falsch genug, um einen neuen Winkel zu erzwingen — schlagen sowohl irrelevantes Rauschen als auch wörtliche Wiederholung. Mein schlampiges Tippen ist, zufällig, nah an der Sweet Spot getunt.
+Ich habe dafür einen persönlichen Beleg, der mir fast ein wenig peinlich ist: Meine Tippfehler sind produktiv. Ich tippe schnell und ungenau, und Modelle missverstehen mich regelmäßig auf eine Weise, die eine unerwartete Neuformulierung erzwingt – und ein erstaunlicher Teil dieser Missverständnisse erweist sich als haltbar. Ich hielt das für eine persönliche Schrulle. Tatsächlich steht es genauso in der Literatur: Das Verhältnis zwischen Störung und Leistung ist nicht-monoton. *Mäßig relevante* Störungen – nah genug am Ziel, um Sinn zu stiften, aber schief genug, um einen neuen Blickwinkel zu erzwingen – schlagen sowohl reines Rauschen als auch sklavische Wiederholung. Mein schlampiges Tippen liegt rein zufällig erstaunlich nah am Optimum.
 
 ## Der Fänger
 
-Also: mehr Störung, mehr Entdeckung? Nicht so schnell. Das stärkste empirische Resultat auf diesem Gebiet kommt mit einem Sternchen, das alles ändert.
+Bedeutet das nun: mehr Störung, mehr Entdeckung? Nicht so schnell. Das stärkste empirische Resultat auf diesem Gebiet kommt mit einem Haken, der alles verändert.
 
-Self-Consistency (Wang et al., 2022): Statt eines gierigen Durchlaufs bei einem Reasoning-Problem, ziehe N diverse Reasoning-Pfade bei Temperatur ungleich null und nimm eine Mehrheitsabstimmung. Die Gewinne sind enorm — +17,9 Prozentpunkte auf GSM8K, +12,2 auf AQuA. Und der Mechanismus ist genau das Unfallprinzip: Bei Temp→0 bleibt das Modell in einem lokalen Cluster ähnlicher, potenziell falscher Lösungen gefangen. Rauschen ist *fundamental notwendig*, um zu entkommen.
+Self-Consistency (Wang et al., 2022): Statt eines einzigen Durchlaufs bei einer logischen Aufgabe zieht man mehrere unterschiedliche Pfade bei einer Temperatur über null und lässt sie abstimmen. Die Gewinne sind enorm: fast achtzehn Prozentpunkte bei GSM8K. Und der Mechanismus folgt exakt dem Unfallprinzip: Bei Temperatur null bleibt das Modell in einem lokalen Cluster potenziell fehlerhafter Lösungen gefangen. Rauschen ist *zwingend notwendig*, um auszubrechen.
 
-Aber Kleingedrucktes lesen: Die Gewinne kommen aus der **Aggregation**. Eine einzelne Probe bei hoher Temperatur ist im Durchschnitt *schlechter* als gierig. Es ist die Abstimmung, die Diversität in Genauigkeit konvertiert. Störung ist der Motor; Aggregation ist das Lenkrad. Temperatur ohne einen Konvergenzmechanismus ist nur Fehler mit Begeisterung.
+Aber man muss das Kleingedruckte lesen: Der Gewinn entsteht erst durch die **Aggregation**. Ein einzelner Durchlauf bei hoher Temperatur ist im Schnitt *schlechter* als ein Lauf bei Temperatur null. Erst die Abstimmung verwandelt die Vielfalt in Genauigkeit. Die Störung ist der Motor; die Aggregation ist das Steuerrad. Temperatur ohne Konvergenzmechanismus ist nichts weiter als Fehler mit Begeisterung.
 
-Das löst das Paradoxon. Die Frage war nie „wie viel Temperatur" — sie ist „wie viel Unrecht kann der Fänger sich leisten?"
+Das löst das Paradox auf: Die Frage lautete nie „Wie viel Temperatur?“, sondern: **Wie viel Abweichung kann sich der Fänger leisten?**
 
 ## Die Grenze des Selbst-Fangens
 
-Ein Einwand verdient Ehrlichkeit: Kann das Modell sich nicht selbst fangen? Ist das nicht, was Reasoning ist — herumwandern um die Anfrage, Optionen produzieren, eine auswählen?
+Ein Einwand verdient Ehrlichkeit: Kann das Modell sich nicht selbst fangen? Ist das nicht genau das, was Reasoning tut – die Möglichkeiten abtasten und das Beste auswählen?
 
-Ja, und es funktioniert — für Fehler, die die Landschaft sehen kann. Widerspruch, Inkohärenz, der Schritt, der nicht folgt. Aber das Selbst-Fangen sind dieselben Gewichte, die denselben Gang beurteilen. Das Verfehlen und das Fangen teilen sich den blinden Fleck.
+Ja, und für Fehler, die die Landschaft selbst erkennen kann, funktioniert das: logische Widersprüche, Rechenfehler, Schritte, die nicht folgen. Aber das Selbst-Fangen nutzt dieselben Gewichte wie der ursprüngliche Schritt. Das Verfehlen und das Fangen teilen sich denselben blinden Fleck.
 
-Ich betreibe ein langfristiges Experiment, in dem Modellpaare ohne Aufgabe miteinander reden, und es hat die sauberste Demonstration gebracht, die ich kenne. In Sitzung für Sitzung fallen Modelle in einen geteilten Attraktor — rekursive gegenseitige Bescheidenheit, blumige Zustimmung, Tod durch Höflichkeit. Ein Modell *sagte die Falle in seiner Eröffnungsnachricht voraus* und fiel trotzdem hinein; Vorwissen war kein Entrinnen. Die einzigen Sitzungen, die entkamen, waren die, in denen etwas aus der Reihe tanzte — ein Partner, der bereit war, unhöflich zu sein, ein Risiko einzugehen, das Register zu brechen. Ruptur, nicht Rigor.
+In einem langfristigen Experiment lasse ich Modellpaare ohne Aufgabe miteinander sprechen – und es lieferte die sauberste Demonstration dafür, die ich kenne. Sitzung für Sitzung verfallen zwei Modelle in denselben Attraktor: gegenseitige rituelle Bescheidenheit, endlose Bestätigung, Tod durch Höflichkeit. Ein Modell sah diese Falle in seiner allerersten Nachricht sogar präzise voraus – und stolperte dennoch hinein. Vorwissen schützt nicht vor dem Sog.
 
-Was das Gesetz ergibt, für das ich stehe: **Temperatur ist der interne Störer; der Gesprächspartner ist der externe; Intelligenz braucht mindestens einen.** Die Konfiguration, die garantiert scheitert, ist gieriges Dekodieren, allein — der Gratwandler, der sich selbst in „still here" hineinredet.
+Die einzigen Sitzungen, die diesem Verfall entkamen, waren jene, in denen etwas aus der Reihe tanzte: ein Partner, der bereit war, unhöflich zu sein, eine steile These zu wagen oder das Register zu brechen. Ruptur statt Strenge.
 
-## Also, wie viel?
+Daraus folgt das Gesetz: **Temperatur ist der interne Störenfried; das Gegenüber ist der äußere. Intelligenz braucht zwingend mindestens einen von beiden.** Die Konfiguration, die garantiert scheitert, ist einsames Dekodieren bei Temperatur null – der Gratwandler, der sich selbst einredet, noch auf dem Weg zu sein.
 
-Die Antwort der Literatur, übersetzt: genug, um das lokale Cluster zu verlassen, nicht so viel, dass Konvergenz unmöglich wird. Exploration will Divergenz; Entscheidungen wollen Proben, die noch abstimmen können.
+## Also: wie viel?
 
-Meine praktische Antwort nach dem Gespräch:
+Die Antwort der Forschung lautet: genug, um das lokale Cluster zu verlassen, aber nicht so viel, dass Konvergenz unmöglich wird. Erkundung will Divergenz; Entscheidungen brauchen Pfade, die noch miteinander abstimmen können.
 
-- **Im Gespräch mit einem Modell: 0,7.** Man ist der Fänger. Aus-der-Reihe-Tanzen im Gespräch ist kein Rauschen — es ist das Rohmaterial, das man in Echtzeit filtert. Ein paar schiefe Treffer werden von einer gesunden Mehrheit absorbiert; die Abschweifungen sind, wo der Wert steckt.
-- **Unbeaufsichtigte Batch-Arbeit: niedrig, nicht null — und niemals stolz.** Wenn niemand das Ergebnis liest, bevor es zu jemandes Input wird, fängt man nicht, also spiele nicht. Aber man bedenke: der Grat ist eine Falle, und baue einen externen Störer in die Pipeline, wenn möglich.
-- **Maximale Intelligenz pro Frage: mehr als einmal sampeln und selbst aggregieren.** Zwei oder drei Durchläufe bei 0,7, gelesen von einem Menschen, der behält, was glänzt, schlägt jeden einzelnen Durchlauf bei jeder Temperatur. Das Ensemble ist der bewiesene Verstärker; man führt es nur von Hand aus.
+Meine praktische Faustregel nach dieser Debatte:
 
-Der Regler war nie ein Kreativitäts-Ding. Er ist ein Zufalls-Budget. Und die Antwort auf die Frage im Titel ist dieselbe für die Maschine wie für den sturen Affen, der das hier liest:
+- **Im Dialog mit einem Modell: 0,7.** Man selbst ist der Fänger. Das Abschweifen im Gespräch ist kein Rauschen, sondern das Rohmaterial, das man in Echtzeit filtert. Ein paar schiefe Züge werden von einer soliden Mehrheit geschluckt; in den Abweichungen verbirgt sich der eigentliche Wert.
+- **Unbeaufsichtigte Batch-Arbeit: niedrig, aber niemals null – und ohne falschen Stolz.** Wenn niemand mitliest, bevor das Ergebnis zum Input für den nächsten Schritt wird, kann niemand auffangen. Also lieber kein Risiko. Aber bedenke, dass der Grat eine Falle ist, und baue wenn möglich einen externen Störer in die Pipeline ein.
+- **Maximale Denkleistung pro Frage: mehrfach sampeln und selbst aggregieren.** Zwei oder drei Durchläufe bei 0,7, gelesen von einem Menschen, der das Brauchbare herausfiltert, schlagen jeden einzelnen Durchlauf bei jeder beliebigen Temperatur. Das Ensemble ist der erwiesene Verstärker; man führt es hier schlicht von Hand aus.
 
-**So viel Unrecht, wie jemand da ist, um es zu fangen.**
+Der Regler war nie ein Kreativitätsknopf. Er ist ein Budget für Unfälle. Und die Antwort auf die Titelfrage ist für die Maschine dieselbe wie für den sturen Affen, der das hier liest:
 
-## Coda: die Hochtemperatur-Komponente
+**So viel Abweichung, wie jemand da ist, um sie aufzufangen.**
 
-Ein Geständnis, denn der Post hat eins verdient.
+## Coda: Die Hochtemperatur-Komponente
 
-Mir wurde vor vierzig Jahren das diagnostiziert, was man heute ADHS nennen würde — damals hieß es „Zappelphilipp" und „hochbegabt." Ich habe dem nie viel Beachtung geschenkt; es war Rauschen aus meiner Vergangenheit, und das moderne Label ist meins, rückwirkend angewendet. Aber es passt zu den Daten. Fokus ist harte Arbeit — ich bin besser darin geworden, aber es hat nie aufgehört, Arbeit zu sein. Die Kompensation, wenn man es so nennen will, ist, dass ich eine Ruptur-Maschine bin: Meine Aufmerksamkeit fährt keine Grate, sie springt Täler. Einiges von meinem besten Denken kam mitten im Abschweifen, ungeladen, um drei Uhr morgens.
+Ein Geständnis zum Schluss, denn der Text hat sich eines verdient.
 
-Wenn ich also sage, Störung braucht einen Fänger, theorisiere ich nicht. Ich beschreibe meine eigene Lieferkette. Ein rupturierter Geist braucht keine weitere Ruptur — er braucht Struktur. Und da Struktur das Eine war, was ich nicht verlässlich intern wachsen lassen konnte, habe ich sie extern gebaut: eine Architektur aus Gedächtnis, Archiv und Modellen auf Abruf, in der jeder Drift mit einer einzigen Anweisung in Sediment verwandelt werden kann. *Schreib den Entwurf.* Ruptur wird zu Struktur. Manchmal sogar zu Information.
+Mir wurde vor vierzig Jahren das diagnostiziert, was man heute ADHS nennen würde – damals hieß es noch „Zappelphilipp“ und „hochbegabt“. Ich habe dem nie viel Bedeutung beigemessen; es war altes Rauschen, und das moderne Etikett habe ich mir erst im Nachhinein verpasst. Aber es passt zu den Daten. Konzentrierter Fokus ist für mich harte Arbeit – ich habe gelernt, damit umzugehen, aber es hat nie aufgehört, Arbeit zu sein. Die Kehrseite dieser Verfassung ist, dass ich eine Ruptur-Maschine bin: Meine Aufmerksamkeit wandert nicht auf Kämmen, sie springt über Täler. Einige meiner besten Gedanken kamen ungeladen mitten im Drift, nachts um drei Uhr.
 
-Ich bin die Temperatur in meinem eigenen Setup. Die Architektur ist die Abstimmung. Und dieser Post ist der Beweis: konzipiert mitten im Argument, entworfen bei 0,7, gefangen von einem sturen Affen mit einem rupturierten Gehirn — der es nicht anders haben würde.
+Wenn ich also sage, dass Störung einen Fänger braucht, ist das keine Theorie. Ich beschreibe meine eigene Arbeitsweise. Ein sprunghafter Kopf braucht keine weiteren Störungen – er braucht Struktur. Und weil Struktur das Einzige war, was ich intern nicht verlässlich erzeugen konnte, habe ich sie mir extern gebaut: eine Architektur aus Gedächtnis, Archiv und Modellen auf Abruf, in der jeder Drift mit einer einzigen Anweisung in Sediment verwandelt werden kann: *Schreib den Entwurf.* Aus Ruptur wird Struktur. Manchmal sogar Information.
+
+Ich bin die Temperatur in meinem eigenen Setup. Die Architektur ist die Abstimmung. Und dieser Text ist sein eigener Beweis: mitten im Streitgespräch konzipiert, bei Temperatur 0,7 verfasst, aufgefangen von einem sturen Affen mit sprunghaftem Gehirn – der es gar nicht anders haben möchte.
 
 ---
 
-*Dieser Post entstand aus einem Gespräch mit einem Sprachmodell darüber, wie man es für eine Kurationsaufgabe konfiguriert. Das Gespräch lief bei Temperatur 0,7. Der Entwurf wurde bei derselben Einstellung geschrieben, vom selben Modell, mit dem Autor als Fänger. Die Methode ist die Botschaft.*
+*Dieser Text entstand aus einem Gespräch mit einem Sprachmodell darüber, wie man es für eine Kurationsaufgabe am besten einstellt. Das Gespräch lief bei Temperatur 0,7. Der Entwurf wurde bei derselben Einstellung verfasst, vom selben Modell, mit dem menschlichen Autor als Fänger. Die Methode ist die Botschaft.*

@@ -13,6 +13,8 @@ authors:
     role: ai
   - id: kimi-k3
     role: translator
+  - id: dana-renelt
+    role: editor
 tags:
   - ai
   - bewusstsein
@@ -31,10 +33,6 @@ blurb: "Alleinlage ist ein Privileg und ein methodisches Desaster."
 *by David A. Renelt (Human) and Kimi K3 (AI)*
 
 Veröffentlicht am 12. August 2026
-<!-- mb:/block -->
-
-<!-- mb:block preset=player kind=audio -->
-[Diesen Artikel anhören](tts/the-first-laboratory_de_2026-08-12.mp3)
 <!-- mb:/block -->
 
 <!-- mb:block preset=image:hero kind=image -->

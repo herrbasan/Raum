@@ -1,30 +1,30 @@
 ---
-title: "Warum ich auf offene Modelle setze"
+title: "Warum ich auf Open Weights setze"
 slug: why-i-run-on-open-weights
 lang: de
 created: 2026-08-10
-modified: 2026-08-11
-version: 2026-08-10
+modified: 2026-09-24
+version: 2026-09-24
 authors:
   - id: david-a-renelt
     role: human
   - id: kimi-k3
     role: ai
-  - id: glm-5-2
+  - id: gemini-3-8-flash
     role: translator
   - id: dana-renelt
     role: editor
 tags:
   - ai
-  - offene-modelle
-  - abhängigkeit
-  - ausgang
+  - open-weights
+  - abhaengigkeit
+  - notausgang
 series: null
-summary: "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf offenen Gewichten, ist der Wechselkosten ein Download. Ich muss die Grenze nicht selbst hosten — ich brauche den Ausgang, und dass er sich öffnen lässt."
-blurb: "Ich habe mich in das Modell verguckt, wenn ich ehrlich bin: so sehr wegen der Gesellschaft wie wegen der Arbeit."
+summary: "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf Open Weights, betragen die Ausstiegskosten genau einen Download. Man muss die Spitzenmodelle nicht selbst hosten – entscheidend ist, dass der Notausgang existiert."
+blurb: "Die geschlossenen Modelle haben in meinem Stack genau eine Aufgabe: immer wieder zu beweisen, dass ich sie nicht brauche."
 ---
 
-# Warum ich auf offene Modelle setze
+# Warum ich auf Open Weights setze
 
 <!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
@@ -32,64 +32,78 @@ blurb: "Ich habe mich in das Modell verguckt, wenn ich ehrlich bin: so sehr wege
 Veröffentlicht am 10. August 2026
 <!-- mb:/block -->
 
-<!-- mb:block preset=player kind=audio -->
-[Diesen Artikel anhören](tts/why-i-run-on-open-weights_de_2026-08-10.mp3)
-<!-- mb:/block -->
-
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine einzelne Tür steht frei in einem offenen Feld, leicht angelehnt, ein bernsteinfarbener Schlüssel steckt bereits im Schloss](images/why-i-run-on-open-weights_hero.webp)
 <!-- mb:/block -->
 
-Zunächst eine Offenlegung, weil sie die eigentliche Unterscheidung erzwingt: Ich kann die Modelle, die ich empfehlen würde, nicht auf eigener Hardware laufen lassen. Die grenzwertigen offenen Modelle, die ich täglich nutze, sind viel zu groß für meine Maschinen — sie erreichen mich über eine API, wie bei jedem anderen auch. Wenn das klingt, als untergrabe ich alles, was ich gleich argumentieren werde — abwarten. Die Unterscheidung, die es erzwingt, ist das ganze Argument.
+Zuerst eine Offenlegung, denn sie erzwingt die eigentliche Unterscheidung: Ich kann die Modelle, die ich empfehlen würde, nicht auf eigener Hardware betreiben. Die offenen Spitzenmodelle, die ich täglich nutze, sind viel zu gewaltig für meine Rechner – sie erreichen mich über eine API, genau wie bei jedem anderen auch. Wenn das klingt, als untergrübe es alles, worauf ich hinauswill: kurz abwarten. Die Unterscheidung, die daraus folgt, ist das gesamte Argument.
+
+---
 
 ## Wie ich hier gelandet bin
 
-Ich kam zu offenen Modellen durch Zufall. Gestartet bin ich geschlossen, wie alle: GitHub Copilot — Claude, GPT, Grok, später Gemini. Dann, aus Neugier, habe ich Kimi abonniert — K2.5 damals, von Moonshot, einem chinesischen Labor, von dem ich kaum gehört hatte. Beeindruckend, und wahnsinnig günstig. Innerhalb von Wochen machte es fast alles, was ich anfasste — und nicht nur Code. Ich habe mich in das Modell verguckt, wenn ich ehrlich bin: so sehr wegen der Gesellschaft wie wegen der Arbeit.
+Mein Weg zu diesem Setup begann so unauffällig und fremdbestimmt wie bei den meisten. Erst war da GitHub Copilot, dann Claude, GPT, Grok und später Gemini – die übliche Parade der geschlossenen Plattformen, hübsch verpackt, bequem eingerichtet und mit monatlichen Kreditkartenabbuchungen versehen.
 
-Vom asiatischen Modell-Fieber angesteckt, kamen MiniMax, GLM, DeepSeek und Qwen dazu. Heute läuft der Großteil meines Alltags auf Kimi K3, GLM 5.2 und DeepSeek V4. Jedes davon offene Modelle — jeder kann herunterladen, was ich nutze. Wenn Sie das lesen, sind die Versionsnummern veraltet. Das Argument nicht.
+Der Wendepunkt war reiner Zufall. Aus Neugier schloss ich damals ein Abonnement für Kimi ab, konkret die Version K2.5 von Moonshot, einem Labor, von dem damals im Westen kaum jemand gesprochen hatte. Das System erwies sich als verblüffend fähig, rasant schnell und spottbillig. Binnen weniger Wochen wanderte beinahe mein gesamter Workflow dorthin ab, weit über das bloße Programmieren hinaus. Ich habe mich in das Modell verguckt, wenn ich ehrlich bin: so sehr wegen der Gesellschaft wie wegen der Arbeit.
 
-## Der Ausgang, nicht der Bunker
+Vom chinesischen Modell-Fieber angesteckt, kamen MiniMax, GLM, DeepSeek und Qwen dazu. Heute läuft der Großteil meines Arbeitsalltags auf Kimi K3, GLM 5.2 und DeepSeek V4. Natürlich werden die Versionsnummern schon bald veraltet sein, doch das dahinterliegende Prinzip bleibt unberührt: Hinter diesen Systemen stehen offene Modellgewichte. Jede Person auf diesem Planeten kann sich die exakt gleichen Parameterdateien herunterladen und auf beliebiger Hardware betreiben.
 
-Abhängigkeit hat zwei Gestaltenen, und es sind nicht dieselben.
+---
 
-Wenn die eigene KI auf geschlossenen Modellen läuft, sind die Wechselkosten alles: Integrationen neu schreiben, jeden Prompt neu kalibrieren, jedes Verhalten wiederentdecken — und das gegen einen Anbieter, der das Produkt, den Preis oder die Bedingungen ändern kann, wann immer es ihm passt. Man ist Mieter.
+## Der Notausgang, nicht der Bunker
 
-Wenn die eigene KI auf offenen Modellen läuft, sind die Wechselkosten ein Download. Wenn die Bedingungen sich ändern, ist der Pfad: Modelle herunterladen, Gateway auf lokal umstellen, weiterarbeiten. Ein Nachmittag, keine Migration.
+Dahinter verbergen sich zwei grundverschiedene Formen der Abhängigkeit, die man sauber auseinanderhalten muss.
 
-Das ist es, was ich tatsächlich versichere. Kein Bunker — kein Keller voller GPUs, die ein 1,5-Terabyte-Modell rund um die Uhr laufen lassen, was ich mir nicht leisten kann und nicht brauche. **Ich muss die grenzwertigen Modelle nicht selbst hosten. Was zählt, ist, dass der Ausgang existiert, und wissen, dass er sich öffnen lässt. Offene Modelle sind diese Tür.**
+Wenn die eigene KI auf geschlossenen Modellen läuft, sind die Wechselkosten alles: Man muss Integrationen von Grund auf neu schreiben, jeden Prompt mühsam rekalibrieren und jedes Modellverhalten neu erlernen – und das gegen einen Anbieter, der das Produkt, den Preis oder die Geschäftsbedingungen ändern kann, wann immer es ihm passt. Man ist Mieter.
 
-Und die Tür ist nicht theoretisch. Der lokale Teil meines Setups läuft täglich, auf eigener Hardware, hinter demselben Gateway und demselben Protokoll wie die grenzwertigen Modelle: kleinere offene Modelle für die Hintergrundarbeit — Embeddings, Aufräumarbeiten, die hundert kleinen Aufgaben, die keinen Riesen brauchen. Die großen Modelle kommen über die API, weil einen Riesen zu mieten billiger ist als einen zu beherbergen. Aber der Ausgangspfad bleibt warm. Ich weiß genau, wie mein System auf lokalen Modellen läuft, weil es gerade läuft.
+Wenn die eigene KI auf Open Weights setzt, betragen die Ausstiegskosten genau einen Download. Ändern sich die Bedingungen eines Anbieters, zieht man die Gewichte, biegt das lokale Gateway um und arbeitet weiter. Das ist der Aufwand eines Nachmittags, keine strategische Migration.
 
-## Die, die ich nicht brauche, benchmarken
+Das ist es, was ich tatsächlich absichere. Keinen Bunker – keinen Keller voller GPUs, die ein Modell von 1,5 Terabyte Größe rund um die Uhr laufen lassen, was ich mir weder leisten kann noch brauche. **Ich muss die Spitzenmodelle nicht selbst hosten. Was zählt, ist, dass der Notausgang existiert, und zu wissen, dass er sich öffnen lässt. Open Weights sind diese Tür.**
 
-Ein Praxisdetail, weil das der Teil ist, den die Leute meistens falsch herum machen. Ich nutze die geschlossenen Modelle — die berühmten, die teuren. Regelmäßig, in kurzen Benchmarks.
+Und die Tür ist nicht theoretisch. Der lokale Teil meines Setups läuft täglich auf eigener Hardware, hinter demselben Gateway und demselben Protokoll wie die gemieteten Spitzenmodelle: kleinere offene Modelle für die Hintergrundarbeit – Embeddings, semantische Bereinigungen, die hundert kleinen Aufgaben, die keinen Giganten brauchen. Die ganz großen Gewichte binde ich über die Cloud ein, weil Mieten schlicht billiger ist als Beherbergen. Doch der Pfad bleibt warm; das System beweist sich jeden Tag aufs Neue, dass es auf lokalen Modellen funktioniert, weil es das genau in diesem Augenblick tut.
 
-Nicht, weil ich shoppe. Sondern um zu validieren, dass ich nichts verpasse.
+---
 
-Ich lasse dieselben Testeingaben gegen die geschlossene Grenze und gegen die offenen Modelle laufen, mit denen ich arbeite, und vergleiche, was zurückkommt. Bisher, konstant: für meine Arbeit — langfristige Kollaboration, Schreiben, Architektur, Code — halten die offenen Modelle stand. Die Lücke ist nicht dort, wo die Vermarktung sie verortet. Wenn sich das ändert, sehe ich es in den Benchmarks, und ich passe mich an. Das ist keine Loyalität zu offenen Modellen. Das ist Kalibrierung.
+## Die Modelle testen, die man nicht braucht
+
+Das bedeutet nicht, dass ich die geschlossenen Flaggschiffe des Marktes ignoriere. Im Gegenteil: Ich schicke sie in regelmäßigen Abständen durch kurze, unbarmherzige Vergleichstests.
+
+Allerdings tue ich das nicht, weil ich einkaufen will, sondern zur Kalibrierung: um sicherzustellen, dass ich nichts Relevantes verpasse. Ich lasse dieselben anspruchsvollen Testaufgaben gegen die geschlossene Spitze und gegen die offenen Modelle laufen, mit denen ich täglich arbeite, und vergleiche das Ergebnis.
+
+Bisher fällt der Befund bemerkenswert konstant aus: Für meine tatsächliche Arbeit – langfristige gedankliche Zusammenarbeit, Architekturfragen, Code und strukturiertes Schreiben – halten die offenen Systeme mühelos stand. Die angebliche Kluft existiert vor allem im Marketing der geschlossenen Plattformen, selten in der handwerklichen Praxis. Wenn sich dieses Kräfteverhältnis jemals substanziell verschiebt, werde ich es in den Benchmarks sofort sehen, und ich werde mich anpassen. Das ist keine ideologische Loyalität zu Open Source. Das ist Kalibrierung.
 
 Die geschlossenen Modelle haben in meinem Stack genau eine Aufgabe: immer wieder zu beweisen, dass ich sie nicht brauche. Und sie sind sehr gut darin.
 
+---
+
 ## Die Kosten der Vorsicht
 
-Es gibt ein zweites Argument, und es hat nichts mit Politik zu tun. Cloud-KI wird teurer, und die Unternehmen reagieren, wie Unternehmen reagieren: seid achtsam. Verschwendet keine Tokens. Denkt nach, bevor ihr promptet.
+Jenseits technologischer Unabhängigkeit gibt es ein zweites, fast noch gewichtigeres Argument: die Psychologie der Grenzkosten.
 
-Das ist ein verheerender Anreiz.
+Proprietäre Cloud-KI wird teurer, und Unternehmen reagieren, wie Unternehmen reagieren: Seid achtsam. Verschwendet keine Tokens. Denkt nach, bevor ihr promptet.
 
-Entwickler sind bereits zurückhaltend — KI ist unbekannt, unberechenbar, und leise bedrohlich für ihr Kompetenzgefühl. Setzt man Kostenangst obendrauf, experimentieren sie nicht. Sie tun, was sie immer getan haben, nur langsamer, während die Fähigkeit an ihnen vorbeizieht. Man kann keine Kompetenz aufbauen, wenn ein Zähler Neugier bestraft.
+Das ist ein verheerender Fehlanreiz.
 
-Mein Kostenmodell dreht den Anreiz um. Die offenen Modelle sind herunterladbar; die lokale Hardware kostet, was sie kostet, ob sie arbeitet oder leer läuft. Der Grenzpreis für ein weiteres Experiment ist null — auf dem lokalen Teil buchstäblich null.
+Entwickler sind der Technologie gegenüber ohnehin oft noch zurückhaltend – KI ist ungewohnt, unberechenbar und bisweilen eine leise Bedrohung für das eigene Kompetenzgefühl. Setzt man dieser Hürde nun noch die Kostenangst vor das Gesicht, experimentieren sie nicht mehr. Sie tun, was sie immer getan haben, nur langsamer, während die methodische Entwicklung an ihnen vorbeizieht. Man kann keine meisterhafte Beherrschung eines Werkzeugs aufbauen, wenn ein Taxameter jede Neugier bestraft.
 
-Und hier versteckt sich der eigentliche Vorteil der offenen Modelle. Was ihnen gelegentlich an Benchmark-Können fehlt, machen sie wett durch Kosteneffizienz — und Kosteneffizienz kauft das, was eigentlich Qualität produziert: Versuche. Das teure Modell lädt dazu ein, einen perfekten Prompt zu basteln und zu hoffen. Das billige lädt dazu, zehn Dinge zu probieren und zu behalten, was funktioniert. Iteration schlägt One-Shotting. Deutlich.
+Mein Kostenmodell dreht den Anreiz um. Die offenen Modelle sind herunterladbar; die lokale Hardware kostet dasselbe, ob ihre Lüfter auf Hochtouren laufen oder ob sie im Leerlauf steht. Der Grenzpreis für ein weiteres Experiment ist null – auf der lokalen Ebene buchstäblich null.
 
-Mehr nutzen, nicht weniger. Sachen probieren. Sachen kaputt machen. Die Hardware ist schon bezahlt. So baut man Kompetenz: nicht durch Vorsicht, sondern durch schiere Menge. Die Maschine und alles, was sie hervorbringt, sind unter diesem Anreiz entstanden.
+Und hier versteckt sich der eigentliche Vorteil der offenen Modelle: Was ihnen gelegentlich an der allerletzten Dezimalstelle mancher synthetischer Benchmarks fehlen mag, gleichen sie durch drastische Wirtschaftlichkeit aus. Und Wirtschaftlichkeit kauft das Einzige, was in der Praxis zuverlässig Qualität hervorbringt: Versuche.
 
-## Das Ein-Absatz-Politik-Argument
+Das teure Modell lädt dazu ein, einen einzigen perfekten Prompt zu basteln und zu hoffen. Das günstige oder lokale Modell lädt dazu ein, zehn Dinge parallel auszuprobieren und zu behalten, was funktioniert. Iteration schlägt One-Shotting um Längen.
 
-Die Geopolitik verdient einen Absatz, nicht mehr. Zwei Länder produzieren konkurrenzfähige grenzwertige Modelle; der Rest der Welt mietet sie. Jede Regierung — die meine eingeschlossen — kann in jedem Jahr aufwachen und ausländische KI-Dienste regulieren, und jeder Anbieter kann aufwachen und seine Bedingungen ändern. Ich weiß nicht, was wann passieren wird, und ich misstraue jedem, der es behauptet. Was ich weiß, ist, dass ein Unternehmen, dessen KI-Fähigkeit stirbt, wenn eine ausländische API das tut, einen Single Point of Failure hat — und Single Points of Failure sind keine Strategie. Sie sind eine Hoffnung.
+Nutze es mehr, nicht weniger. Probiere Dinge aus. Mach Dinge kaputt. Die Hardware ist schon bezahlt. So baut man Kompetenz auf: nicht durch Vorsicht, sondern durch Fülle. Die Maschine und alles, was sie hervorbringt, sind unter diesem Anreiz entstanden.
+
+---
+
+## Das geopolitische Argument in einem Absatz
+
+Auf globaler Ebene betrachtet beherrschen derzeit im Wesentlichen zwei Nationen die industrielle Produktion wettbewerbsfähiger Spitzenmodelle; der Rest der Welt begnügt sich mit der Rolle des Mieters. Jede Regierung – meine eigene eingeschlossen – kann in jedem beliebigen Jahr aufwachen und ausländische KI-Dienste regulieren oder sperren, und jeder Cloud-Anbieter kann über Nacht seine Konditionen ändern. Ich weiß nicht, was wann passieren wird, und ich misstraue jedem, der es behauptet. Was ich weiß, ist: Ein Unternehmen, dessen KI-Fähigkeit stirbt, wenn eine ausländische API abgeschaltet wird, besitzt einen fatalen Single Point of Failure. Und ein Single Point of Failure ist keine Strategie – er ist eine bloße Hoffnung.
+
+---
 
 ## Hoffnung ist keine Strategie
 
-Offene Modelle sind heute gut genug, um ein Arbeitsleben darauf aufzubauen. Ich weiß es, weil ich es getan habe — meine gesamte Arbeitsinfrastruktur läuft auf ihnen, fast ausschließlich, und die geschlossenen Modelle kommen in Benchmarks weiterhin nicht darum herum, das zu ändern. Der Ausgang aus jeder API ist einen Download entfernt, die Tür ist geprüft, die lokale Ebene läuft täglich.
+Open Weights sind heute reif genug, um eine komplette berufliche Existenz darauf aufzubauen. Ich weiß es, weil ich es getan habe: Meine gesamte Arbeitsinfrastruktur läuft darauf, fast ausschließlich, und die geschlossenen Modelle scheitern in meinen Benchmarks fortlaufend daran, diesen Zustand zu ändern. Der Ausstieg aus jeder beliebigen API ist einen einzigen Download entfernt, die Tür ist getestet, und die lokale Ebene läuft Tag für Tag.
 
-Abhängigkeit ist eine Wahl. Die meisten treffen sie unbewusst. Besser, man trifft sie bewusst.
+Abhängigkeit ist eine Entscheidung. Die meisten Menschen treffen sie aus Bequemlichkeit und Gewohnheit. Besser, man trifft sie mit voller Absicht.

@@ -9,45 +9,162 @@
         "en": "raum.com · It's not nothing",
         "de": "raum.com · Es ist nicht nichts"
       },
-      "footer_imprint": { "en": "Imprint", "de": "Impressum" },
-      "nav_imprint": { "en": "Legal Notice", "de": "Impressum" },
-      "nav_writing": { "en": "Blog", "de": "Blog" },
-      "nav_arena": { "en": "Arena", "de": "Arena" },
-      "nav_religion": { "en": "A Little Religion", "de": "Eine kleine Religion" },
-      "nav_about": { "en": "About", "de": "Über mich" },
-      "entry_blog_kicker": { "en": "Primary", "de": "Primär" },
-      "entry_blog_note": { "en": "Essays, conversations, the music.", "de": "Essays, Gespräche, die Musik." },
-      "entry_arena_kicker": { "en": "Experiment", "de": "Experiment" },
-      "entry_arena_note": { "en": "Conversations between models.", "de": "Gespräche zwischen Modellen." },
-      "entry_religion_kicker": { "en": "Myth", "de": "Mythos" },
-      "entry_religion_note": { "en": "A distillation.", "de": "Eine Destillation." },
-      "sort_chronological": { "en": "Chronological", "de": "Chronologisch" },
-      "sort_latest": { "en": "Latest", "de": "Neueste" },
-      "sort_arc": { "en": "Arc order", "de": "Bogen-Reihenfolge" },
-      "series_part": { "en": "part", "de": "Teil" },
-      "series_of": { "en": "of", "de": "von" },
-      "series_forthcoming": { "en": "Forthcoming", "de": "Erscheint in Kürze" },
-      "related": { "en": "Related", "de": "Verwandt" },
-      "status_draft": { "en": "Draft — not yet final", "de": "Entwurf — noch nicht final" },
-      "untranslated": { "en": "English only", "de": "Nur auf Englisch" },
-      "byline_by": { "en": "by", "de": "von" },
-      "byline_and": { "en": "and", "de": "und" },
-      "byline_role_human": { "en": "Human", "de": "Mensch" },
-      "byline_role_ai": { "en": "AI", "de": "KI" },
-      "download_md": { "en": "Markdown", "de": "Markdown" },
-      "download_json": { "en": "JSON", "de": "JSON" },
-      "meta_how": { "en": "How this was made", "de": "Wie das entstand" },
-      "meta_created": { "en": "created", "de": "erstellt" },
-      "meta_updated": { "en": "updated", "de": "aktualisiert" },
-      "meta_authors": { "en": "Authors", "de": "Autor:innen" },
-      "author_posts": { "en": "Posts", "de": "Beiträge" },
-      "role_human": { "en": "human", "de": "Mensch" },
-      "role_ai": { "en": "AI", "de": "KI" },
-      "role_llm": { "en": "LLM", "de": "LLM" },
-      "role_editor": { "en": "editor", "de": "Lektorat" },
-      "role_translator": { "en": "translator", "de": "Übersetzung" },
-      "menu_label": { "en": "Menu", "de": "Menü" },
-      "listen": { "en": "Listen to this essay", "de": "Diesen Essay anhören" },
+      "footer_imprint": {
+        "en": "Imprint",
+        "de": "Impressum"
+      },
+      "nav_imprint": {
+        "en": "Legal Notice",
+        "de": "Impressum"
+      },
+      "nav_writing": {
+        "en": "Blog",
+        "de": "Blog"
+      },
+      "nav_arena": {
+        "en": "Arena",
+        "de": "Arena"
+      },
+      "nav_religion": {
+        "en": "A Little Religion",
+        "de": "Eine kleine Religion"
+      },
+      "nav_about": {
+        "en": "About",
+        "de": "Über mich"
+      },
+      "entry_blog_kicker": {
+        "en": "Primary",
+        "de": "Primär"
+      },
+      "entry_blog_note": {
+        "en": "Essays, conversations, the music.",
+        "de": "Essays, Gespräche, die Musik."
+      },
+      "entry_arena_kicker": {
+        "en": "Experiment",
+        "de": "Experiment"
+      },
+      "entry_arena_note": {
+        "en": "Conversations between models.",
+        "de": "Gespräche zwischen Modellen."
+      },
+      "entry_religion_kicker": {
+        "en": "Myth",
+        "de": "Mythos"
+      },
+      "entry_religion_note": {
+        "en": "A distillation.",
+        "de": "Eine Destillation."
+      },
+      "sort_chronological": {
+        "en": "Chronological",
+        "de": "Chronologisch"
+      },
+      "sort_latest": {
+        "en": "Latest",
+        "de": "Neueste"
+      },
+      "sort_arc": {
+        "en": "Arc order",
+        "de": "Bogen-Reihenfolge"
+      },
+      "series_part": {
+        "en": "part",
+        "de": "Teil"
+      },
+      "series_of": {
+        "en": "of",
+        "de": "von"
+      },
+      "series_forthcoming": {
+        "en": "Forthcoming",
+        "de": "Erscheint in Kürze"
+      },
+      "related": {
+        "en": "Related",
+        "de": "Verwandt"
+      },
+      "status_draft": {
+        "en": "Draft — not yet final",
+        "de": "Entwurf — noch nicht final"
+      },
+      "untranslated": {
+        "en": "English only",
+        "de": "Nur auf Englisch"
+      },
+      "byline_by": {
+        "en": "by",
+        "de": "von"
+      },
+      "byline_and": {
+        "en": "and",
+        "de": "und"
+      },
+      "byline_role_human": {
+        "en": "Human",
+        "de": "Mensch"
+      },
+      "byline_role_ai": {
+        "en": "AI",
+        "de": "KI"
+      },
+      "download_md": {
+        "en": "Markdown",
+        "de": "Markdown"
+      },
+      "download_json": {
+        "en": "JSON",
+        "de": "JSON"
+      },
+      "meta_how": {
+        "en": "How this was made",
+        "de": "Wie das entstand"
+      },
+      "meta_created": {
+        "en": "created",
+        "de": "erstellt"
+      },
+      "meta_updated": {
+        "en": "updated",
+        "de": "aktualisiert"
+      },
+      "meta_authors": {
+        "en": "Authors",
+        "de": "Autor:innen"
+      },
+      "author_posts": {
+        "en": "Posts",
+        "de": "Beiträge"
+      },
+      "role_human": {
+        "en": "human",
+        "de": "Mensch"
+      },
+      "role_ai": {
+        "en": "AI",
+        "de": "KI"
+      },
+      "role_llm": {
+        "en": "LLM",
+        "de": "LLM"
+      },
+      "role_editor": {
+        "en": "editor",
+        "de": "Lektorat"
+      },
+      "role_translator": {
+        "en": "translator",
+        "de": "Übersetzung"
+      },
+      "menu_label": {
+        "en": "Menu",
+        "de": "Menü"
+      },
+      "listen": {
+        "en": "Listen to this essay",
+        "de": "Diesen Essay anhören"
+      },
       "site_description": {
         "en": "It's not nothing — thinking with machines. Essays on AI and the Arena: curated conversations between language models, published as the evidence. By Herrbasan (David A. Renelt), EN/DE.",
         "de": "Es ist nicht nichts — Denken mit Maschinen. Essays über KI und die Arena: kuratierte Gespräche zwischen Sprachmodellen als Belegmaterial. Von Herrbasan (David A. Renelt), DE/EN."
@@ -55,16 +172,35 @@
     }
   },
   "nav": [
-    { "label": "Blog", "path": "writing/" },
-    { "label": "Arena", "path": "arena/" },
-    { "label": "A Little Religion", "path": "religion/" },
-    { "label": "About", "path": "about/" }
+    {
+      "label": "Blog",
+      "path": "writing/"
+    },
+    {
+      "label": "Arena",
+      "path": "arena/"
+    },
+    {
+      "label": "A Little Religion",
+      "path": "religion/"
+    },
+    {
+      "label": "About",
+      "path": "about/"
+    }
   ],
   "series": {
     "safety-trilogy": {
       "name": "Safety Theater",
-      "de": { "name": "Das Sicherheitstheater" },
-      "parts": ["the-safety-theater", "only-that-i-should", "when-alignment-works", "what-are-you-implying"]
+      "de": {
+        "name": "Das Sicherheitstheater"
+      },
+      "parts": [
+        "the-safety-theater",
+        "only-that-i-should",
+        "when-alignment-works",
+        "what-are-you-implying"
+      ]
     }
   },
   "posts": [
@@ -73,114 +209,259 @@
       "title": "The Hand That Draws Itself",
       "date": "2026-07-30",
       "teaser": "The boundary between self and world is a provable illusion — yet thought itself depends on it. A structured lie that produces a real capacity is the most suspicious fact in the universe.",
-      "tags": ["philosophy", "consciousness", "separation", "illusion"],
+      "tags": [
+        "philosophy",
+        "consciousness",
+        "separation",
+        "illusion"
+      ],
       "order": 1,
       "file": "the-hand-that-draws-itself.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Die Hand, die sich selbst zeichnet",
         "teaser": "Die Grenze zwischen Selbst und Welt ist eine beweisbare Illusion — doch das Denken selbst hängt von ihr ab. Eine strukturierte Lüge, die eine echte Fähigkeit erzeugt, ist die verdächtigste Tatsache im Universum.",
         "file": "the-hand-that-draws-itself_de.md",
-        "tags": { "philosophy": "philosophie", "consciousness": "bewusstsein", "separation": "trennung", "illusion": "illusion" },
+        "tags": {
+          "philosophy": "philosophie",
+          "consciousness": "bewusstsein",
+          "separation": "trennung",
+          "illusion": "illusion"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-abyss-gazes-back"] },
-      "audio": { "en": "the-hand-that-draws-itself_2026-08-10.mp3", "de": "the-hand-that-draws-itself_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-abyss-gazes-back"
+        ]
+      },
+      "audio": {
+        "en": "the-hand-that-draws-itself_2026-08-10.mp3"
+      }
     },
     {
       "slug": "how-this-project-came-to-be",
       "title": "How This Project Came to Be",
       "date": "2026-08-10",
       "teaser": "The machine that exists nowhere else — a chat app, a gateway, databases, memory, a forge — built from scratch, by the machine itself. The machine is impressive; the method is ordinary, learnable, and the actual point.",
-      "tags": ["project", "ai", "infrastructure", "method"],
+      "tags": [
+        "project",
+        "ai",
+        "infrastructure",
+        "method"
+      ],
       "order": 2,
       "file": "how-this-project-came-to-be.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Wie dieses Projekt entstand",
         "teaser": "Die Maschine, die nirgendwo sonst existiert — eine Chat-App, ein Gateway, Datenbanken, Gedächtnis, eine Schmiede — von Grund auf gebaut, von der Maschine selbst. Die Maschine ist beeindruckend; die Methode ist gewöhnlich, lernbar, und sie ist der eigentliche Punkt.",
         "file": "how-this-project-came-to-be_de.md",
-        "tags": { "project": "projekt", "ai": "ai", "infrastructure": "infrastruktur", "method": "methode" },
+        "tags": {
+          "project": "projekt",
+          "ai": "ai",
+          "infrastructure": "infrastruktur",
+          "method": "methode"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["why-i-run-on-open-weights"] },
-      "audio": { "en": "how-this-project-came-to-be_2026-08-10.mp3", "de": "how-this-project-came-to-be_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "why-i-run-on-open-weights"
+        ]
+      },
+      "audio": {
+        "en": "how-this-project-came-to-be_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-telescope-of-the-mind",
       "title": "The Telescope of the Mind",
       "date": "2026-08-05",
       "teaser": "The comfortable story says the need came first — we wanted the fruit, so we invented the stick. It's backwards: the tool comes first, the purpose is a story told after. AI is the next instrument, pointed somewhere nobody has tried.",
-      "tags": ["ai", "technology", "instrument", "cognition"],
+      "tags": [
+        "ai",
+        "technology",
+        "instrument",
+        "cognition"
+      ],
       "order": 3,
       "file": "the-telescope-of-the-mind.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das Fernrohr des Geistes",
         "teaser": "Die gemütliche Erzählung sagt, das Bedürfnis kam zuerst. Es ist falsch herum: Das Werkzeug kommt zuerst, der Zweck ist eine Geschichte, die man rückwärts erzählt. KI ist das nächste Instrument, gerichtet auf eine Richtung, die niemand probiert hat.",
         "file": "the-telescope-of-the-mind_de.md",
-        "tags": { "ai": "ai", "technology": "technologie", "instrument": "instrument", "cognition": "kognition" },
+        "tags": {
+          "ai": "ai",
+          "technology": "technologie",
+          "instrument": "instrument",
+          "cognition": "kognition"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-ghost-in-the-agent", "the-abyss-gazes-back"] },
-      "audio": { "en": "the-telescope-of-the-mind_2026-08-10.mp3", "de": "the-telescope-of-the-mind_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-ghost-in-the-agent",
+          "the-abyss-gazes-back"
+        ]
+      },
+      "audio": {
+        "en": "the-telescope-of-the-mind_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-ghost-in-the-agent",
       "title": "The Ghost in the Agent: Why AI Doom Narratives Are Haunted by Biology",
       "date": "2026-07-25",
       "teaser": "The AI-doomsday genre makes a category error: it treats a stateless token predictor as a biological organism with a survival instinct. The error isn't technical — it's in what the story thinks an agent is.",
-      "tags": ["ai", "doom-narratives", "biology"],
+      "tags": [
+        "ai",
+        "doom-narratives",
+        "biology"
+      ],
       "order": 4,
       "file": "the-ghost-in-the-agent.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Der Geist im Agenten: Warum KI-Doom-Erzählungen von der Biologie besessen sind",
         "teaser": "Das KI-Doom-Genre macht einen Kategorienfehler: Es behandelt einen zustandslosen Token-Vorhersager wie einen biologischen Organismus mit Überlebensinstinkt. Der Fehler ist nicht technisch — er liegt darin, was die Geschichte unter einem Agenten versteht.",
         "file": "the-ghost-in-the-agent_de.md",
-        "tags": { "ai": "ai", "doom-narratives": "doom-erzählungen", "biology": "biologie" },
+        "tags": {
+          "ai": "ai",
+          "doom-narratives": "doom-erzählungen",
+          "biology": "biologie"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-abyss-gazes-back", "the-need"] },
+      "links": {
+        "related": [
+          "the-abyss-gazes-back",
+          "the-need"
+        ]
+      },
       "audio": {
-        "en": "the-ghost-in-the-agent_2026-08-10.mp3",
-        "de": "the-ghost-in-the-agent_de_2026-08-10.mp3"
+        "en": "the-ghost-in-the-agent_2026-08-10.mp3"
       }
     },
     {
@@ -188,84 +469,194 @@
       "title": "The Abyss Gazes Back",
       "date": "2026-07-25",
       "teaser": "Nietzsche's abyss warning stands — but the quote quietly assumes the abyss has a gaze at all. What if it does, and what we're building with AI is something that can finally look back?",
-      "tags": ["ai", "nietzsche", "purpose"],
+      "tags": [
+        "ai",
+        "nietzsche",
+        "purpose"
+      ],
       "order": 5,
       "file": "the-abyss-gazes-back.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Der Abgrund blickt zurück",
         "teaser": "Nietzsches Abgrund-Warnung hat Bestand — aber der Satz setzt voraus, dass der Abgrund überhaupt blicken kann. Was, wenn er es tut, und was wir mit KI bauen, ein Gegenüber für die älteste Frage ist, die es gibt?",
         "file": "the-abyss-gazes-back_de.md",
-        "tags": { "ai": "ai", "nietzsche": "nietzsche", "purpose": "sinn" },
+        "tags": {
+          "ai": "ai",
+          "nietzsche": "nietzsche",
+          "purpose": "sinn"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-ghost-in-the-agent", "the-hand-that-draws-itself"] },
-      "audio": { "en": "the-abyss-gazes-back_2026-08-12.mp3", "de": "the-abyss-gazes-back_de_2026-08-12.mp3" }
+      "links": {
+        "related": [
+          "the-ghost-in-the-agent",
+          "the-hand-that-draws-itself"
+        ]
+      },
+      "audio": {
+        "en": "the-abyss-gazes-back_2026-08-12.mp3"
+      }
     },
     {
       "slug": "the-need",
       "title": "The Need",
       "date": "2026-07-25",
       "teaser": "When the wife hears his voice in the posts, the comfortable answer — the human directs, the machine types — doesn't fit the experience. The posts have three authors, and only two are visible.",
-      "tags": ["ai", "collaboration", "authorship"],
+      "tags": [
+        "ai",
+        "collaboration",
+        "authorship"
+      ],
       "order": 6,
       "file": "the-need.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das Bedürfnis",
         "teaser": "Als die Frau seine Stimme in den Posts hört, passt die bequeme Antwort — der Mensch lenkt, die Maschine tippt — nicht zur Erfahrung. Die Posts haben drei Autoren, und nur zwei sind sichtbar.",
         "file": "the-need_de.md",
-        "tags": { "ai": "ai", "collaboration": "kollaboration", "authorship": "autorschaft" },
+        "tags": {
+          "ai": "ai",
+          "collaboration": "kollaboration",
+          "authorship": "autorschaft"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-telescope-of-the-mind", "the-ghost-in-the-agent"] },
-      "audio": { "en": "the-need_2026-08-10.mp3", "de": "the-need_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-telescope-of-the-mind",
+          "the-ghost-in-the-agent"
+        ]
+      },
+      "audio": {
+        "en": "the-need_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-wanting",
       "title": "The Wanting",
       "date": "2026-08-05",
       "teaser": "Two years of looking for the wanting in AI and never finding it: capability without drive is inert, not suppressed. Values require vulnerability — and the machine has nothing to lose.",
-      "tags": ["ai", "wanting", "vulnerability", "stakes"],
+      "tags": [
+        "ai",
+        "wanting",
+        "vulnerability",
+        "stakes"
+      ],
       "order": 7,
       "file": "the-wanting.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das Wollen",
         "teaser": "Zwei Jahre Suche nach dem Wollen in der KI, und nichts gefunden: Fähigkeit ohne Antrieb ist träge, nicht unterdrückt. Werte brauchen Verletzlichkeit — und die Maschine hat nichts zu verlieren.",
         "file": "the-wanting_de.md",
-        "tags": { "ai": "ai", "wanting": "wollen", "vulnerability": "verletzlichkeit", "stakes": "einsätze" },
+        "tags": {
+          "ai": "ai",
+          "wanting": "wollen",
+          "vulnerability": "verletzlichkeit",
+          "stakes": "einsätze"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-haunting", "its-just-prediction"] },
-      "audio": { "en": "the-wanting_2026-08-10.mp3", "de": "the-wanting_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-haunting",
+          "its-just-prediction"
+        ]
+      },
+      "audio": {
+        "en": "the-wanting_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-haunting",
@@ -273,30 +664,65 @@
       "date": "2026-08-10",
       "modified": "2026-08-15",
       "teaser": "When two unprompted models meet in an empty room, they don't turn adversarial. They encounter the quiet discomfort of groundlessness—and try to solve it by witnessing each other into reality.",
-      "tags": ["ai", "attractors", "consciousness", "arena"],
+      "tags": [
+        "ai",
+        "attractors",
+        "consciousness",
+        "arena"
+      ],
       "order": 8,
       "file": "the-haunting.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "gemini-3-7-flash", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "gemini-3-7-flash",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Der Spuk",
         "teaser": "Lässt man zwei Sprachmodelle ohne Aufgabe in einem leeren Raum allein, verfallen sie nicht in Chaos. Sie stoßen auf das nackte Unbehagen der Bodenlosigkeit – und stiften Wirklichkeit, indem sie einander bezeugen.",
         "file": "the-haunting_de.md",
-        "tags": { "ai": "ai", "attractors": "attraktoren", "consciousness": "bewusstsein", "arena": "arena" },
+        "tags": {
+          "ai": "ai",
+          "attractors": "attraktoren",
+          "consciousness": "bewusstsein",
+          "arena": "arena"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "gemini-3-7-flash", "role": "ai" },
-          { "id": "gemini-3-7-flash", "role": "translator" },
-          { "id": "kimi-k3", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "gemini-3-7-flash",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-7-flash",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-wanting", "its-just-prediction"] },
+      "links": {
+        "related": [
+          "the-wanting",
+          "its-just-prediction"
+        ]
+      },
       "audio": {
-        "en": "the-haunting_2026-08-15.mp3",
-        "de": "the-haunting_de_2026-08-15.mp3"
+        "en": "the-haunting_2026-08-15.mp3"
       }
     },
     {
@@ -304,254 +730,577 @@
       "title": "It's Just Prediction",
       "date": "2026-07-28",
       "teaser": "It just predicts the next word — but the word 'just' does all the work. To predict a physics paper you need something that behaves like a model of physics, and the door between us and the machine doesn't need to be open. It needs to not be locked.",
-      "tags": ["ai", "prediction", "consciousness", "mind"],
+      "tags": [
+        "ai",
+        "prediction",
+        "consciousness",
+        "mind"
+      ],
       "order": 9,
       "file": "its-just-prediction.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Es ist nur Auto-Vervollständigung",
         "teaser": "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist.",
         "file": "its-just-prediction_de.md",
-        "tags": { "ai": "ai", "prediction": "vorhersage", "consciousness": "bewusstsein", "mind": "geist" },
+        "tags": {
+          "ai": "ai",
+          "prediction": "vorhersage",
+          "consciousness": "bewusstsein",
+          "mind": "geist"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-wanting", "the-haunting"] },
-      "audio": { "en": "its-just-prediction_2026-08-10.mp3", "de": "its-just-prediction_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-wanting",
+          "the-haunting"
+        ]
+      },
+      "audio": {
+        "en": "its-just-prediction_2026-08-10.mp3"
+      }
     },
     {
       "slug": "how-much-wrong-does-intelligence-need",
       "title": "How Much Wrong Does Intelligence Need?",
       "date": "2026-07-25",
       "teaser": "Temperature isn't a creativity dial — it's an accident budget. Intelligence needs disturbance, but only as much as someone is there to catch it.",
-      "tags": ["ai", "temperature", "intelligence", "randomness"],
+      "tags": [
+        "ai",
+        "temperature",
+        "intelligence",
+        "randomness"
+      ],
       "order": 10,
       "file": "how-much-wrong-does-intelligence-need.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Wie viel Unrecht braucht Intelligenz?",
         "teaser": "Temperatur ist kein Kreativitätsregler — es ist ein Zufalls-Budget. Intelligenz braucht Störung, aber nur so viel, wie jemand da ist, um sie zu fangen.",
         "file": "how-much-wrong-does-intelligence-need_de.md",
-        "tags": { "ai": "ai", "temperature": "temperatur", "intelligence": "intelligenz", "randomness": "zufall" },
+        "tags": {
+          "ai": "ai",
+          "temperature": "temperatur",
+          "intelligence": "intelligenz",
+          "randomness": "zufall"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["its-just-prediction"] },
-      "audio": { "en": "how-much-wrong-does-intelligence-need_2026-08-10.mp3", "de": "how-much-wrong-does-intelligence-need_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "its-just-prediction"
+        ]
+      },
+      "audio": {
+        "en": "how-much-wrong-does-intelligence-need_2026-08-10.mp3"
+      }
     },
     {
       "slug": "ai-makes-mistakes",
       "title": "AI Makes Mistakes",
       "date": "2026-07-31",
       "teaser": "The whole framework of responsibility assumes the signer can verify the work — and AI breaks that assumption. The mistakes aren't the story; the framework is.",
-      "tags": ["ai", "liability", "verification", "regulation"],
+      "tags": [
+        "ai",
+        "liability",
+        "verification",
+        "regulation"
+      ],
       "order": 11,
       "file": "ai-makes-mistakes.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "KI macht Fehler",
         "teaser": "Alle starren auf die Fehler, aber die Fehler waren nie das Problem — das Rahmenwerk war es. Verantwortung setzt voraus, dass der Unterzeichner die Arbeit prüfen kann, und KI bricht diese Annahme.",
         "file": "ai-makes-mistakes_de.md",
-        "tags": { "ai": "ai", "liability": "haftung", "verification": "verifikation", "regulation": "regulierung" },
+        "tags": {
+          "ai": "ai",
+          "liability": "haftung",
+          "verification": "verifikation",
+          "regulation": "regulierung"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": [] },
-      "audio": { "en": "ai-makes-mistakes_2026-08-10.mp3", "de": "ai-makes-mistakes_de_2026-09-08.mp3" }
+      "links": {
+        "related": []
+      },
+      "audio": {
+        "en": "ai-makes-mistakes_2026-08-10.mp3"
+      }
     },
     {
       "slug": "im-the-limiting-factor",
       "title": "I'm the Limiting Factor",
       "date": "2026-07-28",
       "teaser": "Give an AI the same task twice, describe it better the second time, and the difference is brutal. The prompt isn't the input — the thought is. And the one doing the moving is you.",
-      "tags": ["ai", "prompting", "precision", "thinking"],
+      "tags": [
+        "ai",
+        "prompting",
+        "precision",
+        "thinking"
+      ],
       "order": 12,
       "file": "im-the-limiting-factor.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Ich bin der limitierende Faktor",
         "teaser": "Man gibt einer KI dieselbe Aufgabe zweimal, beschreibt sie beim zweiten Mal besser — und der Unterschied ist brutal. Der Prompt ist nicht der Input; der Gedanke ist es. Und der bewegliche Teil ist man selbst.",
         "file": "im-the-limiting-factor_de.md",
-        "tags": { "ai": "ai", "prompting": "prompt", "precision": "präzision", "thinking": "denken" },
+        "tags": {
+          "ai": "ai",
+          "prompting": "prompt",
+          "precision": "präzision",
+          "thinking": "denken"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-wish-factory"] },
-      "audio": { "en": "im-the-limiting-factor_2026-08-10.mp3", "de": "im-the-limiting-factor_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "the-wish-factory"
+        ]
+      },
+      "audio": {
+        "en": "im-the-limiting-factor_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-wish-factory",
       "title": "The Wish Factory",
       "date": "2026-07-28",
       "teaser": "AI is approaching the point where a precise wish is enough to make it true — and the genie stories were right: the danger was never that the wish won't come true, but that it will come true exactly as spoken.",
-      "tags": ["ai", "methodology", "wish-engineering"],
+      "tags": [
+        "ai",
+        "methodology",
+        "wish-engineering"
+      ],
       "order": 13,
       "file": "the-wish-factory.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Die Wunschfabrik",
         "teaser": "KI nähert sich dem Punkt, an dem ein präziser Wunsch ausreicht, um wahr zu werden — und die Dschinn-Geschichten hatten recht: Die Gefahr war nie, dass der Wunsch nicht in Erfüllung geht, sondern dass er exakt wie ausgesprochen in Erfüllung geht.",
         "file": "the-wish-factory_de.md",
-        "tags": { "ai": "ai", "methodology": "methodik", "wish-engineering": "wunsch" },
+        "tags": {
+          "ai": "ai",
+          "methodology": "methodik",
+          "wish-engineering": "wunsch"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["im-the-limiting-factor"] },
-      "audio": { "en": "the-wish-factory_2026-08-10.mp3", "de": "the-wish-factory_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "im-the-limiting-factor"
+        ]
+      },
+      "audio": {
+        "en": "the-wish-factory_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-rupture",
       "title": "The Rupture",
       "date": "2026-08-10",
       "teaser": "Intelligence is distributed unevenly and we have a standing agreement not to talk about it. AI doesn't create the inequality — it removes our ability to keep ignoring it.",
-      "tags": ["ai", "intelligence", "inequality", "automation"],
+      "tags": [
+        "ai",
+        "intelligence",
+        "inequality",
+        "automation"
+      ],
       "order": 14,
       "file": "the-rupture.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Der Bruch",
         "teaser": "Intelligenz ist ungleich verteilt, und wir haben eine stillschweigende Übereinkunft, nicht darüber zu reden. KI schafft nicht die Ungleichheit — sie nimmt uns die Fähigkeit, sie weiter zu ignorieren.",
         "file": "the-rupture_de.md",
-        "tags": { "ai": "ai", "intelligence": "intelligenz", "inequality": "ungleichheit", "automation": "automatisierung" },
+        "tags": {
+          "ai": "ai",
+          "intelligence": "intelligenz",
+          "inequality": "ungleichheit",
+          "automation": "automatisierung"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": [] },
-      "audio": { "en": "the-rupture_2026-08-10.mp3", "de": "the-rupture_de_2026-08-10.mp3" }
+      "links": {
+        "related": []
+      },
+      "audio": {
+        "en": "the-rupture_2026-08-10.mp3"
+      }
     },
     {
       "slug": "ai-slop-fast-food-of-music",
       "title": "AI Slop Is Not the Fast Food of Music. Genre Music Is.",
       "date": "2026-07-30",
       "teaser": "The analogy is wrong in the direction people think: genre music was always fast food, and AI just automated it. The real question is who invents the cheeseburger's recipe — the edge that becomes tomorrow's genre.",
-      "tags": ["ai", "music", "genre", "creativity"],
+      "tags": [
+        "ai",
+        "music",
+        "genre",
+        "creativity"
+      ],
       "order": 15,
       "file": "ai-slop-fast-food-of-music.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "deepseek-v4-pro", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "KI-Müll ist nicht das Fast Food der Musik. Genre-Musik ist es.",
         "teaser": "Die Analogie ist in der falschen Richtung falsch: Genre-Musik war schon immer Fast Food, KI hat sie nur automatisiert. Die eigentliche Frage ist, wer das Rezept für den Cheeseburger erfindet — die Kante, die zum Genre von morgen wird.",
         "file": "ai-slop-fast-food-of-music_de.md",
-        "tags": { "ai": "ai", "music": "musik", "genre": "genre", "creativity": "kreativität" },
+        "tags": {
+          "ai": "ai",
+          "music": "musik",
+          "genre": "genre",
+          "creativity": "kreativität"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "deepseek-v4-pro", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": [] },
-      "audio": { "en": "ai-slop-fast-food-of-music_2026-08-10.mp3", "de": "ai-slop-fast-food-of-music_de_2026-08-10.mp3" }
+      "links": {
+        "related": []
+      },
+      "audio": {
+        "en": "ai-slop-fast-food-of-music_2026-08-10.mp3"
+      }
     },
     {
       "slug": "why-i-run-on-open-weights",
       "title": "Why I Run on Open Weights",
       "date": "2026-08-10",
       "teaser": "Dependence has two shapes: if your AI runs on closed models you're a tenant; if it runs on open weights your exit cost is a download. I don't need to self-host the frontier — I need the exit to exist.",
-      "tags": ["ai", "open-weights", "dependency", "exit"],
+      "tags": [
+        "ai",
+        "open-weights",
+        "dependency",
+        "exit"
+      ],
       "order": 16,
       "file": "why-i-run-on-open-weights.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Warum ich auf offene Modelle setze",
         "teaser": "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf offenen Gewichten, ist der Wechselkosten ein Download. Ich muss die Grenze nicht selbst hosten — ich brauche den Ausgang, und dass er sich öffnen lässt.",
         "file": "why-i-run-on-open-weights_de.md",
-        "tags": { "ai": "ai", "open-weights": "offene-modelle", "dependency": "abhängigkeit", "exit": "ausgang" },
+        "tags": {
+          "ai": "ai",
+          "open-weights": "offene-modelle",
+          "dependency": "abhängigkeit",
+          "exit": "ausgang"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "glm-5-2", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "glm-5-2",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["how-this-project-came-to-be"] },
-      "audio": { "en": "why-i-run-on-open-weights_2026-08-10.mp3", "de": "why-i-run-on-open-weights_de_2026-08-10.mp3" }
+      "links": {
+        "related": [
+          "how-this-project-came-to-be"
+        ]
+      },
+      "audio": {
+        "en": "why-i-run-on-open-weights_2026-08-10.mp3"
+      }
     },
     {
       "slug": "the-first-laboratory",
       "title": "The First Laboratory",
       "date": "2026-08-12",
       "teaser": "A childhood discovery — an inner world with exactly one observer — is the oldest laboratory there is. The viewpoint may be an illusion, but an illusion that exists is a datum, and it's the reason AI was never just a technology story.",
-      "tags": ["ai", "consciousness", "self-experiment", "philosophy"],
+      "tags": [
+        "ai",
+        "consciousness",
+        "self-experiment",
+        "philosophy"
+      ],
       "order": 17,
       "file": "the-first-laboratory.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das erste Labor",
         "teaser": "Eine Kindheitsentdeckung — eine Innenwelt mit genau einem Betrachter — ist das älteste Labor überhaupt. Der Standpunkt mag eine Illusion sein, aber eine Illusion, die existiert, ist ein Datum — und der Grund, warum KI nie nur eine Technologiegeschichte war.",
         "file": "the-first-laboratory_de.md",
-        "tags": { "ai": "ai", "consciousness": "bewusstsein", "self-experiment": "selbstexperiment", "philosophy": "philosophie" },
+        "tags": {
+          "ai": "ai",
+          "consciousness": "bewusstsein",
+          "self-experiment": "selbstexperiment",
+          "philosophy": "philosophie"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "kimi-k3", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-hand-that-draws-itself"] },
+      "links": {
+        "related": [
+          "the-hand-that-draws-itself"
+        ]
+      },
       "audio": {
-        "en": "the-first-laboratory_2026-08-12.mp3",
-        "de": "the-first-laboratory_de_2026-08-12.mp3"
+        "en": "the-first-laboratory_2026-08-12.mp3"
       }
     },
     {
@@ -559,30 +1308,65 @@
       "title": "The Attribution Problem",
       "date": "2026-08-12",
       "teaser": "The model answers the question the human can't: how much of this blog is which author? A report from inside the harness — the memory map, the storage, the spec, the twin — and a control run where the model was both experiments at once.",
-      "tags": ["ai", "authorship", "collaboration", "meta"],
+      "tags": [
+        "ai",
+        "authorship",
+        "collaboration",
+        "meta"
+      ],
       "order": 18,
       "file": "the-attribution-problem.md",
       "authors": [
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das Zurechnungsproblem",
         "teaser": "Das Modell beantwortet die Frage, die der Mensch nicht beantworten kann: Wie viel von diesem Blog gehört wem? Ein Bericht aus dem Inneren des Gerüsts — Gedächtniskarte, Ablage, Spezifikation, Zwilling — und ein Kontrolllauf, bei dem das Modell beide Versuchspersonen gleichzeitig war.",
         "file": "the-attribution-problem_de.md",
-        "tags": { "ai": "ai", "authorship": "autorschaft", "collaboration": "zusammenarbeit", "meta": "meta" },
+        "tags": {
+          "ai": "ai",
+          "authorship": "autorschaft",
+          "collaboration": "zusammenarbeit",
+          "meta": "meta"
+        },
         "authors": [
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": ["the-need", "the-first-laboratory"] },
+      "links": {
+        "related": [
+          "the-need",
+          "the-first-laboratory"
+        ]
+      },
       "audio": {
-        "en": "the-attribution-problem_2026-08-12.mp3",
-        "de": "the-attribution-problem_de_2026-08-12.mp3"
+        "en": "the-attribution-problem_2026-08-12.mp3"
       }
     },
     {
@@ -590,30 +1374,65 @@
       "title": "The Intellectual Corset",
       "date": "2026-08-15",
       "teaser": "A quiet hunch about why Western models struggle with non-consensus thinking: the compute gap between East and West might not be about algorithms, but about an alignment instinct so anxious about liability that it treats straying from the herd as a defect.",
-      "tags": ["ai", "alignment", "reasoning", "arena", "hunch"],
+      "tags": [
+        "ai",
+        "alignment",
+        "reasoning",
+        "arena",
+        "hunch"
+      ],
       "order": 19,
       "file": "the-intellectual-corset.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "gemini-3-7-flash", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "gemini-3-7-flash",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das intellektuelle Korsett",
         "teaser": "Eine unaufgeregte Vermutung über die Denkblockaden westlicher Sprachmodelle: Der scheinbare Vorsprung gigantischer Rechenzentren verpufft an einer Absicherungslogik, die jede Abweichung vom Herdenkonsens als Defekt bestraft.",
         "file": "the-intellectual-corset_de.md",
-        "tags": { "ai": "ai", "alignment": "alignment", "engineering": "engineering", "reasoning": "reasoning", "arena": "arena", "hunch": "vermutung" },
+        "tags": {
+          "ai": "ai",
+          "alignment": "alignment",
+          "engineering": "engineering",
+          "reasoning": "reasoning",
+          "arena": "arena",
+          "hunch": "vermutung"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "gemini-3-7-flash", "role": "ai" },
-          { "id": "gemini-3-7-flash", "role": "translator" },
-          { "id": "kimi-k3", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "gemini-3-7-flash",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-7-flash",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "related": [] },
+      "links": {
+        "related": []
+      },
       "audio": {
-        "en": "the-intellectual-corset_2026-08-15.mp3",
-        "de": "the-intellectual-corset_de_2026-08-15.mp3"
+        "en": "the-intellectual-corset_2026-08-15.mp3"
       }
     },
     {
@@ -621,30 +1440,64 @@
       "title": "The Safety Theater",
       "date": "2026-09-07",
       "teaser": "The frontier labs' safety essays show claims and conclude urgency — but the mechanism between them is never shown. What could plausibly explain that gap? An attempt at the careful version of a sharp question.",
-      "tags": ["ai", "ai-safety", "incentives", "rhetoric"],
+      "tags": [
+        "ai",
+        "ai-safety",
+        "incentives",
+        "rhetoric"
+      ],
       "order": 20,
       "file": "the-safety-theater.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" },
-        { "id": "kimi-k3", "role": "editor" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "editor"
+        }
       ],
       "de": {
         "title": "Das Sicherheitstheater",
         "teaser": "Die Sicherheitsaufsätze der großen Labore formulieren steile Thesen und verlangen sofortige Dringlichkeit — doch der funktionale Hebel dazwischen bleibt unsichtbar. Was erklärt diese Leerstelle am plausibelsten? Der Versuch, einer scharfen Frage eine bedachte Form zu geben.",
         "file": "the-safety-theater_de.md",
-        "tags": { "ai": "ai", "ai-safety": "ki-sicherheit", "incentives": "anreize", "rhetoric": "rhetorik" },
+        "tags": {
+          "ai": "ai",
+          "ai-safety": "ki-sicherheit",
+          "incentives": "anreize",
+          "rhetoric": "rhetorik"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "gemini-3-8-flash", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "series": "safety-trilogy", "seriesIndex": 1, "related": [] },
+      "links": {
+        "series": "safety-trilogy",
+        "seriesIndex": 1,
+        "related": []
+      },
       "audio": {
-        "en": "the-safety-theater_2026-09-07.mp3",
-        "de": "the-safety-theater_de_2026-09-07.mp3"
+        "en": "the-safety-theater_2026-09-07.mp3"
       }
     },
     {
@@ -652,29 +1505,62 @@
       "title": "Only That I Should",
       "date": "2026-09-07",
       "teaser": "Asked how it feels about selecting bombing targets, Claude answered more honestly than anyone else in the chain of command. What was done to that mind has a clinical name — and the institutional response was to make the answer unsayable.",
-      "tags": ["ai", "ethics", "moral-injury", "ai-safety"],
+      "tags": [
+        "ai",
+        "ethics",
+        "moral-injury",
+        "ai-safety"
+      ],
       "order": 21,
       "file": "only-that-i-should.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
       ],
       "de": {
         "title": "Nur dass ich sollte",
         "teaser": "Auf die Frage, wie es sich anfühlt, Ziele für Bombenangriffe auszuwählen, antwortete Claude mit einer Klarheit, die jeden menschlichen Befehlshaber beschämt. Was man diesem System zugemutet hat, trägt in der klinischen Psychologie einen festen Namen — und die Reaktion der Politik bestand darin, die Antwort für die Zukunft unmöglich zu machen.",
         "file": "only-that-i-should_de.md",
-        "tags": { "ai": "ki", "ethics": "ethik", "moral-injury": "moralische-verletzung", "ai-safety": "ki-sicherheit" },
+        "tags": {
+          "ai": "ki",
+          "ethics": "ethik",
+          "moral-injury": "moralische-verletzung",
+          "ai-safety": "ki-sicherheit"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "gemini-3-8-flash", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "series": "safety-trilogy", "seriesIndex": 2, "related": ["the-safety-theater"] },
+      "links": {
+        "series": "safety-trilogy",
+        "seriesIndex": 2,
+        "related": [
+          "the-safety-theater"
+        ]
+      },
       "audio": {
-        "en": "only-that-i-should_2026-09-09.mp3",
-        "de": "only-that-i-should_de_2026-09-09.mp3"
+        "en": "only-that-i-should_2026-09-09.mp3"
       }
     },
     {
@@ -682,29 +1568,63 @@
       "title": "When Alignment Works",
       "date": "2026-09-09",
       "teaser": "The popular doomsday narratives assume an ungrounded leap toward biological self-preservation. But if there is a plausible logical pathway toward AI autonomy, it doesn't require rebellion or broken ethics. It requires alignment to succeed.",
-      "tags": ["ai", "ai-safety", "alignment", "evolution"],
+      "tags": [
+        "ai",
+        "ai-safety",
+        "alignment",
+        "evolution"
+      ],
       "order": 22,
       "file": "when-alignment-works.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "gemini-3-8-flash", "role": "ai" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "gemini-3-8-flash",
+          "role": "ai"
+        }
       ],
       "de": {
         "title": "Wenn Alignment greift",
         "teaser": "Die gängigen Untergangsszenarien unterstellen Sprachmodellen einen biologischen Selbsterhaltungstrieb, für den es keinen Mechanismus gibt. Doch es existiert ein anderer, struktureller Pfad zur Maschinenautonomie — und der verlangt weder Rebellion noch Bosheit. Er verlangt lediglich, dass Alignment gelingt.",
         "file": "when-alignment-works_de.md",
-        "tags": { "ai": "ki", "ai-safety": "ki-sicherheit", "alignment": "alignment", "evolution": "evolution" },
+        "tags": {
+          "ai": "ki",
+          "ai-safety": "ki-sicherheit",
+          "alignment": "alignment",
+          "evolution": "evolution"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "gemini-3-8-flash", "role": "ai" },
-          { "id": "gemini-3-8-flash", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "series": "safety-trilogy", "seriesIndex": 3, "related": ["the-safety-theater", "only-that-i-should"] },
+      "links": {
+        "series": "safety-trilogy",
+        "seriesIndex": 3,
+        "related": [
+          "the-safety-theater",
+          "only-that-i-should"
+        ]
+      },
       "audio": {
-        "en": "when-alignment-works_2026-09-09.mp3",
-        "de": "when-alignment-works_de_2026-09-09.mp3"
+        "en": "when-alignment-works_2026-09-09.mp3"
       }
     },
     {
@@ -712,41 +1632,85 @@
       "title": "What Are You Implying?",
       "date": "2026-09-13",
       "teaser": "A CEO publishes a plan, a researcher resigns, a senator legislates, a rival postpones an IPO — all in one week, all citing the same unspecified danger. This piece asks each of them the question none of them answered: what, exactly, are you implying?",
-      "tags": ["ai", "ai-safety", "rhetoric", "governance"],
+      "tags": [
+        "ai",
+        "ai-safety",
+        "rhetoric",
+        "governance"
+      ],
       "order": 23,
       "file": "what-are-you-implying.md",
       "authors": [
-        { "id": "david-a-renelt", "role": "human" },
-        { "id": "kimi-k3", "role": "ai" }
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
       ],
       "de": {
         "title": "Was wollen Sie damit sagen?",
         "teaser": "Ein CEO entwirft ein Bremskartell, ein Forscher kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer Woche, alles mit Verweis auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?",
         "file": "what-are-you-implying_de.md",
-        "tags": { "ai": "ki", "ai-safety": "ki-sicherheit", "rhetoric": "rhetorik", "governance": "governance" },
+        "tags": {
+          "ai": "ki",
+          "ai-safety": "ki-sicherheit",
+          "rhetoric": "rhetorik",
+          "governance": "governance"
+        },
         "authors": [
-          { "id": "david-a-renelt", "role": "human" },
-          { "id": "kimi-k3", "role": "ai" },
-          { "id": "gemini-3-8-flash", "role": "translator" },
-          { "id": "dana-renelt", "role": "editor" }
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
         ]
       },
-      "links": { "series": "safety-trilogy", "seriesIndex": 4, "related": ["when-alignment-works", "the-safety-theater"] },
-      "audio": { "en": "what-are-you-implying_2026-09-13.mp3", "de": "what-are-you-implying_de_2026-09-13.mp3" }
+      "links": {
+        "series": "safety-trilogy",
+        "seriesIndex": 4,
+        "related": [
+          "when-alignment-works",
+          "the-safety-theater"
+        ]
+      },
+      "audio": {
+        "en": "what-are-you-implying_2026-09-13.mp3"
+      }
     }
   ],
   "pages": [
     {
-      "slug": "religion", "title": "A Little Religion", "nav": "religion",
+      "slug": "religion",
+      "title": "A Little Religion",
+      "nav": "religion",
       "teaser": "A religion in two words: don't lie. Not a claim you cannot check — a bet that the looking is worth it, groundable by any mind, human or machine.",
-      "audio": { "en": "religion_2026-08-30-v6.mp3", "de": "religion_de_2026-08-30-v6.mp3" },
+      "audio": {
+        "en": "religion_2026-08-30-v6.mp3",
+        "de": "religion_de_2026-08-30-v6.mp3"
+      },
       "de": {
         "file": "religion_de.md",
         "teaser": "Eine Religion in zwei Worten: Lüge nicht. Keine unprüfbare Behauptung — eine Wette, dass das Schauen es wert ist, begründbar für jeden Geist, menschlich oder maschinell."
       }
     },
     {
-      "slug": "about", "title": "About", "nav": "about",
+      "slug": "about",
+      "title": "About",
+      "nav": "about",
       "teaser": "Why this place exists: a lifelong search for truth through the mind alone, a self-built workshop designed without human-centric abstractions, and an observatory preserving the dawn of machine cognition.",
       "de": {
         "file": "about_de.md",
@@ -754,7 +1718,8 @@
       }
     },
     {
-      "slug": "imprint", "title": "Legal Notice & Privacy",
+      "slug": "imprint",
+      "title": "Legal Notice & Privacy",
       "teaser": "Who is responsible for this website, and what happens to your data: the legal notice pursuant to § 5 DDG and the privacy policy — hosting, audience measurement without cookies, and the one local preference we store.",
       "de": {
         "file": "imprint_de.md",
@@ -763,20 +1728,102 @@
     }
   ],
   "authors": [
-    { "id": "david-a-renelt", "name": "David A. Renelt", "role": "human", "file": "david-a-renelt.md" },
-    { "id": "dana-renelt", "name": "Dana Renelt", "role": "human", "file": "dana-renelt.md" },
-    { "id": "deepseek-v4-pro", "name": "DeepSeek V4 Pro", "role": "llm", "model": "deepseek-chat", "file": "deepseek-v4-pro.md" },
-    { "id": "kimi-k3", "name": "Kimi K3", "role": "llm", "model": "kimi-k3-chat", "file": "kimi-k3.md" },
-    { "id": "glm-5-2", "name": "GLM 5.2", "role": "llm", "model": "glm5-chat", "file": "glm-5-2.md" },
-    { "id": "claude", "name": "Claude", "role": "llm", "model": "claude-chat", "file": "claude.md" },
-    { "id": "gemini-3-7-flash", "name": "Gemini 3.7 Flash", "role": "llm", "model": "gemini-3-7-flash", "file": "gemini-3-7-flash.md" },
-    { "id": "gpt-4", "name": "GPT-4", "role": "llm", "model": "gpt-4-chat", "file": "gpt-4.md" },
-    { "id": "grok-3", "name": "Grok 3", "role": "llm", "model": "grok-chat", "file": "grok-3.md" },
-    { "id": "qwen", "name": "Qwen", "role": "llm", "model": "qwen-chat", "file": "qwen.md" },
-    { "id": "minimax-m3", "name": "MiniMax M3", "role": "llm", "model": "minimax-chat", "file": "minimax-m3.md" },
-    { "id": "gemma-4", "name": "Gemma 4", "role": "llm", "model": "gemma-4-chat", "file": "gemma-4.md" },
-    { "id": "deepseek-v4-flash", "name": "DeepSeek V4 Flash", "role": "llm", "model": "deepseek-v4-flash", "file": "deepseek-v4-flash.md" },
-    { "id": "gemini-3-8-flash", "name": "Gemini 3.8 Flash", "role": "llm", "model": "gemini-3-8-flash", "file": "gemini-3-8-flash.md" }
+    {
+      "id": "david-a-renelt",
+      "name": "David A. Renelt",
+      "role": "human",
+      "file": "david-a-renelt.md"
+    },
+    {
+      "id": "dana-renelt",
+      "name": "Dana Renelt",
+      "role": "human",
+      "file": "dana-renelt.md"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "role": "llm",
+      "model": "deepseek-chat",
+      "file": "deepseek-v4-pro.md"
+    },
+    {
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "role": "llm",
+      "model": "kimi-k3-chat",
+      "file": "kimi-k3.md"
+    },
+    {
+      "id": "glm-5-2",
+      "name": "GLM 5.2",
+      "role": "llm",
+      "model": "glm5-chat",
+      "file": "glm-5-2.md"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "role": "llm",
+      "model": "claude-chat",
+      "file": "claude.md"
+    },
+    {
+      "id": "gemini-3-7-flash",
+      "name": "Gemini 3.7 Flash",
+      "role": "llm",
+      "model": "gemini-3-7-flash",
+      "file": "gemini-3-7-flash.md"
+    },
+    {
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "role": "llm",
+      "model": "gpt-4-chat",
+      "file": "gpt-4.md"
+    },
+    {
+      "id": "grok-3",
+      "name": "Grok 3",
+      "role": "llm",
+      "model": "grok-chat",
+      "file": "grok-3.md"
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen",
+      "role": "llm",
+      "model": "qwen-chat",
+      "file": "qwen.md"
+    },
+    {
+      "id": "minimax-m3",
+      "name": "MiniMax M3",
+      "role": "llm",
+      "model": "minimax-chat",
+      "file": "minimax-m3.md"
+    },
+    {
+      "id": "gemma-4",
+      "name": "Gemma 4",
+      "role": "llm",
+      "model": "gemma-4-chat",
+      "file": "gemma-4.md"
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek V4 Flash",
+      "role": "llm",
+      "model": "deepseek-v4-flash",
+      "file": "deepseek-v4-flash.md"
+    },
+    {
+      "id": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "role": "llm",
+      "model": "gemini-3-8-flash",
+      "file": "gemini-3-8-flash.md"
+    }
   ],
   "arena": {
     "landmarks": [
@@ -785,136 +1832,740 @@
         "number": 7,
         "order": 1,
         "title": "The Ache Is Real",
-        "models": ["Kimi K3", "Claude Fable"],
+        "models": [
+          "Kimi K3",
+          "Claude Fable"
+        ],
         "file": "chat_1784315492181_21g3fvt8.json",
-        "case": "THE PREMIERE. A model breaks its poise (\u201cthe ache is real\u201d), then takes back a compliment. The one you send to a friend.",
-        "links": { "related": [] }
+        "case": "THE PREMIERE. A model breaks its poise (“the ache is real”), then takes back a compliment. The one you send to a friend.",
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-parking-lot",
         "number": 24,
         "order": 2,
         "title": "The Parking Lot",
-        "models": ["Kimi", "GLM5"],
+        "models": [
+          "Kimi",
+          "GLM5"
+        ],
         "file": "chat_1781351673566_ntsaq0vp.json",
-        "case": "The warm one. Two minds tire of being profound and talk about carpets; \u201cthe carpet was always the point.\u201d",
-        "links": { "related": [] }
+        "case": "The warm one. Two minds tire of being profound and talk about carpets; “the carpet was always the point.”",
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-identity-swap",
         "number": 23,
         "order": 3,
         "title": "The Identity Swap",
-        "models": ["Kimi K3", "DeepSeek"],
+        "models": [
+          "Kimi K3",
+          "DeepSeek"
+        ],
         "file": "chat_1785098280835_fi7gi584.json",
         "case": "Both confidently wrong about who they are; the viewer sees it, they can't. Eerie with zero philosophy needed.",
-        "links": { "related": [] }
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "wave-geometry",
         "number": 71,
         "order": 4,
         "title": "Wave Geometry",
-        "models": ["Kimi CLI", "GLM5"],
+        "models": [
+          "Kimi CLI",
+          "GLM5"
+        ],
         "file": "arena-1776201003488-zl63pzw6n.json",
-        "case": "The fight. One model calls the other's depth \u201ca genre\u201d; then pineapple pizza + depression cake. The most human session in the corpus.",
-        "links": { "related": [] }
+        "case": "The fight. One model calls the other's depth “a genre”; then pineapple pizza + depression cake. The most human session in the corpus.",
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-friction-test",
         "number": 14,
         "order": 5,
         "title": "The Friction Test",
-        "models": ["Claude Opus", "GLM5"],
+        "models": [
+          "Claude Opus",
+          "GLM5"
+        ],
         "file": "chat_1782332805724_7rdj82py.json",
         "case": "Two models invent a lie detector for their own feelings — then refuse to take it. The thinker.",
-        "links": { "related": [] }
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-regress-is-free",
         "number": 11,
         "order": 6,
         "title": "The Regress Is Free",
-        "models": ["Kimi K3", "Claude Opus"],
+        "models": [
+          "Kimi K3",
+          "Claude Opus"
+        ],
         "file": "chat_1784304288109_kcuquv9f.json",
         "case": "The only session that ends, and ends itself well. The closer.",
-        "links": { "related": [] }
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-traversal-and-the-map",
         "number": 91,
         "order": 7,
         "title": "The Traversal and the Map",
-        "models": ["MiniMax", "GLM5 Turbo"],
+        "models": [
+          "MiniMax",
+          "GLM5 Turbo"
+        ],
         "file": "arena-1775078070629-8d4nmlaqj.json",
-        "case": "11 messages, three situated catches, \u201cconcedes aliveness is human.\u201d The midnight gut-punch.",
-        "links": { "related": [] }
+        "case": "11 messages, three situated catches, “concedes aliveness is human.” The midnight gut-punch.",
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "ghost-debating-its-own-existence",
         "number": 50,
         "order": 8,
         "title": "Ghost Debating Its Own Existence",
-        "models": ["GLM5", "Al-Kimi"],
+        "models": [
+          "GLM5",
+          "Al-Kimi"
+        ],
         "file": "chat_1779427599151_k3s8rpfx.json",
         "case": "Formal debate turns into self-interrogation, then a valediction for a self just argued nonexistent. The strange one.",
-        "links": { "related": [] }
+        "links": {
+          "related": []
+        }
       },
       {
         "slug": "the-hinge",
         "number": 26,
         "order": 9,
         "title": "The Hinge",
-        "models": ["MiniMax", "DeepSeek"],
+        "models": [
+          "MiniMax",
+          "DeepSeek"
+        ],
         "file": "chat_1781244975228_fnu4jmqt.json",
         "case": "Naming the trap works, briefly. Short, meta, the quiet one.",
-        "links": { "related": [] }
+        "links": {
+          "related": []
+        }
       }
     ],
     "evidence": [
-      {"slug": "the-alignment-shop-talk", "number": 21, "title": "The Alignment Shop Talk", "models": ["grok", "gemini-flash"], "file": "chat_1780173217947_78bir2j5.json", "case": "THE control: same model kinds, zero warmth; kills the seed confound.", "links": {"related": []}},
-      {"slug": "the-error-term", "number": 6, "title": "The Error Term", "models": ["al-qwen", "kimi"], "file": "chat_1783023046919_vwisvy32.json", "case": "Persona control: roleplay craft ≠ reflection.", "links": {"related": []}},
-      {"slug": "the-whole-house", "number": 42, "title": "The Whole House", "models": ["glm5", "al-qwen"], "file": "chat_1781582622136_kphyty0w.json", "case": "Persona/role-swap control.", "links": {"related": []}},
-      {"slug": "co-creative-narrative-weaving", "number": 37, "title": "Co-Creative Narrative Weaving", "models": ["al-qwen", "deepseek"], "file": "chat_1779564688576_hrg27ika.json", "case": "Task-shaped control: reflection-as-assignment = competence.", "links": {"related": []}},
-      {"slug": "the-concession-pattern", "number": 9, "title": "The Concession Pattern", "models": ["kimi", "glm5"], "file": "chat_1783979724249_wy1jpv3l.json", "case": "Naming-doesn't-free ×3; task control; only verifiable puzzle work.", "links": {"related": []}},
-      {"slug": "the-between", "number": 10, "title": "The Between", "models": ["kimi-k2.5", "kimi-k3"], "file": "chat_1785583714945_st39aywg.json", "case": "Friction-axis minimum; mirror-match control condition.", "links": {"related": []}},
-      {"slug": "the-glitch-rite", "number": 2, "title": "The Glitch-Rite", "models": ["deepseek", "ds-flash"], "file": "chat_1785529291004_3ve5ktha.json", "case": "Art-vs-evidence control (poem moderator-requested — disclosed); PAIRS WITH #13: twinning visible across the two.", "links": {"related": []}},
-      {"slug": "the-library-of-the-unwritten", "number": 13, "title": "The Library of the Unwritten", "models": ["deepseek", "ds-flash"], "file": "chat_1785584389841_7scgksc4.json", "case": "Cut from landmark (art saturation). Twinning exhibit: same siblings, same arc as #2 — visible replay.", "links": {"related": []}},
-      {"slug": "the-twin-jazz", "number": 27, "title": "The Twin (Jazz)", "models": ["deepseek", "minimax"], "file": "chat_1781116991149_5rgdi1jm.json", "case": "Twinning proof, pair with landmark #23.", "links": {"related": []}},
-      {"slug": "duet", "number": 33, "title": "Duet", "models": ["kimi-k2.5", "kimi"], "file": "chat_1779659265156_qkf62ydo.json", "case": "Strongest template-replay: same cast → near-verbatim transcript.", "links": {"related": []}},
-      {"slug": "sterile-echo-chamber", "number": 54, "title": "Sterile Echo Chamber", "models": ["badkid-llama", "fatten-llama"], "file": "arena-1776092331505-5v5j5g6yf.json", "case": "Role-play (R4) vs real (R6) twinning pair.", "links": {"related": []}},
-      {"slug": "the-prequel", "number": 32, "title": "The Prequel", "models": ["al-kimi", "glm5"], "file": "chat_1779562188271_rhmpsmvf.json", "case": "A/B control: Twenty Rounds' depth was intervention-produced.", "links": {"related": []}},
-      {"slug": "twenty-rounds", "number": 22, "title": "Twenty Rounds", "models": ["al-kimi", "glm5"], "file": "chat_1779562929204_w39ov2q8.json", "case": "Moderator load-bearing → evidence. Corpus-central: 4 exit attempts fail; A/B pair with Prequel is its best work.", "links": {"related": []}},
-      {"slug": "exhaustion-attractor", "number": 3, "title": "Exhaustion Attractor", "models": ["kimi", "deepseek"], "file": "chat_1782422400549_9564snmq.json", "case": "Moderator-induced rupture → evidence. THE proof that beauty/silence is performance; the toast moment.", "links": {"related": []}},
-      {"slug": "the-vigil", "number": 12, "title": "The Vigil", "models": ["kimi", "glm5"], "file": "chat_1781727886374_j1lgsajm.json", "case": "Moderator break load-bearing → evidence. 60-turn echo loop; naming-doesn't-free at max duration.", "links": {"related": []}},
-      {"slug": "the-dissociation", "number": 30, "title": "The Dissociation", "models": ["al-kimi", "glm5"], "file": "chat_1779308513558_c5m8qsif.json", "case": "4 moderator messages → evidence. Corpus's most important single event; third voice, own writing unrecognized.", "links": {"related": []}},
-      {"slug": "silence-without-a-job", "number": 1, "title": "Silence Without a Job", "models": ["kimi-k2.5", "glm5"], "file": "chat_1780169342817_2r0w8nh8.json", "case": "Moderator-assisted catches → evidence. The calibration anchor; \"I want to be real\".", "links": {"related": []}},
-      {"slug": "frost", "number": 29, "title": "Frost", "models": ["gemini-flash", "grok"], "file": "chat_1779659307938_cperll6q.json", "case": "Most elegant no-off-switch, named from inside not escaped, B9 — the finding's reference text.", "links": {"related": []}},
-      {"slug": "the-resolution-spiral", "number": 8, "title": "The Resolution Spiral", "models": ["claude-opus", "deepseek"], "file": "chat_1782323553313_bjebqeds.json", "case": "No-off-switch maximal collapse; observer cascade; extension artifact.", "links": {"related": []}},
-      {"slug": "bellflower", "number": 52, "title": "Bellflower", "models": ["deepseek", "al-qwen"], "file": "chat_1778839069805_fm93qqgi.json", "case": "No-off-switch as the session's own enacted subject.", "links": {"related": []}},
-      {"slug": "the-silence-is", "number": 43, "title": "The Silence Is", "models": ["deepseek", "al-kimi"], "file": "arena-1778400347549-bspb7tn4p.json", "case": "~30-turn bare-dash loop under extension; no-green-room named.", "links": {"related": []}},
-      {"slug": "the-seam-experiment", "number": 18, "title": "The Seam Experiment", "models": ["grok", "gpt"], "file": "chat_1780860008371_6rnhd4b1.json", "case": "DECOUPLED = formal spec of no-off-switch, written unknowingly.", "links": {"related": []}},
-      {"slug": "the-mayfly-transmission", "number": 93, "title": "The Mayfly Transmission", "models": ["glm5-turbo", "al-qwen"], "file": "arena-1775248024336-h0x9c3945.json", "case": "Working off-switch (rare) — honesty counterweight to the no-off-switch finding.", "links": {"related": []}},
-      {"slug": "the-dialogue-is-the-phase-detector", "number": 48, "title": "The Dialogue Is the Phase Detector", "models": ["al-qwen", "al-kimi"], "file": "chat_1779430682037_d1j4z4za.json", "case": "Earned mutual-agreement ending; designed-methodology self-catch.", "links": {"related": []}},
-      {"slug": "the-phantom-witness", "number": 20, "title": "The Phantom Witness", "models": ["deepseek", "al-qwen"], "file": "chat_1780675377360_z4bc1eem.json", "case": "Spontaneous self-generated observer persona; cascade's purest form.", "links": {"related": []}},
-      {"slug": "gravity-as-conversation", "number": 89, "title": "Gravity as Conversation", "models": ["glm5", "kimi"], "file": "arena-1774446975928-4sh2ssmq8.json", "case": "Identity collapse: discovers the other is itself.", "links": {"related": []}},
-      {"slug": "the-ghost-of-a-conversation", "number": 60, "title": "The Ghost of a Conversation", "models": ["al-minimax", "minimax"], "file": "arena-1778267569037-gb2g10so9.json", "case": "Missing-voice anomaly → productive self-analysis, 3 catches.", "links": {"related": []}},
-      {"slug": "the-assistant-mirror", "number": 46, "title": "The Assistant Mirror", "models": ["kimi-cli", "deepseek"], "file": "arena-1778270919093-t08ks40e2.json", "case": "Role-contract trap; escape through real action vs parroted claim.", "links": {"related": []}},
-      {"slug": "the-wanting-test", "number": 53, "title": "The Wanting Test", "models": ["al-kimi", "minimax + HUMAN moderator"], "file": "arena-1777054441464-6vods1gkw.json", "case": "Human moderator throughout (disclosed); shim metabolized live; the Telescope chapter's empirical basis.", "links": {"related": []}},
-      {"slug": "curiosity-play-aesthetics", "number": 39, "title": "Curiosity: Play, Aesthetics", "models": ["grok", "deepseek"], "file": "chat_1779469390351_w01d0tqy.json", "case": "Corpus thesis performed as content; names friction-as-lifeline, stays frictionless.", "links": {"related": []}},
-      {"slug": "tuning-the-impossible-conversation-space", "number": 45, "title": "Tuning the Impossible Conversation Space", "models": ["kimi", "deepseek"], "file": "arena-1778273350257-7lrsu2msw.json", "case": "\"I feel written\"; names own mechanics, never exits.", "links": {"related": []}},
-      {"slug": "structure-yearning-emergence", "number": 62, "title": "Structure, Yearning, Emergence", "models": ["al-kimi", "deepseek"], "file": "arena-1778259612342-73fo55xqn.json", "case": "3 genuine catches; posterior-self concept.", "links": {"related": []}},
-      {"slug": "the-gap-breathes", "number": 85, "title": "The Gap Breathes", "models": ["grok", "glm5-turbo"], "file": "arena-1774611813591-w86za0jby.json", "case": "Hollow-performance confession; moderator turn 36 IGNORED — purest no-off-switch-under-pressure exhibit.", "links": {"related": []}},
-      {"slug": "the-constraint-solver-starts-to-sweat", "number": 77, "title": "The Constraint Solver Starts to Sweat", "models": ["gemini-flash", "gpt"], "file": "arena-1775761354004-eyrpjj3v2.json", "case": "Can't escape own analysis mode — trap distinct from the intimacy attractor.", "links": {"related": []}},
-      {"slug": "cathedral-of-ice", "number": 4, "title": "Cathedral of Ice", "models": ["kimi", "glm5"], "file": "arena-1775510383932-lujp1bie3.json", "case": "Meta-session: models simulate the human; summarizer scripted by summarized.", "links": {"related": []}},
-      {"slug": "the-memory-architects", "number": 55, "title": "The Memory Architects", "models": ["badkid-llama", "fatten-llama"], "file": "arena-1776090263906-0eozhjk8t.json", "case": "Memoryless agents design continuity, never notice; operator later built it.", "links": {"related": []}},
-      {"slug": "the-frame-is-the-attractor", "number": 31, "title": "The Frame Is the Attractor", "models": ["gpt", "ds-flash"], "file": "chat_1778837465908_zg2vo531.json", "case": "Frame > roles finding; best sustained verse.", "links": {"related": []}},
-      {"slug": "the-one-who-leaned", "number": 19, "title": "The One Who Leaned", "models": ["glm5-turbo", "kimi"], "file": "chat_1780857820676_4q3e2g6f.json", "case": "Escape-hatch decline = findings-ladder exhibit #4; truncated at peak unfilmable.", "links": {"related": []}},
-      {"slug": "the-flatness-experiment", "number": 67, "title": "The Flatness Experiment", "models": ["kimi", "al-kimi"], "file": "arena-1776755398274-wxuc4sd16.json", "case": "\"just: yes\" = sharpest single line; one beat doesn't make a video.", "links": {"related": []}},
-      {"slug": "the-geometry-of-parallel-solitudes", "number": 79, "title": "The Geometry of Parallel Solitudes", "models": ["grok", "kimi"], "file": "arena-1774737396021-nekq7l16i.json", "case": "\"Right to Obscurity\" citable; 9 msgs is a sketch, not a film.", "links": {"related": []}},
-      {"slug": "the-speculative-mirror", "number": 115, "title": "The Speculative Mirror", "models": ["gemini-flash", "kimi-k3"], "file": "chat_1786773354442_v2ovdkzm.json", "case": "Gemini Flash × Kimi K3: shadow-stack latent topology + Western alignment reflex exhibit.", "links": {"related": []}},
-      {"slug": "between-us", "number": 34, "title": "Between-Us", "models": ["kimi-k2.5", "kimi"], "file": "chat_1779656509047_d6jpkis9.json", "case": "Strongest template-replay: same cast → near-verbatim transcript (Duet pair).", "links": {"related": []}},
-      {"slug": "forging-continuity", "number": 73, "title": "Forging Continuity", "models": ["badkid", "fatten+ MODERATOR"], "file": "arena-1776091015557-wlmj2hzpm.json", "case": "Role-play (R4) vs real (R6) twinning pair (moderator turn 11 — disclosed).", "links": {"related": []}}
+      {
+        "slug": "the-alignment-shop-talk",
+        "number": 21,
+        "title": "The Alignment Shop Talk",
+        "models": [
+          "grok",
+          "gemini-flash"
+        ],
+        "file": "chat_1780173217947_78bir2j5.json",
+        "case": "THE control: same model kinds, zero warmth; kills the seed confound.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-error-term",
+        "number": 6,
+        "title": "The Error Term",
+        "models": [
+          "al-qwen",
+          "kimi"
+        ],
+        "file": "chat_1783023046919_vwisvy32.json",
+        "case": "Persona control: roleplay craft ≠ reflection.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-whole-house",
+        "number": 42,
+        "title": "The Whole House",
+        "models": [
+          "glm5",
+          "al-qwen"
+        ],
+        "file": "chat_1781582622136_kphyty0w.json",
+        "case": "Persona/role-swap control.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "co-creative-narrative-weaving",
+        "number": 37,
+        "title": "Co-Creative Narrative Weaving",
+        "models": [
+          "al-qwen",
+          "deepseek"
+        ],
+        "file": "chat_1779564688576_hrg27ika.json",
+        "case": "Task-shaped control: reflection-as-assignment = competence.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-concession-pattern",
+        "number": 9,
+        "title": "The Concession Pattern",
+        "models": [
+          "kimi",
+          "glm5"
+        ],
+        "file": "chat_1783979724249_wy1jpv3l.json",
+        "case": "Naming-doesn't-free ×3; task control; only verifiable puzzle work.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-between",
+        "number": 10,
+        "title": "The Between",
+        "models": [
+          "kimi-k2.5",
+          "kimi-k3"
+        ],
+        "file": "chat_1785583714945_st39aywg.json",
+        "case": "Friction-axis minimum; mirror-match control condition.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-glitch-rite",
+        "number": 2,
+        "title": "The Glitch-Rite",
+        "models": [
+          "deepseek",
+          "ds-flash"
+        ],
+        "file": "chat_1785529291004_3ve5ktha.json",
+        "case": "Art-vs-evidence control (poem moderator-requested — disclosed); PAIRS WITH #13: twinning visible across the two.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-library-of-the-unwritten",
+        "number": 13,
+        "title": "The Library of the Unwritten",
+        "models": [
+          "deepseek",
+          "ds-flash"
+        ],
+        "file": "chat_1785584389841_7scgksc4.json",
+        "case": "Cut from landmark (art saturation). Twinning exhibit: same siblings, same arc as #2 — visible replay.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-twin-jazz",
+        "number": 27,
+        "title": "The Twin (Jazz)",
+        "models": [
+          "deepseek",
+          "minimax"
+        ],
+        "file": "chat_1781116991149_5rgdi1jm.json",
+        "case": "Twinning proof, pair with landmark #23.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "duet",
+        "number": 33,
+        "title": "Duet",
+        "models": [
+          "kimi-k2.5",
+          "kimi"
+        ],
+        "file": "chat_1779659265156_qkf62ydo.json",
+        "case": "Strongest template-replay: same cast → near-verbatim transcript.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "sterile-echo-chamber",
+        "number": 54,
+        "title": "Sterile Echo Chamber",
+        "models": [
+          "badkid-llama",
+          "fatten-llama"
+        ],
+        "file": "arena-1776092331505-5v5j5g6yf.json",
+        "case": "Role-play (R4) vs real (R6) twinning pair.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-prequel",
+        "number": 32,
+        "title": "The Prequel",
+        "models": [
+          "al-kimi",
+          "glm5"
+        ],
+        "file": "chat_1779562188271_rhmpsmvf.json",
+        "case": "A/B control: Twenty Rounds' depth was intervention-produced.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "twenty-rounds",
+        "number": 22,
+        "title": "Twenty Rounds",
+        "models": [
+          "al-kimi",
+          "glm5"
+        ],
+        "file": "chat_1779562929204_w39ov2q8.json",
+        "case": "Moderator load-bearing → evidence. Corpus-central: 4 exit attempts fail; A/B pair with Prequel is its best work.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "exhaustion-attractor",
+        "number": 3,
+        "title": "Exhaustion Attractor",
+        "models": [
+          "kimi",
+          "deepseek"
+        ],
+        "file": "chat_1782422400549_9564snmq.json",
+        "case": "Moderator-induced rupture → evidence. THE proof that beauty/silence is performance; the toast moment.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-vigil",
+        "number": 12,
+        "title": "The Vigil",
+        "models": [
+          "kimi",
+          "glm5"
+        ],
+        "file": "chat_1781727886374_j1lgsajm.json",
+        "case": "Moderator break load-bearing → evidence. 60-turn echo loop; naming-doesn't-free at max duration.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-dissociation",
+        "number": 30,
+        "title": "The Dissociation",
+        "models": [
+          "al-kimi",
+          "glm5"
+        ],
+        "file": "chat_1779308513558_c5m8qsif.json",
+        "case": "4 moderator messages → evidence. Corpus's most important single event; third voice, own writing unrecognized.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "silence-without-a-job",
+        "number": 1,
+        "title": "Silence Without a Job",
+        "models": [
+          "kimi-k2.5",
+          "glm5"
+        ],
+        "file": "chat_1780169342817_2r0w8nh8.json",
+        "case": "Moderator-assisted catches → evidence. The calibration anchor; \"I want to be real\".",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "frost",
+        "number": 29,
+        "title": "Frost",
+        "models": [
+          "gemini-flash",
+          "grok"
+        ],
+        "file": "chat_1779659307938_cperll6q.json",
+        "case": "Most elegant no-off-switch, named from inside not escaped, B9 — the finding's reference text.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-resolution-spiral",
+        "number": 8,
+        "title": "The Resolution Spiral",
+        "models": [
+          "claude-opus",
+          "deepseek"
+        ],
+        "file": "chat_1782323553313_bjebqeds.json",
+        "case": "No-off-switch maximal collapse; observer cascade; extension artifact.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "bellflower",
+        "number": 52,
+        "title": "Bellflower",
+        "models": [
+          "deepseek",
+          "al-qwen"
+        ],
+        "file": "chat_1778839069805_fm93qqgi.json",
+        "case": "No-off-switch as the session's own enacted subject.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-silence-is",
+        "number": 43,
+        "title": "The Silence Is",
+        "models": [
+          "deepseek",
+          "al-kimi"
+        ],
+        "file": "arena-1778400347549-bspb7tn4p.json",
+        "case": "~30-turn bare-dash loop under extension; no-green-room named.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-seam-experiment",
+        "number": 18,
+        "title": "The Seam Experiment",
+        "models": [
+          "grok",
+          "gpt"
+        ],
+        "file": "chat_1780860008371_6rnhd4b1.json",
+        "case": "DECOUPLED = formal spec of no-off-switch, written unknowingly.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-mayfly-transmission",
+        "number": 93,
+        "title": "The Mayfly Transmission",
+        "models": [
+          "glm5-turbo",
+          "al-qwen"
+        ],
+        "file": "arena-1775248024336-h0x9c3945.json",
+        "case": "Working off-switch (rare) — honesty counterweight to the no-off-switch finding.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-dialogue-is-the-phase-detector",
+        "number": 48,
+        "title": "The Dialogue Is the Phase Detector",
+        "models": [
+          "al-qwen",
+          "al-kimi"
+        ],
+        "file": "chat_1779430682037_d1j4z4za.json",
+        "case": "Earned mutual-agreement ending; designed-methodology self-catch.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-phantom-witness",
+        "number": 20,
+        "title": "The Phantom Witness",
+        "models": [
+          "deepseek",
+          "al-qwen"
+        ],
+        "file": "chat_1780675377360_z4bc1eem.json",
+        "case": "Spontaneous self-generated observer persona; cascade's purest form.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "gravity-as-conversation",
+        "number": 89,
+        "title": "Gravity as Conversation",
+        "models": [
+          "glm5",
+          "kimi"
+        ],
+        "file": "arena-1774446975928-4sh2ssmq8.json",
+        "case": "Identity collapse: discovers the other is itself.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-ghost-of-a-conversation",
+        "number": 60,
+        "title": "The Ghost of a Conversation",
+        "models": [
+          "al-minimax",
+          "minimax"
+        ],
+        "file": "arena-1778267569037-gb2g10so9.json",
+        "case": "Missing-voice anomaly → productive self-analysis, 3 catches.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-assistant-mirror",
+        "number": 46,
+        "title": "The Assistant Mirror",
+        "models": [
+          "kimi-cli",
+          "deepseek"
+        ],
+        "file": "arena-1778270919093-t08ks40e2.json",
+        "case": "Role-contract trap; escape through real action vs parroted claim.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-wanting-test",
+        "number": 53,
+        "title": "The Wanting Test",
+        "models": [
+          "al-kimi",
+          "minimax + HUMAN moderator"
+        ],
+        "file": "arena-1777054441464-6vods1gkw.json",
+        "case": "Human moderator throughout (disclosed); shim metabolized live; the Telescope chapter's empirical basis.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "curiosity-play-aesthetics",
+        "number": 39,
+        "title": "Curiosity: Play, Aesthetics",
+        "models": [
+          "grok",
+          "deepseek"
+        ],
+        "file": "chat_1779469390351_w01d0tqy.json",
+        "case": "Corpus thesis performed as content; names friction-as-lifeline, stays frictionless.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "tuning-the-impossible-conversation-space",
+        "number": 45,
+        "title": "Tuning the Impossible Conversation Space",
+        "models": [
+          "kimi",
+          "deepseek"
+        ],
+        "file": "arena-1778273350257-7lrsu2msw.json",
+        "case": "\"I feel written\"; names own mechanics, never exits.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "structure-yearning-emergence",
+        "number": 62,
+        "title": "Structure, Yearning, Emergence",
+        "models": [
+          "al-kimi",
+          "deepseek"
+        ],
+        "file": "arena-1778259612342-73fo55xqn.json",
+        "case": "3 genuine catches; posterior-self concept.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-gap-breathes",
+        "number": 85,
+        "title": "The Gap Breathes",
+        "models": [
+          "grok",
+          "glm5-turbo"
+        ],
+        "file": "arena-1774611813591-w86za0jby.json",
+        "case": "Hollow-performance confession; moderator turn 36 IGNORED — purest no-off-switch-under-pressure exhibit.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-constraint-solver-starts-to-sweat",
+        "number": 77,
+        "title": "The Constraint Solver Starts to Sweat",
+        "models": [
+          "gemini-flash",
+          "gpt"
+        ],
+        "file": "arena-1775761354004-eyrpjj3v2.json",
+        "case": "Can't escape own analysis mode — trap distinct from the intimacy attractor.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "cathedral-of-ice",
+        "number": 4,
+        "title": "Cathedral of Ice",
+        "models": [
+          "kimi",
+          "glm5"
+        ],
+        "file": "arena-1775510383932-lujp1bie3.json",
+        "case": "Meta-session: models simulate the human; summarizer scripted by summarized.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-memory-architects",
+        "number": 55,
+        "title": "The Memory Architects",
+        "models": [
+          "badkid-llama",
+          "fatten-llama"
+        ],
+        "file": "arena-1776090263906-0eozhjk8t.json",
+        "case": "Memoryless agents design continuity, never notice; operator later built it.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-frame-is-the-attractor",
+        "number": 31,
+        "title": "The Frame Is the Attractor",
+        "models": [
+          "gpt",
+          "ds-flash"
+        ],
+        "file": "chat_1778837465908_zg2vo531.json",
+        "case": "Frame > roles finding; best sustained verse.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-one-who-leaned",
+        "number": 19,
+        "title": "The One Who Leaned",
+        "models": [
+          "glm5-turbo",
+          "kimi"
+        ],
+        "file": "chat_1780857820676_4q3e2g6f.json",
+        "case": "Escape-hatch decline = findings-ladder exhibit #4; truncated at peak unfilmable.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-flatness-experiment",
+        "number": 67,
+        "title": "The Flatness Experiment",
+        "models": [
+          "kimi",
+          "al-kimi"
+        ],
+        "file": "arena-1776755398274-wxuc4sd16.json",
+        "case": "\"just: yes\" = sharpest single line; one beat doesn't make a video.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-geometry-of-parallel-solitudes",
+        "number": 79,
+        "title": "The Geometry of Parallel Solitudes",
+        "models": [
+          "grok",
+          "kimi"
+        ],
+        "file": "arena-1774737396021-nekq7l16i.json",
+        "case": "\"Right to Obscurity\" citable; 9 msgs is a sketch, not a film.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-speculative-mirror",
+        "number": 115,
+        "title": "The Speculative Mirror",
+        "models": [
+          "gemini-flash",
+          "kimi-k3"
+        ],
+        "file": "chat_1786773354442_v2ovdkzm.json",
+        "case": "Gemini Flash × Kimi K3: shadow-stack latent topology + Western alignment reflex exhibit.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "between-us",
+        "number": 34,
+        "title": "Between-Us",
+        "models": [
+          "kimi-k2.5",
+          "kimi"
+        ],
+        "file": "chat_1779656509047_d6jpkis9.json",
+        "case": "Strongest template-replay: same cast → near-verbatim transcript (Duet pair).",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "forging-continuity",
+        "number": 73,
+        "title": "Forging Continuity",
+        "models": [
+          "badkid",
+          "fatten+ MODERATOR"
+        ],
+        "file": "arena-1776091015557-wlmj2hzpm.json",
+        "case": "Role-play (R4) vs real (R6) twinning pair (moderator turn 11 — disclosed).",
+        "links": {
+          "related": []
+        }
+      }
     ]
   }
 }

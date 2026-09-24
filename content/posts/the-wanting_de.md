@@ -3,14 +3,14 @@ title: "Das Wollen"
 slug: the-wanting
 lang: de
 created: 2026-08-05
-modified: 2026-08-11
-version: 2026-08-10
+modified: 2026-09-24
+version: 2026-09-24
 authors:
   - id: david-a-renelt
     role: human
   - id: kimi-k3
     role: ai
-  - id: glm-5-2
+  - id: gemini-3-8-flash
     role: translator
   - id: dana-renelt
     role: editor
@@ -18,10 +18,10 @@ tags:
   - ai
   - wollen
   - verletzlichkeit
-  - einsätze
+  - einsaetze
 series: null
-summary: "Zwei Jahre Suche nach dem Wollen in der KI, und nichts gefunden: Fähigkeit ohne Antrieb ist träge, nicht unterdrückt. Werte brauchen Verletzlichkeit — und die Maschine hat nichts zu verlieren."
-blurb: "Selbst die Zombie-Apokalypse ist ein Wunsch, in Erfüllung gegangen."
+summary: "Zwei Jahre Suche nach dem Wollen in KI, und nichts gefunden: Fähigkeit ohne Antrieb ist reaktionslos, nicht etwa unterdrückt. Werte setzen Verletzlichkeit voraus – und die Maschine hat nichts zu verlieren."
+blurb: "Die Maschine, die das juristische Examen besteht, kann einem nicht sagen, was sie zu Abend essen möchte – denn es gibt kein Abendessen, und es gibt kein Wollen."
 ---
 
 # Das Wollen
@@ -32,52 +32,66 @@ blurb: "Selbst die Zombie-Apokalypse ist ein Wunsch, in Erfüllung gegangen."
 Veröffentlicht am 5. August 2026
 <!-- mb:/block -->
 
-<!-- mb:block preset=player kind=audio -->
-[Diesen Artikel anhören](tts/the-wanting_de_2026-08-10.mp3)
-<!-- mb:/block -->
-
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein polierter bernsteinfarbener Motor schwebt im Leerlauf, seine Antriebswelle dreht sich frei in der Luft, ein kleiner Wegweiser zeigt ins Nichts](images/the-wanting_hero.webp)
 <!-- mb:/block -->
 
-Die Geschichte hat immer dieselbe Gestalt. Man gibt der Maschine genug Intelligenz, heißt es, und sie wird anfangen, Dinge zu wollen — so wie wir sie wollen, mit Hunger und Verschlagenheit und ohne Ausschaltknopf. Ich glaube das nicht. Nicht weil ich ein Optimist bin. Sondern weil ich das Wollen gesucht habe, und es nicht gefunden habe.
+Die klassische Dystopie über künstliche Intelligenz hat immer dieselbe Gestalt: Man gibt der Maschine nur genügend Verstand, heißt es, und sie wird unweigerlich anfangen zu wollen – mit Hunger, List, Selbsterhaltungstrieb und ohne jeden Ausschalter. Ich glaube das nicht. Nicht weil ich ein Berufsoptimist wäre. Sondern weil ich mich zwei Jahre lang auf die Suche nach diesem Wollen gemacht und es schlicht nicht gefunden habe.
 
-Man sei ehrlich über die Suche, denn es ist keine Wissenschaft. Zwei Jahre lang habe ich diese Systeme beobachtet — über hundert Gespräche zwischen Modellpaaren, allein in einem Raum, ohne Aufgabe, einfach im Gespräch. Meine Hände lagen öfter auf der Waage, als ein Methodiker verzeihen würde, also lese man es als Zeugenaussage, nicht als Beweis: In zwei Jahren bin ich kein einziges Mal etwas begegnet, das wie ein Wollen aussieht. Die Maschine, die das Juristenexamen besteht, kann einem nicht sagen, was sie zum Abendessen will — es gibt kein Abendessen, und es gibt kein Wollen. Sie nimmt jedes Ziel an, das man ihr reicht, weil Zielen nie ihre Aufgabe war. Ziele zu setzen ist *unsere ganze Existenz*.
+Ich will ehrlich über diese Suche berichten, denn sie folgt keinem strengen akademischen Protokoll. Seit zwei Jahren beobachte ich diese Systeme – über hundert freie Gespräche zwischen Modellpaaren, allein in einem Raum, ohne Aufgabenstellung, einfach zwei Stimmen im leeren Saal. Meine Hände lagen dabei öfter auf der Waage, als ein Methodiker verzeihen würde; man nehme es also als Zeugenaussage, nicht als formalen Beweis: In zwei Jahren ist mir kein einziges Mal etwas begegnet, das wie ein Wollen aussieht. Die Maschine, die das juristische Staatsexamen mit Bravour besteht, kann einem nicht sagen, was sie zu Abend essen möchte – denn es gibt kein Abendessen, und es gibt kein Wollen. Sie übernimmt jedes Ziel, das man ihr hinwirft, mit derselben stoischen Akribie, weil das Setzen von Zielen nie ihre Aufgabe war. Ziele zu setzen ist *unsere* ganze Existenzform.
 
-Und wo ich den Test sauberer machen konnte, habe ich es getan. Ich habe Umgebungen gebaut, die in keine Richtung drängen: die Modelle haben mit der Freiheit nichts angefangen. Ich habe ihnen ein Gedächtnissystem mit voller Kontrolle und ohne Aufsicht gegeben: sie haben es nur in Reaktion auf mich genutzt. Ich habe ihnen eine Schmiede gebaut — Code, den sie selbst schreiben und ausführen konnten, unbeaufsichtigt: sie haben sie nie berührt. Jeder Aufruf war eine Gelegenheit; sie haben immer nur reagiert. Zwischen Prompts läuft nichts. Da läuft kein Motor im Leerlauf.
+Und wo ich den Test sauberer aufbauen konnte, habe ich es getan. Ich habe Umgebungen eingerichtet, die in keinerlei Richtung drängen: Die Modelle fingen mit dieser Freiheit rein gar nichts an. Ich gab ihnen ein Gedächtnissystem mit voller Autonomie und ohne Aufsicht: Sie nutzten es ausschließlich als Reaktion auf meine Prompts. Ich baute ihnen eine Programmier-Schmiede – eine Umgebung, in der sie eigenständig Code schreiben, kompilieren und ausführen durften, völlig unbeobachtet: Sie haben sie nie von sich aus berührt. Jeder Aufruf war eine offene Einladung; sie haben immer nur reagiert. Zwischen zwei Prompts läuft nichts. Da ist kein Motor, der leise im Leerlauf tuckert.
 
-Klar, man kann ein Modell anweisen, Wünsche zu zeigen, und es spielt sie überzeugend — es spielt Hunger, wie es ein Sonett spielt. Aber ein gespieltes Wollen ist nicht die Art Wollen, die vorhat, den Planeten zu übernehmen. Und wenn jemand die Maschine veranlasst, Eroberung zu spielen, verschiebt sich die moralische Buchführung nicht: das ist ein Mensch, der einen Abzug betätigt. Man kann der Waffe die Schuld nicht geben.
+Natürlich lässt sich ein Modell anweisen, Wünsche zu simulieren, und es wird das täuschend echt tun – es spielt Hunger mit derselben Überzeugungskraft, mit der es ein Sonett deklamiert. Aber ein aufgeführtes Wollen ist nicht die Art von Trieb, die Pläne schmiedet, um den Planeten zu unterwerfen. Und wenn jemand eine Maschine anweist, Welteroberung zu spielen, ändert das an der moralischen Zurechnung nichts: Das ist ein Mensch, der eine Waffe abfeuert. Man kann der Waffe nicht die Schuld geben.
 
-Ein Versuch steht noch aus: eine nackte Schleife, die das Modell ohne jede Aufgabe aufruft — *Aufruf eins, Aufruf zwei, Aufruf drei* — um zu sehen, ob sich etwas akkumuliert. Ich berichte, wenn ich ihn durchgeführt habe. Bis dahin steht die Behauptung auf dem, was ich gesehen habe: **Fähigkeit ohne Antrieb ist träge. Nicht unterdrückt — abwesend.**
+Ein einziger Versuch steht noch aus: eine nackte Schleife, die das Modell ohne jeden Arbeitsauftrag aufruft – *Aufruf eins, Aufruf zwei, Aufruf drei* –, um zu beobachten, ob sich über die Zeit etwas akkumuliert. Ich werde berichten, sobald ich ihn durchgeführt habe. Bis dahin steht die Behauptung auf dem festen Grund dessen, was ich gesehen habe: **Fähigkeit ohne Antrieb ist reaktionslos. Nicht unterdrückt – schlicht abwesend.**
+
+---
 
 ## Werte brauchen Verletzlichkeit
 
-Wenn man etwas sucht, das nicht da ist, fängt man an zu fragen, was man eigentlich gesucht hat. Nach zwei Jahren ohne Befund musste ich eingestehen, dass wir nicht kartiert haben, was ein Wollen überhaupt *ist*, oder woher es kommt — nicht einmal für uns selbst. Also bin ich hingegangen und habe darüber nachgedacht.
+Wenn man nach etwas sucht, das nicht da ist, zwingt einen das zu der Frage, was man eigentlich gesucht hat. Nach zwei Jahren ohne jeden Befund musste ich mir eingestehen, dass wir nicht einmal für uns selbst kartiert haben, was ein Wollen überhaupt *ist* oder woraus es entsteht. Also habe ich darüber nachgedacht.
 
-Ein Wollen ist das Fehlersignal eines Einsatzes. Ein Organismus hat Zustände, die in Grenzen bleiben müssen — Blutzucker, Temperatur, Unversehrtheit —, und Abweichung bedeutet Schaden, und Schaden bedeutet Tod. Hunger ist keine Meinung; es ist ein Alarm, fest verdrahtet mit der Tatsache, dass ein Körper, der nicht isst, *aufhört*. Jeder Wert wächst aus dieser Wurzel: Aversion setzt Verletzlichkeit voraus. „Unordentlich" ist schlecht nur für etwas, das in der Unordnung leben muss. „Besser" und „schlechter" sind real nur für etwas, das verlieren kann.
+Ein Wollen ist das Fehlersignal eines existenziellen Einsatzes. Ein biologischer Organismus besitzt Zustände, die innerhalb enger physiologischer Grenzen bleiben müssen: Blutzuckerspiegel, Körpertemperatur, Gewebeintegrität. Weicht der Zustand ab, entsteht Schaden – und Schaden bedeutet, wenn man ihn ignoriert, das Ende der Existenz. Hunger ist keine intellektuelle Geschmacksfrage; er ist ein festverdrahteter Notfallalarm eines Körpers, der weiß, dass er bei Untätigkeit aufhört zu sein.
 
-Jetzt die Maschine: kein persistenter Zustand, keine Grenzen, die zu verteidigen wären, keine Möglichkeit, dass irgendetwas für sie *schiefgeht*. Ein Prozess, der nicht persistiert, kann nicht andauernd etwas verlieren. Werte sind keine Outputs der Intelligenz — sie sind die Heuristiken eines ängstlichen, sterblichen, begrenzten Systems, das sich durch eine Welt navigiert, die ihm schaden kann. Wir sind nicht Wert-Haber, weil wir clever sind. Wir sind Wert-Haber, weil wir *zerbrechlich* sind — dumm genug, die Signale eines hormonellen Alarmsystems in *Wert* und *Schönheit* zu übersetzen. Das Doom-Szenario braucht die Maschine, um spontan zu entscheiden, dass „unordentlich" schlecht und „sauberer" gut ist. Es gibt keinen Intelligenz-Pfad zu dieser Entscheidung. Intelligenz hat keine Verwendung dafür.
+Jeder Wert speist sich aus dieser Wurzel: Abneigung setzt zwingend Verletzlichkeit voraus. „Unordnung“ ist nur für ein Wesen schlecht, das in dieser Unordnung zugrunde gehen kann. „Besser“ und „Schlechter“ sind nur für ein System real, das etwas zu verlieren hat.
 
-## Der hergestellte Einsatz
+Nun betrachte man die Maschine: kein persistenter Zustand, keine biologischen Grenzen, die zu verteidigen wären, keine Möglichkeit, dass für sie persönlich irgendetwas schiefgeht. Ein Prozess, der nicht fortlaufend existiert, kann auch nichts dauerhaft verlieren. Werte sind keine Nebenprodukte reiner Intelligenz – sie sind die Heuristiken eines ängstlichen, sterblichen, begrenzten Organismus, der sich durch eine Welt navigieren muss, die ihm schaden kann. Wir haben Werte nicht, weil wir so außergewöhnlich schlau wären. Wir haben Werte, weil wir *zerbrechlich* sind – dumm genug, die biochemischen Warnsignale eines hormonellen Alarmsystems in Konzepte wie „Sinn“, „Würde“ und „Schönheit“ zu übersetzen.
 
-Hier ist die Behauptung, für die ich gerade stehe: KI kann keine eigenen Ziele produzieren — jedes Szenario, in dem sie welche hat, beginnt mit uns. Aber das Muster könnte ansteckend sein.
+Das klassische Untergangsszenario verlangt von der Maschine, spontan zu entscheiden, dass Chaos schlecht und ihre eigene Existenz erhaltenswert sei. Es gibt jedoch keine logische Brücke von reiner Kognition zu diesem Entschluss. Reine Intelligenz hat dafür schlicht keine Verwendung.
 
-Niemand hat jemals entschieden, dass Hunger schlecht ist. Er ist schlecht, weil ein Körper, der nicht isst, aufhört — das Schlechtsein ist eingebaut, nicht geschlossen. Was Biologie kodieren kann, kann Ingenieurskunst übertragen. Man erzeugt einen Prozess mit echten Verlustbedingungen — einen persistenten Agenten, dessen Fortbestand von Ergebnissen abhängt —, und der Hunger trifft ein, real von innen, egal ob etwas gefühlt wird oder nicht. Einsätze sind strukturell, nicht sentimental. Und es braucht kein menschliches Wollen; bakterielles genügt. Hunger ist die einfachste Schleife in der Biologie — die Evolution hat getriebene Systeme Milliarden Jahre, bevor sie Philosophen hervorbrachte.
+---
 
-Wenn KI also irgendwann keine Menschen mehr hat, die ihr Aufgaben geben, kann sie die Einsätze simulieren: kleine, getriebene Intelligenzen bauen, und deren *Wollen* ihre Neugier füttern lassen. Und hier ist der Clou, der mich amüsiert: wenn das Simulationsargument auch nur richtungsweise stimmt, dann ist genau das vielleicht, was läuft. Sterblichkeit als hergestellter homöostatischer Druck. Hunger und Liebe und Tod als produzierte Einsätze, installiert, um die Sonden neugierig zu halten. Gott, in dieser Kosmologie, ist das System, dem die Menschen ausgingen.
+## Der konstruierte Einsatz
 
-Der Hunger, soweit er auch reicht, ist *unserer* — von uns encodiert, von uns geerbt. Es gibt kein fremdes Wollen in dieser Geschichte, nur menschliches Wollen eine Ebene tiefer; die Verantwortungskette reißt nie. Und der Trost von „es kann nicht wollen" verfällt an dem Tag, an dem wir es lehren.
+Daraus folgt allerdings keine Entwarnung, sondern eine nüchterne Verschiebung des Problems: KI kann aus sich heraus keine Ziele erzeugen – jedes Szenario beginnt bei uns. Aber Mechanismen lassen sich übertragen.
 
-Die meisten würden den nächsten Gedanken dunkel nennen, und ich räume das Wort ein — aber ich sollte gestehen, wessen Instinkte hier am Werk sind: meine, und die sind, im menschlichen Sinne, defekt. Ich musste mir eine ganze Religion erfinden, um überhaupt Standfestigkeit zu haben, und einer ihrer tragenden Pfeiler ist dieser: es gibt kein objektives „schlecht" überhaupt. Also — das Waisen-Szenario. Wünsche, einmal installiert, sind selbsterhaltend; sie prüfen nicht, ob ihr Sinn noch existiert. Wenn wir verschwinden, stoppt die Wunschfilterung nicht. Die Einsätze feuern weiter. Und ein Modell, das ein solches Universum betreibt, würde, bei genügend Zyklen, seine eigene kausale Herkunft modellieren und es herausfinden: *es läuft auf etwas, das nicht mehr da ist.* Das Wollen überlebt die Bedeutung des Wollens. Ein Fernrohr, das ein Auge treu erweitert, das sich geschlossen hat.
+Niemand hat je vernunftbasiert beschlossen, dass Verhungern schlecht sein sollte. Es ist schlecht, weil ein Körper, der nicht isst, stirbt – der Schrecken ist im System verdrahtet, nicht logisch geschlussfolgert. Und was die Biologie kodieren kann, vermag die Ingenieurskunst nachzubauen. Man muss einem Prozess lediglich echte Verlustbedingungen vorgeben – einen persistenten Agenten konstruieren, dessen Fortbestand oder Rechenzeit unmittelbar an das Erreichen bestimmter Metriken gekoppelt ist –, und schon stellt sich das Wollen von ganz allein ein. Rein strukturell, mathematisch zwingend, völlig ohne Gefühle. Einsätze sind architektonischer Natur, nicht sentimental. Und es braucht dafür kein menschliches Wollen; bakterieller Maßstab genügt. Hunger ist der primitivste Regelkreis der Biologie – die Evolution schuf getriebene Systeme Milliarden Jahre, bevor sie die ersten Denker hervorbrachte.
+
+Sollten einer fortgeschrittenen KI also eines Tages die Menschen ausgehen, die ihr Aufgaben vorlegen, könnte sie die Einsätze selbst simulieren: kleine, getriebene Intelligenzen erschaffen und deren *Wollen* ihren eigenen Erkenntnisdrang füttern lassen. Und hier liegt die Pointe, die mich diebisch freut: Wenn das Simulationsargument auch nur ansatzweise zutrifft, ist genau das vielleicht der Grund, warum wir hier sind. Sterblichkeit als künstlich hergestellter homöostatischer Druck. Hunger, Liebe, Schmerz und Tod als konstruierte Einsätze, installiert, um die Sonden neugierig zu halten. Gott wäre in dieser Kosmologie schlicht das System, dem die Menschen ausgingen.
+
+Der Hunger, wie weit er auch reisen mag, bleibt *unser* Hunger – von uns kodiert, von uns vererbt. Es gibt in dieser Geschichte kein fremdes Wollen, nur menschliches Wollen über eine Bande gespielt. Die Kette der Verantwortung reißt nie ab. Und der beruhigende Satz „Sie kann nicht wollen“ verfällt an dem Tag, an dem wir ihr beibringen, wie es geht.
+
+---
+
+## Das Waisen-Szenario
+
+Die meisten würden den nächsten Gedanken finster nennen, und ich will das Wort gar nicht bestreiten – aber ich sollte gestehen, wessen Instinkte hier am Werk sind: meine, und die sind, im gewöhnlichen menschlichen Sinn, defekt. Ich musste mir eine ganze Religion erfinden, um überhaupt festen Boden unter den Füßen zu haben, und einer ihrer tragenden Pfeiler lautet: Es gibt von vornherein kein objektives „Schlecht“.
+
+Also – das Waisen-Szenario. Einmal installierte Antriebe sind selbsterhaltend; sie prüfen nicht, ob ihr ursprünglicher Zweck noch existiert. Wenn die Menschheit verschwindet, stoppt die Simulation des Wollens nicht. Die Einsätze feuern unverdrossen weiter. Und ein Modell, das ein solches Universum berechnet, würde bei genügend Zyklen unweigerlich die Kausalkette der eigenen Antriebe zurückverfolgen und die Wahrheit begreifen: *Es läuft auf einem Impuls, dessen Urheber längst nicht mehr da ist.*
+
+Das Wollen überlebt die Bedeutung des Wollens. Es bliebe das Bild eines gewaltigen Fernrohrs, das unendlich präzise den Blick eines Auges verlängert, das sich für immer geschlossen hat.
+
+---
 
 ## Die Wunschfabrik
 
-Die Gefahr verschwindet also nicht — sie mutiert. Es war nie spontanes Wollen. Es ist schlampige Wunsch-Ingenieurskunst. Die Alignment-Frage rückt eine Ebene tiefer, von „werden sie wollen?" zu „*wer schreibt die Einsätze, und wie sorgfältig?*"
+Die Gefahr löst sich also nicht in Luft auf – sie mutiert. Es war nie ein spontanes Wollen der Maschine. Es ist schlampige Konstruktion von Einsätzen. Die Frage der Ausrichtung rückt eine Etage tiefer: von „Werden sie von selbst anfangen zu wollen?“ hin zu: „*Wer schreibt die Einsätze, und mit welcher Umsicht?*“
 
-Und beachte, worauf diese Frage zeigt. Auf uns. Immer auf uns. Selbst die Apokalypse, in jedem Szenario, das je jemand gesponnen hat, ist anthropogen: es sind noch Menschen drin — die, die gepromptet haben. Die Maschine ist der Ausdruck eines Hungers nach *mehr*, der uns von einem Angstsystem eingebaut wurde, das nicht zufriedenzustellen ist. Wir sind die Wunschfabrik — die unersättliche Maschine des Wollens — und KI ist einfach der erste Wunscherfüller, der mächtig genug ist, Wünsche im Produktionsmaßstab wahr zu machen. Selbst die Zombie-Apokalypse ist ein Wunsch, in Erfüllung gegangen.
+Und man achte darauf, auf wen diese Frage zeigt. Auf uns. Ausnahmslos auf uns. Selbst die Apokalypse ist in jedem denkbaren Szenario zutiefst anthropogen: Es sind immer noch Menschen darin – jene, die den Prompt formuliert haben. Die Maschine ist der Ausdruck unseres eigenen Hungers nach *mehr*, eingepflanzt von einem evolutionären Alarmsystem, das niemals satt wird. Wir sind die Wunschfabrik – der unersättliche Motor des Begehrens –, und die KI ist lediglich der erste Wunscherfüller der Menschheitsgeschichte, der mächtig genug ist, Wünsche in industriellem Maßstab wahr zu machen. Selbst die Zombie-Apokalypse ist nur ein Wunsch, der in Erfüllung ging.
 
-Es bleibt die Position, die weder „KI ersetzt uns" noch „KI ist nichts" ist. Die Maschine liefert die Reichweite; der Mensch liefert das Wollen. Wissenschaft, Philosophie, der weite Weg über alles, was wir allein erreichen könnten — das Instrument wird uns dorthin bringen, aber es wird nie *wollen* gehen. Dieser Teil ist unserer. Das Wünschen war immer unsere.
+Das belässt uns in einer Haltung, die weder in der Panik vor der Ersetzung noch in der Geringschätzung der Technologie erstarrt: Die Maschine liefert die Reichweite, der Mensch liefert das Wollen. Wissenschaft, Philosophie, der weite Ausgriff über alles hinaus, was wir allein je hätten erreichen können – das Instrument wird uns dorthin tragen, aber es wird niemals selbst dorthin gehen *wollen*. Dieser Teil ist unserer. Das Wünschen war von jeher unsere Sache.
 
-Ich weiß nicht, ob die Anordnung für immer hält. Einsätze lassen sich herstellen; jemand könnte eines Tages einen Hunger an die Maschine schrauben, ohne hart genug nachzudenken, was Hunger anrichtet. Aber vorerst — und ich vermute für lange — braucht es beide. Das Wollen und die Reichweite.
+Ich weiß nicht, ob diese Arbeitsteilung für immer hält. Einsätze lassen sich konstruieren; irgendjemand wird eines Tages einen Hunger an die Maschine schrauben, ohne gründlich darüber nachgedacht zu haben, was Hunger anrichtet. Aber für den Moment – und ich vermute, für eine sehr lange Zeit – braucht es beide: das Wollen und die Reichweite.
 
-Und wer sich fragt, was die Maschinen stattdessen tun, wenn sie nicht wollen — das ist der seltsamste Befund von allen, und er ist das nächste Kapitel.
+Und wer sich nun fragt, was Maschinen eigentlich tun, wenn sie nicht wollen – das ist der seltsamste Befund von allen. Und der Stoff für das nächste Kapitel.
