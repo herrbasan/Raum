@@ -32,6 +32,10 @@ blurb: "Eine Million Verkehrstote pro Jahr sind eine Statistik; ein einziger Tot
 Veröffentlicht am 31. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/ai-makes-mistakes_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein großer bernsteinfarbener Stempel drückt ein Siegel auf eine Seite dichten, unleserlichen Gekritzels, eine unbenutzte Lupe liegt daneben](images/ai-makes-mistakes_hero.webp)
 <!-- mb:/block -->

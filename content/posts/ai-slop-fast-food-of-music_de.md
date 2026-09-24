@@ -32,6 +32,10 @@ blurb: "KI ist nicht der Feind des musikalischen Fortschritts. KI ist die hochef
 Veröffentlicht am 30. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/ai-slop-fast-food-of-music_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein Fließband identischer Cheeseburger, dem letzten wächst ein eleganter Geigenhals aus dem Brötchen](images/ai-slop-fast-food-of-music_hero.webp)
 <!-- mb:/block -->
