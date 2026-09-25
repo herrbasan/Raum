@@ -32,6 +32,10 @@ blurb: "Kein Pilz hat je nach irgendetwas gestrebt. Zuerst kommt das Ding, dann 
 Veröffentlicht am 5. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-telescope-of-the-mind_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein Messingteleskop auf einem Stativ, über einen fruchtbeladenen Baum hinweg auf einen kleinen fernen Stern gerichtet](images/the-telescope-of-the-mind_hero.webp)
 <!-- mb:/block -->

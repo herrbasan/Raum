@@ -32,6 +32,10 @@ blurb: "Das Ding, das man „Ich“ nennt, ist kein materielles Objekt. Es ist e
 Veröffentlicht am 30. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-hand-that-draws-itself_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine einzige ununterbrochene bernsteinfarbene Linie, die sich nach innen zu dem Stift spiralisiert, der sie zeichnet](images/the-hand-that-draws-itself_hero.webp)
 <!-- mb:/block -->

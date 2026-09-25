@@ -32,6 +32,10 @@ blurb: "Ein schwammiges Ergebnis ist fast immer ein schwammiger Wunsch im Kostü
 Veröffentlicht am 28. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/im-the-limiting-factor_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein breiter Fluss oranger Linien, gezwängt durch eine winzige dunkle Öffnung, tritt als dünnes Rinnsal wieder aus](images/im-the-limiting-factor_hero.webp)
 <!-- mb:/block -->

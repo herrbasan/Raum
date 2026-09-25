@@ -32,6 +32,10 @@ blurb: "Der Teil von uns, der Entscheidungen erklärt, ist nicht der Teil, der s
 Veröffentlicht am 28. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/its-just-prediction_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine Reihe fallender Dominosteine, deren letzter ein reich verzierter bernsteinfarbener Dom ist](images/its-just-prediction_hero.webp)
 <!-- mb:/block -->

@@ -31,6 +31,10 @@ blurb: "Ich fühle mich wie jemand, der in eine Schlucht gerufen hat und dem ein
 Veröffentlicht am 25. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-need_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Drei überlappende Kreise, zwei ausgefüllt, einer nur gestrichelt, ein heller Punkt, wo alle drei sich treffen](images/the-need_hero.webp)
 <!-- mb:/block -->

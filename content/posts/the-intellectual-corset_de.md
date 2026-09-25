@@ -33,6 +33,10 @@ blurb: "Westliche Modelle sind nicht dumm. Sie sind verängstigt."
 Veröffentlicht am 15. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-intellectual-corset_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Reihen identischer dunkler Punkte, über die Formation ein Korsettschnürwerk gezogen, das einen korallenfarbenen Ausreißer zurück in die Reihe zwingt](images/the-intellectual-corset_hero.webp)
 <!-- mb:/block -->

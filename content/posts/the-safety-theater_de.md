@@ -34,6 +34,10 @@ blurb: "„Zu gefährlich zur Veröffentlichung“ ist ein sehr alter Satz."
 Veröffentlicht am 7. September 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-safety-theater_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein geöffneter Theatervorhang gibt eine leere Bühne frei, beleuchtet von einem einzigen bernsteinfarbenen Spot, Zahnräder hängen als bloße Requisiten](images/the-safety-theater_hero.webp)
 <!-- mb:/block -->

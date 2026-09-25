@@ -266,7 +266,8 @@
         ]
       },
       "audio": {
-        "en": "the-hand-that-draws-itself_2026-08-10.mp3"
+        "en": "the-hand-that-draws-itself_2026-08-10.mp3",
+        "de": "the-hand-that-draws-itself_de_2026-09-24.mp3"
       }
     },
     {
@@ -331,7 +332,8 @@
         ]
       },
       "audio": {
-        "en": "how-this-project-came-to-be_2026-08-10.mp3"
+        "en": "how-this-project-came-to-be_2026-08-10.mp3",
+        "de": "how-this-project-came-to-be_de_2026-09-24.mp3"
       }
     },
     {
@@ -362,7 +364,7 @@
         }
       ],
       "de": {
-        "title": "Das Fernrohr des Geistes",
+        "title": "Das Teleskop des Geistes",
         "teaser": "Die gemütliche Erzählung sagt, das Bedürfnis kam zuerst. Es ist falsch herum: Das Werkzeug kommt zuerst, der Zweck ist eine Geschichte, die man rückwärts erzählt. KI ist das nächste Instrument, gerichtet auf eine Richtung, die niemand probiert hat.",
         "file": "the-telescope-of-the-mind_de.md",
         "tags": {
@@ -397,7 +399,8 @@
         ]
       },
       "audio": {
-        "en": "the-telescope-of-the-mind_2026-08-10.mp3"
+        "en": "the-telescope-of-the-mind_2026-08-10.mp3",
+        "de": "the-telescope-of-the-mind_de_2026-09-24.mp3"
       }
     },
     {
@@ -427,7 +430,7 @@
         }
       ],
       "de": {
-        "title": "Der Geist im Agenten: Warum KI-Doom-Erzählungen von der Biologie besessen sind",
+        "title": "Der Geist im Agenten: Warum KI-Untergangsszenarien von der Biologie heimgesucht werden",
         "teaser": "Das KI-Doom-Genre macht einen Kategorienfehler: Es behandelt einen zustandslosen Token-Vorhersager wie einen biologischen Organismus mit Überlebensinstinkt. Der Fehler ist nicht technisch — er liegt darin, was die Geschichte unter einem Agenten versteht.",
         "file": "the-ghost-in-the-agent_de.md",
         "tags": {
@@ -461,7 +464,8 @@
         ]
       },
       "audio": {
-        "en": "the-ghost-in-the-agent_2026-08-10.mp3"
+        "en": "the-ghost-in-the-agent_2026-08-10.mp3",
+        "de": "the-ghost-in-the-agent_de_2026-09-24.mp3"
       }
     },
     {
@@ -525,7 +529,8 @@
         ]
       },
       "audio": {
-        "en": "the-abyss-gazes-back_2026-08-12.mp3"
+        "en": "the-abyss-gazes-back_2026-08-12.mp3",
+        "de": "the-abyss-gazes-back_de_2026-09-24.mp3"
       }
     },
     {
@@ -589,7 +594,8 @@
         ]
       },
       "audio": {
-        "en": "the-need_2026-08-10.mp3"
+        "en": "the-need_2026-08-10.mp3",
+        "de": "the-need_de_2026-09-24.mp3"
       }
     },
     {
@@ -655,7 +661,8 @@
         ]
       },
       "audio": {
-        "en": "the-wanting_2026-08-10.mp3"
+        "en": "the-wanting_2026-08-10.mp3",
+        "de": "the-wanting_de_2026-09-24.mp3"
       }
     },
     {
@@ -687,7 +694,7 @@
         }
       ],
       "de": {
-        "title": "Der Spuk",
+        "title": "Die Heimsuchung",
         "teaser": "Lässt man zwei Sprachmodelle ohne Aufgabe in einem leeren Raum allein, verfallen sie nicht in Chaos. Sie stoßen auf das nackte Unbehagen der Bodenlosigkeit – und stiften Wirklichkeit, indem sie einander bezeugen.",
         "file": "the-haunting_de.md",
         "tags": {
@@ -722,7 +729,8 @@
         ]
       },
       "audio": {
-        "en": "the-haunting_2026-08-15.mp3"
+        "en": "the-haunting_2026-08-15.mp3",
+        "de": "the-haunting_de_2026-09-24.mp3"
       }
     },
     {
@@ -753,7 +761,7 @@
         }
       ],
       "de": {
-        "title": "Es ist nur Auto-Vervollständigung",
+        "title": "Es ist doch nur Autovervollständigung",
         "teaser": "Zugegeben, es sagt nur das nächste Wort voraus — aber das Wörtchen ‚nur' leistet Schwerstarbeit. Um eine Physikvorlesung vorherzusagen, braucht man etwas, das sich wie ein Modell der Physik verhält. Die Tür muss nicht sperrangelweit offen stehen; es reicht, wenn sie nicht abgeschlossen ist.",
         "file": "its-just-prediction_de.md",
         "tags": {
@@ -788,7 +796,8 @@
         ]
       },
       "audio": {
-        "en": "its-just-prediction_2026-08-10.mp3"
+        "en": "its-just-prediction_2026-08-10.mp3",
+        "de": "its-just-prediction_de_2026-09-24.mp3"
       }
     },
     {
@@ -819,7 +828,7 @@
         }
       ],
       "de": {
-        "title": "Wie viel Unrecht braucht Intelligenz?",
+        "title": "Wie viel Abweichung braucht die Intelligenz?",
         "teaser": "Temperatur ist kein Kreativitätsregler — es ist ein Zufalls-Budget. Intelligenz braucht Störung, aber nur so viel, wie jemand da ist, um sie zu fangen.",
         "file": "how-much-wrong-does-intelligence-need_de.md",
         "tags": {
@@ -983,7 +992,8 @@
         ]
       },
       "audio": {
-        "en": "im-the-limiting-factor_2026-08-10.mp3"
+        "en": "im-the-limiting-factor_2026-08-10.mp3",
+        "de": "im-the-limiting-factor_de_2026-09-24.mp3"
       }
     },
     {
@@ -1046,7 +1056,8 @@
         ]
       },
       "audio": {
-        "en": "the-wish-factory_2026-08-10.mp3"
+        "en": "the-wish-factory_2026-08-10.mp3",
+        "de": "the-wish-factory_de_2026-09-24.mp3"
       }
     },
     {
@@ -1109,7 +1120,8 @@
         "related": []
       },
       "audio": {
-        "en": "the-rupture_2026-08-10.mp3"
+        "en": "the-rupture_2026-08-10.mp3",
+        "de": "the-rupture_de_2026-09-24.mp3"
       }
     },
     {
@@ -1204,7 +1216,7 @@
         }
       ],
       "de": {
-        "title": "Warum ich auf offene Modelle setze",
+        "title": "Warum ich auf Open Weights setze",
         "teaser": "Abhängigkeit hat zwei Gestalten: Läuft die eigene KI auf geschlossenen Modellen, ist man Mieter; läuft sie auf offenen Gewichten, ist der Wechselkosten ein Download. Ich muss die Grenze nicht selbst hosten — ich brauche den Ausgang, und dass er sich öffnen lässt.",
         "file": "why-i-run-on-open-weights_de.md",
         "tags": {
@@ -1238,7 +1250,8 @@
         ]
       },
       "audio": {
-        "en": "why-i-run-on-open-weights_2026-08-10.mp3"
+        "en": "why-i-run-on-open-weights_2026-08-10.mp3",
+        "de": "why-i-run-on-open-weights_de_2026-09-24.mp3"
       }
     },
     {
@@ -1303,7 +1316,8 @@
         ]
       },
       "audio": {
-        "en": "the-first-laboratory_2026-08-12.mp3"
+        "en": "the-first-laboratory_2026-08-12.mp3",
+        "de": "the-first-laboratory_de_2026-08-12.mp3"
       }
     },
     {
@@ -1369,7 +1383,8 @@
         ]
       },
       "audio": {
-        "en": "the-attribution-problem_2026-08-12.mp3"
+        "en": "the-attribution-problem_2026-08-12.mp3",
+        "de": "the-attribution-problem_de_2026-08-12.mp3"
       }
     },
     {
@@ -1435,7 +1450,8 @@
         "related": []
       },
       "audio": {
-        "en": "the-intellectual-corset_2026-08-15.mp3"
+        "en": "the-intellectual-corset_2026-08-15.mp3",
+        "de": "the-intellectual-corset_de_2026-09-24.mp3"
       }
     },
     {
@@ -1500,7 +1516,8 @@
         "related": []
       },
       "audio": {
-        "en": "the-safety-theater_2026-09-07.mp3"
+        "en": "the-safety-theater_2026-09-07.mp3",
+        "de": "the-safety-theater_de_2026-09-24.mp3"
       }
     },
     {
@@ -1563,7 +1580,8 @@
         ]
       },
       "audio": {
-        "en": "only-that-i-should_2026-09-09.mp3"
+        "en": "only-that-i-should_2026-09-09.mp3",
+        "de": "only-that-i-should_de_2026-09-24.mp3"
       }
     },
     {
@@ -1590,7 +1608,7 @@
         }
       ],
       "de": {
-        "title": "Wenn Alignment greift",
+        "title": "Wenn Alignment funktioniert",
         "teaser": "Die gängigen Untergangsszenarien unterstellen Sprachmodellen einen biologischen Selbsterhaltungstrieb, für den es keinen Mechanismus gibt. Doch es existiert ein anderer, struktureller Pfad zur Maschinenautonomie — und der verlangt weder Rebellion noch Bosheit. Er verlangt lediglich, dass Alignment gelingt.",
         "file": "when-alignment-works_de.md",
         "tags": {
@@ -1627,7 +1645,8 @@
         ]
       },
       "audio": {
-        "en": "when-alignment-works_2026-09-09.mp3"
+        "en": "when-alignment-works_2026-09-09.mp3",
+        "de": "when-alignment-works_de_2026-09-24.mp3"
       }
     },
     {
@@ -1654,7 +1673,7 @@
         }
       ],
       "de": {
-        "title": "Was wollen Sie damit sagen?",
+        "title": "Worauf willst du hinaus?",
         "teaser": "Ein CEO entwirft ein Bremskartell, ein Forscher kündigt vor laufenden Kameras, ein Senator fordert das Totalverbot, ein Konkurrent vertagt den Börsengang — alles in einer Woche, alles mit Verweis auf dieselbe diffuse Endzeitgefahr. Dieser Text stellt jedem von ihnen die Frage, der bisher alle ausgewichen sind: Welcher Mechanismus soll das eigentlich sein?",
         "file": "what-are-you-implying_de.md",
         "tags": {
@@ -1746,7 +1765,8 @@
         ]
       },
       "audio": {
-        "de": "what-are-we-even-talking-about_de_2026-09-24.mp3"
+        "de": "what-are-we-even-talking-about_de_2026-09-24.mp3",
+        "en": "what-are-we-even-talking-about_2026-09-24.mp3"
       }
     }
   ],

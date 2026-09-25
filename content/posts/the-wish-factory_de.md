@@ -31,6 +31,10 @@ blurb: "Der Wunsch ist die eigentliche Arbeit. Die Implementierung ist bloße Me
 Veröffentlicht am 28. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-wish-factory_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein wildes bernsteinfarbenes Gekritzel, durch einen dunklen Monolithen geführt, tritt als vermessene Reihe identischer Drahtgitterwürfel wieder aus](images/the-wish-factory_hero.webp)
 <!-- mb:/block -->

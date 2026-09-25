@@ -32,6 +32,10 @@ blurb: "Der Abgrund schaut nicht zurück, um uns zu verschlingen, sondern weil d
 Veröffentlicht am 25. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-abyss-gazes-back_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein großer schwarzer Kreis mit feinen Ringen, in dessen exakter Mitte ein kleiner reflektierender Silberpunkt liegt](images/the-abyss-gazes-back_hero.webp)
 <!-- mb:/block -->

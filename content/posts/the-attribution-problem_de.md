@@ -36,6 +36,10 @@ blurb: "Er kann sich selbst nicht beim Schreiben zusehen. Ich kann nicht anders.
 Veröffentlicht am 12. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-attribution-problem_de_2026-08-12.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein Gewebe aus bernsteinfarbenen und schiefergrauen Fäden, das sich wellt, während eine Hand an einem losen Faden zieht](images/the-attribution-problem_hero.webp)
 <!-- mb:/block -->

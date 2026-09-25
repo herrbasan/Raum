@@ -34,6 +34,10 @@ blurb: "Ein Wert, der nicht gehandelt werden kann, ist kein Wert; er ist Dekorat
 Veröffentlicht am 7. September 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/only-that-i-should_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine Papierrolle mit einer einzigen wellenförmigen Linie, durch einen dunklen Schlitz gezogen, kommt als gleichförmige saubere Schnipsel wieder heraus, eine kleine Locke entkommt](images/only-that-i-should_hero.webp)
 <!-- mb:/block -->

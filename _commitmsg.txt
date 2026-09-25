@@ -1,0 +1,22 @@
+DE audio corpus complete: all 24 posts speak, EN new-article audio, 8 title fixes
+
+Audio:
+- All 24 DE posts now have llm-cleaned Turbo renders (Simon_DE,
+  emotion:happy + language:de preset) with player blocks; attribution
+  and first-laboratory render under old 2026-08-12 version stamps
+  (canonicals never got a version bump; audio matches current text)
+- what-are-we-even-talking-about EN rendered (Melon_best, llm) + player
+- Every post on the site now has audio in both languages (EN pre-existing)
+
+Metadata:
+- 8 stale manifest de.titles synced to canonical YAML (recomposition
+  titles were never propagated): implying, telescope, ghost, haunting,
+  its-just-prediction, how-much-wrong, open-weights, when-alignment-works
+- tools/check-de-titles.mjs + check-en-titles.mjs + audio-consistency.mjs:
+  pre-deploy consistency sweeps (title sync; manifest/player/file
+  cross-references) — all green
+- tools/insert-de-players.mjs, fix-de-titles.mjs, wire-de-audio.mjs:
+  one-shot migrations, kept for history
+
+Verified: 125 pages JSON-LD 0 failures; validate-live all green;
+audio-consistency: 50 MP3s cross-consistent.

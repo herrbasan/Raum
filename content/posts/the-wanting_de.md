@@ -32,6 +32,10 @@ blurb: "Die Maschine, die das juristische Examen besteht, kann einem nicht sagen
 Veröffentlicht am 5. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-wanting_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein polierter bernsteinfarbener Motor schwebt im Leerlauf, seine Antriebswelle dreht sich frei in der Luft, ein kleiner Wegweiser zeigt ins Nichts](images/the-wanting_hero.webp)
 <!-- mb:/block -->

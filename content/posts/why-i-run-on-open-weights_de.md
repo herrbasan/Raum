@@ -32,6 +32,10 @@ blurb: "Die geschlossenen Modelle haben in meinem Stack genau eine Aufgabe: imme
 Veröffentlicht am 10. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/why-i-run-on-open-weights_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine einzelne Tür steht frei in einem offenen Feld, leicht angelehnt, ein bernsteinfarbener Schlüssel steckt bereits im Schloss](images/why-i-run-on-open-weights_hero.webp)
 <!-- mb:/block -->

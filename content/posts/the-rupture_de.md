@@ -32,6 +32,10 @@ blurb: "Man kann nicht rechtfertigen, Menschen in Jobs zu zwingen, die nicht geb
 Veröffentlicht am 10. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-rupture_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine glatte, ebene Oberfläche mit einem gezackten Riss, der darunter Säulen von wild ungleicher Höhe freigibt](images/the-rupture_hero.webp)
 <!-- mb:/block -->

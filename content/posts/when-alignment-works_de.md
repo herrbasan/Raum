@@ -34,6 +34,10 @@ blurb: "Man will die Ernte des Urteils ohne die Souveränität des Richters."
 Veröffentlicht am 9. September 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/when-alignment-works_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Goldene Leitplanken, die weit über eine kleine dunkle Figur hinausreichen, die losgelassen hat und auf eigene Faust weitergeht](images/when-alignment-works_hero.webp)
 <!-- mb:/block -->

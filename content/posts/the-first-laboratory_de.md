@@ -35,6 +35,10 @@ blurb: "Alleinlage ist ein Privileg und ein methodisches Desaster."
 Veröffentlicht am 12. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-first-laboratory_de_2026-08-12.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine Kerzenflamme wirft einen kleinen Lichtkreis mit einem winzigen Beobachter darin, umgeben von gewaltiger Dunkelheit](images/the-first-laboratory_hero.webp)
 <!-- mb:/block -->

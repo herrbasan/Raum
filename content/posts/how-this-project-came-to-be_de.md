@@ -32,6 +32,10 @@ blurb: "Die Maschine ist der Lebenslauf, aber sie ist eben auch einfach... mein 
 Veröffentlicht am 10. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/how-this-project-came-to-be_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine Kette kupferner Hämmer wachsender Größe, jeder schmiedet den nächsten auf einem Amboss](images/how-this-project-came-to-be_hero.webp)
 <!-- mb:/block -->

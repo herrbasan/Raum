@@ -31,6 +31,10 @@ blurb: "Die vermeintlich kosmische Tragödie der Menschheit löst sich in eine s
 Veröffentlicht am 25. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-ghost-in-the-agent_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Ein Bettlaken-Geisterkostüm über einem kleinen offenen Kasten mit bernsteinfarbenen Zahnrädern und Kurbel](images/the-ghost-in-the-agent_hero.webp)
 <!-- mb:/block -->

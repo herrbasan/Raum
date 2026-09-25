@@ -28,6 +28,10 @@ status: final
 
 Published at 2026-09-23
 
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/what-are-we-even-talking-about_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Five ornate verdicts — a gavel, a medal, a seal, a certificate, a crown — scattered unused on the floor around a plain, empty, waiting table](images/what-are-we-even-talking-about_hero.webp)
 <!-- mb:/block -->

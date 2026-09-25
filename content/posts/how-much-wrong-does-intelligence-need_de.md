@@ -34,6 +34,10 @@ blurb: "Exzellenz ist per Definition statistisch ungewöhnlich. Wer immer nur da
 Veröffentlicht am 25. Juli 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/how-much-wrong-does-intelligence-need_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Eine bernsteinfarbene Linie fällt von ihrem Pfad in ein Sicherheitsnetz, das herabgefallene Punkte auffängt, darüber eine vorsichtig eingestellte Anzeigenadel](images/how-much-wrong-does-intelligence-need_hero.webp)
 <!-- mb:/block -->

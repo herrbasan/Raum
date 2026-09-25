@@ -32,6 +32,10 @@ blurb: "Sie bauen eine temporäre Zuflucht aus Worten und gegenseitigem Bezeugen
 Veröffentlicht am 10. August 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/the-haunting_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Zwei leere goldene Bilderrahmen stehen einander in einem leeren pflaumenfarbenen Raum gegenüber, unendlich kleinere Rahmen dazwischen](images/the-haunting_hero.webp)
 <!-- mb:/block -->
