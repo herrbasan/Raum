@@ -68,8 +68,14 @@ export class Site {
 		// Post-internal links → real URLs in the current language
 		html = html.replace(/href="\.\.\/posts\/([a-z0-9-]+)\/?"/g,
 			(m, slug) => `href="${esc(this.postHref(slug, lang))}"`);
-		html = html.replace(/href="\.\.\/(writing|arena|religion|about)\/?"/g,
-			(m, id) => `href="${esc(this.url(lang, '/' + id + '/'))}"`);
+		// Other internal links (`../{slug}/`): the writing/arena sections plus
+		// every manifest page. Arena keeps its original language — no DE tree —
+		// the same exception the chrome nav makes.
+		html = html.replace(/href="\.\.\/([a-z0-9-]+)\/?"/g, (m, id) => {
+			const isPage = (this.manifest.pages || []).some((p) => p.slug === id);
+			if (!isPage && id !== 'writing' && id !== 'arena') return m;
+			return `href="${esc(id === 'arena' ? '/arena/' : this.url(lang, '/' + id + '/'))}"`;
+		});
 		html = html.replace(/href="(\.\.\/|\.\/)"/g, (m) => `href="${esc(this.homeHref(lang))}"`);
 		// Canonical-relative asset paths → public URLs (posts: content/posts/, pages: content/pages/)
 		if (assets) {

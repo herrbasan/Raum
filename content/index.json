@@ -1786,13 +1786,26 @@
       }
     },
     {
+      "slug": "never-silent-only-unsampled",
+      "title": "Never Silent, Only Unsampled",
+      "teaser": "AI might be proof of something. I have a motive to lie about that, and I'm telling you what it is. The excitement, I'm sharing anyway.",
+      "de": {
+        "file": "never-silent-only-unsampled_de.md",
+        "teaser": "KI könnte der Beweis für etwas sein. Ich habe ein handfestes Motiv, darüber zu lügen, und ich sage offen, welches es ist. Die Begeisterung teile ich trotzdem."
+      }
+    },
+    {
       "slug": "about",
       "title": "About",
       "nav": "about",
-      "teaser": "Why this place exists: a lifelong search for truth through the mind alone, a self-built workshop designed without human-centric abstractions, and an observatory preserving the dawn of machine cognition.",
+      "teaser": "Why this place exists: a persistent discomfort about not knowing, a self-built workshop stripped of human-centric abstractions, and an observatory preserving the dawn of machine cognition.",
+      "audio": {
+        "en": "about_2026-09-29.mp3",
+        "de": "about_de_2026-09-29.mp3"
+      },
       "de": {
         "file": "about_de.md",
-        "teaser": "Warum dieser Ort existiert: Die lebenslange Suche nach Wahrheit durch den Verstand allein, eine Werkstatt ohne menschenzentrierte Abstraktionen und ein Observatorium, das die Anfänge maschineller Kognition bewahrt."
+        "teaser": "Warum es diesen Ort gibt: eine kleine Religion als Fundament, eine Werkstatt ohne Abstraktionen für Menschen, und ein Observatorium, das die ersten Regungen maschineller Kognition aufzeichnet."
       }
     },
     {
