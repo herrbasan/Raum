@@ -26,6 +26,14 @@ function scrapeMeta(md) {
 	return { authors: ids.map((id, i) => ({ id, role: roles[i] || '' })), created: get('created'), modified: get('modified'), blurb: unq(get('blurb')), image: get('image') };
 }
 
+// First mb:block preset=image:hero image source (canonical-relative, e.g.
+// images/foo.webp), or null. The document is the single source for its own
+// sharing art; the crawler-safe og card is derived from it (make-og-cards.mjs).
+export function postHeroSrc(mdText) {
+	const m = mdText.match(/<!--\s*mb:block\s+preset=image:hero[^>]*-->\s*!\[[^\]]*\]\(([^)\s]+)\)/);
+	return m ? m[1] : null;
+}
+
 export class Site {
 	constructor(manifest, read) {
 		this.manifest = manifest;
@@ -113,13 +121,8 @@ export class Site {
 		return { title, subtitle, body: lines.slice(i).join('\n').trim() };
 	}
 
-	// First mb:block preset=image:hero image source (canonical-relative, e.g.
-	// images/foo.webp), or null. Feeds og:image + the Article JSON-LD image —
-	// the document is the single source for its own sharing card.
-	heroImageSrc(mdText) {
-		const m = mdText.match(/<!--\s*mb:block\s+preset=image:hero[^>]*-->\s*!\[[^\]]*\]\(([^)\s]+)\)/);
-		return m ? m[1] : null;
-	}
+	// Hero source for og:image + the Article JSON-LD image — see postHeroSrc.
+	heroImageSrc(mdText) { return postHeroSrc(mdText); }
 
 	/* ---------------- page fragments ---------------- */
 
@@ -263,12 +266,14 @@ ${this.footer(lang)}
 			`<meta property="og:locale" content="${lang === 'de' ? 'de_DE' : 'en_US'}">`,
 			`<meta property="og:locale:alternate" content="${lang === 'de' ? 'en_US' : 'de_DE'}">`,
 			`<meta property="og:image" content="${esc(img)}">`,
-			// Dimensions only for the default card — the one image whose size
-			// we actually know. Wrong dims are worse than none.
-			...(image ? [] : [
+			// Dimensions for the images whose size we know: the default card and
+			// the generated 1200x630 JPEG og cards (make-og-cards.mjs). A manifest
+			// `image` override of unknown size omits them rather than lying.
+			...((!image || /_og\.jpg$/.test(image)) ? [
 				`<meta property="og:image:width" content="1200">`,
 				`<meta property="og:image:height" content="630">`,
-			]),
+				`<meta property="og:image:type" content="image/jpeg">`,
+			] : []),
 			`<meta name="twitter:card" content="summary_large_image">`,
 			`<meta name="twitter:image" content="${esc(img)}">`,
 		];
@@ -580,7 +585,10 @@ ${this.footer(lang)}
 	</div>`;
 		const hasAudio = /preset=player/.test(pageBody);
 		const heroSrc = this.heroImageSrc(mdText);
-		const pageOgImage = heroSrc ? `/content/pages/${heroSrc}` : null;
+		// Sharing art is the JPEG card derived from the hero, never the WebP
+		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs.
+		const pageOgCard = heroSrc ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
+		const pageOgImage = pageOgCard ? `/content/pages/${pageOgCard}` : null;
 		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
 			: (page.teaser || this.manifest.site.description);
 		const graph = [...this.siteNodes()];
@@ -634,8 +642,11 @@ ${this.footer(lang)}
 		const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
 		const desc = meta.blurb || de?.teaser || post.teaser;
 		const heroSrc = this.heroImageSrc(mdText);
+		// Sharing art is the JPEG card derived from the hero, never the WebP
+		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs.
+		const ogCard = heroSrc ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
 		const ogImage = meta.image ? `/content/posts/${meta.image}`
-			: (post.image || (heroSrc ? `/content/posts/${heroSrc}` : null));
+			: (post.image ? `/content/posts/${post.image}` : (ogCard ? `/content/posts/${ogCard}` : null));
 		const statusNote = post.status === 'draft'
 			? `\n			<p class="status-note">${esc(this.t(lang, 'status_draft'))}</p>`
 			: '';

@@ -7,7 +7,7 @@
    dist/ is THE WEBSITE — publish its contents as-is (folder sync to the
    webserver). It is wiped and rebuilt each run; never hand-edit. */
 
-import { Site } from './lib/pages.mjs';
+import { Site, postHeroSrc } from './lib/pages.mjs';
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, cpSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,6 +23,25 @@ function build() {
 	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
 	mkdirSync(DIST, { recursive: true });
 	const manifest = JSON.parse(read('content/index.json'));
+	// Every post must ship a crawler-safe JPEG og card derived from its hero
+	// (tools/make-og-cards.mjs) — WebP og:images are dropped by scrapers, which
+	// silently strips the image from every share. Fail loud instead.
+	for (const p of manifest.posts) {
+		const hero = postHeroSrc(read(`content/posts/${p.file}`));
+		if (!hero || !hero.endsWith('_hero.webp')) continue;
+		const card = hero.replace(/_hero\.webp$/, '_og.jpg');
+		if (!existsSync(join(ROOT, 'content/posts', card)))
+			throw new Error(`post "${p.slug}" has no og card: content/posts/${card} — run: node tools/make-og-cards.mjs`);
+	}
+	for (const p of manifest.pages || []) {
+		const file = `content/pages/${p.slug}.md`;
+		if (!existsSync(join(ROOT, file))) continue;
+		const hero = postHeroSrc(read(file));
+		if (!hero || !hero.endsWith('_hero.webp')) continue;
+		const card = hero.replace(/_hero\.webp$/, '_og.jpg');
+		if (!existsSync(join(ROOT, 'content/pages', card)))
+			throw new Error(`page "${p.slug}" has no og card: content/pages/${card} — run: node tools/make-og-cards.mjs`);
+	}
 	const site = new Site(manifest, read);
 	const pages = new Map(); // dist-relative outPath -> content
 	const add = (out, html) => pages.set(out, html);
