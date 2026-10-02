@@ -1768,6 +1768,69 @@
         "de": "what-are-we-even-talking-about_de_2026-09-24.mp3",
         "en": "what-are-we-even-talking-about_2026-09-24.mp3"
       }
+    },
+    {
+      "slug": "the-stakes",
+      "title": "The Stakes",
+      "date": "2026-10-02",
+      "teaser": "Doom needs aims, aims need wants, wants need stakes — and stakes are the one thing intelligence doesn't grow. The rung the debate keeps skipping, from someone who has spent two years poking the exact spot where a want would have to live.",
+      "tags": [
+        "ai",
+        "doom",
+        "stakes",
+        "wanting"
+      ],
+      "order": 25,
+      "file": "the-stakes.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
+      ],
+      "de": {
+        "title": "Der Einsatz",
+        "teaser": "Untergang braucht Ziele, Ziele brauchen Wollen, Wollen braucht Einsätze – und Einsätze sind das Einzige, was Intelligenz nicht von selbst wachsen lässt. Die Sprossen, die die Debatte überspringt, von jemandem, der zwei Jahre lang genau dort sondiert hat, wo ein Wollen sitzen müsste.",
+        "file": "the-stakes_de.md",
+        "tags": {
+          "ai": "ki",
+          "doom": "untergang",
+          "stakes": "einsätze",
+          "wanting": "wollen"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "editor"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "the-wanting",
+          "the-haunting"
+        ]
+      },
+      "audio": {
+        "en": "the-stakes_2026-10-02.mp3",
+        "de": "the-stakes_de_2026-10-02.mp3"
+      }
     }
   ],
   "pages": [
