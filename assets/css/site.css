@@ -231,29 +231,6 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 }
 .entry-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.9rem; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
 @media (max-width: 640px) { .entry-points { grid-template-columns: 1fr; gap: 1.75rem; } }
-.lang-note {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--bg-soft);
-  padding: 1.4rem 1.6rem;
-  margin-bottom: clamp(3rem, 9vh, 5.5rem);
-  max-width: 34rem;
-}
-.lang-note-kicker {
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-faint);
-  margin: 0 0 0.5rem;
-}
-.lang-note-text {
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-  margin: 0;
-}
 .entry {
   text-decoration: none;
   display: block;

@@ -424,7 +424,6 @@ ${this.footer(lang)}
 	home(lang) {
 		const { site } = this.manifest;
 		const frag = this.frag('home', lang);
-		const langNote = frag.sections[0];
 		const entry = (kicker, title, note, href) => `
 		<a class="entry" href="${esc(href)}">
 			<p class="entry-kicker">${esc(this.t(lang, kicker))}</p>
@@ -441,14 +440,10 @@ ${this.footer(lang)}
 			${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '/arena/')}
 			${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', this.url(lang, '/religion/'))}
 		</div>
-		${langNote ? `
-		<div class="lang-note">
-			<p class="lang-note-kicker">${esc(langNote.heading)}</p>
-			<p class="lang-note-text">${this.mdInline(langNote.body)}</p>
-		</div>` : ''}
 	</div>`;
 		return this.doc({
 			lang, title: '', description: this.t(lang, 'site_description'),
+			audio: /preset=player/.test(frag.body),
 			alternates: [
 				{ type: 'text/markdown', href: `/content/pages/${lang === 'de' ? 'home_de.md' : 'home.md'}` },
 				{ hreflang: 'en', href: '/' },
@@ -490,15 +485,21 @@ ${this.footer(lang)}
 		</li>`;
 		}).join('');
 		const frag = this.frag('writing-lead', lang);
+		// The intro body is authored and rendered like an article body —
+		// multi-paragraph, mb:blocks, full markdown — via renderMd. The
+		// fragment's title/author stay as page chrome; the first paragraph is
+		// the meta description. The post list (the "cards") is the only thing
+		// this page adds on top of that intro.
+		const lede = frag.body.split(/\n\s*\n/)[0];
 		const body = `
 	<div class="writing">
 		<h1 class="page-title">${esc(frag.title)}</h1>
 		<p class="page-author">${esc(frag.subtitle)}</p>
-		<p class="page-lede">${this.mdInline(frag.body)}</p>
+		<div class="page-intro">${this.renderMd(frag.body, lang, { images: '/content/pages/images/', tts: '/content/audio/' })}</div>
 		<ul class="post-list">${items}</ul>
 	</div>`;
 		return this.doc({
-			lang, title: frag.title, description: this.mdText(frag.body),
+			lang, title: frag.title, description: this.mdText(lede),
 			alternates: [{ hreflang: 'en', href: '/writing/' }, { hreflang: 'de', href: '/de/writing/' }],
 			graph: [...this.siteNodes(),
 				{ '@type': 'Blog', '@id': `${this.canonical}#blog`, url: this.canonical,

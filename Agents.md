@@ -295,15 +295,15 @@ The site is bilingual: English and German. Both are first-class.
 
 ### Page fragments (home / writing / arena lead-ins)
 
-The homepage and the lead-ins of the writing and arena index pages are canonical MD fragments in `storage/raum.com/`, mirrored to `content/pages/` and baked by the build (`frag()` / `parseFragment()` in `tools/lib/pages.mjs`). A fragment has no frontmatter: an H1 (the display title), an italic subtitle line, then the body. A root-level `---` opens an extra section whose H2 becomes that block's label.
+The homepage and the lead-ins of the writing and arena index pages are canonical MD fragments in `storage/raum.com/`, mirrored to `content/pages/` and baked by the build (`frag()` / `parseFragment()` in `tools/lib/pages.mjs`). A fragment is an H1 (the display title), an italic subtitle line, then the body; frontmatter is optional (home carries a `version:` stamp tied to its audio). A root-level `---` opens an extra section whose H2 becomes that block's label.
 
 | Fragment | Feeds |
 |---|---|
-| `home.md` / `home_de.md` | threshold (H1), source line (subtitle), hero image (`mb:block preset=image:hero`) + intro paragraphs (body), DE language note (extra section — EN has none) |
-| `writing-lead.md` / `writing-lead_de.md` | blog page title, author line, lede |
+| `home.md` / `home_de.md` | threshold (H1), source line (subtitle), audio player (`mb:block preset=player`) + hero image (`mb:block preset=image:hero`) + intro paragraphs (body) |
+| `writing-lead.md` / `writing-lead_de.md` | blog page title, author line, intro body |
 | `arena-lead.md` (EN only — arena has no DE tree) | arena title, frame (subtitle), name note (body), "The frame" block (extra section) |
 
-The migrated strings (`intro_*`, `blog_title/author/lede`, `lang_note*`, `threshold*`, `arena.frame/nameNote/frameNote`) were removed from the manifest 2026-09-20 — the fragments are their single source. Nav labels, entry-card texts, role names and other chrome stay in `manifest.site.i18n`.
+The migrated strings (`intro_*`, `blog_title/author/lede`, `lang_note*`, `threshold*`, `arena.frame/nameNote/frameNote`) were removed from the manifest 2026-09-20 — the fragments are their single source. The DE language-note block on the home page was dropped 2026-10-03 (its CSS with it), and home gained its audio player the same day. Nav labels, entry-card texts, role names and other chrome stay in `manifest.site.i18n`.
 
 ### Music entries
 
@@ -429,12 +429,12 @@ Premium tiers are per-article and only when the user explicitly asks ("generate 
 - **SSE progress:** subscribe to `GET /v1/admin/events` BEFORE generation — `tts` events with `meta.percent` (0–100), stages `plan → generating N/M → aligning N/M → trimmed N/M → done/failed`.
 - **503 cold start:** `engine_starting` = STT worker cold-loading — wait and retry once.
 - **Manifest:** add `"audio": { "en": "...", "de": "..." }` to the post in `content/index.json`, then rebuild.
-- **Player:** the post MD carries the player as data — a `mb:block preset=player` (link text `Listen to this article` / `Diesen Artikel anhören`, target `tts/{file}`) directly after the byline block, before the hero image. The build renders it as `nui-media-player` and loads the player assets only on pages that have the block. No block, no player — and never a cross-language fallback.
+- **Player:** the document carries the player as data — a `mb:block preset=player` (link text `Listen to this article` / `Diesen Artikel anhören`; home: `Listen to this page` / `Diesen Text anhören`), target `tts/{file}`. In posts it sits directly after the byline block, before the hero image. The build renders it as `nui-media-player` and loads the player assets only on documents that have the block. No block, no player — and never a cross-language fallback.
 
 ### Scripts
 
 - `tools/generate-tts.ps1` — posts. Storage-first: reads the canonical from `storage/blog/posts/`, writes the MP3 to `storage/blog/posts/tts/`, mirrors it into `content/audio/`, and warns loudly when the repo mirror of the post has drifted from the canonical. Requires the `X:\` storage mount.
-- `tools/generate-page-tts.ps1` — pages (`content/pages/`: religion, about). Still repo-first — page audio has no canonical storage home yet (religion audio lives only in `content/audio/`; revisit when religion moves or gets its own `tts/`).
+- `tools/generate-page-tts.ps1` — pages (`content/pages/`: religion, about, home). Canonical in storage (`raum.com/tts/` for about + home, `religion/tts/` for religion), mirrored into `content/audio/`.
 
 Both take `-Slug`, `-Language en|de`, and optional `-Tier turbo|hd|eleven` (default `turbo`); voices resolve from the map above.
 
