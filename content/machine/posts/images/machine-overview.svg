@@ -2,20 +2,28 @@
 <title id="mt">The machine — the whole apparatus, one page</title>
 <desc id="md">Overview diagram in four tiers. At the top, three interfaces — the chat app and Arena, nSpeech with nVoice, and VS Code — sit on the nui_wc2 library band and reach a shared rail. The rail feeds two core services: the LLM Gateway, which hides OpenAI, Anthropic, Google and his own models behind one normalized endpoint, and the MCP workshop, used from the chat and from the IDE, holding memory and dreaming, the forge, the storage box, and a browser for research. Under the gateway are the providers, a mix plus llama.cpp. Under the workshop sit nVDB, a vector database holding the memory system's embeddings and the storage index; nDB, a schemaless document database for conversations and documents; and nMedia for images, audio and video. The first two are written in Rust, running in memory with disk persistence. Every service runs on Badkid, which has an RTX 4090 and holds the permanent local model, the TTS and STT models and a Qwen3 0.6B classifier. Coolkid is the model lab, where image, video, music and LLM experiments are spun up but never permanently wired. Fatten has an Intel Arc A770 and runs the embedding model alone, hooked into the gateway on Badkid. Below the drawing, set apart from the machine, is localweb2: it collects data about the machine and reads the logs of all of them. It is the instrument, not a part — nothing above it depends on it. Solid lines are one talking to the other, dashed lines are one reporting to the other.</desc>
 <style>
-    /* ONE appearance, deliberately. An SVG loaded as an image is an isolated
-     document: no page CSS reaches inside it, so the site's theme toggle cannot
-     theme this diagram, and an in-file prefers-color-scheme query only tracks
-     the OS — which is not the same thing and is unreliable when an SVG is used
-     as an image on iOS. So the diagram does not choose. Light everywhere: it
-     reads the same on a light page, on a dark page, and on the lightbox's dark
-     stage.
-     No angle brackets in this stylesheet — an XML or HTML parser reads them as
-     tags. */
+  /* Selector "svg", not ":root": inlined into an HTML page ":root" resolves to
+     the document element, so the theme hook would land on the wrong element.
+     No angle brackets in this stylesheet — an XML or HTML parser reads them as tags. */
   svg {
     --card: #ffffff; --band: #f2f2ef;
     --ink: #16161a; --body: #3b3b37; --dim: #6a6a64; --faint: #7c7c76;
     --line: rgba(20,20,18,.15); --rule: rgba(20,20,18,.10);
     --accent: #3b7ddd; --wash: rgba(59,125,221,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    svg:not([data-theme="light"]) {
+      --card: #17181c; --band: #1b1d22;
+      --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+      --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+      --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+    }
+  }
+  svg[data-theme="dark"] {
+    --card: #17181c; --band: #1b1d22;
+    --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+    --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+    --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
   }
   text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--body); }
   .band   { fill: var(--band); stroke: var(--line); stroke-width: 1; }
