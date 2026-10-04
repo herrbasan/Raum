@@ -229,7 +229,11 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
   color: var(--text-faint);
   margin: 0 0 clamp(3rem, 8vh, 5rem);
 }
-.entry-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.9rem; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
+/* Four destinations (writing, arena, religion, machine) at the home measure of
+   46rem: a 2x2, because 4-up would leave ~170px per card. */
+/* Four destinations (writing, arena, religion, machine) at the home measure of
+   46rem: a 2x2, because 4-up would leave ~170px per card. */
+.entry-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.9rem; margin-bottom: clamp(3rem, 9vh, 5.5rem); }
 @media (max-width: 640px) { .entry-points { grid-template-columns: 1fr; gap: 1.75rem; } }
 .entry {
   text-decoration: none;
@@ -417,6 +421,61 @@ figure.mb-image figcaption p { margin: 0; }
      file, so the plain selector here would silently lose. */
   .essay-body .nui-blocks-col img,
   .nui-blocks-col img { max-width: 20rem; }
+}
+
+/* md-blocks: gallery. The renderer owns the figure and its class list (nui.js
+   mbRenderBlock); this owns the layout — a responsive thumbnail grid by
+   default, an evenly-split single row for :row. The body list styles are reset
+   here: the list carries the grid, it is not a list of items to the reader. */
+.nui-blocks-gallery { margin: 0 0 3rem; }
+/* Scoped through .essay-body to outrank `.essay-body ul { padding-left }`,
+   which has the same specificity and sits later in this file. */
+.essay-body .nui-blocks-gallery > ul,
+.nui-blocks-gallery > ul {
+  display: grid;
+  gap: clamp(0.6rem, 1.4vw, 1rem);
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+}
+.nui-preset-gallery:not(.nui-variant-row) > ul {
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+/* auto-flow rather than an explicit count, so the row splits evenly whatever
+   the authored item count is. */
+.nui-preset-gallery.nui-variant-row > ul {
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+.nui-blocks-gallery li { margin: 0; }
+.nui-blocks-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+/* The caption is chrome, so it reads like the byline and the figure captions
+   rather than as body prose. */
+.nui-blocks-gallery figcaption {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+.nui-blocks-gallery figcaption p { margin: 0; }
+.nui-blocks-gallery figcaption p + p { margin-top: 0.5rem; }
+
+@media (max-width: 700px) {
+  /* A single row of four is unreadable; two columns, then one. */
+  .nui-preset-gallery.nui-variant-row > ul {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nui-preset-gallery:not(.nui-variant-row) > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .status-note {

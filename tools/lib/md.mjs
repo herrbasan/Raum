@@ -217,6 +217,50 @@ function extractMb(md) {
 // the frontmatter strip is done once, at the top.
 const cell = (md, opts) => markdownToHtml(md, { ...opts, frontmatter: false });
 
+/* Media-block detection (spec §4.2): a block whose first node is a single image
+   or a flat list of images is a media block, and everything after the media is
+   the caption. The authored shape is preserved — a one-item list stays a list.
+   Upstream's mbDetectMedia also covers image lists wrapped in links (a video
+   poster per item) and flat lists of media links; this site has no such
+   document yet, and a block that matches neither shape falls through to the
+   generic renderer rather than being half-guessed at. */
+const MEDIA_IMG = /^!\[([^\]]*)\]\(\s*(\S+?)(?:\s+["'][^"']*["'])?\s*\)$/;
+const MEDIA_ITEM = /^[-*+]\s+!\[([^\]]*)\]\(\s*(\S+?)(?:\s+["'][^"']*["'])?\s*\)$/;
+
+function detectMedia(inner) {
+	const lines = inner.split('\n');
+	let start = 0;
+	while (start < lines.length && !lines[start].trim()) start++;
+	const head = (lines[start] || '').trim();
+	if (MEDIA_IMG.test(head)) return { isList: false, media: lines.slice(start, start + 1), rest: lines.slice(start + 1) };
+	if (MEDIA_ITEM.test(head)) {
+		let j = start;
+		while (j < lines.length && (!lines[j].trim() || MEDIA_ITEM.test(lines[j].trim()))) j++;
+		if (j > start) return { isList: true, media: lines.slice(start, j), rest: lines.slice(j) };
+	}
+	return null;
+}
+
+// Gallery markup, byte-compatible with nui.js mbRenderBlock: the class list and
+// its order are upstream's, so CSS written against it survives a later switch
+// to the real renderer. A single image keeps the site's own figure.mb-image —
+// that is the profile choice every existing hero already bakes, and changing it
+// is a deliberate migration, not something a new container should do silently.
+function renderMedia(node, opts) {
+	const found = detectMedia(node.inner);
+	if (!found) return null;
+	const { family, modifier } = presetParts(node.attrs.preset);
+	const cls = ['nui-blocks-block', 'nui-blocks-media', 'nui-blocks-image'];
+	if (found.isList || family === 'gallery') cls.push('nui-blocks-gallery');
+	if (family) cls.push(`nui-preset-${escapeHtml(family)}`);
+	if (modifier) cls.push(`nui-variant-${escapeHtml(modifier)}`);
+	const mediaHtml = cell(found.media.join('\n'), opts)
+		.replace(/<img (?![^>]*\bloading=)/g, '<img loading="lazy" ');
+	const caption = found.rest.join('\n').trim();
+	const id = node.attrs.id ? ` id="${escapeHtml(node.attrs.id)}"` : '';
+	return `<figure class="${cls.join(' ')}"${id}>${mediaHtml}${caption ? `<figcaption>${cell(caption, opts)}</figcaption>` : ''}</figure>`;
+}
+
 function renderBlock(node, opts) {
 	const inner = node.inner;
 	const { family, modifier } = presetParts(node.attrs.preset);
@@ -234,6 +278,8 @@ function renderBlock(node, opts) {
 		}
 	}
 	if (family === 'byline') return `<div class="essay-byline">${cell(inner, opts)}</div>`;
+	const media = renderMedia(node, opts);
+	if (media) return media;
 	const preset = node.attrs.preset || '';
 	return `<div class="mb-block"${preset ? ` data-preset="${escapeHtml(preset)}"` : ''}>${cell(inner, opts)}</div>`;
 }
@@ -350,7 +396,14 @@ export function markdownToHtml(md, opts = {}) {
 		return url ? `<a href="${url}">${text}</a>` : text;
 	});
 	html = html.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
-	html = html.replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');
+	// `_` may not open or close emphasis intraword (CommonMark), so snake_case
+	// names survive. This is not cosmetic: the inline image/link passes above
+	// have already emitted real <img src>/<a href> tags, so a permissive `_`
+	// rule reaches INSIDE the attribute and rewrites
+	// src="images/nui_01_home.webp" to "nui<em>01</em>home.webp" — a silent
+	// 404 and a collapsed box. `*` keeps its intraword behaviour.
+	html = html.replace(/(\*)(.*?)\1/g, '<em>$2</em>');
+	html = html.replace(/(?<![\w_])_(\S(?:[\s\S]*?\S)?)_(?![\w_])/g, '<em>$1</em>');
 	html = html.replace(/~~(.*?)~~/g, '<s>$1</s>');
 
 	html = codeBlocks.reduce((result, { token, lang, code }) =>
