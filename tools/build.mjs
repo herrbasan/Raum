@@ -33,6 +33,19 @@ function build() {
 		if (!existsSync(join(ROOT, 'content/posts', card)))
 			throw new Error(`post "${p.slug}" has no og card: content/posts/${card} — run: node tools/make-og-cards.mjs`);
 	}
+	// A link target that is a SHOUTING identifier is an unfilled placeholder
+	// (CHANNEL_LINK, VIDEO_LINK_WAVE). The renderer would happily emit
+	// href="CHANNEL_LINK" — a link to nothing, on a live page, that reads as
+	// working. Authored content is a boundary: refuse to build it.
+	const PLACEHOLDER_LINK = /\]\(([A-Z][A-Z0-9_]*)\)/g;
+	for (const p of manifest.posts) {
+		const hits = [...read(`content/posts/${p.file}`).matchAll(PLACEHOLDER_LINK)].map((m) => m[1]);
+		for (const de of p.de ? [p.de] : []) {
+			hits.push(...[...read(`content/posts/${de.file}`).matchAll(PLACEHOLDER_LINK)].map((m) => m[1]));
+		}
+		if (hits.length)
+			throw new Error(`post "${p.slug}" has unfilled link placeholders: ${[...new Set(hits)].join(', ')} — replace with real URLs before building`);
+	}
 	for (const p of manifest.pages || []) {
 		const file = `content/pages/${p.slug}.md`;
 		if (!existsSync(join(ROOT, file))) continue;

@@ -99,9 +99,12 @@ storage/
 The core pipeline: **check canonical → render HTML**. All in `tools/`.
 
 1. **md-blocks in `tools/lib/md.mjs`** — the port from `nui.js` must learn:
-   - `mb:block`/`mb:/block` with presets used by posts+religion: `image:hero`, `player`, `byline` (others render as generic blocks)
-   - media-block detection (first node = image/link-with-media-extension)
-   - NOT needed yet: columns, vars, mains, repeat chrome (defer until pages move)
+   - `mb:block`/`mb:/block` with presets used by posts+religion: `image:hero`, `player`, `byline` (others render as generic blocks) — **done**
+   - media-block detection (first node = image/link-with-media-extension) — **done**
+   - `mb:columns`/`mb:col` with `weights` — **done (2026-10-04)**, needed by `see-for-yourself`: four episode write-ups, each a thumbnail beside its text. Emits nui_wc2's own markup (`nui-blocks-columns`/`nui-blocks-col`, `data-cols`, inline `grid-template-columns`) so a later switch to the real renderer is a no-op for CSS. Throws on <2 cols, a `weights` length that does not match, a non-positive weight, content before the first `col`, and a stray/unclosed marker. Styled in `site.css` (`.nui-blocks-columns`); stacks in source order at ≤800px.
+   - NOT needed yet: vars, mains, repeat chrome (defer until pages move)
+
+   **Why the port exists at all:** upstream splits rendering into a structure-aware pass and a markdown core that drops every comment, and `nui-markdown` runs both — so the *component* is spec-complete. The build cannot use it: `nui.js` is a browser ESM and `import` in Node throws `HTMLElement is not defined`. Long-term fix worth filing upstream: export the renderer as a DOM-free module so the build can import it and this port can be deleted.
 2. **Build extraction (`tools/lib/pages.mjs`)**:
    - byline block → styled byline row; drop frontmatter byline/date rendering on post pages
    - player block → baked `<audio controls src="...">` at block position; page loads player assets only if a block exists
