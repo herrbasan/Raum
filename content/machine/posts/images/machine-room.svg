@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1040" role="img" aria-labelledby="mt md">
+<title id="mt">The room — what a session wakes up with</title>
+<desc id="md">Conceptual diagram. The room keeps four things: the twin, who this is, the biography, the positions and the voice; everything kept, the storage box, whose structure the models maintain and which serves as memory in its own right, holding documentation, research and the digital twin, with folders carrying their own agents.md; everything said, every conversation and arena session, with every message embedded the moment it lands so it is searchable at once; and everything noticed, kept as a map rather than a log and tidied every fifteen minutes by the dreamer. I feed the room by reading, listening, writing and living. This was built for one person and no one else. In the chat app a session starts by waking up knowing me, and the prime directive sets the order in which it readies itself: the memory overview, then recall for what the overview has not seen, then the telemetry, the log findings. Every turn is stored and embedded as the session runs, so nothing is left to save when it ends. In VS Code the same start happens, plus a check of the open issues, but no session is kept between them. The models never really leave the room. Counts are as of 10/2026.</desc>
+<style>
+  /* Selector "svg", not ":root": inlined into an HTML page ":root" resolves to
+     the document element, so the theme hook would land on the wrong element.
+     No angle brackets in this stylesheet — an XML or HTML parser reads them as tags. */
+  svg {
+    --card: #ffffff; --band: #f2f2ef;
+    --ink: #16161a; --body: #3b3b37; --dim: #6a6a64; --faint: #7c7c76;
+    --line: rgba(20,20,18,.15); --rule: rgba(20,20,18,.10);
+    --accent: #3b7ddd; --wash: rgba(59,125,221,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    svg:not([data-theme="light"]) {
+      --card: #17181c; --band: #1b1d22;
+      --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+      --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+      --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+    }
+  }
+  svg[data-theme="dark"] {
+    --card: #17181c; --band: #1b1d22;
+    --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+    --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+    --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--body); }
+  .band   { fill: var(--band); stroke: var(--line); stroke-width: 1; }
+  .card   { fill: var(--card); stroke: var(--line); stroke-width: 1; }
+  .card.hub { stroke: var(--accent); stroke-width: 1.4; fill: var(--wash); }
+  .kicker { font-size: 11.5px; letter-spacing: .1em; fill: var(--faint); }
+  .h      { font-size: 17px; font-weight: 600; fill: var(--ink); }
+  .s      { font-size: 13.5px; fill: var(--dim); }
+  .m      { font-size: 11.5px; fill: var(--faint); }
+  .rule   { stroke: var(--rule); stroke-width: 1; }
+  .wire   { fill: none; stroke: var(--dim); stroke-width: 1.2; marker-end: url(#arw); }
+  .accent { fill: var(--accent); }
+</style>
+<defs>
+  <!-- The tip is at x=7, so refX=7 lands the head exactly on the path end.
+       The gap comes from the paths themselves, which stop 7 units short of
+       whatever they point at — otherwise the line runs on past the head. -->
+  <marker id="arw" viewBox="0 0 8 8" refX="7" refY="3.5" markerWidth="8.5" markerHeight="8.5" orient="auto">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--dim)"/>
+  </marker>
+</defs>
+
+<!-- the room is the only enclosure: a session is not a place, and the models
+     never leave this one. Everything else in the set is a bare card. -->
+<rect class="card" x="56" y="40" width="504" height="872" rx="7"/>
+<text class="h" x="80" y="76">the room — everything kept</text>
+<text class="kicker" x="536" y="76" text-anchor="end">counts as of 10/2026</text>
+
+<rect class="card" x="80" y="96" width="456" height="100" rx="5"/>
+<text class="h" x="96" y="132">the twin</text>
+<text class="s" x="96" y="156">who this is: the biography, the positions, the voice</text>
+<text class="m" x="96" y="176">read before anything is written as him</text>
+
+<rect class="card" x="80" y="240" width="456" height="116" rx="5"/>
+<text class="h" x="96" y="276">everything kept</text>
+<text class="s" x="96" y="300">documentation, research, the digital twin — 8 785 passages</text>
+<text class="m" x="96" y="320">the structure is the models' own, and it serves as memory</text>
+<text class="m" x="96" y="338">folders carry their own agents.md, for organisation</text>
+
+<rect class="card" x="80" y="400" width="456" height="100" rx="5"/>
+<text class="h" x="96" y="436">everything said</text>
+<text class="s" x="96" y="460">216 conversations, 122 arena sessions</text>
+<text class="m" x="96" y="480">every message is embedded as it lands — searchable at once</text>
+
+<rect class="card" x="80" y="544" width="456" height="100" rx="5"/>
+<text class="h" x="96" y="580">everything noticed</text>
+<text class="s" x="96" y="604">4 266 entries — decided, settled, still open</text>
+<text class="m" x="96" y="624">kept as a map, not as a log</text>
+
+<rect class="band" x="80" y="688" width="456" height="60" rx="5"/>
+<text class="h" x="96" y="716">the dreamer</text>
+<text class="m" x="96" y="734">every 15 minutes it connects, deduplicates, compresses</text>
+<path class="wire" d="M308,688 L308,651"/>
+
+<rect class="band" x="80" y="792" width="456" height="80" rx="5"/>
+<text class="h" x="96" y="826">me — reading, listening, writing, living</text>
+<text class="s" x="96" y="850">what I keep is in the conversation within minutes</text>
+
+<!-- the session: the accent, because it is the subject of the claim -->
+<rect class="card hub" x="640" y="96" width="504" height="100" rx="5"/>
+<text class="h accent" x="664" y="132">a session, in the chat</text>
+<text class="s" x="664" y="156">no gap, nothing to load</text>
+<text class="m" x="664" y="176">the same room the last session was in</text>
+
+<rect class="card" x="640" y="240" width="504" height="196" rx="5"/>
+<text class="h" x="664" y="276">before it answers</text>
+<!-- David's line, verbatim. Built for one person, so this is not a product
+     claim and must not be written as one. -->
+<text class="h accent" x="664" y="306">it wakes up knowing me</text>
+<text class="m" x="664" y="332">the prime directive sets the order:</text>
+<text class="s" x="664" y="360">1   the memory overview</text>
+<text class="s" x="664" y="384">2   recall what it has not seen</text>
+<text class="s" x="664" y="408">3   the telemetry — the log findings</text>
+
+<rect class="card" x="640" y="480" width="504" height="108" rx="5"/>
+<text class="h" x="664" y="520">at every turn</text>
+<text class="s" x="664" y="544">stored and embedded as it goes</text>
+<text class="m" x="664" y="564">nothing is left to save at the end</text>
+
+<!-- the same start, but nothing is kept -->
+<rect class="band" x="640" y="632" width="504" height="108" rx="5"/>
+<text class="h" x="664" y="672">in VS Code</text>
+<text class="s" x="664" y="696">the same start, plus the open issues</text>
+<text class="m" x="664" y="716">but no session is kept between them</text>
+
+<!-- what it reaches for is what it already is -->
+<path class="wire" d="M560,146 L633,276"/>
+<path class="wire" d="M560,298 L633,306"/>
+<path class="wire" d="M560,450 L633,332"/>
+<path class="wire" d="M560,594 L633,408"/>
+<!-- and every turn goes back into the room, below everything the reach crosses -->
+<path class="wire" d="M640,560 L600,560 L600,660 L567,660"/>
+
+<line class="rule" x1="56" y1="952" x2="1144" y2="952"/>
+<!-- David's line, verbatim. Do not rewrite it into something smoother. -->
+<text class="h" x="56" y="992">The models never really leave the room.</text>
+<text class="m" x="56" y="1016">Which is why it walks in as if it had never left.</text>
+</svg>

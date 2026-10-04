@@ -54,10 +54,23 @@ export class Site {
 		return (lang === 'de' ? '/de' : '') + path;
 	}
 
-	postHref(slug, lang) {
-		const p = this.manifest.posts.find((x) => x.slug === slug);
-		if (lang === 'de' && p?.de) return `/de/writing/${slug}/`;
-		return `/writing/${slug}/`;
+	// Post collections that render as their own section. `writing` is the main
+	// blog and the default; any other key is a top-level manifest object with a
+	// `posts` array, and gets its own index page, content root and URL prefix.
+	// `dir` is the content/ subfolder the section mirrors storage into, so images
+	// and the raw MD resolve per section rather than assuming the main blog's.
+	postSection(key = 'writing') {
+		if (key === 'writing') return { key, base: 'writing', dir: 'posts', frag: 'writing-lead', posts: this.manifest.posts };
+		const m = this.manifest[key];
+		if (!m || !Array.isArray(m.posts)) throw new Error(`unknown post section: ${key}`);
+		return { key, base: key, dir: `${key}/posts`, frag: `${key}-lead`, posts: m.posts };
+	}
+
+	postHref(slug, lang, section = 'writing') {
+		const sec = this.postSection(section);
+		const p = sec.posts.find((x) => x.slug === slug);
+		if (lang === 'de' && p?.de) return this.url(lang, `/${sec.base}/${slug}/`);
+		return `/${sec.base}/${slug}/`;
 	}
 
 	homeHref(lang) { return this.url(lang, '/'); }
@@ -439,6 +452,7 @@ ${this.footer(lang)}
 			${entry('entry_blog_kicker', 'nav_writing', 'entry_blog_note', this.url(lang, '/writing/'))}
 			${entry('entry_arena_kicker', 'nav_arena', 'entry_arena_note', '/arena/')}
 			${entry('entry_religion_kicker', 'nav_religion', 'entry_religion_note', this.url(lang, '/religion/'))}
+			${entry('entry_machine_kicker', 'nav_machine', 'entry_machine_note', this.url(lang, '/machine/'))}
 		</div>
 	</div>`;
 		return this.doc({
@@ -465,8 +479,12 @@ ${this.footer(lang)}
 		return (lang === 'de' && p?.de?.title) ? p.de.title : (p?.title || slug);
 	}
 
-	writing(lang) {
-		const posts = [...this.manifest.posts]
+	// Section index: title + lede from the section's lead fragment, then the
+	// post list. Shared by the main blog and every extra section, so a new
+	// section is a manifest object plus a lead fragment — no new builder.
+	sectionIndex(lang, section = 'writing') {
+		const sec = this.postSection(section);
+		const posts = [...sec.posts]
 			.sort((a, b) => (b.date || '').localeCompare(a.date || '') || (b.order || 0) - (a.order || 0));
 		const items = posts.map((p) => {
 			const de = lang === 'de' && p.de;
@@ -474,17 +492,17 @@ ${this.footer(lang)}
 			// so the German feed never presents English text as a translation.
 			const untranslated = lang === 'de' && !p.de;
 			const tags = (p.tags || []).map((tg) => de?.tags?.[tg] || tg);
-			const seriesNote = this.seriesLabel(p, lang);
+			const seriesNote = sec.key === 'writing' ? this.seriesLabel(p, lang) : '';
 			return `
 		<li>
-			<a href="${esc(this.postHref(p.slug, lang))}">
+			<a href="${esc(this.postHref(p.slug, lang, sec.key))}">
 				<h2 class="post-title">${esc(de?.title || p.title)}</h2>
 				<p class="post-teaser">${esc(de?.teaser || p.teaser)}</p>
 				<p class="post-meta">${seriesNote ? `<span class="post-series">${esc(seriesNote)}</span> · ` : ''}<time>${esc(p.date)}</time>${tags.length ? ` · <span class="post-tags">${tags.map(esc).join(' · ')}</span>` : ''}${p.status === 'draft' ? ` · <span class="post-tags">${esc(this.t(lang, 'status_draft'))}</span>` : ''}${untranslated ? ` · <span class="post-tags">${esc(this.t(lang, 'untranslated'))}</span>` : ''}</p>
 			</a>
 		</li>`;
 		}).join('');
-		const frag = this.frag('writing-lead', lang);
+		const frag = this.frag(sec.frag, lang);
 		// The intro body is authored and rendered like an article body —
 		// multi-paragraph, mb:blocks, full markdown — via renderMd. The
 		// fragment's title/author stay as page chrome; the first paragraph is
@@ -500,7 +518,7 @@ ${this.footer(lang)}
 	</div>`;
 		return this.doc({
 			lang, title: frag.title, description: this.mdText(lede),
-			alternates: [{ hreflang: 'en', href: '/writing/' }, { hreflang: 'de', href: '/de/writing/' }],
+			alternates: [{ hreflang: 'en', href: `/${sec.base}/` }, { hreflang: 'de', href: `/de/${sec.base}/` }],
 			graph: [...this.siteNodes(),
 				{ '@type': 'Blog', '@id': `${this.canonical}#blog`, url: this.canonical,
 					name: frag.title, description: this.mdText(frag.body),
@@ -510,6 +528,8 @@ ${this.footer(lang)}
 			body,
 		});
 	}
+
+	writing(lang) { return this.sectionIndex(lang, 'writing'); }
 
 	arena() {
 		const { arena } = this.manifest;
@@ -633,21 +653,29 @@ ${this.footer(lang)}
 		});
 	}
 
-	post(slug, lang) {
-		const post = this.manifest.posts.find((p) => p.slug === slug);
-		if (!post) throw new Error(`post not in manifest: ${slug}`);
+	post(slug, lang, section = 'writing') {
+		const sec = this.postSection(section);
+		const post = sec.posts.find((p) => p.slug === slug);
+		if (!post) throw new Error(`post not in the ${sec.key} manifest: ${slug}`);
 		const de = lang === 'de' && post.de;
 		const file = de?.file || post.file;
-		const mdText = this.read(`content/posts/${file}`);
+		const root = `content/${sec.dir}`;
+		const media = `/content/${sec.dir}/images/`;
+		const mdText = this.read(`${root}/${file}`);
 		const meta = scrapeMeta(mdText);
 		const tags = (post.tags || []).map((tg) => de?.tags?.[tg] || tg);
 		const desc = meta.blurb || de?.teaser || post.teaser;
 		const heroSrc = this.heroImageSrc(mdText);
 		// Sharing art is the JPEG card derived from the hero, never the WebP
-		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs.
+		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs. A hero that
+		// is not a _hero.webp (an SVG diagram) has no derived card, so the
+		// manifest carries the card explicitly; SVG og:images are not shared.
+		// A value may be written `card.jpg` or `images/card.jpg` (the frontmatter
+		// convention) — normalising here keeps the two from doubling up into
+		// `.../images/images/card.jpg`.
 		const ogCard = heroSrc ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
-		const ogImage = meta.image ? `/content/posts/${meta.image}`
-			: (post.image ? `/content/posts/${post.image}` : (ogCard ? `/content/posts/${ogCard}` : null));
+		const share = (v) => (v ? `${media}${String(v).replace(/^images\//, '')}` : null);
+		const ogImage = share(meta.image) || share(post.image) || share(ogCard);
 		const statusNote = post.status === 'draft'
 			? `\n			<p class="status-note">${esc(this.t(lang, 'status_draft'))}</p>`
 			: '';
@@ -657,18 +685,18 @@ ${this.footer(lang)}
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
 			${tags.length ? `<p class="byline post-tags-line"><span class="post-tags">${tags.map(esc).join(' · ')}</span></p>` : ''}${statusNote}
 		</div>
-		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang, { images: '/content/posts/images/', tts: '/content/audio/' })}</div>
+		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang, { images: media, tts: '/content/audio/' })}</div>
 		${this.seriesNav(post, lang)}
 		${this.relatedNav(post, lang)}
 		${this.processFooter(lang, meta)}
-		<p class="raw-doc"><a href="/content/posts/${esc(file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
+		<p class="raw-doc"><a href="/${root}/${esc(file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
 	</div>`;
 		const hasAudio = /preset=player/.test(mdText);
 		const audioFile = de ? post.audio?.de : post.audio?.en;
 		const wordCount = this.stripPostHeader(mdText).split(/\s+/).filter(Boolean).length;
 		const seriesKey = post.links?.series;
 		const series = seriesKey ? this.manifest.series?.[seriesKey] : null;
-		const isPartOf = [{ '@id': `${this.baseUrl}${this.url(lang, '/writing/')}#blog` }];
+		const isPartOf = [{ '@id': `${this.baseUrl}${this.url(lang, `/${sec.base}/`)}#blog` }];
 		if (series) isPartOf.push({ '@type': 'CreativeWorkSeries', '@id': `${this.baseUrl}/writing/#series-${seriesKey}`, name: series.name });
 		const graph = [...this.siteNodes(),
 			{ '@type': 'BlogPosting', '@id': `${this.canonical}#article`,
@@ -681,7 +709,7 @@ ${this.footer(lang)}
 				publisher: this.publisherRef(),
 				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical },
 				inLanguage: lang,
-				...(lang === 'de' ? { translationOfWork: { '@id': `${this.baseUrl}/writing/${slug}/#article` } } : {}),
+				...(lang === 'de' ? { translationOfWork: { '@id': `${this.baseUrl}/${sec.base}/${slug}/#article` } } : {}),
 				...(tags.length ? { keywords: tags.join(', ') } : {}),
 				isPartOf,
 				...(series && post.links?.seriesIndex ? { position: post.links.seriesIndex } : {}),
@@ -691,7 +719,7 @@ ${this.footer(lang)}
 			},
 			this.breadcrumbList([
 				this.homeCrumb(lang),
-				{ name: this.frag('writing-lead', lang).title, url: `${this.baseUrl}${this.url(lang, '/writing/')}` },
+				{ name: this.frag(sec.frag, lang).title, url: `${this.baseUrl}${this.url(lang, `/${sec.base}/`)}` },
 				{ name: de?.title || post.title },
 			]),
 		];
@@ -704,11 +732,11 @@ ${this.footer(lang)}
 			times: { published: post.date, modified: meta.modified },
 			image: ogImage,
 			alternates: [
-				{ type: 'text/markdown', href: `/content/posts/${file}` },
-				{ hreflang: 'en', href: `/writing/${slug}/` },
-				...(post.de ? [{ hreflang: 'de', href: `/de/writing/${slug}/` }] : []),
+				{ type: 'text/markdown', href: `/${root}/${file}` },
+				{ hreflang: 'en', href: `/${sec.base}/${slug}/` },
+				...(post.de ? [{ hreflang: 'de', href: `/de/${sec.base}/${slug}/` }] : []),
 			],
-			langFallback: '/de/writing/',
+			langFallback: `/de/${sec.base}/`,
 			graph,
 			body,
 		});

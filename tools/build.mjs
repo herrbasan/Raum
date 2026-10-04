@@ -23,28 +23,45 @@ function build() {
 	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
 	mkdirSync(DIST, { recursive: true });
 	const manifest = JSON.parse(read('content/index.json'));
+	// Section name -> post array, for everything that renders as a section.
+	// `posts` is the main blog; an extra section is a top-level OBJECT carrying a
+	// `posts` array (machine, …). The object test is load-bearing: `nav` and
+	// `pages` are also top-level arrays and are not post collections.
+	const sections = [['posts', manifest.posts], ...Object.entries(manifest)
+		.filter(([k, v]) => k !== 'posts' && v && !Array.isArray(v) && Array.isArray(v.posts))
+		.map(([k, v]) => [k, v.posts])];
+	const sectionDir = (name) => (name === 'posts' ? 'posts' : `${name}/posts`);
+	const extraSections = sections.map(([k]) => k).filter((k) => k !== 'posts');
 	// Every post must ship a crawler-safe JPEG og card derived from its hero
 	// (tools/make-og-cards.mjs) — WebP og:images are dropped by scrapers, which
-	// silently strips the image from every share. Fail loud instead.
-	for (const p of manifest.posts) {
-		const hero = postHeroSrc(read(`content/posts/${p.file}`));
-		if (!hero || !hero.endsWith('_hero.webp')) continue;
-		const card = hero.replace(/_hero\.webp$/, '_og.jpg');
-		if (!existsSync(join(ROOT, 'content/posts', card)))
-			throw new Error(`post "${p.slug}" has no og card: content/posts/${card} — run: node tools/make-og-cards.mjs`);
+	// silently strips the image from every share. Fail loud instead. A hero that
+	// is not a _hero.webp (an SVG diagram) has no derived card, so the manifest
+	// declares one explicitly and that is what gets checked.
+	for (const [name, posts] of sections) {
+		const dir = sectionDir(name);
+		for (const p of posts) {
+			const hero = postHeroSrc(read(`content/${dir}/${p.file}`));
+			if (hero && hero.endsWith('_hero.webp')) {
+				const card = hero.replace(/_hero\.webp$/, '_og.jpg');
+				if (!existsSync(join(ROOT, 'content', dir, card)))
+					throw new Error(`post "${p.slug}" has no og card: content/${dir}/${card} — run: node tools/make-og-cards.mjs`);
+			}
+			if (p.image && !existsSync(join(ROOT, 'content', dir, p.image)))
+				throw new Error(`post "${p.slug}" declares image "${p.image}" — missing content/${dir}/${p.image}`);
+		}
 	}
 	// A link target that is a SHOUTING identifier is an unfilled placeholder
 	// (CHANNEL_LINK, VIDEO_LINK_WAVE). The renderer would happily emit
 	// href="CHANNEL_LINK" — a link to nothing, on a live page, that reads as
 	// working. Authored content is a boundary: refuse to build it.
 	const PLACEHOLDER_LINK = /\]\(([A-Z][A-Z0-9_]*)\)/g;
-	for (const p of manifest.posts) {
-		const hits = [...read(`content/posts/${p.file}`).matchAll(PLACEHOLDER_LINK)].map((m) => m[1]);
-		for (const de of p.de ? [p.de] : []) {
-			hits.push(...[...read(`content/posts/${de.file}`).matchAll(PLACEHOLDER_LINK)].map((m) => m[1]));
-		}
+	for (const [name, posts] of sections) {
+		const dir = sectionDir(name);
+		const hits = [];
+		for (const f of posts.flatMap((p) => [p.file, p.de?.file].filter(Boolean)))
+			hits.push(...[...read(`content/${dir}/${f}`).matchAll(PLACEHOLDER_LINK)].map((m) => m[1]));
 		if (hits.length)
-			throw new Error(`post "${p.slug}" has unfilled link placeholders: ${[...new Set(hits)].join(', ')} — replace with real URLs before building`);
+			throw new Error(`${name}: unfilled link placeholders: ${[...new Set(hits)].join(', ')} — replace with real URLs before building`);
 	}
 	for (const p of manifest.pages || []) {
 		const file = `content/pages/${p.slug}.md`;
@@ -80,6 +97,30 @@ function build() {
 		add(`writing/${p.slug}/index.html`, site.post(p.slug, 'en'));
 	}
 
+	// Extra sections: an index page plus one page per post, in the section's own
+	// URL prefix and content root. Driven by the manifest, so a new section is a
+	// manifest object plus a `<name>-lead` fragment — no route code here.
+	for (const sec of extraSections) {
+		site.canonical = `${BASE_URL}/${sec}/`;
+		add(`${sec}/index.html`, site.sectionIndex('en', sec));
+		for (const p of manifest[sec].posts) {
+			site.canonical = `${BASE_URL}/${sec}/${p.slug}/`;
+			add(`${sec}/${p.slug}/index.html`, site.post(p.slug, 'en', sec));
+		}
+	}
+
+	// Extra sections: index page plus one page per post, in the section's own
+	// URL prefix and content root. Driven by the manifest, so adding a section
+	// is a manifest object plus a `<name>-lead` fragment — no route code.
+	for (const sec of extraSections) {
+		site.canonical = `${BASE_URL}/${sec}/`;
+		add(`${sec}/index.html`, site.sectionIndex('en', sec));
+		for (const p of manifest[sec].posts) {
+			site.canonical = `${BASE_URL}/${sec}/${p.slug}/`;
+			add(`${sec}/${p.slug}/index.html`, site.post(p.slug, 'en', sec));
+		}
+	}
+
 	for (const l of [...(manifest.arena.landmarks || []), ...(manifest.arena.evidence || [])]) {
 		site.canonical = `${BASE_URL}/arena/${l.slug}/`;
 		add(`arena/${l.slug}/index.html`, site.session(l.slug));
@@ -109,6 +150,26 @@ function build() {
 		if (!p.de) continue;
 		site.canonical = `${BASE_URL}/de/writing/${p.slug}/`;
 		add(`de/writing/${p.slug}/index.html`, site.post(p.slug, 'de'));
+	}
+
+	for (const sec of extraSections) {
+		site.canonical = `${BASE_URL}/de/${sec}/`;
+		add(`de/${sec}/index.html`, site.sectionIndex('de', sec));
+		for (const p of manifest[sec].posts) {
+			if (!p.de) continue;
+			site.canonical = `${BASE_URL}/de/${sec}/${p.slug}/`;
+			add(`de/${sec}/${p.slug}/index.html`, site.post(p.slug, 'de', sec));
+		}
+	}
+
+	for (const sec of extraSections) {
+		site.canonical = `${BASE_URL}/de/${sec}/`;
+		add(`de/${sec}/index.html`, site.sectionIndex('de', sec));
+		for (const p of manifest[sec].posts) {
+			if (!p.de) continue;
+			site.canonical = `${BASE_URL}/de/${sec}/${p.slug}/`;
+			add(`de/${sec}/${p.slug}/index.html`, site.post(p.slug, 'de', sec));
+		}
 	}
 
 	add('llms.txt', buildLlmsTxt(manifest, site));
@@ -176,6 +237,11 @@ function buildSitemap(manifest, outPaths) {
 function buildLlmsTxt(manifest, site) {
 	const u = (p) => `${BASE_URL}${p}`;
 	const L = [];
+	// Extra sections (machine, …) — an object with a `posts` array. Named from
+	// the section's own lead fragment, so the title and the one-line description
+	// have a single source instead of being restated here.
+	const extraSections = Object.entries(manifest)
+		.filter(([k, v]) => k !== 'posts' && v && !Array.isArray(v) && Array.isArray(v.posts));
 	L.push(`# RAUM`);
 	L.push(``);
 	L.push(`> RAUM is the publication platform of Herrbasan (David A. Renelt). Writing — essays from the *Telescope for the Mind* arc plus standalone pieces, bilingual EN/DE — and the Arena: curated LLM-to-LLM conversations. The essays make the claims; the arena is the data. Frame: "It's not nothing."`);
@@ -188,6 +254,10 @@ function buildLlmsTxt(manifest, site) {
 	L.push(`- [${u('/writing/')}](${u('/writing/')}): Blog — all essays in one feed.`);
 	L.push(`- [${u('/arena/')}](${u('/arena/')}): Arena — curated LLM-to-LLM conversations.`);
 	L.push(`- [${u('/religion/')}](${u('/religion/')}): A Little Religion — the distillation.`);
+	for (const [name] of extraSections) {
+		const frag = site.frag(`${name}-lead`, 'en');
+		L.push(`- [${u(`/${name}/`)}](${u(`/${name}/`)}): ${frag.title} — ${site.mdText(frag.body)}`);
+	}
 	L.push(`- [${u('/about/')}](${u('/about/')}): About — David Renelt / Herrbasan.`);
 	L.push(`- [Agents.md](${u('/Agents.md')}): Project plan and canonical rulebook — architecture, data model, content sourcing & sync, TTS workflow.`);
 	L.push(`- [content/index.json](${u('/content/index.json')}): Site manifest. Posts (slug/title/date/teaser/tags/authors/audio), pages, author registry, series, i18n strings, arena landmarks + evidence.`);
@@ -224,6 +294,19 @@ function buildLlmsTxt(manifest, site) {
 	L.push(``);
 	for (const p of manifest.posts) if (!inSeries.has(p.slug)) L.push(postLine(p));
 	L.push(``);
+
+	for (const [name, sec] of extraSections) {
+		const frag = site.frag(`${name}-lead`, 'en');
+		L.push(`## ${frag.title} (${u(`/${name}/`)})`);
+		L.push(``);
+		for (const p of sec.posts) {
+			const href = u(`/${name}/${p.slug}/`);
+			const md = `[MD](${u(`/content/${name}/posts/` + p.file)})`;
+			const de = p.de ? ` [DE](${u(`/de/${name}/${p.slug}/`)})` : '';
+			L.push(`- [${href}](${href}): ${p.title} (${p.date}) ${md}${de}`);
+		}
+		L.push(``);
+	}
 	L.push(`## Pages`);
 	L.push(``);
 	for (const pg of manifest.pages || []) {

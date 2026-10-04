@@ -31,6 +31,24 @@ The page does not need to reference "raum" as a brand. "Raum" is the project nam
 
 ## 3. Content Inventory
 
+### 3.0 The Machine — the second blog
+
+A separate blog for the technical strand: the build order, the models, the
+hardware, the infrastructure. Opened 2026-10-04 with one article.
+
+| Field | Value |
+|---|---|
+| Nav position | between “A Little Religion” and “About” |
+| URL | `/machine/` · post `/machine/{slug}/` · DE under `/de/machine/` |
+| Canonical storage | `blog/machine/posts/` (+ `posts/tts/`, `posts/images/`) |
+| Repo mirror | `content/machine/posts/` |
+| Lead fragment | `storage/raum.com/machine-lead.md` + `_de.md` → `content/pages/` |
+| Homepage | last entry-point card (kicker “Infrastructure”) |
+| First article | `the-machine` (EN + DE, audio in both) |
+
+It is a **section**, not a special case: the manifest carries it, the routes read
+it, the sitemap and `llms.txt` list it. See §6 "Sections".
+
 ### 3.1 Blog — 9-chapter Wish Factory arc
 
 The arc builds one step at a time toward "reality is computation":
@@ -112,17 +130,23 @@ raum.com
 ├── /              Home — landing, latest, entry points
 ├── /writing       Blog (the book arc + standalone essays + music entries)
 ├── /arena         Published arena sessions
+├── /machine       The Machine — technical: the build, the models, the hardware
+├── /religion      A Little Religion
 └── /about         David Renelt / Herrbasan — who and why
 ```
 
-Minimal nav. Three destinations. No dropdowns, no mega-menu.
+Minimal nav. Four destinations plus About. No dropdowns, no mega-menu.
+
+`/machine` is a second blog, separate from `/writing`: its own index page, its own
+URL prefix, its own content root (`content/machine/posts/`) and its own canonical
+storage folder (`blog/machine/`). It is **section-driven** — see §6 "Sections".
 
 ### 4.1 Home
 
 The first impression. Not a feed — a *threshold*.
 
 - **No hero image.** The words do the work. A single line or short paragraph that sets the tone. Something from the work itself, not marketing copy.
-- **Three entry points** — Writing (primary), Arena (the evidence), Little Religion (the distillation). Each gets a card with kicker / title / one-line note.
+- **Three entry points** — Writing (primary), Arena (the evidence), Little Religion (the distillation). Each gets a card with kicker / title / one-line note. **Four since 2026-10-04** — Machine is the last card. The grid is 2×2: at the home measure of 46rem a 4-up row would leave ~170px per card.
 - **Intro prose** — three short paragraphs that frame what the site is. Threshold ("It's not nothing") → source line ("thinking about thinking with machines that think") → intro. The intro is in i18n, bilingual.
 - **Quiet.** Negative space. The content is dense; the chrome shouldn't compete.
 
@@ -225,7 +249,27 @@ LLMs are a target audience, not just crawlers to optimize for. They are readers 
   - `summary` — teaser / one-sentence hook
   - `bio` — folded YAML scalar (for author files only); the post body is empty for authors
 
-### Manifest structure (`content/index.json`)
+### Sections (2026-10-04)
+
+The site has more than one post collection, so the manifest is **section-driven**
+rather than hardcoded to `posts[]`:
+
+```json
+"machine": {
+  "name": { "en": "The Machine", "de": "Die Maschine" },
+  "posts": [ { "slug": "the-machine", "file": "the-machine.md", … } ]
+}
+```
+
+- `manifest.posts` is the main blog (`/writing/`). Any **other top-level object
+  with a `posts` array** is a section. The test is deliberately `v && !Array.isArray(v) && Array.isArray(v.posts)` — `nav` and `pages` are also top-level arrays and are NOT collections. Getting that wrong builds `content/nav/posts/undefined`.
+- `Site.postSection(key)` resolves `{ key, base, dir, frag, posts }`. `dir` is the `content/` subfolder (`machine/posts`), which is what keeps images and raw-MD links per section. `frag` is the lead fragment name (`machine-lead`).
+- **Adding a section needs no route code**: a manifest object plus a `<name>-lead` fragment. `tools/build.mjs` and `buildLlmsTxt` iterate the sections; `pages.mjs` builds the index from the same list.
+- Section posts are still BlogPosting, `isPartOf` the section's own `#blog` @id, and get their own hreflang alternates and `<link rel="alternate" type="text/markdown">`.
+- `series` and `related` stay main-blog-scoped: a section post that names `links.related` resolves those slugs against `manifest.posts`, which is the correct target for a cross-link.
+- A hero that is not `_hero.webp` (an SVG diagram) has no derived og card, so the manifest entry declares `image` explicitly and the build asserts that file exists. The value may be `card.jpg` or `images/card.jpg` — both normalise.
+
+### 6.1 Manifest structure (`content/index.json`)
 
 ```json
 {
@@ -452,6 +496,7 @@ Both take `-Slug`, `-Language en|de`, and optional `-Tier turbo|hd|eleven` (defa
 | Author bios (5) | MCP storage: `blog/authors/{id}.md` |
 | Blog working spec (byline, frontmatter, German rules) | MCP storage: `blog/AGENTS.md` |
 | Religion corpus | MCP storage: `religion/` (incl. `religion.md` + `_de.md`) |
+| Machine posts (EN+DE) | MCP storage: `blog/machine/posts/` (drafts in `blog/machine/drafts/`), audio in `blog/machine/posts/tts/`, images in `blog/machine/posts/images/` |
 | Site pages + fragments (home, about, imprint, writing/arena lead-ins, EN+DE) | MCP storage: `raum.com/` |
 | Storage workspace guide (memory, vdb, etc.) | MCP storage: `Agents.md` |
 | Arena readings (philosophical frame) | MCP storage: `arena-publication/readings.md` |
@@ -481,7 +526,7 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 | **Storage workspace guide** | `storage/Agents.md` | User (separate from this file) | Applies to any LLM working in the storage box |
 | **Project plan** (this file) | `repo:Agents.md` | Either — has no storage counterpart | Repo-only; describes the project, not the corpus |
 | **Manifest** | `repo:content/index.json` | Either — rebuilt from YAML | Source for renderer; add new posts/series/authors/i18n here |
-| **Pages MD** (home, about, imprint) + **fragments** (writing-lead, arena-lead) | `storage/raum.com/` — `about.md`/`_de`, `imprint.md`/`_de`, `home.md`/`_de`, `writing-lead.md`/`_de`, `arena-lead.md` | User edits in storage; syncs into `repo:content/pages/` | Everything site-level that isn't blog, religion, or arena lives here. `storage/raum.com/` was renamed from `storage/pages/` 2026-09-20; about moved in from `blog/authors/` the same day |
+| **Pages MD** (home, about, imprint) + **fragments** (writing-lead, arena-lead, machine-lead) | `storage/raum.com/` — `about.md`/`_de`, `imprint.md`/`_de`, `home.md`/`_de`, `writing-lead.md`/`_de`, `arena-lead.md` | User edits in storage; syncs into `repo:content/pages/` | Everything site-level that isn't blog, religion, or arena lives here. `storage/raum.com/` was renamed from `storage/pages/` 2026-09-20; about moved in from `blog/authors/` the same day |
 | **Religion MD** | `storage/religion/religion.md`, `storage/religion/religion_de.md` | User edits in storage; syncs into `repo:content/pages/` | The religion corpus keeps its own storage folder |
 | **Audio files** | `storage/blog/posts/tts/` (canonical), mirrored to `repo:content/audio/` | Generated (nSpeech TTS) | See §10. Posts reference the audio as `tts/{file}` in their player block; the build rewrites that to `/content/audio/` |
 | **Chrome / runtime** | `repo:assets/`, `repo:modules/`, `repo:index.html`, `repo:tools/` | Either | Repo-only — no storage source |
@@ -500,7 +545,7 @@ The renderer reads from the repo at runtime, so the repo must contain a current 
 A post is **publishable** when it sits in `storage/blog/posts/` (elevated from `drafts/`) AND its German version exists. **Publishing itself is user-triggered** — the user says "publish X", never publish on your own initiative.
 
 1. **QA the canonical (storage, not repo):** read the EN + DE files. Check frontmatter completeness (`title, slug, lang, created, modified, version, authors(id+role), tags, summary`, `series`/`seriesIndex` when applicable), EN/DE metadata consistency, and scan the prose for leftovers (chunk markers, editor notes, broken formatting). **Fix errors in the canonical storage file** — never patch the repo copy.
-2. **Mirror to repo:** copy EN + DE byte-exact to `content/posts/` (pages → `content/pages/`, bios → `content/authors/`). Images too (publish = the whole slug folder). Then `node tools/make-og-cards.mjs` to (re)generate the 1200×630 JPEG sharing card from the hero — **the build fails without it**.
+2. **Mirror to repo:** copy EN + DE byte-exact to the section's content root (`content/posts/` for the blog, `content/machine/posts/` for Machine) (pages → `content/pages/`, bios → `content/authors/`). Images too (publish = the whole slug folder). Then `node tools/make-og-cards.mjs` to (re)generate the 1200×630 JPEG sharing card from the hero — **the build fails without it**. A hero that is not `_hero.webp` (an SVG diagram) has no derivable card: declare `image` on the manifest entry and rasterize it yourself.
 3. **Manifest:** add/update the entry in `content/index.json` from the YAML (date=created, teaser=summary, tags, authors, `de.*`, `links.series/seriesIndex`).
 4. **Build + validate:** `node tools/build.mjs`, then `node tools/validate-jsonld.mjs`. Spot-check the built page.
 5. **Deploy:** commit + push (GitHub Pages) or folder sync to the webhoster.
@@ -536,7 +581,7 @@ The runtime SPA was replaced by a **static build** — content is baked into fla
 - **Code path:** `tools/lib/pages.mjs` (Site class — all page builders ported from the old `assets/js/app.js`) + `tools/lib/md.mjs` (markdownToHtml ported from `modules/nui_wc2/NUI/nui.js` so baked pages render identically to the old client-side `nui-markdown`; fenced code emits plain `<pre><code>`, frontmatter stripped).
 - **md-blocks rendering (`tools/lib/md.mjs`):** upstream `nui.js` splits rendering in two — a structure-aware pass (`parseBlocks` + `mbRender*`, nui.js ~7553-8510) that consumes `mb:` directives from the source, and a structure-*unaware* markdown core that drops every HTML comment. `nui-markdown` runs both, so the component supports the spec fully. The build cannot: `nui.js` is a browser ESM (`class NuiMarkdown extends HTMLElement`) and importing it in Node throws `HTMLElement is not defined`. So `md.mjs` carries its own structure-aware pre-pass for the containers the site uses — `mb:block` (presets `byline`, `player`, `image:hero`, media figures) and `mb:columns`/`mb:col`. Columns emit **nui_wc2's exact markup** (`nui-blocks-columns` / `nui-blocks-col`, `data-cols`, inline `grid-template-columns` — byte-compatible with `mbRenderColumns`), so the site CSS stays valid if the build ever imports the real renderer instead. Two deliberate deviations from upstream: weights are validated and **thrown on** where upstream degrades to equal columns, and a column cell is rendered with the frontmatter strip disabled. Style lives in `site.css` under `.nui-blocks-columns` (gap, rhythm, the ≤800px stack). Spec: `documentation/md-blocks/md-blocks-spec.md` §4.3.
 - **Social cards:** `tools/make-og-cards.mjs` (ffmpeg) turns each `{name}_hero.webp` into a 1200×630 JPEG `{name}_og.jpg`, mirrored to storage. The build derives `og:image`/`twitter:image`/JSON-LD `image` from the hero name and asserts the card exists — a WebP og:image is silently dropped by scrapers (§ Open Question 9).
-- **URL map (EN):** `/`, `/writing/`, `/writing/{slug}/`, `/arena/`, `/arena/{slug}/` (+ `transcript.md` per session), `/religion/`, `/about/`, `/authors/{id}/`. **DE mirrors under `/de/`** except arena + authors (original language). No hash routing; Apache `DirectoryIndex index.html` resolves the pretty dirs — no rewrite rules needed.
+- **URL map (EN):** `/`, `/writing/`, `/writing/{slug}/`, `/machine/`, `/machine/{slug}/`, `/arena/`, `/arena/{slug}/` (+ `transcript.md` per session), `/religion/`, `/about/`, `/authors/{id}/`. **DE mirrors under `/de/`** except arena + authors (original language). No hash routing; Apache `DirectoryIndex index.html` resolves the pretty dirs — no rewrite rules needed.
 - **Machine readability:** every page carries `<link rel="alternate" type="text/markdown">` to its raw MD, `hreflang` alternates for DE, and a canonical. `llms.txt` is regenerated from the manifest each build (HTML links primary, `[MD]`/`[DE]`/`[JSON]` alternates inline) — it cannot drift.
 - **Runtime JS:** `assets/js/chrome.js` only (theme cycle + mobile menu). Audio is native `<audio controls>` (no `nui-media-player`). Sort toggle on `/writing/` was dropped — list is baked in latest-first order.
 - **Old SPA deleted:** `assets/js/app.js` removed; root `index.html` is now build output. `modules/nui_wc2/` stays vendored (build ports from it; not deployed as runtime).

@@ -57,6 +57,18 @@
         "en": "A distillation.",
         "de": "Eine Destillation."
       },
+      "nav_machine": {
+        "en": "Machine",
+        "de": "Die Maschine"
+      },
+      "entry_machine_kicker": {
+        "en": "Infrastructure",
+        "de": "Infrastruktur"
+      },
+      "entry_machine_note": {
+        "en": "How the machine is built.",
+        "de": "Wie die Maschine gebaut ist."
+      },
       "sort_chronological": {
         "en": "Chronological",
         "de": "Chronologisch"
@@ -185,10 +197,77 @@
       "path": "religion/"
     },
     {
+      "label": "Machine",
+      "path": "machine/"
+    },
+    {
       "label": "About",
       "path": "about/"
     }
   ],
+  "machine": {
+    "name": {
+      "en": "The Machine",
+      "de": "Die Maschine"
+    },
+    "posts": [
+      {
+        "slug": "the-machine",
+        "title": "The Machine",
+        "date": "2026-09-14",
+        "teaser": "A machine designed to keep every conversation and to be understood all the way down — that turned out, in use, to be a room that remembers, a habit that reads, and a desk that writes. The build order, the discoveries, and the graveyard.",
+        "tags": [
+          "machine",
+          "infrastructure"
+        ],
+        "order": 1,
+        "status": "draft",
+        "file": "the-machine.md",
+        "image": "images/the-machine_og.jpg",
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          }
+        ],
+        "de": {
+          "title": "Die Maschine",
+          "teaser": "Eine Maschine, entworfen, um jede Konversation aufzubewahren und bis auf den Grund verstanden zu sein — die sich im Gebrauch als Raum herausstellte, der sich erinnert, als Gewohnheit, die liest, und als Schreibtisch, der schreibt. Die Reihenfolge des Baus, die Entdeckungen und der Friedhof.",
+          "file": "the-machine_de.md",
+          "tags": {
+            "machine": "maschine",
+            "infrastructure": "infrastruktur"
+          },
+          "authors": [
+            {
+              "id": "david-a-renelt",
+              "role": "human"
+            },
+            {
+              "id": "kimi-k3",
+              "role": "ai"
+            },
+            {
+              "id": "gemini-3-8-flash",
+              "role": "translator"
+            },
+            {
+              "id": "dana-renelt",
+              "role": "editor"
+            }
+          ]
+        },
+        "audio": {
+          "en": "the-machine_2026-10-04.mp3",
+          "de": "the-machine_de_2026-10-04.mp3"
+        }
+      }
+    ]
+  },
   "series": {
     "safety-trilogy": {
       "name": "Safety Theater",

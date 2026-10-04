@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 990" role="img" aria-labelledby="mt md">
+<title id="mt">The machine — the whole apparatus, one page</title>
+<desc id="md">Overview diagram in four tiers. At the top, three interfaces — the chat app and Arena, nSpeech with nVoice, and VS Code — sit on the nui_wc2 library band and reach a shared rail. The rail feeds two core services: the LLM Gateway, which hides OpenAI, Anthropic, Google and his own models behind one normalized endpoint, and the MCP workshop, used from the chat and from the IDE, holding memory and dreaming, the forge, the storage box, and a browser for research. Under the gateway are the providers, a mix plus llama.cpp. Under the workshop sit nVDB, a vector database holding the memory system's embeddings and the storage index; nDB, a schemaless document database for conversations and documents; and nMedia for images, audio and video. The first two are written in Rust, running in memory with disk persistence. Every service runs on Badkid, which has an RTX 4090 and holds the permanent local model, the TTS and STT models and a Qwen3 0.6B classifier. Coolkid is the model lab, where image, video, music and LLM experiments are spun up but never permanently wired. Fatten has an Intel Arc A770 and runs the embedding model alone, hooked into the gateway on Badkid. Below the drawing, set apart from the machine, is localweb2: it collects data about the machine and reads the logs of all of them. It is the instrument, not a part — nothing above it depends on it. Solid lines are one talking to the other, dashed lines are one reporting to the other.</desc>
+<style>
+  /* Selector "svg", not ":root": inlined into an HTML page ":root" resolves to
+     the document element, so the theme hook would land on the wrong element.
+     No angle brackets in this stylesheet — an XML or HTML parser reads them as tags. */
+  svg {
+    --card: #ffffff; --band: #f2f2ef;
+    --ink: #16161a; --body: #3b3b37; --dim: #6a6a64; --faint: #7c7c76;
+    --line: rgba(20,20,18,.15); --rule: rgba(20,20,18,.10);
+    --accent: #3b7ddd; --wash: rgba(59,125,221,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    svg:not([data-theme="light"]) {
+      --card: #17181c; --band: #1b1d22;
+      --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+      --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+      --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+    }
+  }
+  svg[data-theme="dark"] {
+    --card: #17181c; --band: #1b1d22;
+    --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+    --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+    --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--body); }
+  .band   { fill: var(--band); stroke: var(--line); stroke-width: 1; }
+  .card   { fill: var(--card); stroke: var(--line); stroke-width: 1; }
+  .card.hub { stroke: var(--accent); stroke-width: 1.4; fill: var(--wash); }
+  .kicker { font-size: 11.5px; letter-spacing: .1em; fill: var(--faint); }
+  .h      { font-size: 17px; font-weight: 600; fill: var(--ink); }
+  .spec   { font-size: 12px; fill: var(--dim); }
+  .s      { font-size: 13.5px; fill: var(--dim); }
+  .m      { font-size: 11.5px; fill: var(--faint); }
+  .i      { font-size: 13px; font-style: italic; fill: var(--dim); }
+  .rule   { stroke: var(--rule); stroke-width: 1; }
+  .rail   { fill: none; stroke: var(--dim); stroke-width: 1.2; }
+  .drop   { fill: none; stroke: var(--dim); stroke-width: 1.2; }
+  .wire   { fill: none; stroke: var(--dim); stroke-width: 1.2; marker-end: url(#arw); }
+  .watch  { fill: none; stroke: var(--faint); stroke-width: 1.1; stroke-dasharray: 3 5; marker-end: url(#arwf); }
+  .watchline { fill: none; stroke: var(--faint); stroke-width: 1.1; stroke-dasharray: 3 5; }
+  .accent { fill: var(--accent); }
+</style>
+<defs>
+  <!-- The tip is at x=7, so refX=7 lands the head exactly on the path end.
+       The gap comes from the paths themselves, which stop 7 units short of
+       whatever they point at — otherwise the line runs on past the head. -->
+  <marker id="arw" viewBox="0 0 8 8" refX="7" refY="3.5" markerWidth="8.5" markerHeight="8.5" orient="auto">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--dim)"/>
+  </marker>
+  <marker id="arwf" viewBox="0 0 8 8" refX="7" refY="3.5" markerWidth="8.5" markerHeight="8.5" orient="auto">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--faint)"/>
+  </marker>
+</defs>
+
+<!-- tier 1 — the interfaces, on the library that renders them -->
+<rect class="band" x="40" y="44" width="1120" height="172" rx="7"/>
+<text class="kicker" x="64" y="72">nui_wc2 — the UI library</text>
+
+<rect class="card" x="56" y="92" width="344" height="96" rx="5"/>
+<text class="h" x="80" y="128">LLM Gateway Chat / Arena</text>
+<text class="s" x="80" y="152">the harness — thinking, writing, experiments</text>
+
+<rect class="card" x="428" y="92" width="344" height="96" rx="5"/>
+<text class="h" x="452" y="128">nSpeech · nVoice</text>
+<text class="s" x="452" y="152">read aloud · dictated</text>
+
+<rect class="card" x="800" y="92" width="344" height="96" rx="5"/>
+<text class="h" x="824" y="128">VS Code</text>
+<text class="s" x="824" y="152">for the code — mostly the machine's own</text>
+
+<!-- the rail: every interface reaches the core -->
+<path class="rail" d="M228,238 L972,238"/>
+<path class="drop" d="M228,188 L228,238"/>
+<path class="drop" d="M600,188 L600,238"/>
+<path class="drop" d="M972,188 L972,238"/>
+<text class="m" x="326" y="230">model calls</text>
+<text class="m" x="890" y="230">tools</text>
+
+<!-- tier 2 — the core -->
+<rect class="card hub" x="56" y="264" width="524" height="176" rx="5"/>
+<text class="h accent" x="80" y="304">LLM Gateway</text>
+<text class="s" x="80" y="330">every provider behind one endpoint</text>
+<text class="s" x="80" y="352">normalized and streamed over SSE</text>
+<line class="rule" x1="80" y1="394" x2="556" y2="394"/>
+<text class="m" x="80" y="416">every service runs on Badkid — this is where the machine lives</text>
+
+<rect class="card" x="620" y="264" width="524" height="176" rx="5"/>
+<text class="h" x="644" y="304">MCP server — the workshop</text>
+<text class="s" x="644" y="330">used from the chat and from the IDE</text>
+<text class="s" x="644" y="352">memory &amp; dreaming · forge · the storage box</text>
+<text class="s" x="644" y="374">a browser for research, plus git and vision</text>
+<text class="m" x="644" y="398">the forge's tools: video → transcript, post → audio</text>
+
+<path class="wire" d="M318,238 L318,257"/>
+<path class="wire" d="M882,238 L882,257"/>
+
+<!-- tier 3 — what the core is built on -->
+<rect class="card" x="56" y="468" width="524" height="212" rx="5"/>
+<text class="i" x="80" y="504">the providers — a mix, not a house</text>
+<text class="s" x="80" y="532">Gemini · GPT · Claude · Kimi</text>
+<text class="s" x="80" y="554">GLM · DeepSeek · MiniMax</text>
+<line class="rule" x1="80" y1="576" x2="556" y2="576"/>
+<text class="s" x="80" y="604">llama.cpp — your own models</text>
+<text class="m" x="80" y="626">Gemini 4 27B — always on, used by the tools</text>
+<text class="m" x="80" y="648">Qwen3 Embedding 4B, on Fatten</text>
+
+<rect class="card" x="620" y="468" width="250" height="112" rx="5"/>
+<text class="h" x="640" y="502">nVDB</text>
+<text class="s" x="640" y="526">a vector database</text>
+<text class="m" x="640" y="548">the memory system's embeddings</text>
+<text class="m" x="640" y="566">and the storage index</text>
+
+<rect class="card" x="894" y="468" width="250" height="112" rx="5"/>
+<text class="h" x="914" y="502">nDB</text>
+<text class="s" x="914" y="526">a schemaless document database</text>
+<text class="m" x="914" y="548">conversations, documents</text>
+<text class="m" x="914" y="566">every conversation kept</text>
+
+<text class="m" x="620" y="596">both written in Rust — they run in memory, with disk persistence</text>
+
+<rect class="card" x="620" y="606" width="524" height="74" rx="5"/>
+<text class="h" x="644" y="636">nMedia</text>
+<text class="s" x="644" y="658">images, audio, video — resize, convert, transcode</text>
+
+<path class="wire" d="M318,440 L318,461"/>
+<text class="m" x="326" y="458">one shape out</text>
+<path class="wire" d="M700,440 L700,461"/>
+<path class="wire" d="M1000,440 L1000,461"/>
+<!-- to nMedia: down the gutter between the columns. The channel between nVDB
+     and nDB looks tempting but the Rust note below them runs across it. -->
+<path class="wire" d="M620,352 L600,352 L600,643 L613,643"/>
+
+<!-- tier 4 — the machines. Badkid is where the machine runs; the other two
+     host models that reach it through the gateway. -->
+<rect class="card" x="56" y="736" width="344" height="120" rx="5"/>
+<text class="h" x="80" y="772">Coolkid</text>
+<text class="spec" x="376" y="772" text-anchor="end">RTX 5090 32GB</text>
+<text class="s" x="80" y="798">the model lab</text>
+<text class="s" x="80" y="820">experiments: image, video, music, LLMs</text>
+<text class="m" x="80" y="840">spun up as needed, nothing permanent</text>
+
+<rect class="card" x="428" y="736" width="344" height="120" rx="5"/>
+<text class="h" x="452" y="772">Badkid</text>
+<text class="spec" x="748" y="772" text-anchor="end">RTX 4090 24GB</text>
+<text class="s" x="452" y="798">the permanent local model</text>
+<text class="m" x="452" y="820">plus TTS, STT, and a classifier (Qwen3 0.6B)</text>
+
+<rect class="card" x="800" y="736" width="344" height="120" rx="5"/>
+<text class="h" x="824" y="772">Fatten</text>
+<text class="spec" x="1120" y="772" text-anchor="end">Intel Arc A770 16GB</text>
+<text class="s" x="824" y="798">the embedding model, and nothing else</text>
+<text class="m" x="824" y="820">hooked into the gateway on Badkid</text>
+
+<!-- the instrument is not a part of the machine: a collector rail below the
+     drawing, not a tier in the stack. Nothing above depends on it. -->
+<path class="watch" d="M228,856 L228,881"/>
+<path class="watch" d="M600,856 L600,881"/>
+<path class="watch" d="M972,856 L972,881"/>
+<path class="watch" d="M56,352 L24,352 L24,881"/>
+<path class="watch" d="M1144,352 L1176,352 L1176,881"/>
+<path class="watchline" d="M24,888 L1176,888"/>
+
+<line class="rule" x1="56" y1="918" x2="1144" y2="918"/>
+<text class="m" x="56" y="940">localweb2 — the instrument. It collects data about the machine and reads the logs of all of them. Nothing here depends on it.</text>
+
+<!-- legend -->
+<path class="wire" d="M56,970 L96,970"/>
+<text class="m" x="108" y="974">one talks to the other</text>
+<path class="watch" d="M280,970 L320,970"/>
+<text class="m" x="332" y="974">one reports to the other</text>
+</svg>

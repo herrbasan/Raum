@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 868" role="img" aria-labelledby="mt md">
+<title id="mt">The workshop — memory, storage, forge</title>
+<desc id="md">Detail map of the MCP server, which LLM Gateway Chat and Arena use just as the IDE does. The chat and the arena run their own nDB and nVDB instances for their conversations. Inside the server are the memory with its dreaming runs, the storage box whose files are indexed and embedded so they can be found by meaning, a browser for research, and the forge, where models write tools that are versioned and callable. Four of the forge's thirty-seven tools are shown: a video becomes a transcript, a post becomes audio, a picture answers a question, a PDF becomes text. Underneath sit nDB, a schemaless document database for the storage box's documents, nVDB, a vector database holding the memory system's embeddings and the storage index, and nMedia for images, audio and video. The first two are written in Rust and run in memory with disk persistence.</desc>
+<style>
+  /* Selector "svg", not ":root": inlined into an HTML page ":root" resolves to
+     the document element, so the theme hook would land on the wrong element.
+     No angle brackets in this stylesheet — an XML or HTML parser reads them as tags. */
+  svg {
+    --card: #ffffff; --band: #f2f2ef;
+    --ink: #16161a; --body: #3b3b37; --dim: #6a6a64; --faint: #7c7c76;
+    --line: rgba(20,20,18,.15); --rule: rgba(20,20,18,.10);
+    --accent: #3b7ddd; --wash: rgba(59,125,221,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    svg:not([data-theme="light"]) {
+      --card: #17181c; --band: #1b1d22;
+      --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+      --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+      --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+    }
+  }
+  svg[data-theme="dark"] {
+    --card: #17181c; --band: #1b1d22;
+    --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
+    --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
+    --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--body); }
+  .band   { fill: var(--band); stroke: var(--line); stroke-width: 1; }
+  .card   { fill: var(--card); stroke: var(--line); stroke-width: 1; }
+  .card.hub { stroke: var(--accent); stroke-width: 1.4; fill: var(--wash); }
+  .kicker { font-size: 11.5px; letter-spacing: .1em; fill: var(--faint); }
+  .h      { font-size: 17px; font-weight: 600; fill: var(--ink); }
+  .s      { font-size: 13.5px; fill: var(--dim); }
+  .m      { font-size: 11.5px; fill: var(--faint); }
+  .i      { font-size: 13px; font-style: italic; fill: var(--dim); }
+  .rule   { stroke: var(--rule); stroke-width: 1; }
+  .wire   { fill: none; stroke: var(--dim); stroke-width: 1.2; marker-end: url(#arw); }
+  .accent { fill: var(--accent); }
+</style>
+<defs>
+  <!-- The tip is at x=7, so refX=7 lands the head exactly on the path end.
+       The gap comes from the paths themselves, which stop 7 units short of
+       whatever they point at — otherwise the line runs on past the head. -->
+  <marker id="arw" viewBox="0 0 8 8" refX="7" refY="3.5" markerWidth="8.5" markerHeight="8.5" orient="auto">
+    <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--dim)"/>
+  </marker>
+</defs>
+
+<!-- the two clients -->
+<rect class="card" x="56" y="56" width="524" height="96" rx="5"/>
+<text class="h" x="80" y="92">LLM Gateway Chat / Arena</text>
+<text class="s" x="80" y="114">the harness — thinking, writing, experiments</text>
+<text class="m" x="80" y="136">its own nDB and nVDB — every conversation kept</text>
+
+<rect class="card" x="620" y="56" width="524" height="96" rx="5"/>
+<text class="h" x="644" y="92">VS Code</text>
+<text class="s" x="644" y="114">the IDE, with the extension</text>
+
+<path class="wire" d="M318,152 L318,243"/>
+<text class="m" x="326" y="231">tools</text>
+<path class="wire" d="M882,152 L882,243"/>
+<text class="m" x="890" y="231">the same tools</text>
+
+<!-- the workshop: the subject, so it carries the accent -->
+<rect class="card hub" x="40" y="250" width="1120" height="318" rx="7"/>
+<text class="h accent" x="64" y="290">MCP server — the workshop</text>
+<text class="s" x="64" y="316">the same hands for the chat, the arena and the IDE</text>
+
+<rect class="card" x="64" y="344" width="300" height="96" rx="5"/>
+<text class="h" x="80" y="380">memory &amp; dreaming</text>
+<text class="s" x="80" y="402">remembers across sessions</text>
+<text class="m" x="80" y="422">a dream run every 15 minutes</text>
+
+<rect class="card" x="384" y="344" width="300" height="96" rx="5"/>
+<text class="h" x="400" y="380">forge</text>
+<text class="s" x="400" y="402">tools the models wrote</text>
+<text class="m" x="400" y="422">versioned, callable</text>
+
+<rect class="card" x="64" y="452" width="300" height="96" rx="5"/>
+<text class="h" x="80" y="488">a browser, for research</text>
+<text class="s" x="80" y="510">fetches a page</text>
+<text class="m" x="80" y="530">into the box</text>
+
+<rect class="card" x="384" y="452" width="300" height="96" rx="5"/>
+<text class="h" x="400" y="488">the storage box</text>
+<text class="s" x="400" y="510">every file indexed</text>
+<text class="m" x="400" y="530">and embedded — searchable</text>
+
+<path class="wire" d="M364,500 L377,500"/>
+<path class="wire" d="M684,392 L717,392"/>
+
+<!-- four of the thirty-seven -->
+<text class="kicker" x="724" y="330">four of the thirty-seven</text>
+
+<rect class="band" x="724" y="344" width="196" height="96" rx="5"/>
+<text class="h" x="740" y="380">yt_transcript</text>
+<text class="s" x="740" y="402">a video becomes</text>
+<text class="m" x="740" y="422">a transcript</text>
+
+<rect class="band" x="940" y="344" width="196" height="96" rx="5"/>
+<text class="h" x="956" y="380">raum_tts</text>
+<text class="s" x="956" y="402">a finished post</text>
+<text class="m" x="956" y="422">becomes audio</text>
+
+<rect class="band" x="724" y="452" width="196" height="96" rx="5"/>
+<text class="h" x="740" y="488">vision_ask</text>
+<text class="s" x="740" y="510">a picture, asked</text>
+<text class="m" x="740" y="530">a question</text>
+
+<rect class="band" x="940" y="452" width="196" height="96" rx="5"/>
+<text class="h" x="956" y="488">pdf_extract</text>
+<text class="s" x="956" y="510">a PDF becomes</text>
+<text class="m" x="956" y="530">text</text>
+
+<!-- what it stands on -->
+<rect class="card" x="56" y="656" width="344" height="120" rx="5"/>
+<text class="h" x="80" y="692">nDB</text>
+<text class="s" x="80" y="716">a schemaless document database</text>
+<text class="m" x="80" y="738">the storage box's documents</text>
+
+<rect class="card" x="428" y="656" width="344" height="120" rx="5"/>
+<text class="h" x="452" y="692">nVDB</text>
+<text class="s" x="452" y="716">a vector database</text>
+<text class="m" x="452" y="738">the memory system's embeddings</text>
+<text class="m" x="452" y="758">and the storage index</text>
+
+<rect class="card" x="800" y="656" width="344" height="120" rx="5"/>
+<text class="h" x="824" y="692">nMedia</text>
+<text class="s" x="824" y="716">images, audio, video —</text>
+<text class="m" x="824" y="738">resize · convert · transcode</text>
+
+<!-- Wire labels follow one rule: above the final horizontal run, right-aligned
+     to the turn. A wire with no horizontal run gets its label beside the line,
+     just above the arrowhead. Hand-placed labels drift off their own wire. -->
+
+<!-- the memory writes what it keeps to nDB -->
+<path class="wire" d="M64,392 L32,392 L32,600 L330,600 L330,649"/>
+<text class="m" x="322" y="592" text-anchor="end">what it remembers</text>
+
+<!-- the storage box is indexed into nVDB -->
+<path class="wire" d="M534,548 L534,649"/>
+<text class="m" x="542" y="645">indexed</text>
+
+<!-- raum_tts hands its audio to nMedia -->
+<path class="wire" d="M1136,392 L1176,392 L1176,600 L972,600 L972,649"/>
+<text class="m" x="964" y="592" text-anchor="end">media work</text>
+
+<line class="rule" x1="56" y1="806" x2="1144" y2="806"/>
+<text class="m" x="56" y="832">nDB and nVDB are written in Rust — they run in memory, with disk persistence</text>
+<text class="m" x="56" y="854">the workshop runs on Badkid · the small work runs on two of his own models — Gemini 4 27B, and Qwen3 Embedding 4B on Fatten</text>
+</svg>
