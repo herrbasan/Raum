@@ -25,6 +25,11 @@
   --text-dim: #666662;
   --text-faint: #9b9b96;
   --border: rgba(20, 20, 18, 0.13);
+  /* The header separates a scrolling page from the nav, so it carries a firmer
+     edge than the interior rules — darker here, lighter in the dark theme. Its
+     own token because --border is used by every card, table and blockquote on
+     the site and none of those want to be pushed around with the chrome. */
+  --header-border: rgba(20, 20, 18, 0.26);
 
   --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino,
     Georgia, "Times New Roman", serif;
@@ -46,6 +51,7 @@ html[data-theme="dark"] {
   --text-dim: #94948e;
   --text-faint: #5b5b57;
   --border: rgba(255, 255, 255, 0.13);
+  --header-border: rgba(255, 255, 255, 0.22);
 }
 /* … and system mode when the OS prefers dark (unless light is forced). */
 @media (prefers-color-scheme: dark) {
@@ -58,6 +64,7 @@ html[data-theme="dark"] {
     --text-dim: #94948e;
     --text-faint: #5b5b57;
     --border: rgba(255, 255, 255, 0.13);
+    --header-border: rgba(255, 255, 255, 0.22);
   }
 }
 
@@ -95,8 +102,27 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   top: 0;
   z-index: 100;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--header-border);
 }
+/* A short scrim hanging below the bar, fading the page out as it passes under,
+   so the seam reads as depth rather than a cut. `pointer-events: none` is the
+   point: it spans the full width under the nav and must not intercept a click
+   meant for the prose. It fades in only while the header is stuck (chrome.js
+   sets data-stuck), because at rest it would wash out the top of whatever sits
+   under the header. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 2.25rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.site-header[data-stuck]::after { opacity: 1; }
 .site-header-inner {
   max-width: 60rem;
   margin: 0 auto;
@@ -192,7 +218,7 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
     gap: 0;
     display: none;
     background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--header-border);
     padding: 0.5rem var(--gutter) 1.25rem;
     box-shadow: 0 14px 28px -18px rgba(0, 0, 0, 0.35);
   }
