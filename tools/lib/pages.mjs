@@ -382,8 +382,11 @@ ${this.footer(lang)}
 	chrome(lang, alternates, langFallback) {
 		const navItems = this.manifest.nav.map((n) => {
 			const id = n.path.replace('/', '');
-			// Arena keeps its original language — no DE tree
-			const target = id === 'arena' ? '/arena/' : this.url(lang, '/' + id + '/');
+			// Every nav destination has a page in both languages now — the arena
+			// index included, whose sessions stay in their original language but
+			// whose framing is German. The SESSIONS are still EN-only, and they
+			// are not nav destinations.
+			const target = this.url(lang, '/' + id + '/');
 			return `<a class="nav-link" href="${esc(target)}">${esc(this.t(lang, 'nav_' + id))}</a>`;
 		}).join('\n				');
 		// Language toggle: link to the alternate page. When the page has no
@@ -563,9 +566,15 @@ ${this.footer(lang)}
 
 	writing(lang) { return this.sectionIndex(lang, 'writing'); }
 
-	arena() {
+	// The arena index exists in both languages: the framing, the title and the
+	// section headings are the page's own text, so they translate. The SESSIONS
+	// stay in the language they happened in — their titles, one-line cases and
+	// transcripts are the original material, which is the rule the llms.txt
+	// already states. So the German page links out to /arena/{slug}/ rather
+	// than pretending to a German transcript.
+	arena(lang = 'en') {
 		const { arena } = this.manifest;
-		const frag = this.frag('arena-lead', 'en');
+		const frag = this.frag('arena-lead', lang);
 		const frame = frag.sections[0];
 		const description = `${frag.subtitle} ${this.mdText(frame.body)}`;
 		const row = (l) => `
@@ -586,21 +595,22 @@ ${this.footer(lang)}
 		<p class="arena-name-note">${this.mdInline(frag.body)}</p>
 		<div class="arena-case">
 			<p class="arena-case-label">${esc(frame.heading)}</p>
-			${this.renderMd(frame.body, 'en')}
+			${this.renderMd(frame.body, lang)}
 		</div>
-		<h2 class="arena-h2">Landmark sessions</h2>
+		<h2 class="arena-h2">${esc(this.t(lang, 'arena_landmarks'))}</h2>
 		<ul class="arena-list">${items}</ul>
-		${evidence ? `<h2 class="arena-h2">Evidence</h2><ul class="arena-list">${evidence}</ul>` : ''}
+		${evidence ? `<h2 class="arena-h2">${esc(this.t(lang, 'arena_evidence'))}</h2><ul class="arena-list">${evidence}</ul>` : ''}
 	</div>`;
 		return this.doc({
-			lang: 'en', title: frag.title, description, alternates: [],
+			lang, title: frag.title, description,
+			alternates: [{ hreflang: 'en', href: '/arena/' }, { hreflang: 'de', href: '/de/arena/' }],
 			graph: [...this.siteNodes(),
 				{ '@type': 'CollectionPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
 					name: frag.title, description,
-					inLanguage: 'en', isPartOf: { '@id': `${this.baseUrl}/#website` },
+					inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
 					hasPart: [...(arena.landmarks || []), ...(arena.evidence || [])]
 						.map((l) => ({ '@id': `${this.baseUrl}/arena/${l.slug}/#dataset` })) },
-				this.breadcrumbList([this.homeCrumb('en'), { name: 'Arena' }]),
+				this.breadcrumbList([this.homeCrumb(lang), { name: frag.title }]),
 			],
 			body,
 		});

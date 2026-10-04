@@ -30,3 +30,6 @@ _sync_inbox/
 content/audio/archive/
 
 dist/
+
+# Build state — hashes of the last-copied assets, for the hand-edit guard
+.build/

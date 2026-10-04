@@ -9,6 +9,7 @@
 
 import { Site, postHeroSrc } from './lib/pages.mjs';
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, cpSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,30 +19,51 @@ const BASE_URL = 'https://raum.com';
 
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
-// Report files under dist/ that no longer match their source, BEFORE the copy
-// overwrites them. Nothing in the repo records a hand-edited dist — it is
-// gitignored and regenerated every build — so without this the only symptom of
-// forgetting to fold an edit back into the source is that the tweak vanishes
-// and nobody notices. A warning, not a throw: the build should still succeed,
-// the edit is usually a deliberate experiment.
-function warnIfDistEdited(srcDir, distDir) {
+// Report files under dist/ that were edited by hand since the last build, BEFORE
+// the copy overwrites them. Comparing dist/ straight against the source cannot
+// work: dist/ IS the previous build's output, so every ordinary source edit
+// would look like drift. The hashes of what the last build actually wrote are
+// kept in .build/ (gitignored); a baked file that no longer matches them was
+// changed by hand, and that is the case worth warning about — it is unversioned
+// and unrecoverable. A warning, not a throw: the edit is usually a deliberate
+// experiment and the build should still succeed.
+function warnIfDistEdited(srcDir, distDir, stampFile) {
 	if (!existsSync(distDir)) return;
+	let last = null;
+	try { last = JSON.parse(readFileSync(stampFile, 'utf8')); } catch { /* first build */ }
 	const drifted = [];
 	const walk = (dir, rel = '') => {
 		for (const e of readdirSync(dir)) {
 			const p = join(dir, e);
 			if (statSync(p).isDirectory()) { walk(p, join(rel, e)); continue; }
-			const src = join(srcDir, rel, e);
-			const baked = join(distDir, rel, e);
-			if (!existsSync(src) || !readFileSync(src).equals(readFileSync(baked)))
-				drifted.push(join(rel, e).replace(/\\/g, '/'));
+			const key = join(rel, e).replace(/\\/g, '/');
+			const hash = createHash('sha256').update(readFileSync(p)).digest('hex');
+			// Only a file the last build wrote, and that has since changed, is drift.
+			if (last && last[key] && last[key] !== hash) drifted.push(key);
+		}
+	};
+	walk(distDir);
+	if (!drifted.length) return;
+	console.warn(`[build] NOTE: ${drifted.length} baked file(s) were edited by hand and are about to be overwritten:`);
+	for (const f of drifted) console.warn(`         dist/assets/${f}`);
+	console.warn('[build] fold them into assets/ or they are gone.');
+}
+
+// Hash every source asset as copied, so the next build can tell a hand-edited
+// baked file from an ordinary source change.
+function stampCopied(srcDir, distDir, stampFile) {
+	const out = {};
+	const walk = (dir, rel = '') => {
+		for (const e of readdirSync(dir)) {
+			const p = join(dir, e);
+			if (statSync(p).isDirectory()) { walk(p, join(rel, e)); continue; }
+			out[join(rel, e).replace(/\\/g, '/')] =
+				createHash('sha256').update(readFileSync(p)).digest('hex');
 		}
 	};
 	walk(srcDir);
-	if (!drifted.length) return;
-	console.warn(`[build] NOTE: ${drifted.length} baked file(s) differ from the source and are about to be overwritten:`);
-	for (const f of drifted) console.warn(`         dist/assets/${f}`);
-	console.warn('[build] fold them into assets/ (or wherever the source lives) or they are gone.');
+	mkdirSync(dirname(stampFile), { recursive: true });
+	writeFileSync(stampFile, JSON.stringify(out, null, '\t'), 'utf8');
 }
 
 function build() {
@@ -124,7 +146,7 @@ function build() {
 	// The drift report has to happen HERE, before the wipe — after it there is
 	// no baked copy left to compare against, which is exactly the silence this
 	// exists to prevent.
-	warnIfDistEdited(join(ROOT, 'assets'), join(DIST, 'assets'));
+	warnIfDistEdited(join(ROOT, 'assets'), join(DIST, 'assets'), join(ROOT, '.build/assets.json'));
 	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
 	mkdirSync(DIST, { recursive: true });
 
@@ -149,20 +171,8 @@ function build() {
 		add(`writing/${p.slug}/index.html`, site.post(p.slug, 'en'));
 	}
 
-	// Extra sections: an index page plus one page per post, in the section's own
-	// URL prefix and content root. Driven by the manifest, so a new section is a
-	// manifest object plus a `<name>-lead` fragment — no route code here.
-	for (const sec of extraSections) {
-		site.canonical = `${BASE_URL}/${sec}/`;
-		add(`${sec}/index.html`, site.sectionIndex('en', sec));
-		for (const p of manifest[sec].posts) {
-			site.canonical = `${BASE_URL}/${sec}/${p.slug}/`;
-			add(`${sec}/${p.slug}/index.html`, site.post(p.slug, 'en', sec));
-		}
-	}
-
 	// Extra sections: index page plus one page per post, in the section's own
-	// URL prefix and content root. Driven by the manifest, so adding a section
+	// URL prefix and content root. Driven by the manifest, so a new section
 	// is a manifest object plus a `<name>-lead` fragment — no route code.
 	for (const sec of extraSections) {
 		site.canonical = `${BASE_URL}/${sec}/`;
@@ -214,15 +224,12 @@ function build() {
 		}
 	}
 
-	for (const sec of extraSections) {
-		site.canonical = `${BASE_URL}/de/${sec}/`;
-		add(`de/${sec}/index.html`, site.sectionIndex('de', sec));
-		for (const p of manifest[sec].posts) {
-			if (!p.de) continue;
-			site.canonical = `${BASE_URL}/de/${sec}/${p.slug}/`;
-			add(`de/${sec}/${p.slug}/index.html`, site.post(p.slug, 'de', sec));
-		}
-	}
+	// The arena INDEX is bilingual — the framing, title and section headings are
+	// the page's own text, so they translate. The SESSIONS are not: they keep the
+	// language they happened in and stay at /arena/{slug}/. This adds the index
+	// only; no session page gets a German twin.
+	site.canonical = `${BASE_URL}/de/arena/`;
+	add('de/arena/index.html', site.arena('de'));
 
 	add('llms.txt', buildLlmsTxt(manifest, site));
 	add('sitemap.xml', buildSitemap(manifest, [...pages.keys()]));
@@ -245,8 +252,9 @@ function build() {
 	// Editing the BAKED copy under dist/ is a legitimate way to iterate — it is
 	// what the dev server serves, so a change shows up with no build at all. It
 	// is also unversioned and regenerated on every build, so warnIfDistEdited
-	// above names whatever differs before the copy overwrites it.
+	// above names whatever was changed by hand before the copy overwrites it.
 	cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true });
+	stampCopied(join(ROOT, 'assets'), join(DIST, 'assets'), join(ROOT, '.build/assets.json'));
 	// NUI runtime (whole tree, 0.6 MB) — nui-media-player imports the core
 	// (nui.js) which may reference further assets. Cheaper than cherry-picking.
 	// NUI's auto theme injection stays off: site.css defines --nui-space.
