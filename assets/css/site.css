@@ -84,7 +84,19 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
 
 /* ---------- Header / nav ---------- */
 
-.site-header { position: relative; border-bottom: 1px solid var(--border); }
+/* Sticky. `background: var(--bg)` is not decoration — a sticky bar with no
+   background lets the prose scroll through it. It is the same colour as the page,
+   so at rest nothing changes and it only reads as a bar once content passes
+   under it. Sticky is also the mobile dropdown's containing block, so
+   `top: 100%` on .nav keeps working. The lightbox is unaffected: a modal
+   <dialog> is in the top layer, above any z-index. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
 .site-header-inner {
   max-width: 60rem;
   margin: 0 auto;
@@ -169,7 +181,6 @@ a.lang-toggle { display: inline-block; text-decoration: none; }
 
 @media (max-width: 700px) {
   .menu-toggle { display: flex; }
-  .site-header { z-index: 100; }
   .nav {
     position: absolute;
     top: 100%;
