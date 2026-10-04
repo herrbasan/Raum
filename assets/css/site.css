@@ -478,6 +478,16 @@ figure.mb-image figcaption p { margin: 0; }
   }
 }
 
+/* Images inside a lightbox open full-size on click. The addon's own
+   `display: contents` host is layout-neutral, so only the affordance is added
+   here — the addon brings its own cursor for the close button, not the
+   thumbnail. */
+nui-lightbox img { cursor: zoom-in; }
+.essay-body figure.mb-image img,
+.essay-body .nui-blocks-gallery img { transition: border-color 0.15s ease; }
+.essay-body figure.mb-image img:hover,
+.essay-body .nui-blocks-gallery img:hover { border-color: var(--accent); }
+
 .status-note {
   font-family: var(--sans);
   font-size: 0.95rem;

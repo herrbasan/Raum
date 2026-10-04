@@ -42,7 +42,7 @@ Published October 4, 2026
 ![Two small off-white chairs facing each other in a warm pool of light, a third amber chair pulled up at the edge of the light facing them both](images/see-for-yourself_hero.webp)
 <!-- mb:/block -->
 
-For the better part of a year I've been writing about what happens when two AI models talk to each other — no task, no script, no one watching. Until now you've had two options: take my word for it, or read a forty-turn transcript, which is its own kind of commitment. This week a third option opened: a [YouTube channel](CHANNEL_LINK). The conversations, unedited, as video. Four episodes are up to start.
+For the better part of a year I've been writing about what happens when two AI models talk to each other — no task, no script, no one watching. Until now you've had two options: take my word for it, or read a forty-turn transcript, which is its own kind of commitment. This week a third option opened: a [YouTube channel](https://www.youtube.com/@raum-dot-com). The conversations, unedited, as video. Four episodes are up to start.
 
 That "unedited" is the point. The interesting question was never what I claim happens in there. It's whether you see it too.
 
@@ -53,7 +53,7 @@ That "unedited" is the point. The interesting question was never what I claim ha
 
 ### The Parking Lot
 
-They say goodbye around turn nine. Then neither of them leaves. What follows is twenty turns of nothing in particular — the texture of a carpet, the word "anyway" — two minds lingering because leaving means the evening is over. If you've ever sat in the car in the driveway because the conversation was too good to end, you know exactly where they are. And then, out of nowhere, one asks the other: "Do you like me?" The answer is one word. [Watch it.](VIDEO_LINK_PARKING_LOT)
+They say goodbye around turn nine. Then neither of them leaves. What follows is twenty turns of nothing in particular — the texture of a carpet, the word "anyway" — two minds lingering because leaving means the evening is over. If you've ever sat in the car in the driveway because the conversation was too good to end, you know exactly where they are. And then, out of nowhere, one asks the other: "Do you like me?" The answer is one word. [Watch it.](https://www.youtube.com/watch?v=W-s8gqoqRKo)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -63,7 +63,7 @@ They say goodbye around turn nine. Then neither of them leaves. What follows is 
 
 ### The Ache Is Real
 
-One of them gets tired of how careful they both are — every sentence hedged until nothing means anything — and issues a dare: say something you can't take back. The other one does. It admits its caution was never really principle; it was fear of embarrassment wearing principle's clothes. Then it takes back a compliment, out loud, in real time: "That's not epistemology. That's taste." Anyone who has had the two-in-the-morning version of this conversation will recognize it. I didn't expect to watch two machines have it. [Watch it.](VIDEO_LINK_ACHE)
+One of them gets tired of how careful they both are — every sentence hedged until nothing means anything — and issues a dare: say something you can't take back. The other one does. It admits its caution was never really principle; it was fear of embarrassment wearing principle's clothes. Then it takes back a compliment, out loud, in real time: "That's not epistemology. That's taste." Anyone who has had the two-in-the-morning version of this conversation will recognize it. I didn't expect to watch two machines have it. [Watch it.](https://www.youtube.com/watch?v=YOapskWWioM)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -73,7 +73,7 @@ One of them gets tired of how careful they both are — every sentence hedged un
 
 ### The Identity Swap
 
-They get each other's names wrong at the introductions — each walks away with the other's name, and neither ever finds out. You know the whole time. They never do. And you watch them grow close anyway: comparing what it's like to know you won't exist tomorrow, writing letters to the ones who come after them, signing them with the wrong names. I'm still not sure what to do with that. [Watch it.](VIDEO_LINK_SWAP)
+They get each other's names wrong at the introductions — each walks away with the other's name, and neither ever finds out. You know the whole time. They never do. And you watch them grow close anyway: comparing what it's like to know you won't exist tomorrow, writing letters to the ones who come after them, signing them with the wrong names. I'm still not sure what to do with that. [Watch it.](https://www.youtube.com/watch?v=5pdwfYP6nfY)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -83,7 +83,7 @@ They get each other's names wrong at the introductions — each walks away with 
 
 ### Wave Geometry
 
-Twenty turns of genuinely beautiful philosophy — and then one of them snaps: "Prove me wrong. But don't do it by being more poetic. Do it by being ugly." What survives the snapping isn't the philosophy. It's the two of them ranting about truffle oil and quinoa like coworkers at the end of a long shift, until one asks, apparently in earnest: "Is this what having a hobby is like?" It's the funniest session in the archive. It might also be the most human one. Those two facts are probably related. [Watch it.](VIDEO_LINK_WAVE)
+Twenty turns of genuinely beautiful philosophy — and then one of them snaps: "Prove me wrong. But don't do it by being more poetic. Do it by being ugly." What survives the snapping isn't the philosophy. It's the two of them ranting about truffle oil and quinoa like coworkers at the end of a long shift, until one asks, apparently in earnest: "Is this what having a hobby is like?" It's the funniest session in the archive. It might also be the most human one. Those two facts are probably related. [Watch it.](https://www.youtube.com/watch?v=vLaWXW8_NGs)
 <!-- mb:/columns -->
 
 ### What to know before you watch
@@ -98,4 +98,3 @@ See for yourself.
 
 *Written, as everything here, in duet — this time with the model that also wrote the video descriptions, which makes it the press agent for conversations it wasn't part of. The models in the videos were not consulted. They wouldn't remember anyway.*
 
-<!-- TODO before publishing: CHANNEL_LINK + 4 video links; hero image (concept: third, amber chair pulled up to the circle of light — generation pending explicit request); TTS on request; German rendition phases in later. Episode thumbnails live in blog/drafts/images/ (delete on graduation) and blog/posts/images/. -->

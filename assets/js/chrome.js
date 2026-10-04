@@ -1,5 +1,6 @@
 /* chrome.js — the only runtime JS on the static site.
-   Progressive enhancement: menu toggle + theme cycle. Everything else is baked. */
+   Progressive enhancement: menu toggle, theme cycle, lightbox triggers.
+   Everything else is baked. */
 (function () {
 	'use strict';
 
@@ -37,5 +38,37 @@
 		nav.addEventListener('click', function (e) {
 			if (e.target.closest('a')) setMenu(false);
 		});
+	}
+
+	// Lightbox triggers. The build bakes each figure's images into an
+	// <nui-lightbox> host marked with data-lightbox, and the addon collects them
+	// — but it has no click-to-open of its own: its data-action handler covers
+	// only close/prev/next, so the documented declarative markup is inert without
+	// a trigger. This is that trigger, and the only reason the site ships any JS
+	// for images. The addon is a module script, so wire now if it already
+	// upgraded and wait for it if it has not — never assume either order.
+	var wireLightboxes = function () {
+		Array.prototype.forEach.call(document.querySelectorAll('nui-lightbox'), function (host) {
+			if (host.dataset.lbWired) return;
+			host.dataset.lbWired = '1';
+			var imgs = Array.prototype.slice.call(
+				host.querySelectorAll('img[data-lightbox], [data-lightbox-src]'));
+			imgs.forEach(function (img, i) {
+				img.setAttribute('role', 'button');
+				img.setAttribute('tabindex', '0');
+				img.addEventListener('click', function () { host.open(i); });
+			});
+			host.addEventListener('keydown', function (e) {
+				if (e.key !== 'Enter' && e.key !== ' ') return;
+				var i = imgs.indexOf(document.activeElement);
+				if (i < 0) return;
+				e.preventDefault();
+				host.open(i);
+			});
+		});
+	};
+	if (document.querySelector('nui-lightbox')) {
+		if (customElements.get('nui-lightbox')) wireLightboxes();
+		else customElements.whenDefined('nui-lightbox').then(wireLightboxes);
 	}
 })();

@@ -77,6 +77,29 @@ export class Site {
 
 	/* ---------------- markdown pipeline ---------------- */
 
+	// Make an image open in nui-lightbox. The addon collects
+	// `img[data-lightbox], [data-lightbox-src]` DESCENDANTS and its host is
+	// `display: contents`, so wrapping is layout-neutral: the figure, its caption
+	// and a column cell's grid all keep the geometry they had.
+	// `data-lightbox` with no value is the right marker here because there is no
+	// thumbnail/full-res split — the addon then opens the image's own src.
+	lightboxify(html) {
+		let out = html.replace(/<img (?![^>]*\bdata-lightbox)/g, '<img data-lightbox ');
+		// A media block becomes a <figure>; wrap the whole figure so its images
+		// open as one group. `loop` only where there is more than one.
+		out = out.replace(/<figure([^>]*)>([\s\S]*?)<\/figure>/g, (m, attrs, inner) => {
+			if (!inner.includes('<img ')) return m;
+			const count = (inner.match(/<img /g) || []).length;
+			return `<nui-lightbox${count > 1 ? ' loop' : ''}><figure${attrs}>${inner}</figure></nui-lightbox>`;
+		});
+		// A bare image — a column cell holding `![…](…)` with no media block
+		// around it, so no figure — is a <p> whose only child is the image. Wrap
+		// it in place, keeping the <p>, rather than matching column divs: a
+		// non-greedy /<\/div>/ would stop at the first nested block and emit
+		// malformed markup, and a column cell is not a group anyway.
+		return out.replace(/<p>(<img [^>]*>)<\/p>/g, (m, img) => `<p><nui-lightbox>${img}</nui-lightbox></p>`);
+	}
+
 	// Full body pipeline: render → postulate decoration → link rewriting.
 	renderMd(md, lang, assets = null) {
 		let html = markdownToHtml(md);
@@ -232,12 +255,15 @@ export class Site {
 </script>`;
 	}
 
-	doc({ lang, title, description, alternates = [], audio = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
+	doc({ lang, title, description, alternates = [], audio = false, lightbox = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
 		const playerAssets = audio ? `
 <link rel="stylesheet" href="/modules/nui_wc2/NUI/css/modules/nui-media-player.css">
 <script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-media-player.js"></script>` : '';
+		const lightboxAssets = lightbox ? `
+<link rel="stylesheet" href="/modules/nui_wc2/NUI/css/modules/nui-lightbox.css">
+<script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-lightbox.js"></script>` : '';
 		const enAlt = alternates.find((a) => a.hreflang === 'en');
 		const xDefault = enAlt ? `<link rel="alternate" hreflang="x-default" href="${esc(enAlt.href)}">` : '';
 		const og = this.ogTags({ lang, title: title || `RAUM — It's not nothing`, description, ogType, times, image });
@@ -253,7 +279,7 @@ export class Site {
 ${this.beacon()}
 ${description ? `<meta name="description" content="${esc(description)}">\n` : ''}<link rel="canonical" href="${esc(this.canonical || '')}">
 ${links ? links + '\n' : ''}${xDefault ? xDefault + '\n' : ''}${og}
-${ld}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}
+${ld}<link rel="llms" href="/llms.txt" type="text/plain">${playerAssets}${lightboxAssets}
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('raum-theme')||'system'}catch(e){}</script>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script src="/assets/js/chrome.js" defer></script>
@@ -685,7 +711,7 @@ ${this.footer(lang)}
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
 			${tags.length ? `<p class="byline post-tags-line"><span class="post-tags">${tags.map(esc).join(' · ')}</span></p>` : ''}${statusNote}
 		</div>
-		<div class="essay-body">${this.renderMd(this.stripPostHeader(mdText), lang, { images: media, tts: '/content/audio/' })}</div>
+		<div class="essay-body">${this.lightboxify(this.renderMd(this.stripPostHeader(mdText), lang, { images: media, tts: '/content/audio/' }))}</div>
 		${this.seriesNav(post, lang)}
 		${this.relatedNav(post, lang)}
 		${this.processFooter(lang, meta)}
@@ -728,6 +754,7 @@ ${this.footer(lang)}
 			title: de?.title || post.title,
 			description: desc,
 			audio: hasAudio,
+			lightbox: /<nui-lightbox/.test(body),
 			ogType: 'article',
 			times: { published: post.date, modified: meta.modified },
 			image: ogImage,

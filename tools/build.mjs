@@ -19,9 +19,6 @@ const BASE_URL = 'https://raum.com';
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
 function build() {
-	// --- clean ---
-	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
-	mkdirSync(DIST, { recursive: true });
 	const manifest = JSON.parse(read('content/index.json'));
 	// Section name -> post array, for everything that renders as a section.
 	// `posts` is the main blog; an extra section is a top-level OBJECT carrying a
@@ -63,6 +60,24 @@ function build() {
 		if (hits.length)
 			throw new Error(`${name}: unfilled link placeholders: ${[...new Set(hits)].join(', ')} — replace with real URLs before building`);
 	}
+	// A player block declares that a spoken version of this document exists, and
+	// points at the file. If the file is missing the page ships a control that
+	// looks real and plays nothing — worse than no player, because the document
+	// said there was one. The manifest's `audio` field is not the source of
+	// truth for this (the block is), so the block is what gets checked.
+	const PLAYER_TARGET = /<!--\s*mb:block\s+preset=player[\s\S]*?\]\(\s*(tts\/[^)\s]+)\s*\)[\s\S]*?<!--\s*mb:\/block\s*-->/g;
+	for (const [name, posts] of sections) {
+		const dir = sectionDir(name);
+		for (const p of posts) {
+			for (const f of [p.file, p.de?.file].filter(Boolean)) {
+				for (const m of read(`content/${dir}/${f}`).matchAll(PLAYER_TARGET)) {
+					const audio = m[1].replace(/^tts\//, '');
+					if (!existsSync(join(ROOT, 'content', 'audio', audio)))
+						throw new Error(`${name}/${f}: player block points at tts/${audio}, which does not exist — generate the audio (see Agents.md §10) or remove the block`);
+				}
+			}
+		}
+	}
 	for (const p of manifest.pages || []) {
 		const file = `content/pages/${p.slug}.md`;
 		if (!existsSync(join(ROOT, file))) continue;
@@ -75,6 +90,13 @@ function build() {
 	const site = new Site(manifest, read);
 	const pages = new Map(); // dist-relative outPath -> content
 	const add = (out, html) => pages.set(out, html);
+
+	// --- clean, only once every preflight check above has passed ---
+	// dist/ IS the deployable site and the dev server's root. Wiping it before
+	// the checks means one bad post 404s every page until it is fixed; a failed
+	// build must leave the last good dist in place.
+	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
+	mkdirSync(DIST, { recursive: true });
 
 	// --- EN tree ---
 	site.canonical = `${BASE_URL}/`;

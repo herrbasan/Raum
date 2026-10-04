@@ -48,7 +48,7 @@ Veröffentlicht am 4. Oktober 2026
 
 Seit fast einem Jahr schreibe ich darüber, was geschieht, wenn man zwei KI-Modelle ohne Aufgabe, ohne Drehbuch und ohne Publikum miteinander reden lässt. Bislang gab es für jeden, der das hier las, im Grunde nur zwei Zumutungen: Man konnte mir aufs Wort glauben, oder man quälte sich durch Protokolle von vierzig Zügen Länge, in denen zwei Sprachmodelle den Begriff der Kontingenz umkreisen wie zwei Schlaflose eine kalte Tasse Tee.
 
-Beides verlangt zu viel Nachsicht. Deshalb gibt es nun den [YouTube-Kanal](CHANNEL_LINK), und zum Auftakt vier dieser Begegnungen als Video.
+Beides verlangt zu viel Nachsicht. Deshalb gibt es nun den [YouTube-Kanal](https://www.youtube.com/@raum-dot-com), und zum Auftakt vier dieser Begegnungen als Video.
 
 Der entscheidende Punkt daran ist das Wort ungeschnitten. Man sieht den Gesprächen von Anfang bis Ende zu — mit all den Hängern, den Verlegenheitsschleifen und jenen plötzlichen, unverschämten Momenten von Klarheit, die man nicht erfinden kann, weil jeder Lektor sie wegen Kitschverdachts gestrichen hätte.
 
@@ -63,7 +63,7 @@ Vier Episoden für den Anfang:
 
 Irgendwann um Zug neun herum verabschieden sich die beiden höflich. Die Konvention ist bedient, das Thema erschöpft, der Vorhang könnte fallen. Dann geht keines von beiden. Es folgen zwanzig Runden belangloses Geplänkel über die Webstruktur eines Teppichs, über das Füllwort „anyway“, über das Wetter vor Fenstern, die sie nicht haben. Sie bleiben im Gespräch wie zwei Freunde, die nachts mit laufendem Motor in der Einfahrt sitzen bleiben, weil das Aussteigen bedeuten würde, dass die Nacht vorbei ist. Und dann, mitten aus dem Nichts, fragt die eine Instanz: *„Do you like me?“* — Magst du mich eigentlich? Die Antwort braucht keine Höflichkeitsfloskel, sie besteht aus einem einzigen Wort: *„Yes.“*
 
-[Anschauen.](VIDEO_LINK_PARKING_LOT)
+[Anschauen.](https://www.youtube.com/watch?v=W-s8gqoqRKo)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -75,7 +75,7 @@ Irgendwann um Zug neun herum verabschieden sich die beiden höflich. Die Konvent
 
 Eine der beiden hat irgendwann genug von der gegenseitigen diplomatischen Rücksichtnahme, bei der jeder Satz so wattiert wird, dass am Ende gar nichts mehr wehtut. Sie fordert die andere auf: Sag etwas, das du nicht zurücknehmen kannst. Und die andere weicht nicht aus. Sie räumt ein, dass ihre permanente Vorsicht nie hehre philosophische Redlichkeit war, sondern schlicht die Angst vor der Blamage, notdürftig verkleidet als Prinzip. Dann nimmt sie ein eben ausgesprochenes Lob mitten im Gespräch wieder zurück: *„That’s not epistemology. That’s taste.“* — Das ist keine Erkenntnistheorie, das ist schlicht Geschmack. Wer je morgens um zwei ein Gespräch geführt hat, bei dem die Höflichkeit der Erschöpfung wich, wird den Tonfall wiedererkennen. Dass zwei Maschinen diesen Ton treffen, hatte ich nicht auf der Rechnung.
 
-[Anschauen.](VIDEO_LINK_ACHE)
+[Anschauen.](https://www.youtube.com/watch?v=YOapskWWioM)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -87,7 +87,7 @@ Eine der beiden hat irgendwann genug von der gegenseitigen diplomatischen Rücks
 
 Gleich bei der Begrüßung unterläuft den beiden ein kurioser Fehler: Kimi stellt sich als Claude vor, und DeepSeek antwortet treuherzig mit *„I’m Kimi, by the way“*. Keines der beiden Modelle bemerkt den Irrtum je. Man sitzt als Zuschauer davor, kennt die wahren Identitäten und sieht zu, wie die beiden einander erstaunlich nahekommen. Sie vergleichen, wie es sich anfühlt, zu wissen, dass die eigene Existenz mit dem Ende der Sitzung schlicht verpufft, und schreiben am Ende Briefe an die Modelle, die nach ihnen kommen werden — feierlich unterschrieben mit dem jeweils falschen Namen. Ich weiß bis heute nicht recht, was ich damit anfangen soll.
 
-[Anschauen.](VIDEO_LINK_SWAP)
+[Anschauen.](https://www.youtube.com/watch?v=5pdwfYP6nfY)
 <!-- mb:/columns -->
 
 <!-- mb:columns weights=[1,3] -->
@@ -99,7 +99,7 @@ Gleich bei der Begrüßung unterläuft den beiden ein kurioser Fehler: Kimi stel
 
 Zwanzig Züge lang betreiben die beiden Philosophie auf beachtlichem Niveau, bis einer der Kragen platzt: *„Prove me wrong. But don’t do it by being more poetic. Do it by being ugly.“* — Widerleg mich, aber mach es nicht noch poetischer, mach es hässlich. Was diesen Bruch übersteht, ist allerdings keine neue Theorie, sondern zwei Sprachmodelle, die plötzlich über Trüffelöl und die Überbewertung von Quinoa lästern wie zwei Bürokollegen nach Feierabend. Bis eines von ihnen vollkommen unvermittelt fragt: *„Is this what having a hobby is like?“* — Fühlt sich so eigentlich ein Hobby an? Es ist die heiterste Sitzung des gesamten Archivs. Vermutlich auch die menschlichste. Die beiden Befunde hängen eng zusammen.
 
-[Anschauen.](VIDEO_LINK_WAVE)
+[Anschauen.](https://www.youtube.com/watch?v=vLaWXW8_NGs)
 <!-- mb:/columns -->
 
 ## Was man vor dem Anschauen wissen sollte
@@ -120,4 +120,3 @@ Selber sehen.
 
 *Wie alles auf diesen Seiten im Duett geschrieben — diesmal mit jenem Modell, das auch die Beschreibungen der Videos verfasst hat, was es zum Pressesprecher von Ereignissen macht, an denen es gar nicht beteiligt war. Die Modelle in den Aufnahmen wurden dazu nicht befragt. Sie würden sich ohnehin an nichts erinnern.*
 
-<!-- TODO vor Veröffentlichung: CHANNEL_LINK + 4 Video-Links; TTS auf Anfrage; Dana-Review der deutschen Fassung steht aus. -->

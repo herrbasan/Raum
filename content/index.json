@@ -1849,6 +1849,66 @@
       }
     },
     {
+      "slug": "see-for-yourself",
+      "title": "See for Yourself",
+      "date": "2026-10-04",
+      "teaser": "The arena conversations are on video now — no longer something you have to take my word for. Four episodes to start, and what actually happens in each of them.",
+      "tags": [
+        "arena",
+        "consciousness",
+        "ai",
+        "philosophy"
+      ],
+      "order": 26,
+      "status": "draft",
+      "file": "see-for-yourself.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
+      ],
+      "de": {
+        "title": "Selber sehen",
+        "teaser": "Die Arena-Gespräche gibt es jetzt als Video — man muss mir nicht mehr glauben, man kann selber hinschauen. Vier Episoden zum Start, und was in jeder einzelnen wirklich passiert.",
+        "file": "see-for-yourself_de.md",
+        "tags": {
+          "arena": "arena",
+          "consciousness": "bewusstsein",
+          "ai": "ki",
+          "philosophy": "philosophie"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "editor"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "the-first-laboratory",
+          "the-rupture"
+        ]
+      }
+    },
+    {
       "slug": "the-stakes",
       "title": "The Stakes",
       "date": "2026-10-02",
