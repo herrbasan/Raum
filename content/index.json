@@ -221,7 +221,6 @@
           "infrastructure"
         ],
         "order": 1,
-        "status": "draft",
         "file": "the-machine.md",
         "image": "images/the-machine_og.jpg",
         "authors": [
@@ -1860,7 +1859,6 @@
         "philosophy"
       ],
       "order": 26,
-      "status": "draft",
       "file": "see-for-yourself.md",
       "authors": [
         {

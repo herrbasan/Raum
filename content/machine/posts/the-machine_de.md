@@ -5,7 +5,7 @@ lang: de
 created: 2026-09-14
 modified: 2026-10-04
 version: 2026-10-04
-status: draft
+status: final
 authors:
   - id: david-a-renelt
     role: human
