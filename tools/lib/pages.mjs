@@ -258,11 +258,17 @@ export class Site {
 	doc({ lang, title, description, alternates = [], audio = false, lightbox = false, ogType = 'website', times = null, image = null, graph = [], body, langFallback = null }) {
 		const links = alternates.map((a) => `<link rel="alternate"${a.type ? ` type="${a.type}"` : ''}${a.hreflang ? ` hreflang="${a.hreflang}"` : ''} href="${esc(a.href)}">`).join('\n\t\t');
 		const pageTitle = title ? `${esc(title)} — RAUM` : `RAUM — It's not nothing`;
+		// data-nui-module is the addon's OWN duplicate guard: nui.js's
+		// ensureStylesheet() only skips a link that already carries this key, so
+		// without it it appends a SECOND copy of the same stylesheet at runtime —
+		// after site.css — and the copy silently wins the cascade, defeating every
+		// override in the site's profile. With the key there is one copy, in the
+		// place we chose.
 		const playerAssets = audio ? `
-<link rel="stylesheet" href="/modules/nui_wc2/NUI/css/modules/nui-media-player.css">
+<link rel="stylesheet" data-nui-module="css/modules/nui-media-player.css" href="/modules/nui_wc2/NUI/css/modules/nui-media-player.css">
 <script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-media-player.js"></script>` : '';
 		const lightboxAssets = lightbox ? `
-<link rel="stylesheet" href="/modules/nui_wc2/NUI/css/modules/nui-lightbox.css">
+<link rel="stylesheet" data-nui-module="css/modules/nui-lightbox.css" href="/modules/nui_wc2/NUI/css/modules/nui-lightbox.css">
 <script type="module" src="/modules/nui_wc2/NUI/lib/modules/nui-lightbox.js"></script>` : '';
 		const enAlt = alternates.find((a) => a.hreflang === 'en');
 		const xDefault = enAlt ? `<link rel="alternate" hreflang="x-default" href="${esc(enAlt.href)}">` : '';
