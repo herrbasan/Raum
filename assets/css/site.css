@@ -105,24 +105,27 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   border-bottom: 1px solid var(--header-border);
 }
 /* A short scrim hanging below the bar, fading the page out as it passes under,
-   so the seam reads as depth rather than a cut. `pointer-events: none` is the
-   point: it spans the full width under the nav and must not intercept a click
-   meant for the prose. It fades in only while the header is stuck (chrome.js
-   sets data-stuck), because at rest it would wash out the top of whatever sits
-   under the header. */
+   so the seam reads as depth rather than a cut. Always on — it is only
+   `pointer-events: none` because it spans the full width under the nav and must
+   not intercept a click meant for the prose. */
 .site-header::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  height: 2.25rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-  opacity: 0;
+  height: 1rem;
+  /* Two editable values, in order: the light-theme shadow, then the dark one.
+     Written inline rather than into a custom property on purpose — the note at
+     the top of this file explains why a light-dark() inside a :root token does
+     not recompute when the theme toggle changes color-scheme at runtime, and
+     this has no var() in between. The two differ because the scrim is black
+     either way, and black reads very differently over a near-black page than
+     over an off-white one: on light it turns the band grey, so it wants to be
+     softer, not stronger. */
+  background: linear-gradient(to bottom, light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), rgba(0, 0, 0, 0));
   pointer-events: none;
-  transition: opacity 0.18s ease;
 }
-.site-header[data-stuck]::after { opacity: 1; }
 .site-header-inner {
   max-width: 60rem;
   margin: 0 auto;

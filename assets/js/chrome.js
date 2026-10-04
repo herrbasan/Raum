@@ -40,29 +40,6 @@
 		});
 	}
 
-	// Mark the header stuck so the scrim beneath it appears only once the page
-	// has actually scrolled — at rest it would wash out the top of whatever sits
-	// under the header. The header's height is cached and only re-measured on
-	// resize, so the scroll handler reads no layout and writes only on change.
-	if (header) {
-		var stuck = false;
-		var threshold = 0;
-		var setStuck = function (on) {
-			if (on === stuck) return;
-			stuck = on;
-			if (on) header.setAttribute('data-stuck', '');
-			else header.removeAttribute('data-stuck');
-		};
-		var check = function () { setStuck(window.scrollY > threshold); };
-		addEventListener('scroll', check, { passive: true });
-		addEventListener('resize', function () {
-			threshold = header.offsetHeight;
-			check();
-		}, { passive: true });
-		threshold = header.offsetHeight;
-		check();
-	}
-
 	// Lightbox triggers. The build bakes each figure's images into an
 	// <nui-lightbox> host marked with data-lightbox, and the addon collects them
 	// — but it has no click-to-open of its own: its data-action handler covers
