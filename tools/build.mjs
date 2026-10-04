@@ -18,6 +18,32 @@ const BASE_URL = 'https://raum.com';
 
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
+// Report files under dist/ that no longer match their source, BEFORE the copy
+// overwrites them. Nothing in the repo records a hand-edited dist — it is
+// gitignored and regenerated every build — so without this the only symptom of
+// forgetting to fold an edit back into the source is that the tweak vanishes
+// and nobody notices. A warning, not a throw: the build should still succeed,
+// the edit is usually a deliberate experiment.
+function warnIfDistEdited(srcDir, distDir) {
+	if (!existsSync(distDir)) return;
+	const drifted = [];
+	const walk = (dir, rel = '') => {
+		for (const e of readdirSync(dir)) {
+			const p = join(dir, e);
+			if (statSync(p).isDirectory()) { walk(p, join(rel, e)); continue; }
+			const src = join(srcDir, rel, e);
+			const baked = join(distDir, rel, e);
+			if (!existsSync(src) || !readFileSync(src).equals(readFileSync(baked)))
+				drifted.push(join(rel, e).replace(/\\/g, '/'));
+		}
+	};
+	walk(srcDir);
+	if (!drifted.length) return;
+	console.warn(`[build] NOTE: ${drifted.length} baked file(s) differ from the source and are about to be overwritten:`);
+	for (const f of drifted) console.warn(`         dist/assets/${f}`);
+	console.warn('[build] fold them into assets/ (or wherever the source lives) or they are gone.');
+}
+
 function build() {
 	const manifest = JSON.parse(read('content/index.json'));
 	// Section name -> post array, for everything that renders as a section.
@@ -95,6 +121,10 @@ function build() {
 	// dist/ IS the deployable site and the dev server's root. Wiping it before
 	// the checks means one bad post 404s every page until it is fixed; a failed
 	// build must leave the last good dist in place.
+	// The drift report has to happen HERE, before the wipe — after it there is
+	// no baked copy left to compare against, which is exactly the silence this
+	// exists to prevent.
+	warnIfDistEdited(join(ROOT, 'assets'), join(DIST, 'assets'));
 	if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
 	mkdirSync(DIST, { recursive: true });
 
@@ -212,6 +242,10 @@ function build() {
 		filter: (src) => !src.startsWith(join(ROOT, 'content', 'audio', 'archive')),
 	});
 	// Site chrome CSS/JS.
+	// Editing the BAKED copy under dist/ is a legitimate way to iterate — it is
+	// what the dev server serves, so a change shows up with no build at all. It
+	// is also unversioned and regenerated on every build, so warnIfDistEdited
+	// above names whatever differs before the copy overwrites it.
 	cpSync(join(ROOT, 'assets'), join(DIST, 'assets'), { recursive: true });
 	// NUI runtime (whole tree, 0.6 MB) — nui-media-player imports the core
 	// (nui.js) which may reference further assets. Cheaper than cherry-picking.

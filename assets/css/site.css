@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
   top: 100%;
   left: 0;
   right: 0;
-  height: 1rem;
+  height: 2rem;
   /* Two editable values, in order: the light-theme shadow, then the dark one.
      Written inline rather than into a custom property on purpose — the note at
      the top of this file explains why a light-dark() inside a :root token does
@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text); }
      either way, and black reads very differently over a near-black page than
      over an off-white one: on light it turns the band grey, so it wants to be
      softer, not stronger. */
-  background: linear-gradient(to bottom, light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), rgba(0, 0, 0, 0));
   pointer-events: none;
 }
 .site-header-inner {
@@ -590,6 +590,12 @@ nui-lightbox .nui-lightbox-counter {
   letter-spacing: 0.08em;
 }
 nui-lightbox .nui-lightbox-caption {
+  /* The addon puts a black scrim behind the caption (and another behind the
+     toolbar, which the rule below replaces). A scrim only earns its keep when
+     text sits ON an image; the flex column gives the image its own box, so the
+     caption sits on the flat stage instead — where a black gradient under
+     --text-dim turns the band grey in light mode and muddies it in dark. */
+  background: none;
   font-size: 0.85rem;
   line-height: 1.5;
   padding: 0.75rem clamp(1rem, 4vw, 2.5rem) 1.1rem;
