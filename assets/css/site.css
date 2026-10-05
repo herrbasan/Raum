@@ -1022,16 +1022,24 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .note-dialog {
   width: min(44rem, 92vw);
   max-width: 92vw;
-  max-height: 84vh;
+  /* A panel, not a page: capped short so it reads as a side excursion over the
+     article rather than a second reading surface. */
+  max-height: min(400px, 88vh);
   margin: auto;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: var(--bg);
+  /* One step off the page, in the direction that lifts it out: darker than
+     --bg in the light theme, brighter in the dark theme. --bg-soft is exactly
+     that one step, so it follows the theme toggle for free. */
+  background: var(--bg-soft);
   color: var(--text-body);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  font-family: var(--serif);
+  /* The popup is chrome, not prose: sans-serif for both the title and the note
+     text, so it never reads as a continuation of the serif essay behind it.
+     This is scoped to the dialog and does not touch the article. */
+  font-family: var(--sans);
 }
 /* NOTE: do NOT set `position` here. A modal <dialog> is `position: fixed` in
    the UA sheet (top layer, `inset: 0`, `margin: auto`); overriding it to
@@ -1042,7 +1050,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .note-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 .note-dialog[open] { display: flex; flex-direction: column; }
 
-.note { position: relative; display: flex; flex-direction: column; min-height: 0; max-height: 84vh; }
+.note { position: relative; display: flex; flex-direction: column; min-height: 0; max-height: min(400px, 88vh); }
 .note-title {
   margin: 0;
   padding: 1.05rem 5.6rem 0.85rem clamp(1.2rem, 4vw, 2rem);
@@ -1064,7 +1072,8 @@ a.arena-link:hover .arena-name { color: var(--accent); }
   justify-content: center;
   border: 1px solid var(--border);
   border-radius: 50%;
-  background: var(--bg-soft);
+  /* --bg, so the chips sit a step in front of the --bg-soft panel. */
+  background: var(--bg);
   color: var(--text);
   line-height: 1;
   cursor: pointer;
@@ -1072,7 +1081,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .note-open { right: 3.35rem; color: var(--text-dim); }
 .note-close { right: 0.7rem; }
 .note-open:hover,
-.note-close:hover { background: var(--bg); border-color: var(--accent); color: var(--accent); }
+.note-close:hover { border-color: var(--accent); color: var(--accent); }
 
 /* The note body scrolls; the header stays put. Type is a touch smaller than the
    essay's so the popup reads as an inset — extended reading, not a second essay. */
@@ -1104,6 +1113,6 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 body:has(.note-dialog[open]) { overflow: hidden; }
 
 @media (max-width: 640px) {
-  .note-dialog { width: 94vw; max-width: 94vw; max-height: 88vh; }
-  .note { max-height: 88vh; }
+  .note-dialog { width: 94vw; max-width: 94vw; max-height: min(400px, 90vh); }
+  .note { max-height: min(400px, 90vh); }
 }
