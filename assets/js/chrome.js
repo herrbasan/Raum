@@ -1,5 +1,5 @@
 /* chrome.js — the only runtime JS on the static site.
-   Progressive enhancement: menu toggle, theme cycle, lightbox triggers.
+   Progressive enhancement: menu toggle, theme cycle, lightbox triggers, note popups.
    Everything else is baked. */
 (function () {
 	'use strict';
@@ -70,5 +70,34 @@
 	if (document.querySelector('nui-lightbox')) {
 		if (customElements.get('nui-lightbox')) wireLightboxes();
 		else customElements.whenDefined('nui-lightbox').then(wireLightboxes);
+	}
+
+	// Research-note popups. A note link in an essay is a real link to the note's
+	// page; this upgrades the click to open the note baked into the page (a
+	// hidden <dialog>) so the reader keeps their place. The href is left intact,
+	// so with JS off — or for a note that was not baked on this page — the link
+	// simply navigates, which is exactly the graceful degradation we want.
+	var noteDialogs = Array.prototype.slice.call(document.querySelectorAll('.note-dialog'));
+	if (noteDialogs.length) {
+		var openNote = function (slug) {
+			var dlg = document.getElementById('note-' + slug);
+			if (!dlg || typeof dlg.showModal !== 'function') return false;
+			// One note at a time: a cross-note link swaps the panel.
+			noteDialogs.forEach(function (d) { if (d !== dlg && d.open) d.close(); });
+			if (!dlg.open) dlg.showModal();
+			return true;
+		};
+		document.addEventListener('click', function (e) {
+			var a = e.target.closest && e.target.closest('a.note-ref');
+			if (a && openNote(a.getAttribute('data-note'))) e.preventDefault();
+		});
+		noteDialogs.forEach(function (dlg) {
+			// Escape and focus trapping are the <dialog>'s own. The backdrop click
+			// is not: a click that lands on the dialog box itself (not on the panel)
+			// is a click on the backdrop.
+			dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+			var closeBtn = dlg.querySelector('.note-close');
+			if (closeBtn) closeBtn.addEventListener('click', function () { dlg.close(); });
+		});
 	}
 })();

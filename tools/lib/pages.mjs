@@ -23,7 +23,9 @@ function scrapeMeta(md) {
 	const roles = [...fm.matchAll(/^\s+role:\s*(\S+)/gm)].map((x) => x[1]);
 	// YAML double-quoted scalars: undo the \" and \\ escapes we write ourselves
 	const unq = (v) => v.replace(/\\(["\\])/g, '$1');
-	return { authors: ids.map((id, i) => ({ id, role: roles[i] || '' })), created: get('created'), modified: get('modified'), blurb: unq(get('blurb')), image: get('image') };
+	return { authors: ids.map((id, i) => ({ id, role: roles[i] || '' })), created: get('created'), modified: get('modified'), blurb: unq(get('blurb')), image: get('image'),
+		// Research-note fields (blog/references/): the registry reads these.
+		title: unq(get('title')), summary: unq(get('summary')), slug: get('slug'), lang: get('lang'), type: get('type') };
 }
 
 // First mb:block preset=image:hero image source (canonical-relative, e.g.
@@ -35,9 +37,10 @@ export function postHeroSrc(mdText) {
 }
 
 export class Site {
-	constructor(manifest, read) {
+	constructor(manifest, read, refFiles = []) {
 		this.manifest = manifest;
 		this.read = read; // (path) => string, repo-root relative
+		this.refFiles = refFiles; // filenames in content/references/ (build.mjs lists them)
 		this.baseUrl = 'https://raum.com'; // build.mjs may override
 	}
 
@@ -127,6 +130,15 @@ export class Site {
 				`<blockquote class="pillar" data-letter="${letter}"><span class="pillar-letter">${letter}</span><p>${rest.trim()}</p></blockquote>`);
 		// Bare postulate refs: <strong>A</strong> → highlighted
 		html = html.replace(/<strong>([ABC])<\/strong>/g, '<strong class="postulate">$1</strong>');
+		// Research-note links → the note's own page in the reader's language,
+		// tagged so the runtime opens the baked dialog instead of navigating away.
+		// `../references/x.md` is the post→note form; note→note (`x.md`) is
+		// normalised to it by the caller first. A name that is not a note is an
+		// authoring error — the old pass-through 404'd on a live page.
+		html = html.replace(/<a href="(?:\.\.\/)?references\/([a-z0-9-]+)(?:_de)?\.md">/g, (m, slug) => {
+			if (!this.referenceIndex().has(slug)) throw new Error(`reference link to unknown note "${slug}"`);
+			return `<a class="note-ref" href="${esc(this.referenceHref(slug, lang))}" data-note="${esc(slug)}">`;
+		});
 		// Post-internal links → real URLs in the current language, in whichever
 		// section the post lives (writing, machine, …). A slug no section has is
 		// an authoring error: the old silent pass-through emitted
@@ -227,6 +239,94 @@ export class Site {
 
 	// Plain text for meta descriptions: render inline, strip tags.
 	mdText(md) { return this.mdInline(md).replace(/<[^>]+>/g, ''); }
+
+	/* ---------------- research notes (references) ---------------- */
+
+	// Notes are canonical in storage blog/references/ and mirrored to
+	// content/references/. They are not posts — no byline, no audio, title form
+	// `Research Notes: <Topic>`. build.mjs lists the directory and hands the
+	// filenames to the constructor; the registry groups the English and German
+	// renditions of one note under a single slug.
+	referenceIndex() {
+		if (this._refIndex) return this._refIndex;
+		const idx = new Map();
+		for (const file of this.refFiles || []) {
+			if (!/\.md$/.test(file) || file === 'AGENTS.md') continue;
+			const md = this.read(`content/references/${file}`);
+			if (!md.startsWith('---')) continue;
+			const meta = scrapeMeta(md);
+			if (meta.type && meta.type !== 'reference') continue;
+			const lang = meta.lang || (/_de\.md$/.test(file) ? 'de' : 'en');
+			const slug = meta.slug || file.replace(/(_de)?\.md$/, '');
+			const { title } = this.splitPage(md);
+			const rec = idx.get(slug) || { slug };
+			rec[lang] = { file, lang, title: title || meta.title || slug, summary: meta.summary || '' };
+			idx.set(slug, rec);
+		}
+		this._refIndex = idx;
+		return idx;
+	}
+
+	// The rendition of a note to show for this language: the note's own language
+	// if it exists, else the other one. A German page may therefore carry an
+	// English note when the German rendition has not been written — better a
+	// readable note than a dead link.
+	referenceFor(slug, lang) {
+		const rec = this.referenceIndex().get(slug);
+		if (!rec) return null;
+		return rec[lang] || rec.en || rec.de || null;
+	}
+
+	referenceHref(slug, lang) {
+		const rec = this.referenceIndex().get(slug);
+		if (!rec) return null;
+		return this.url(rec[lang] ? lang : 'en', `/references/${slug}/`);
+	}
+
+	// Note→note links are written bare (`x.md`) inside the references folder;
+	// lift them to the post→note form so one rewrite rule in renderMd covers both
+	// sides of the corpus — and only for names that are actually notes.
+	normalizeNoteLinks(md) {
+		const notes = this.referenceIndex();
+		return md.replace(/\]\(([a-z0-9-]+)\.md\)/g,
+			(m, slug) => (notes.has(slug) ? `](../references/${slug}.md)` : m));
+	}
+
+	// One hidden native <dialog> per note cited on the page. The content is baked
+	// in, so the popup needs no fetch; clicking a trigger opens it. Notes cited by
+	// a cited note are pulled in too (a note links its neighbours), bounded by the
+	// corpus and guarded against cycles.
+	noteDialogs(html, lang) {
+		const seen = new Set();
+		const queue = [...new Set([...html.matchAll(/data-note="([a-z0-9-]+)"/g)].map((m) => m[1]))];
+		const out = [];
+		while (queue.length) {
+			const slug = queue.shift();
+			if (seen.has(slug) || !this.referenceIndex().has(slug)) continue;
+			seen.add(slug);
+			const dlg = this.noteDialog(slug, lang);
+			if (!dlg) continue;
+			out.push(dlg);
+			for (const m of dlg.matchAll(/data-note="([a-z0-9-]+)"/g)) queue.push(m[1]);
+		}
+		return out.join('\n');
+	}
+
+	noteDialog(slug, lang) {
+		const note = this.referenceFor(slug, lang);
+		if (!note) return '';
+		const { title, body } = this.splitPage(this.read(`content/references/${note.file}`));
+		const inner = this.renderMd(this.normalizeNoteLinks(body), note.lang,
+			{ images: '/content/references/images/', tts: '/content/references/tts/' });
+		return `
+		<dialog class="note-dialog" id="note-${esc(slug)}">
+			<article class="note">
+				<button class="note-close" type="button" aria-label="${esc(this.t(note.lang, 'note_close'))}">×</button>
+				<h2 class="note-title">${esc(title)}</h2>
+				<div class="note-body">${inner}</div>
+			</article>
+		</dialog>`;
+	}
 
 	/* ---------------- document shell ---------------- */
 
@@ -594,6 +694,98 @@ ${this.footer(lang)}
 
 	writing(lang) { return this.sectionIndex(lang, 'writing'); }
 
+	// A research note as a page — the fallback the inline popup degrades to when
+	// JS is off, and the address an LLM or a share can hold. Same shell as an
+	// essay, without a byline, audio or process footer (a note has no author).
+	reference(slug, lang) {
+		const rec = this.referenceIndex().get(slug);
+		if (!rec) throw new Error(`unknown reference: ${slug}`);
+		const v = rec[lang];
+		if (!v) throw new Error(`reference "${slug}" has no ${lang} rendition`);
+		const { title, body: noteBody } = this.splitPage(this.read(`content/references/${v.file}`));
+		const inner = this.renderMd(this.normalizeNoteLinks(noteBody), lang,
+			{ images: '/content/references/images/', tts: '/content/references/tts/' });
+		const noteDialogs = this.noteDialogs(inner, lang);
+		const desc = v.summary || title;
+		const body = `
+	<div class="essay reference">
+		<div class="essay-header">
+			<p class="ref-kicker">${esc(this.t(lang, 'reference_kicker'))}</p>
+			<h1 class="essay-title">${esc(title)}</h1>
+		</div>
+		<div class="essay-body">${inner}</div>
+		<p class="raw-doc"><a href="/content/references/${esc(v.file)}" download>↓ ${esc(this.t(lang, 'download_md'))}</a></p>
+		${noteDialogs}
+	</div>`;
+		const graph = [...this.siteNodes(),
+			{ '@type': 'Article', '@id': `${this.canonical}#article`,
+				headline: title, description: desc,
+				inLanguage: lang, isPartOf: { '@id': `${this.baseUrl}/#website` },
+				mainEntityOfPage: { '@type': 'WebPage', '@id': this.canonical },
+				publisher: this.publisherRef() },
+			this.breadcrumbList([
+				this.homeCrumb(lang),
+				{ name: this.t(lang, 'references_title'), url: `${this.baseUrl}${this.url(lang, '/references/')}` },
+				{ name: title },
+			]),
+		];
+		return this.doc({
+			lang, title, description: desc,
+			lightbox: /<nui-lightbox/.test(body),
+			ogType: 'article',
+			alternates: [
+				{ type: 'text/markdown', href: `/content/references/${v.file}` },
+				{ hreflang: 'en', href: `/references/${slug}/` },
+				...(rec.de ? [{ hreflang: 'de', href: `/de/references/${slug}/` }] : []),
+			],
+			langFallback: `/de/references/`,
+			graph,
+			body,
+		});
+	}
+
+	// The References index — the knowledge base's own landing page, listing the
+	// notes that exist in this language.
+	referencesIndex(lang) {
+		const title = this.t(lang, 'references_title');
+		const all = [...this.referenceIndex().values()];
+		const notes = all.filter((rec) => rec[lang])
+			.sort((a, b) => a[lang].title.localeCompare(b[lang].title));
+		const items = notes.map((rec) => {
+			const v = rec[lang];
+			return `
+		<li>
+			<a href="${esc(this.url(lang, '/references/' + rec.slug + '/'))}">
+				<h2 class="post-title">${esc(v.title)}</h2>
+				${v.summary ? `<p class="post-teaser">${esc(v.summary)}</p>` : ''}
+			</a>
+		</li>`;
+		}).join('');
+		const intro = this.t(lang, 'references_intro');
+		const body = `
+	<div class="writing">
+		<h1 class="page-title">${esc(title)}</h1>
+		<div class="page-intro"><p>${esc(intro)}</p></div>
+		<ul class="post-list">${items}</ul>
+	</div>`;
+		const hasDe = all.some((r) => r.de);
+		return this.doc({
+			lang, title, description: intro,
+			alternates: [
+				{ hreflang: 'en', href: `/references/` },
+				...(hasDe ? [{ hreflang: 'de', href: `/de/references/` }] : []),
+			],
+			graph: [...this.siteNodes(),
+				{ '@type': 'CollectionPage', '@id': `${this.canonical}#webpage`, url: this.canonical,
+					name: title, description: intro, inLanguage: lang,
+					isPartOf: { '@id': `${this.baseUrl}/#website` },
+					hasPart: notes.map((rec) => ({ '@id': `${this.baseUrl}${this.url(lang, '/references/' + rec.slug + '/')}#article` })) },
+				this.breadcrumbList([this.homeCrumb(lang), { name: title }]),
+			],
+			body,
+		});
+	}
+
 	// The arena index exists in both languages: the framing, the title and the
 	// section headings are the page's own text, so they translate. The SESSIONS
 	// stay in the language they happened in — their titles, one-line cases and
@@ -666,11 +858,14 @@ ${this.footer(lang)}
 		// author and no publication date, and an Article node for them invites a
 		// Search Console "missing author" warning while misdescribing the page.
 		const isInfoPage = isAbout || slug === 'imprint';
+		const pageBodyHtml = this.renderMd(pageBody, lang, { images: '/content/pages/images/', tts: '/content/audio/' });
+		const pageNoteDialogs = this.noteDialogs(pageBodyHtml, lang);
 		const body = `
 	<div class="about">
 		<h1 class="name-line">${esc(title)}</h1>
 		${subtitle ? `<p class="real-name">${esc(subtitle)}</p>` : ''}
-		<div class="essay-body">${this.renderMd(pageBody, lang, { images: '/content/pages/images/', tts: '/content/audio/' })}</div>
+		<div class="essay-body">${pageBodyHtml}</div>
+		${pageNoteDialogs}
 		${this.processFooter(lang, meta)}
 		${authorList}
 	</div>`;
@@ -749,13 +944,16 @@ ${this.footer(lang)}
 		const statusNote = post.status === 'draft'
 			? `\n			<p class="status-note">${esc(this.t(lang, 'status_draft'))}</p>`
 			: '';
+		const bodyHtml = this.lightboxify(this.renderMd(this.stripPostHeader(mdText), lang, { images: media, tts: '/content/audio/' }));
+		const noteDialogs = this.noteDialogs(bodyHtml, lang);
 		const body = `
 	<div class="essay">
 		<div class="essay-header">
 			<h1 class="essay-title">${esc(de?.title || post.title)}</h1>
 			${tags.length ? `<p class="byline post-tags-line"><span class="post-tags">${tags.map(esc).join(' · ')}</span></p>` : ''}${statusNote}
 		</div>
-		<div class="essay-body">${this.lightboxify(this.renderMd(this.stripPostHeader(mdText), lang, { images: media, tts: '/content/audio/' }))}</div>
+		<div class="essay-body">${bodyHtml}</div>
+		${noteDialogs}
 		${this.seriesNav(post, lang)}
 		${this.relatedNav(post, lang)}
 		${this.processFooter(lang, meta)}

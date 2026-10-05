@@ -135,7 +135,8 @@ function build() {
 		if (!existsSync(join(ROOT, 'content/pages', card)))
 			throw new Error(`page "${p.slug}" has no og card: content/pages/${card} — run: node tools/make-og-cards.mjs`);
 	}
-	const site = new Site(manifest, read);
+	const site = new Site(manifest, read, existsSync(join(ROOT, 'content', 'references'))
+		? readdirSync(join(ROOT, 'content', 'references')).filter((f) => f.endsWith('.md')) : []);
 	const pages = new Map(); // dist-relative outPath -> content
 	const add = (out, html) => pages.set(out, html);
 
@@ -194,6 +195,18 @@ function build() {
 		add(`authors/${a.id}/index.html`, site.author(a.id));
 	}
 
+	// References (research notes). An index plus one page per note — the page is
+	// what a note link degrades to without JS, and what an LLM or a share holds.
+	if (site.referenceIndex().size) {
+		site.canonical = `${BASE_URL}/references/`;
+		add('references/index.html', site.referencesIndex('en'));
+		for (const [slug, rec] of site.referenceIndex()) {
+			if (!rec.en) continue;
+			site.canonical = `${BASE_URL}/references/${slug}/`;
+			add(`references/${slug}/index.html`, site.reference(slug, 'en'));
+		}
+	}
+
 	// --- DE tree (posts/pages with a de variant; arena + authors stay EN) ---
 	site.canonical = `${BASE_URL}/de/`;
 	add('de/index.html', site.home('de'));
@@ -230,6 +243,18 @@ function build() {
 	// only; no session page gets a German twin.
 	site.canonical = `${BASE_URL}/de/arena/`;
 	add('de/arena/index.html', site.arena('de'));
+
+	// German notes — only the renditions that exist; the English page is the
+	// fallback a German post links when its note has no German version.
+	const deNotes = [...site.referenceIndex()].filter(([, r]) => r.de);
+	if (deNotes.length) {
+		site.canonical = `${BASE_URL}/de/references/`;
+		add('de/references/index.html', site.referencesIndex('de'));
+		for (const [slug] of deNotes) {
+			site.canonical = `${BASE_URL}/de/references/${slug}/`;
+			add(`de/references/${slug}/index.html`, site.reference(slug, 'de'));
+		}
+	}
 
 	add('llms.txt', buildLlmsTxt(manifest, site));
 	add('sitemap.xml', buildSitemap(manifest, [...pages.keys()]));
@@ -379,6 +404,19 @@ function buildLlmsTxt(manifest, site) {
 		L.push(`- [${u('/' + pg.slug + '/')}](${u('/' + pg.slug + '/')}): ${pg.title}${pg.teaser ? ' — ' + pg.teaser : ''} ${md}${de}`);
 	}
 	L.push(``);
+	if (site.referenceIndex().size) {
+		L.push(`## References (${u('/references/')})`);
+		L.push(``);
+		L.push(`Research notes — data-first companion documents for the cases and claims the essays cite. Each is baked into the citing page as an in-page dialog and also stands alone here.`);
+		L.push(``);
+		for (const [slug, rec] of [...site.referenceIndex()].sort((a, b) => (a[1].en?.title || '').localeCompare(b[1].en?.title || ''))) {
+			if (!rec.en) continue;
+			const md = `[MD](${u('/content/references/' + rec.en.file)})`;
+			const de = rec.de ? ` [DE](${u('/de/references/' + slug + '/')})` : '';
+			L.push(`- [${u('/references/' + slug + '/')}](${u('/references/' + slug + '/')}): ${rec.en.title} ${md}${de}`);
+		}
+		L.push(``);
+	}
 	L.push(`## Authors (${u('/about/')})`);
 	L.push(``);
 	for (const a of manifest.authors || []) {

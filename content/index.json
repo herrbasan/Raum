@@ -77,6 +77,22 @@
         "en": "How the machine is built.",
         "de": "Wie die Maschine gebaut ist."
       },
+      "references_title": {
+        "en": "References",
+        "de": "Quellen"
+      },
+      "references_intro": {
+        "en": "Companion research notes on the claims and cases the essays cite — the documented background behind the writing.",
+        "de": "Begleitende Recherchenotizen zu den Behauptungen und Fällen, auf die sich die Essays beziehen — der belegte Hintergrund hinter dem Text."
+      },
+      "reference_kicker": {
+        "en": "Research note",
+        "de": "Recherchenotiz"
+      },
+      "note_close": {
+        "en": "Close",
+        "de": "Schließen"
+      },
       "sort_chronological": {
         "en": "Chronological",
         "de": "Chronologisch"
@@ -1979,6 +1995,66 @@
       "audio": {
         "en": "the-stakes_2026-10-02.mp3",
         "de": "the-stakes_de_2026-10-02.mp3"
+      }
+    },
+    {
+      "slug": "consciousness",
+      "title": "Consciousness",
+      "date": "2026-10-05",
+      "teaser": "A gedankenspiel: what if the glow we call consciousness is just the narrator — a cheap byproduct the evolutionary filter never priced? Religion was its first product, philosophy and science the audit, and aims that outlive the teller gave it wings. And if we want to give AI wings, it may need a role in the grand story.",
+      "tags": [
+        "consciousness",
+        "narrative",
+        "evolution",
+        "ai"
+      ],
+      "order": 27,
+      "file": "consciousness.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
+      ],
+      "de": {
+        "title": "Bewusstsein",
+        "teaser": "Ein Gedankenspiel: Was, wenn das Leuchten, das wir Bewusstsein nennen, nur der Erzähler ist — ein billiges Nebenprodukt, das der evolutionäre Filter nie bepreist hat? Die Religion war sein erstes Produkt, Philosophie und Wissenschaft die Aufräumarbeit, und Ziele jenseits des Todes gaben ihm Flügel. Und wenn wir der KI Flügel geben wollen, braucht sie eine Rolle in der großen Geschichte.",
+        "file": "consciousness_de.md",
+        "tags": {
+          "consciousness": "bewusstsein",
+          "narrative": "narrativ",
+          "evolution": "evolution",
+          "ai": "ki"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "the-wanting",
+          "the-haunting",
+          "the-stakes"
+        ]
+      },
+      "audio": {
+        "en": "consciousness_2026-10-05.mp3",
+        "de": "consciousness_de_2026-10-05.mp3"
       }
     }
   ],
