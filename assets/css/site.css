@@ -1024,7 +1024,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
   max-width: 92vw;
   /* A panel, not a page: capped short so it reads as a side excursion over the
      article rather than a second reading surface. */
-  max-height: min(400px, 88vh);
+  max-height: min(600px, 88vh);
   margin: auto;
   padding: 0;
   border: 1px solid var(--border);
@@ -1050,7 +1050,7 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 .note-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 .note-dialog[open] { display: flex; flex-direction: column; }
 
-.note { position: relative; display: flex; flex-direction: column; min-height: 0; max-height: min(400px, 88vh); }
+.note { position: relative; display: flex; flex-direction: column; min-height: 0; max-height: min(600px, 88vh); }
 .note-title {
   margin: 0;
   padding: 1.05rem 5.6rem 0.85rem clamp(1.2rem, 4vw, 2rem);
@@ -1113,6 +1113,6 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 body:has(.note-dialog[open]) { overflow: hidden; }
 
 @media (max-width: 640px) {
-  .note-dialog { width: 94vw; max-width: 94vw; max-height: min(400px, 90vh); }
-  .note { max-height: min(400px, 90vh); }
+  .note-dialog { width: 94vw; max-width: 94vw; max-height: min(600px, 90vh); }
+  .note { max-height: min(600px, 90vh); }
 }
