@@ -1105,9 +1105,15 @@ a.arena-link:hover .arena-name { color: var(--accent); }
 }
 .note-body a { color: var(--accent); }
 
-/* The trigger itself: an ordinary link, marked as a note (the dotted underline
-   is the only affordance added — the same restraint as the lightbox cursor). */
-.note-ref { text-decoration-style: dotted; text-underline-offset: 0.15em; }
+/* The trigger itself. Deliberately NOT the link colour: a note is an aside, not
+   a link onward, so it reads in the text's own full-contrast colour (near-black
+   in light, near-white in dark) and is marked only by the dotted underline —
+   which separates it from ordinary prose without competing with real links. */
+.note-ref {
+  color: var(--text);
+  text-decoration-style: dotted;
+  text-underline-offset: 0.15em;
+}
 
 /* As with the lightbox, drop the page scrollbar while a note is open. */
 body:has(.note-dialog[open]) { overflow: hidden; }
