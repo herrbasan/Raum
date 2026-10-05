@@ -98,6 +98,11 @@
 			dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 			var closeBtn = dlg.querySelector('.note-close');
 			if (closeBtn) closeBtn.addEventListener('click', function () { dlg.close(); });
+			// "Open in a new tab" carries the reader out of the popup, so close it:
+			// the anchor's target="_blank" still opens the tab, and the panel would
+			// otherwise be left open behind it.
+			var openLink = dlg.querySelector('.note-open');
+			if (openLink) openLink.addEventListener('click', function () { dlg.close(); });
 		});
 	}
 })();

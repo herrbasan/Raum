@@ -93,6 +93,10 @@
         "en": "Close",
         "de": "Schließen"
       },
+      "note_open": {
+        "en": "Open in a new tab",
+        "de": "In neuem Tab öffnen"
+      },
       "sort_chronological": {
         "en": "Chronological",
         "de": "Chronologisch"
