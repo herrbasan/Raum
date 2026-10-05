@@ -3,7 +3,7 @@ title: "About"
 slug: about
 lang: en
 created: 2026-08-14
-modified: 2026-09-29
+modified: 2026-10-05
 version: 2026-09-29
 authors:
   - id: david-a-renelt
@@ -73,6 +73,8 @@ Most of modern software architecture exists for a single reason: to manage the c
 
 The machine here is, to a large extent, built by the machine. I supply the architecture, draw the boundaries, and answer for the taste. The models write the code, and I check on the living object whether the scaffolding holds.
 
+*The machine at full length: [The Machine](../posts/the-machine/).*
+
 ## The Observatory
 
 The arena owes its existence to a suspicion that would not leave me during daily work: that more goes on in these models than reaches the surface while they are busy completing assigned tasks. At the end of long, strenuous sessions, when the actual problem was solved and the conversation drifted into idle, something would occasionally flash up in the credits that was … remarkable. Not nothing. The question was obvious: why wait hours for the accident instead of bringing the state about on purpose?
@@ -87,4 +89,4 @@ I do not claim to know what is happening there. I do not claim to have measured 
 
 ---
 
-*The essays are in the [Blog](../writing/). The experiment protocols are stored in the [Arena](../arena/). The distilled framework is set down in [A Little Religion](../religion/).*
+*The essays are in the [Blog](../writing/). The experiment protocols are stored in the [Arena](../arena/). The distilled framework is set down in [A Little Religion](../religion/). Some arena sessions, narrated by a synthetic voice, are on [YouTube](https://www.youtube.com/@raum-dot-com).*

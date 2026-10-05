@@ -3,8 +3,8 @@ title: "Impressum & Datenschutzerklärung"
 slug: imprint
 lang: de
 created: 2026-09-13
-modified: 2026-09-13
-version: 2026-09-13
+modified: 2026-10-05
+version: 2026-10-05
 ---
 
 # Impressum & Datenschutzerklärung
@@ -13,13 +13,14 @@ version: 2026-09-13
 
 **Angaben gemäß § 5 DDG**
 
-David A. Renelt
-Marktplatz 5
+David A. Renelt\
+Marktplatz 5\
 98743 Gräfenthal
 
 **Kontakt**
 
-E-Mail: david@raum.com
+E-Mail: david@raum.com\
+Web: [davidrenelt.de](https://davidrenelt.de)
 
 ## Datenschutzerklärung
 

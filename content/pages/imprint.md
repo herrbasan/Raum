@@ -3,8 +3,8 @@ title: "Legal Notice & Privacy"
 slug: imprint
 lang: en
 created: 2026-09-13
-modified: 2026-09-13
-version: 2026-09-13
+modified: 2026-10-05
+version: 2026-10-05
 ---
 
 # Legal Notice & Privacy
@@ -13,14 +13,15 @@ version: 2026-09-13
 
 **Information pursuant to § 5 DDG**
 
-David A. Renelt
-Marktplatz 5
-98743 Gräfenthal
+David A. Renelt\
+Marktplatz 5\
+98743 Gräfenthal\
 Germany
 
 **Contact**
 
-Email: david@raum.com
+Email: david@raum.com\
+Web: [davidrenelt.de](https://davidrenelt.de)
 
 ## Privacy Policy
 

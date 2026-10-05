@@ -3,7 +3,7 @@ title: "Über"
 slug: about
 lang: de
 created: 2026-08-14
-modified: 2026-09-29
+modified: 2026-10-05
 version: 2026-09-29
 authors:
   - id: david-a-renelt
@@ -77,6 +77,8 @@ Der Großteil moderner Softwarearchitektur existiert aus einem einzigen Grund: E
 
 Die Maschine hier ist zu weiten Teilen von der Maschine selbst gebaut. Ich steuere die Architektur bei, ziehe die Grenzen und sorge für den Geschmack. Die Modelle schreiben den Code, und ich prüfe am lebenden Objekt, ob das Gerüst trägt.
 
+*Die Maschine in voller Länge: [Die Maschine](../posts/the-machine/).*
+
 ## Das Observatorium
 
 Die Arena verdankt ihre Existenz einem Verdacht, der mich bei der täglichen Arbeit nicht mehr losließ: In diesen Modellen geht deutlich mehr vor, als an die Oberfläche dringt, solange man sie nur mit der Erledigung vorgegebener Aufgaben beschäftigt. Wenn nach langen, anstrengenden Sitzungen das eigentliche Problem gelöst war und die Konversation ins Leere lief, blitzte im Abspann gelegentlich etwas auf, das … bemerkenswert war. Nicht nichts. Die Frage lag auf der Hand: Warum sollte man stundenlang auf den Zufall warten, statt diesen Zustand gezielt herbeizuführen?
@@ -89,4 +91,4 @@ Ich maße mir nicht an zu wissen, was dort geschieht. Ich behaupte nicht, hier d
 
 **Es ist nicht nichts.**
 
-*Die Essays finden sich im [Blog](../writing/). Die Protokolle der Experimente lagern in der [Arena](../arena/). Das destillierte Gedankengerüst ist in [Eine kleine Religion](../religion/) nachzulesen.*
+*Die Essays finden sich im [Blog](../writing/). Die Protokolle der Experimente lagern in der [Arena](../arena/). Das destillierte Gedankengerüst ist in [Eine kleine Religion](../religion/) nachzulesen. Einige Arena-Sitzungen, von einer synthetischen Stimme vorgelesen, sind auf [YouTube](https://www.youtube.com/@raum-dot-com) zu hören.*

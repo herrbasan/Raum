@@ -66,6 +66,24 @@ export class Site {
 		return { key, base: key, dir: `${key}/posts`, frag: `${key}-lead`, posts: m.posts };
 	}
 
+	// Every post section, main blog first. Same object test as build.mjs: a
+	// top-level manifest object with a `posts` array (machine, …).
+	sectionKeys() {
+		return ['writing', ...Object.keys(this.manifest)
+			.filter((k) => k !== 'posts' && this.manifest[k] && !Array.isArray(this.manifest[k]) && Array.isArray(this.manifest[k].posts))];
+	}
+
+	// Which section a post slug lives in, or null. `writing` wins, so a slug in
+	// the main blog keeps the URL it always had; the other sections are searched
+	// after it. Two sections claiming one slug is an author error — the link has
+	// no single meaning — so it throws instead of silently picking one.
+	postSectionOf(slug) {
+		if (this.postSection('writing').posts.some((x) => x.slug === slug)) return 'writing';
+		const hits = this.sectionKeys().filter((k) => this.postSection(k).posts.some((x) => x.slug === slug));
+		if (hits.length > 1) throw new Error(`post slug "${slug}" is in sections ${hits.join(', ')} — a link to it cannot mean both`);
+		return hits[0] || null;
+	}
+
 	postHref(slug, lang, section = 'writing') {
 		const sec = this.postSection(section);
 		const p = sec.posts.find((x) => x.slug === slug);
@@ -109,16 +127,26 @@ export class Site {
 				`<blockquote class="pillar" data-letter="${letter}"><span class="pillar-letter">${letter}</span><p>${rest.trim()}</p></blockquote>`);
 		// Bare postulate refs: <strong>A</strong> → highlighted
 		html = html.replace(/<strong>([ABC])<\/strong>/g, '<strong class="postulate">$1</strong>');
-		// Post-internal links → real URLs in the current language
-		html = html.replace(/href="\.\.\/posts\/([a-z0-9-]+)\/?"/g,
-			(m, slug) => `href="${esc(this.postHref(slug, lang))}"`);
-		// Other internal links (`../{slug}/`): the writing/arena sections plus
-		// every manifest page. Arena keeps its original language — no DE tree —
-		// the same exception the chrome nav makes.
+		// Post-internal links → real URLs in the current language, in whichever
+		// section the post lives (writing, machine, …). A slug no section has is
+		// an authoring error: the old silent pass-through emitted
+		// /writing/{slug}/ — a 404 that reads as a working link on a live page.
+		html = html.replace(/href="\.\.\/posts\/([a-z0-9-]+)\/?"/g, (m, slug) => {
+			const sec = this.postSectionOf(slug);
+			if (!sec) throw new Error(`link "../posts/${slug}/" — no post with that slug in any section`);
+			return `href="${esc(this.postHref(slug, lang, sec))}"`;
+		});
+		// Other internal links (`../{id}/`): every post section, arena, and every
+		// manifest page. Arena keeps its original language — no DE tree — the same
+		// exception the chrome nav makes. An id that is none of those used to be
+		// left as a bare relative href, which resolves against the page's own
+		// directory and 404s; refuse it instead.
 		html = html.replace(/href="\.\.\/([a-z0-9-]+)\/?"/g, (m, id) => {
+			if (id === 'arena') return 'href="/arena/"';
 			const isPage = (this.manifest.pages || []).some((p) => p.slug === id);
-			if (!isPage && id !== 'writing' && id !== 'arena') return m;
-			return `href="${esc(id === 'arena' ? '/arena/' : this.url(lang, '/' + id + '/'))}"`;
+			if (!isPage && !this.sectionKeys().includes(id))
+				throw new Error(`link "../${id}/" — not a page, a post section, or arena`);
+			return `href="${esc(this.url(lang, '/' + id + '/'))}"`;
 		});
 		html = html.replace(/href="(\.\.\/|\.\/)"/g, (m) => `href="${esc(this.homeHref(lang))}"`);
 		// Canonical-relative asset paths → public URLs (posts: content/posts/, pages: content/pages/)
