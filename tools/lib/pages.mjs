@@ -874,9 +874,11 @@ ${this.footer(lang)}
 	</div>`;
 		const hasAudio = /preset=player/.test(pageBody);
 		const heroSrc = this.heroImageSrc(mdText);
-		// Sharing art is the JPEG card derived from the hero, never the WebP
-		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs.
-		const pageOgCard = heroSrc ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
+		// Sharing art is the JPEG card derived from the hero, never the hero
+		// itself (scrapers drop WebP) — see tools/make-og-cards.mjs. Only a
+		// *_hero.webp has a derived card; anything else falls back to the
+		// default og image rather than emitting a non-shareable source.
+		const pageOgCard = heroSrc && heroSrc.endsWith('_hero.webp') ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
 		const pageOgImage = pageOgCard ? `/content/pages/${pageOgCard}` : null;
 		const pageDesc = (lang === 'de' && page.de?.teaser) ? page.de.teaser
 			: (page.teaser || this.manifest.site.description);
@@ -941,7 +943,7 @@ ${this.footer(lang)}
 		// A value may be written `card.jpg` or `images/card.jpg` (the frontmatter
 		// convention) — normalising here keeps the two from doubling up into
 		// `.../images/images/card.jpg`.
-		const ogCard = heroSrc ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
+		const ogCard = heroSrc && heroSrc.endsWith('_hero.webp') ? heroSrc.replace(/_hero\.webp$/, '_og.jpg') : null;
 		const share = (v) => (v ? `${media}${String(v).replace(/^images\//, '')}` : null);
 		const ogImage = share(meta.image) || share(post.image) || share(ogCard);
 		const statusNote = post.status === 'draft'

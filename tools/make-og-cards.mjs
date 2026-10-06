@@ -16,7 +16,7 @@
  *   node tools/make-og-cards.mjs --force    # regenerate every card
  */
 import { readdirSync, existsSync, statSync, mkdirSync, copyFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { join, dirname, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
@@ -25,6 +25,9 @@ const FORCE = process.argv.includes('--force');
 
 // The build hardcodes these dims for og:image width/height — keep in sync.
 const W = 1200, H = 630;
+
+// Letterbox ground for SVG diagram cards, matching the site's page background.
+const BG = '#fbfbfa';
 
 // repo image dir → candidate storage homes for its heroes (all on Badkid).
 const GROUPS = [
@@ -54,6 +57,35 @@ for (const { repo, storage } of GROUPS) {
 		made++;
 		console.log(`  ${card}  (${(statSync(out).size / 1024).toFixed(1)}K)`);
 	}
+}
+
+// Hero SVGs. A diagram used as a post's first image:hero block does not follow
+// the {slug}_hero.webp naming, so its card name is declared explicitly here
+// (and mirrored by the manifest's post.image). ffmpeg has no SVG decoder;
+// ImageMagick (librsvg) rasterizes them. Scale to fit, then letterbox: a
+// diagram must not be cropped the way a photo hero is — the crop eats tiers.
+const SVG_CARDS = [
+	{ src: join(ROOT, 'content/machine/posts/images/machine-overview.svg'),
+		card: 'the-machine_og.jpg',
+		storage: ['X:/blog/machine/posts/images'] },
+];
+
+for (const { src, card, storage } of SVG_CARDS) {
+	if (!existsSync(src)) continue;
+	total++;
+	const out = join(dirname(src), card);
+	const stale = !existsSync(out) || statSync(out).mtimeMs < statSync(src).mtimeMs;
+	if (!stale && !FORCE) { skipped++; continue; }
+	execFileSync('magick', ['-background', BG, src, '-resize', `x${H}`,
+		'-gravity', 'center', '-extent', `${W}x${H}`,
+		'-alpha', 'remove', '-alpha', 'off', '-quality', '90', out]);
+	for (const dir of storage) {
+		if (!existsSync(join(dir, basename(src)))) continue;
+		mkdirSync(dir, { recursive: true });
+		copyFileSync(out, join(dir, card));
+	}
+	made++;
+	console.log(`  ${card}  (${(statSync(out).size / 1024).toFixed(1)}K)`);
 }
 
 console.log(`[og] ${made} card(s) generated, ${skipped} up to date (of ${total} heroes)`);

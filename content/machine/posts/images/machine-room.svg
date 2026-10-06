@@ -2,47 +2,42 @@
 <title id="mt">The room — what a session wakes up with</title>
 <desc id="md">Conceptual diagram. The room keeps four things: the twin, who this is, the biography, the positions and the voice; everything kept, the storage box, whose structure the models maintain and which serves as memory in its own right, holding documentation, research and the digital twin, with folders carrying their own agents.md; everything said, every conversation and arena session, with every message embedded the moment it lands so it is searchable at once; and everything noticed, kept as a map rather than a log and tidied every fifteen minutes by the dreamer. I feed the room by reading, listening, writing and living. This was built for one person and no one else. In the chat app a session starts by waking up knowing me, and the prime directive sets the order in which it readies itself: the memory overview, then recall for what the overview has not seen, then the telemetry, the log findings. Every turn is stored and embedded as the session runs, so nothing is left to save when it ends. In VS Code the same start happens, plus a check of the open issues, but no session is kept between them. The models never really leave the room. Counts are as of 10/2026.</desc>
 <style>
-  /* Selector "svg", not ":root": inlined into an HTML page ":root" resolves to
-     the document element, so the theme hook would land on the wrong element.
-     No angle brackets in this stylesheet — an XML or HTML parser reads them as tags. */
-  svg {
-    --card: #ffffff; --band: #f2f2ef;
-    --ink: #16161a; --body: #3b3b37; --dim: #6a6a64; --faint: #7c7c76;
-    --line: rgba(20,20,18,.15); --rule: rgba(20,20,18,.10);
-    --accent: #3b7ddd; --wash: rgba(59,125,221,.07);
-  }
+  /* Literal colours, not CSS custom properties — see machine-overview.svg for
+     why (librsvg/nMedia drop a custom-property stylesheet and render all black).
+     Dark mode is a browser-only enhancement via prefers-color-scheme. Selector
+     "svg", not ":root", keeps the rules scoped to the diagram. */
+  text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: #3b3b37; }
+  .band   { fill: #f2f2ef; stroke: rgba(20,20,18,.15); stroke-width: 1; }
+  .card   { fill: #ffffff; stroke: rgba(20,20,18,.15); stroke-width: 1; }
+  .card.hub { stroke: #3b7ddd; stroke-width: 1.4; fill: rgba(59,125,221,.07); }
+  .kicker { font-size: 11.5px; letter-spacing: .1em; fill: #7c7c76; }
+  .h      { font-size: 17px; font-weight: 600; fill: #16161a; }
+  .s      { font-size: 13.5px; fill: #6a6a64; }
+  .m      { font-size: 11.5px; fill: #7c7c76; }
+  .rule   { stroke: rgba(20,20,18,.10); stroke-width: 1; }
+  .wire   { fill: none; stroke: #6a6a64; stroke-width: 1.2; marker-end: url(#arw); }
+  .accent { fill: #3b7ddd; }
+  .arw-tip { fill: #6a6a64; }
   @media (prefers-color-scheme: dark) {
-    svg:not([data-theme="light"]) {
-      --card: #17181c; --band: #1b1d22;
-      --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
-      --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
-      --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
-    }
+    text { fill: #c9c9c5; }
+    .band { fill: #1b1d22; stroke: rgba(255,255,255,.15); }
+    .card { fill: #17181c; stroke: rgba(255,255,255,.15); }
+    .card.hub { stroke: #6f9ff0; fill: rgba(111,159,240,.10); }
+    .kicker, .m { fill: #8a8a83; }
+    .h { fill: #ececed; }
+    .s { fill: #97978f; }
+    .rule { stroke: rgba(255,255,255,.10); }
+    .wire { stroke: #97978f; }
+    .accent { fill: #6f9ff0; }
+    .arw-tip { fill: #97978f; }
   }
-  svg[data-theme="dark"] {
-    --card: #17181c; --band: #1b1d22;
-    --ink: #ececed; --body: #c9c9c5; --dim: #97978f; --faint: #8a8a83;
-    --line: rgba(255,255,255,.15); --rule: rgba(255,255,255,.10);
-    --accent: #6f9ff0; --wash: rgba(111,159,240,.10);
-  }
-  text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; fill: var(--body); }
-  .band   { fill: var(--band); stroke: var(--line); stroke-width: 1; }
-  .card   { fill: var(--card); stroke: var(--line); stroke-width: 1; }
-  .card.hub { stroke: var(--accent); stroke-width: 1.4; fill: var(--wash); }
-  .kicker { font-size: 11.5px; letter-spacing: .1em; fill: var(--faint); }
-  .h      { font-size: 17px; font-weight: 600; fill: var(--ink); }
-  .s      { font-size: 13.5px; fill: var(--dim); }
-  .m      { font-size: 11.5px; fill: var(--faint); }
-  .rule   { stroke: var(--rule); stroke-width: 1; }
-  .wire   { fill: none; stroke: var(--dim); stroke-width: 1.2; marker-end: url(#arw); }
-  .accent { fill: var(--accent); }
 </style>
 <defs>
   <!-- The tip is at x=7, so refX=7 lands the head exactly on the path end.
        The gap comes from the paths themselves, which stop 7 units short of
        whatever they point at — otherwise the line runs on past the head. -->
   <marker id="arw" viewBox="0 0 8 8" refX="7" refY="3.5" markerWidth="8.5" markerHeight="8.5" orient="auto">
-    <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--dim)"/>
+    <path class="arw-tip" d="M0,0 L7,3.5 L0,7 Z" fill="#6a6a64"/>
   </marker>
 </defs>
 
