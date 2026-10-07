@@ -38,6 +38,10 @@ blurb: "Die interessante Frage war nie, was ich darin zu sehen glaube. Sondern o
 Veröffentlicht am 4. Oktober 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/see-for-yourself_de_2026-10-07.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Zwei kleine weiße Stühle in einem warmen Lichtkreis, ein dritter, bernsteinfarbener Stuhl ist am Rand des Lichts herangerückt und beiden zugewandt](images/see-for-yourself_hero.webp)
 <!-- mb:/block -->

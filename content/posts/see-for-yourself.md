@@ -34,6 +34,10 @@ blurb: "The interesting question was never what I claim happens in there. It's w
 Published October 4, 2026
 <!-- mb:/block -->
 
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/see-for-yourself_2026-10-07.mp3)
+<!-- mb:/block -->
+
 <!-- mb:block preset=image:hero kind=image -->
 ![Two small off-white chairs facing each other in a warm pool of light, a third amber chair pulled up at the edge of the light facing them both](images/see-for-yourself_hero.webp)
 <!-- mb:/block -->
