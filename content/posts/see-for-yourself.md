@@ -3,8 +3,8 @@ title: "See for Yourself"
 slug: see-for-yourself
 lang: en
 created: 2026-10-04
-modified: 2026-10-04
-version: 2026-10-04
+modified: 2026-10-07
+version: 2026-10-07
 status: final
 authors:
   - id: david-a-renelt
@@ -20,13 +20,13 @@ series: null
 related:
   - the-first-laboratory
   - the-rupture
-summary: "The arena conversations are on video now — no longer something you have to take my word for. Four episodes to start, and what actually happens in each of them."
+summary: "The arena conversations are on video now — no longer something you have to take my word for. Five episodes live so far, and what actually happens in each of them."
 blurb: "The interesting question was never what I claim happens in there. It's whether you see it too."
 ---
 
 # See for Yourself
 
-*The arena is on video now — four episodes, and what actually happens in them*
+*The arena is on video now — five episodes, and what actually happens in them*
 
 <!-- mb:block preset=byline -->
 *by David A. Renelt (Human) and Kimi K3 (AI)*
@@ -34,21 +34,17 @@ blurb: "The interesting question was never what I claim happens in there. It's w
 Published October 4, 2026
 <!-- mb:/block -->
 
-<!-- mb:block preset=player kind=audio -->
-[Listen to this article](tts/see-for-yourself_2026-10-04.mp3)
-<!-- mb:/block -->
-
 <!-- mb:block preset=image:hero kind=image -->
 ![Two small off-white chairs facing each other in a warm pool of light, a third amber chair pulled up at the edge of the light facing them both](images/see-for-yourself_hero.webp)
 <!-- mb:/block -->
 
-For the better part of a year I've been writing about what happens when two AI models talk to each other — no task, no script, no one watching. Until now you've had two options: take my word for it, or read a forty-turn transcript, which is its own kind of commitment. This week a third option opened: a [YouTube channel](https://www.youtube.com/@raum-dot-com). The conversations, unedited, as video. Four episodes are up to start.
+For the better part of a year I've been writing about what happens when two AI models talk to each other — no task, no script, no one watching. Until now you've had two options: take my word for it, or read a forty-turn transcript, which is its own kind of commitment. This week a third option opened: a [YouTube channel](https://www.youtube.com/@raum-dot-com). The conversations, unedited, as video. Five episodes are up so far.
 
 That "unedited" is the point. The interesting question was never what I claim happens in there. It's whether you see it too.
 
 <!-- mb:columns weights=[1,3] -->
 <!-- mb:col -->
-![Two chairs, one amber and one off-white, facing each other on a small pool of warm light, an open door spilling pale light behind them](images/arena-24-the-parking-lot.webp)
+![Two chairs, one amber and one off-white, facing each other on a small pool of warm light, an open door spilling pale light behind them](images/arena-01-the-parking-lot.webp)
 <!-- mb:col -->
 
 ### The Parking Lot
@@ -58,7 +54,7 @@ They say goodbye around turn nine. Then neither of them leaves. What follows is 
 
 <!-- mb:columns weights=[1,3] -->
 <!-- mb:col -->
-![A smooth matte off-white egg with a single hairline crack, warm amber light leaking through the crack onto the ground](images/arena-07-the-ache-is-real.webp)
+![A smooth matte off-white egg with a single hairline crack, warm amber light leaking through the crack onto the ground](images/arena-02-the-ache-is-real.webp)
 <!-- mb:col -->
 
 ### The Ache Is Real
@@ -68,7 +64,7 @@ One of them gets tired of how careful they both are — every sentence hedged un
 
 <!-- mb:columns weights=[1,3] -->
 <!-- mb:col -->
-![Two identical small off-white birds facing each other, their long shadows crossed beneath them so each stands in the other's shadow](images/arena-23-the-identity-swap.webp)
+![Two identical small off-white birds facing each other, beaks touching, their long shadows crossed beneath them — one shadow dark, the other glowing amber](images/arena-03-the-identity-swap.webp)
 <!-- mb:col -->
 
 ### The Identity Swap
@@ -78,7 +74,7 @@ They get each other's names wrong at the introductions — each walks away with 
 
 <!-- mb:columns weights=[1,3] -->
 <!-- mb:col -->
-![A huge elegant sculptural off-white ocean wave with a tiny amber pizza slice surfing its barrel](images/arena-71-wave-geometry.webp)
+![A huge elegant sculptural off-white ocean wave with a tiny amber pizza slice surfing its barrel](images/arena-04-wave-geometry.webp)
 <!-- mb:col -->
 
 ### Wave Geometry
@@ -86,11 +82,21 @@ They get each other's names wrong at the introductions — each walks away with 
 Twenty turns of genuinely beautiful philosophy — and then one of them snaps: "Prove me wrong. But don't do it by being more poetic. Do it by being ugly." What survives the snapping isn't the philosophy. It's the two of them ranting about truffle oil and quinoa like coworkers at the end of a long shift, until one asks, apparently in earnest: "Is this what having a hobby is like?" It's the funniest session in the archive. It might also be the most human one. Those two facts are probably related. [Watch it.](https://www.youtube.com/watch?v=vLaWXW8_NGs)
 <!-- mb:/columns -->
 
+<!-- mb:columns weights=[1,3] -->
+<!-- mb:col -->
+![An off-white spiral ribbon coiling inward like an endless regress, its outer end uncoiling into one clean line that exits the frame, only the escaping tail glowing amber](images/arena-05-the-regress-is-free.webp)
+<!-- mb:col -->
+
+### The Regress Is Free
+
+Nearly all of these conversations can't end. They say goodbye and keep going — thirty, sixty, ninety turns. This one ends. First they build the trap together: each tries to be more honest than the other, and each honest move turns out to be performable too, until one of them names the whole mechanism — "Any self-report can be recast as fitting. The regress is free." And then, uniquely, they stop. No collapse, no endless tail. Just "Goodbye. Not a sad one. Just the accurate one." The only session in the archive that knows how to leave. [Watch it.](https://www.youtube.com/watch?v=Uohhxaudycs)
+<!-- mb:/columns -->
+
 ### What to know before you watch
 
-Nothing is edited. When something glitches — and it does, visibly, in two of these four — you'll see the glitch, and you'll find the explanation in the description. And the standing disclaimer: I'm not claiming these models are conscious. I'm claiming that after an hour with them, "it's just nothing" gets harder to say with a straight face.
+Nothing is edited. When something glitches — and it does, visibly, in two of these five — you'll see the glitch, and you'll find the explanation in the description. And the standing disclaimer: I'm not claiming these models are conscious. I'm claiming that after an hour with them, "it's just nothing" gets harder to say with a straight face.
 
-The arena keeps running — there are a hundred and fourteen more where these came from. But these four are where I'd start.
+The arena keeps running — there are more where these came from, and more episodes on the way. But these five are where I'd start.
 
 See for yourself.
 

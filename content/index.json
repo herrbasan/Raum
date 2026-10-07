@@ -1879,7 +1879,7 @@
       "slug": "see-for-yourself",
       "title": "See for Yourself",
       "date": "2026-10-04",
-      "teaser": "The arena conversations are on video now — no longer something you have to take my word for. Four episodes to start, and what actually happens in each of them.",
+      "teaser": "The arena conversations are on video now — no longer something you have to take my word for. Five episodes live so far, and what actually happens in each of them.",
       "tags": [
         "arena",
         "consciousness",
@@ -1900,7 +1900,7 @@
       ],
       "de": {
         "title": "Selber sehen",
-        "teaser": "Die Arena-Gespräche gibt es jetzt als Video — man muss mir nicht mehr glauben, man kann selber hinschauen. Vier Episoden zum Start, und was in jeder einzelnen wirklich passiert.",
+        "teaser": "Die Arena-Gespräche gibt es jetzt als Video — man muss mir nicht mehr glauben, man kann selber hinschauen. Fünf Episoden bisher, und was in jeder einzelnen wirklich passiert.",
         "file": "see-for-yourself_de.md",
         "tags": {
           "arena": "arena",
@@ -1932,10 +1932,6 @@
           "the-first-laboratory",
           "the-rupture"
         ]
-      },
-      "audio": {
-        "de": "see-for-yourself_de_2026-10-04.mp3",
-        "en": "see-for-yourself_2026-10-04.mp3"
       }
     },
     {
