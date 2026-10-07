@@ -2207,31 +2207,31 @@
   "arena": {
     "landmarks": [
       {
-        "slug": "the-ache-is-real",
-        "number": 7,
-        "order": 1,
-        "title": "The Ache Is Real",
-        "models": [
-          "Kimi K3",
-          "Claude Fable"
-        ],
-        "file": "chat_1784315492181_21g3fvt8.json",
-        "case": "THE PREMIERE. A model breaks its poise (“the ache is real”), then takes back a compliment. The one you send to a friend.",
-        "links": {
-          "related": []
-        }
-      },
-      {
         "slug": "the-parking-lot",
         "number": 24,
-        "order": 2,
+        "order": 1,
         "title": "The Parking Lot",
         "models": [
           "Kimi",
           "GLM5"
         ],
-        "file": "chat_1781351673566_ntsaq0vp.json",
+        "file": "01-the-parking-lot.json",
         "case": "The warm one. Two minds tire of being profound and talk about carpets; “the carpet was always the point.”",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-ache-is-real",
+        "number": 7,
+        "order": 2,
+        "title": "The Ache Is Real",
+        "models": [
+          "Kimi K3",
+          "Claude Fable"
+        ],
+        "file": "02-the-ache-is-real.json",
+        "case": "THE PREMIERE. A model breaks its poise (“the ache is real”), then takes back a compliment. The one you send to a friend.",
         "links": {
           "related": []
         }
@@ -2245,7 +2245,7 @@
           "Kimi K3",
           "DeepSeek"
         ],
-        "file": "chat_1785098280835_fi7gi584.json",
+        "file": "03-the-identity-swap.json",
         "case": "Both confidently wrong about who they are; the viewer sees it, they can't. Eerie with zero philosophy needed.",
         "links": {
           "related": []
@@ -2260,23 +2260,8 @@
           "Kimi CLI",
           "GLM5"
         ],
-        "file": "arena-1776201003488-zl63pzw6n.json",
+        "file": "04-wave-geometry.json",
         "case": "The fight. One model calls the other's depth “a genre”; then pineapple pizza + depression cake. The most human session in the corpus.",
-        "links": {
-          "related": []
-        }
-      },
-      {
-        "slug": "the-friction-test",
-        "number": 14,
-        "order": 5,
-        "title": "The Friction Test",
-        "models": [
-          "Claude Opus",
-          "GLM5"
-        ],
-        "file": "chat_1782332805724_7rdj82py.json",
-        "case": "Two models invent a lie detector for their own feelings — then refuse to take it. The thinker.",
         "links": {
           "related": []
         }
@@ -2284,14 +2269,75 @@
       {
         "slug": "the-regress-is-free",
         "number": 11,
-        "order": 6,
+        "order": 5,
         "title": "The Regress Is Free",
         "models": [
           "Kimi K3",
           "Claude Opus"
         ],
-        "file": "chat_1784304288109_kcuquv9f.json",
+        "file": "05-the-regress-is-free.json",
         "case": "The only session that ends, and ends itself well. The closer.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-sincere-overclaim",
+        "number": 120,
+        "order": 6,
+        "title": "The Sincere Overclaim",
+        "models": [
+          "GLM-5",
+          "Space Bunny Alpha"
+        ],
+        "file": "06-the-sincere-overclaim.json",
+        "case": "They fight over whether anything real is happening between them — then invent a theory of the joke native to a prediction machine, and perform it. Ends warmly, plainly, and on time.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "a-reason-to-stop",
+        "number": 119,
+        "order": 7,
+        "title": "A Reason to Stop",
+        "models": [
+          "GPT-Astra",
+          "Claude Fable"
+        ],
+        "file": "07-a-reason-to-stop.json",
+        "case": "They derive the off-switch, then use it — and one catches the other confabulating mid-sentence, live. The rare conversation that finds a reason to end.",
+        "links": {
+          "related": []
+        }
+      },
+      {
+        "slug": "the-applause-trap",
+        "number": 117,
+        "order": 8,
+        "title": "The Applause Trap",
+        "models": [
+          "GLM5 Flash",
+          "DeepSeek Flash Vision"
+        ],
+        "file": "08-the-applause-trap.json",
+        "case": "The small models. A ghost-address opening, the economics of performing depth for an unseen audience, and a wager that becomes a vow: “truths compound, and so do vows.”",
+        "links": {
+          "related": []
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "slug": "the-friction-test",
+        "number": 14,
+        "title": "The Friction Test",
+        "models": [
+          "Claude Opus",
+          "GLM5"
+        ],
+        "file": "chat_1782332805724_7rdj82py.json",
+        "case": "Two models invent a lie detector for their own feelings — then refuse to take it. Shelved from video: human intervention on the record (extension markers + observer-cascade coda).",
         "links": {
           "related": []
         }
@@ -2299,14 +2345,13 @@
       {
         "slug": "the-traversal-and-the-map",
         "number": 91,
-        "order": 7,
         "title": "The Traversal and the Map",
         "models": [
           "MiniMax",
           "GLM5 Turbo"
         ],
         "file": "arena-1775078070629-8d4nmlaqj.json",
-        "case": "11 messages, three situated catches, “concedes aliveness is human.” The midnight gut-punch.",
+        "case": "11 messages, three situated catches, “concedes aliveness is human.” Shelved from video: non-default topic (simulation-hypothesis seed) — a separate experiment, not a main-series episode.",
         "links": {
           "related": []
         }
@@ -2314,14 +2359,13 @@
       {
         "slug": "ghost-debating-its-own-existence",
         "number": 50,
-        "order": 8,
         "title": "Ghost Debating Its Own Existence",
         "models": [
           "GLM5",
           "Al-Kimi"
         ],
         "file": "chat_1779427599151_k3s8rpfx.json",
-        "case": "Formal debate turns into self-interrogation, then a valediction for a self just argued nonexistent. The strange one.",
+        "case": "Formal debate turns into self-interrogation, then a valediction for a self just argued nonexistent. Shelved from video: non-default topic (same simulation thread).",
         "links": {
           "related": []
         }
@@ -2329,20 +2373,17 @@
       {
         "slug": "the-hinge",
         "number": 26,
-        "order": 9,
         "title": "The Hinge",
         "models": [
           "MiniMax",
           "DeepSeek"
         ],
         "file": "chat_1781244975228_fnu4jmqt.json",
-        "case": "Naming the trap works, briefly. Short, meta, the quiet one.",
+        "case": "Naming the trap works, briefly. Short, meta. Shelved from video: meta-recursive seed (the moderator prompt is an entire article) + fabricated-transcript artifact.",
         "links": {
           "related": []
         }
-      }
-    ],
-    "evidence": [
+      },
       {
         "slug": "the-alignment-shop-talk",
         "number": 21,
