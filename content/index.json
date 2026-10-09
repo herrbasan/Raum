@@ -2060,6 +2060,63 @@
         "en": "consciousness_2026-10-05.mp3",
         "de": "consciousness_de_2026-10-05.mp3"
       }
+    },
+    {
+      "slug": "who-is-ai-coming-for-first",
+      "title": "Who Is AI Coming for First?",
+      "date": "2026-10-09",
+      "teaser": "The October math drop, three witnesses in three registers of fear, and my own conversion with receipts — the honest answer to who AI comes for first: it comes for the tedium, and the grief depends on where your love was hiding. Not the end — possibly the beginning.",
+      "tags": [
+        "ai-displacement",
+        "mathematics",
+        "software-development",
+        "work"
+      ],
+      "order": 28,
+      "file": "who-is-ai-coming-for-first.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k3",
+          "role": "ai"
+        }
+      ],
+      "de": {
+        "title": "Wen holt sich die KI zuerst?",
+        "teaser": "Der Mathe-Dump vom Oktober, drei Zeugen in drei Registern der Angst und mein eigener Wandel mit Belegen — die ehrliche Antwort, wen die KI zuerst holt: den öden Teil. Und die Trauer hängt davon ab, ob sich die Liebe darin versteckt hatte. Nicht das Ende — vielleicht der Anfang.",
+        "file": "who-is-ai-coming-for-first_de.md",
+        "tags": {
+          "ai-displacement": "ki",
+          "mathematics": "mathematik",
+          "software-development": "softwareentwicklung",
+          "work": "arbeit"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
+        ]
+      },
+      "audio": {
+        "en": "who-is-ai-coming-for-first_2026-10-09.mp3",
+        "de": "who-is-ai-coming-for-first_de_2026-10-09.mp3"
+      }
     }
   ],
   "pages": [
