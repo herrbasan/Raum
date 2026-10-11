@@ -266,7 +266,7 @@ rather than hardcoded to `posts[]`:
 - `Site.postSection(key)` resolves `{ key, base, dir, frag, posts }`. `dir` is the `content/` subfolder (`machine/posts`), which is what keeps images and raw-MD links per section. `frag` is the lead fragment name (`machine-lead`).
 - **Adding a section needs no route code**: a manifest object plus a `<name>-lead` fragment. `tools/build.mjs` and `buildLlmsTxt` iterate the sections; `pages.mjs` builds the index from the same list.
 - Section posts are still BlogPosting, `isPartOf` the section's own `#blog` @id, and get their own hreflang alternates and `<link rel="alternate" type="text/markdown">`.
-- `series` and `related` stay main-blog-scoped: a section post that names `links.related` resolves those slugs against `manifest.posts`, which is the correct target for a cross-link.
+- `series` stays main-blog-scoped (only the main blog has series). `related` resolves across *all* post sections: `findPost`/`postSectionOf` in `tools/lib/pages.mjs` locate the slug wherever it lives, so a section post can name a same-section companion (a machine piece pointing at `the-machine`, 2026-10-11) as well as a main-blog essay.
 - A hero that is not `_hero.webp` (an SVG diagram) gets no card from its name, so the manifest entry declares `image` explicitly and the build asserts that file exists; the card is produced by `tools/make-og-cards.mjs`'s `SVG_CARDS` list (ImageMagick, scale-to-fit letterboxed). The value may be `card.jpg` or `images/card.jpg` — both normalise.
 
 ### 6.1 Manifest structure (`content/index.json`)
