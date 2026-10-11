@@ -1055,14 +1055,22 @@ ${this.footer(lang)}
 		</nav>`;
 	}
 
+	// A related slug may point into any post section — a machine piece names
+	// another machine piece, or a main-blog essay — so resolve both the post and
+	// the section it lives in; the href has to carry the section's base path.
+	findPost(slug) {
+		const key = this.postSectionOf(slug);
+		return key ? (this.postSection(key).posts.find((x) => x.slug === slug) || null) : null;
+	}
+
 	relatedNav(post, lang) {
 		const rel = (post.links?.related || []).filter(Boolean);
 		if (!rel.length) return '';
 		const items = rel.map((slug) => {
-			const p = this.manifest.posts.find((x) => x.slug === slug);
+			const p = this.findPost(slug);
 			if (!p) return '';
 			const title = lang === 'de' && p.de ? p.de.title : p.title;
-			return `<li><a href="${esc(this.postHref(slug, lang))}">${esc(title)}</a></li>`;
+			return `<li><a href="${esc(this.postHref(slug, lang, this.postSectionOf(slug)))}">${esc(title)}</a></li>`;
 		}).join('');
 		return `
 		<nav class="related-nav">

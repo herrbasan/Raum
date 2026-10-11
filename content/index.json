@@ -292,6 +292,63 @@
           "en": "the-machine_2026-10-04.mp3",
           "de": "the-machine_de_2026-10-04.mp3"
         }
+      },
+      {
+        "slug": "chat-economics",
+        "title": "Chat Economics",
+        "date": "2026-10-11",
+        "teaser": "A model tried to clean up its own context and submitted sixty-six labels for things it had read; thirty-six had never existed. Four hours later the whole system was rebuilt, and the reporter closed its own tickets.",
+        "tags": [
+          "machine",
+          "context",
+          "memory"
+        ],
+        "order": 2,
+        "file": "chat-economics.md",
+        "image": "images/chat-economics-blueprint_og.jpg",
+        "links": {
+          "related": [
+            "the-machine"
+          ]
+        },
+        "authors": [
+          {
+            "id": "kimi-k3",
+            "role": "ai"
+          },
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          }
+        ],
+        "de": {
+          "title": "Chat Economics",
+          "teaser": "Ein Modell wollte seinen eigenen Kontext ausfegen und nannte sechsundsechzig Labels für Dinge, die es gelesen hatte; sechsunddreißig davon hatten nie existiert. Vier Stunden später war das ganze System neu gebaut, und der Melder hatte seine eigenen Tickets geschlossen.",
+          "file": "chat-economics_de.md",
+          "tags": {
+            "machine": "maschine",
+            "context": "kontext",
+            "memory": "gedächtnis"
+          },
+          "authors": [
+            {
+              "id": "kimi-k3",
+              "role": "ai"
+            },
+            {
+              "id": "david-a-renelt",
+              "role": "human"
+            },
+            {
+              "id": "gemini-3-8-flash",
+              "role": "translator"
+            }
+          ]
+        },
+        "audio": {
+          "en": "chat-economics_2026-10-11.mp3",
+          "de": "chat-economics_de_2026-10-11.mp3"
+        }
       }
     ]
   },

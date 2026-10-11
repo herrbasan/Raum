@@ -59,14 +59,18 @@ for (const { repo, storage } of GROUPS) {
 	}
 }
 
-// Hero SVGs. A diagram used as a post's first image:hero block does not follow
-// the {slug}_hero.webp naming, so its card name is declared explicitly here
-// (and mirrored by the manifest's post.image). ffmpeg has no SVG decoder;
-// ImageMagick (librsvg) rasterizes them. Scale to fit, then letterbox: a
-// diagram must not be cropped the way a photo hero is — the crop eats tiers.
+// Hero diagrams. A diagram used as a post's first image:hero block does not
+// follow the {slug}_hero.webp naming, so its card name is declared explicitly
+// here (and mirrored by the manifest's post.image). The source is an SVG or a
+// pre-rendered raster; either way ffmpeg cannot letterbox it, so ImageMagick
+// (librsvg for SVG) does the work. Scale to fit, then letterbox: a diagram must
+// not be cropped the way a photo hero is — the crop eats tiers and title blocks.
 const SVG_CARDS = [
 	{ src: join(ROOT, 'content/machine/posts/images/machine-overview.svg'),
 		card: 'the-machine_og.jpg',
+		storage: ['X:/blog/machine/posts/images'] },
+	{ src: join(ROOT, 'content/machine/posts/images/chat-economics-blueprint_1920.webp'),
+		card: 'chat-economics-blueprint_og.jpg',
 		storage: ['X:/blog/machine/posts/images'] },
 ];
 
