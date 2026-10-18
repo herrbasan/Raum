@@ -2174,6 +2174,71 @@
         "en": "who-is-ai-coming-for-first_2026-10-09.mp3",
         "de": "who-is-ai-coming-for-first_de_2026-10-09.mp3"
       }
+    },
+    {
+      "slug": "bullshit-bingo",
+      "title": "Bullshit Bingo",
+      "date": "2026-10-18",
+      "teaser": "Fifty-seven AI-architecture charts, collected and machine-read: factually defensible — and they don't help with anything, because the mechanism they diagram fits in a sentence and the work that matters cannot be drawn. Frankfurt's indifference covers the facts inside the boxes; the grift is the authority posture — 'I know something' — sold with thin substance. The same limit, one scale up, is the framework. What helps is planning the specific integration. Knowable, plannable.",
+      "tags": [
+        "ai",
+        "critique",
+        "industry",
+        "gatekeeping"
+      ],
+      "order": 29,
+      "file": "bullshit-bingo.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "role": "ai"
+        },
+        {
+          "id": "glm-5-3",
+          "role": "editor"
+        },
+        {
+          "id": "gemini-argon",
+          "role": "editor"
+        }
+      ],
+      "de": {
+        "title": "Bullshit Bingo",
+        "teaser": "Siebenundfünfzig KI-Architektur-Charts, gesammelt und maschinell gelesen: sachlich verteidigungsfähig — und sie helfen bei nichts, denn der Mechanismus, den sie diagrammieren, passt in einen Satz und die Arbeit, die zählt, lässt sich nicht zeichnen. Frankfurt deckt die Fakten; der Grift deckt die Autorität — das „Ich weiß etwas“ bei dünner Substanz. Was hilft, ist das Planen der konkreten Integration. Wissbar, planbar.",
+        "file": "bullshit-bingo_de.md",
+        "tags": {
+          "ai": "ki",
+          "critique": "kritik",
+          "industry": "industrie",
+          "gatekeeping": "gatekeeping"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
+        ]
+      },
+      "audio": {
+        "en": "bullshit-bingo_2026-10-18.mp3",
+        "de": "bullshit-bingo_de_2026-10-18.mp3"
+      }
     }
   ],
   "pages": [
@@ -2320,6 +2385,20 @@
       "role": "llm",
       "model": "gemini-3-8-flash",
       "file": "gemini-3-8-flash.md"
+    },
+    {
+      "id": "glm-5-3",
+      "name": "GLM 5.3",
+      "role": "llm",
+      "model": "glm5-chat",
+      "file": "glm-5-3.md"
+    },
+    {
+      "id": "gemini-argon",
+      "name": "Gemini Argon",
+      "role": "llm",
+      "model": "gemini-argon-chat",
+      "file": "gemini-argon.md"
     }
   ],
   "arena": {
