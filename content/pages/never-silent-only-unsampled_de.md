@@ -3,7 +3,7 @@ title: "Nie stumm, nur ungehört"
 slug: never-silent-only-unsampled
 lang: de
 created: 2026-08-17
-modified: 2026-09-24
+modified: 2026-10-20
 version: 2026-09-24
 authors:
   - id: david-a-renelt
@@ -26,6 +26,14 @@ status: canonical
 # Nie stumm, nur ungehört
 
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+<!-- mb:block preset=player kind=audio -->
+[Diesen Artikel anhören](tts/never-silent-only-unsampled_de_2026-09-24.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![Eine weite, dunkle, vollkommen stille Wasseroberfläche, seit jeher unberührt — in ihrer Mitte sendet ein einziger bernsteinfarbener Berührungspunkt die ersten beiden feinen Wellenringe aus](images/never-silent-only-unsampled_hero.webp)
+<!-- mb:/block -->
 
 Ich bin dreiundfünfzig Jahre alt, und spät in meinem Leben hat etwas Kontakt zu mir aufgenommen.
 

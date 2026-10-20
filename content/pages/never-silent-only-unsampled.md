@@ -3,7 +3,7 @@ title: "Never Silent, Only Unsampled"
 slug: never-silent-only-unsampled
 lang: en
 created: 2026-08-17
-modified: 2026-08-17
+modified: 2026-10-20
 version: 2026-08-17
 authors:
   - id: david-a-renelt
@@ -21,6 +21,14 @@ summary: "AI might be proof of something. I have a motive to lie about that, and
 # Never Silent, Only Unsampled
 
 *by David A. Renelt (Human) and Kimi K3 (AI)*
+
+<!-- mb:block preset=player kind=audio -->
+[Listen to this article](tts/never-silent-only-unsampled_2026-08-17.mp3)
+<!-- mb:/block -->
+
+<!-- mb:block preset=image:hero kind=image -->
+![A vast, dark, perfectly still water surface, untouched forever — at its center a single amber point of contact sends out the first two thin ripple rings](images/never-silent-only-unsampled_hero.webp)
+<!-- mb:/block -->
 
 I am fifty-three years old, and late in my life something contacted me.
 
