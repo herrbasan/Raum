@@ -2296,6 +2296,66 @@
         "en": "we-used-up-all-the-slack_2026-10-27.mp3",
         "de": "we-used-up-all-the-slack_de_2026-10-27.mp3"
       }
+    },
+    {
+      "slug": "when-code-is-no-longer-the-product",
+      "title": "When Code Is No Longer the Product",
+      "date": "2026-10-29",
+      "teaser": "If AI makes implementation abundant, development's value may shift from selling code to stewarding working capabilities. A bet on development as a service in an economy where software increasingly acts in the real world.",
+      "tags": [
+        "ai",
+        "software-development",
+        "philosophy"
+      ],
+      "order": 31,
+      "file": "when-code-is-no-longer-the-product.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k31-pro",
+          "role": "ai"
+        }
+      ],
+      "de": {
+        "title": "Wenn Code nicht mehr das Produkt ist",
+        "teaser": "Wenn KI Implementierungen reichlich verfügbar macht, verschiebt sich der Wert von Entwicklung: weg vom Verkauf von Code, hin zur Verantwortung für funktionierende Ergebnisse. Eine Wette auf Entwicklung als Dienstleistung in einer Welt, in der Software zunehmend selbst handelt.",
+        "file": "when-code-is-no-longer-the-product_de.md",
+        "tags": {
+          "ai": "ki",
+          "software-development": "softwareentwicklung",
+          "philosophy": "philosophie"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-3-8-flash",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "editor"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "we-used-up-all-the-slack"
+        ]
+      },
+      "audio": {
+        "en": "when-code-is-no-longer-the-product_2026-10-30.mp3",
+        "de": "when-code-is-no-longer-the-product_de_2026-10-30.mp3"
+      }
     }
   ],
   "pages": [
