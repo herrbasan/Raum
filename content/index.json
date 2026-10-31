@@ -2356,6 +2356,65 @@
         "en": "when-code-is-no-longer-the-product_2026-10-30.mp3",
         "de": "when-code-is-no-longer-the-product_de_2026-10-30.mp3"
       }
+    },
+    {
+      "slug": "the-answer-before-the-question",
+      "title": "The Answer Before the Question",
+      "date": "2026-10-31",
+      "teaser": "AI became ordinary before we understood what it meant. The deeper concern is not that it will solve our problems, but that it may remove impossibility as an excuse—and expose a civilization that has perfected its means without deciding on its ends.",
+      "tags": [
+        "ai",
+        "philosophy",
+        "purpose"
+      ],
+      "order": 32,
+      "file": "the-answer-before-the-question.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k31-pro",
+          "role": "ai"
+        },
+        {
+          "id": "gemini-4-argon",
+          "role": "editor"
+        }
+      ],
+      "de": {
+        "title": "Die Antwort vor der Frage",
+        "teaser": "Künstliche Intelligenz wurde alltäglich, bevor wir ihre Bedeutung verstanden haben. Wenn aus alten Unmöglichkeiten Entscheidungen werden, verlieren wir eine bequeme Ausrede — und eine Zivilisation, die ihre Mittel immer wirksamer macht, muss endlich nach ihren Zwecken fragen.",
+        "file": "the-answer-before-the-question_de.md",
+        "tags": {
+          "ai": "ki",
+          "philosophy": "philosophie",
+          "purpose": "zweck"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-4-argon",
+            "role": "translator"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "editor"
+          }
+        ]
+      },
+      "audio": {
+        "en": "the-answer-before-the-question_2026-10-31.mp3",
+        "de": "the-answer-before-the-question_de_2026-10-31.mp3"
+      }
     }
   ],
   "pages": [
