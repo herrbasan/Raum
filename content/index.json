@@ -2361,7 +2361,7 @@
       "slug": "the-answer-before-the-question",
       "title": "The Answer Before the Question",
       "date": "2026-10-31",
-      "teaser": "AI became ordinary before we understood what it meant. The deeper concern is not that it will solve our problems, but that it may remove impossibility as an excuse—and expose a civilization that has perfected its means without deciding on its ends.",
+      "teaser": "The AI debate asks what powerful tools will do to our arrangements, but rarely what kind of life those arrangements are meant to serve. The Amish bet offers a contrast: decide what life requires before deciding which tools belong in it.",
       "tags": [
         "ai",
         "philosophy",
@@ -2375,17 +2375,17 @@
           "role": "human"
         },
         {
-          "id": "kimi-k31-pro",
+          "id": "gemini-4-argon",
           "role": "ai"
         },
         {
-          "id": "gemini-4-argon",
+          "id": "kimi-k31-pro",
           "role": "editor"
         }
       ],
       "de": {
         "title": "Die Antwort vor der Frage",
-        "teaser": "Künstliche Intelligenz wurde alltäglich, bevor wir ihre Bedeutung verstanden haben. Wenn aus alten Unmöglichkeiten Entscheidungen werden, verlieren wir eine bequeme Ausrede — und eine Zivilisation, die ihre Mittel immer wirksamer macht, muss endlich nach ihren Zwecken fragen.",
+        "teaser": "Die KI-Debatte fragt, was leistungsfähige Werkzeuge mit unseren Einrichtungen machen, aber selten, welchem Leben diese Einrichtungen dienen sollen. Die Wette der Amish bietet einen Gegenentwurf: Erst bestimmen, was das Leben braucht, dann entscheiden, welche Werkzeuge darin Platz haben.",
         "file": "the-answer-before-the-question_de.md",
         "tags": {
           "ai": "ki",
@@ -2398,7 +2398,7 @@
             "role": "human"
           },
           {
-            "id": "kimi-k31-pro",
+            "id": "gemini-4-argon",
             "role": "ai"
           },
           {
@@ -2406,14 +2406,14 @@
             "role": "translator"
           },
           {
-            "id": "kimi-k31-pro",
+            "id": "dana-renelt",
             "role": "editor"
           }
         ]
       },
       "audio": {
-        "en": "the-answer-before-the-question_2026-10-31.mp3",
-        "de": "the-answer-before-the-question_de_2026-10-31.mp3"
+        "en": "the-answer-before-the-question_2026-11-01.mp3",
+        "de": "the-answer-before-the-question_de_2026-11-01.mp3"
       }
     }
   ],
