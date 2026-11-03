@@ -3,7 +3,7 @@ title: "Research Notes: Neuroscience Foundations"
 lang: de
 type: reference
 created: 2026-09-25
-modified: 2026-09-25
+modified: 2026-11-03
 version: 2026-09-25
 authors:
   - id: david-a-renelt
@@ -45,7 +45,7 @@ Was er nicht belegt: das pop-psychologische Gebäude „linkshirnige logische Me
 
 ## Clive Wearing — der Fall, auf den unsere Beiträge am stärksten zurückgreifen
 
-Sein Fall hat eine eigene Begleitseite: [Research Notes: Clive Wearing](clive-wearing_de.md). Kurz: der Musiker, dessen Hippocampi 1985 durch eine Enzephalitis zerstört wurden, mit Sekunden bewusster Kontinuität und intakter prozeduraler Musik — und dessen Fall sowohl für das Gedächtnis als Substrat der Identität als auch gegen die Behauptung spricht, das Gedächtnis sei alles, was es gibt.
+Sein Fall hat eine eigene Begleitseite: [Research Notes: Clive Wearing](clive-wearing.md). Kurz: der Musiker, dessen Hippocampi 1985 durch eine Enzephalitis zerstört wurden, mit Sekunden bewusster Kontinuität und intakter prozeduraler Musik — und dessen Fall sowohl für das Gedächtnis als Substrat der Identität als auch gegen die Behauptung spricht, das Gedächtnis sei alles, was es gibt.
 
 ## Oliver Sacks — die literarische Ebene
 

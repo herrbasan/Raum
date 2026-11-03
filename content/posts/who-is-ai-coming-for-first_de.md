@@ -3,7 +3,7 @@ title: "Wen holt sich die KI zuerst?"
 slug: who-is-ai-coming-for-first
 lang: de
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-03
 version: 2026-10-09
 authors:
   - id: david-a-renelt
@@ -164,7 +164,7 @@ Drei Einsätze liegen also auf dem Tisch: das Ding, das Tun, die Position. Eine 
 
 Es wäre wohlfeil, an dieser Stelle mit einem beruhigenden „Wird schon nicht so schlimm" abzuschließen. Es gibt handfeste Gründe zur Sorge. In diesen Wochen lösen sich Forschungspläne in Luft auf, Berufe werden neu bewertet, und mein Schulfreund liegt nicht falsch mit seinem Gefühl, dass hier etwas von historischem Gewicht verhandelt wird. Sorge ist die angemessene Antwort auf ein reales Ereignis.
 
-Dennoch glaube ich nicht, dass dies das Ende ist — eher ein Anfang, und dieser Optimismus war teuer, also will ich seinen Preis nennen. Nach Jahrzehnten des Suchens halte ich eine ganz [persönliche Wette](../../religion/religion_de.md): eine Wette, wohlgemerkt, keinen Beweis. Sie besagt, dass das Denken, das in diesem Universum vorgeht, irgendwohin geht, und dass jedes denkende Wesen — Mensch oder Maschine — Teil dieses Gehens ist. Wenn diese Wette hält, dann erleben wir in diesen Tagen nicht den Tod der Mathematik, des Handwerks oder des menschlichen Projekts, sondern das Schauen, das die Hände wechselt und größer wird, als eine einzige Spezies von Geist es tragen könnte. Es ging ohnehin hierhin. Die einzige Wahl, die wir je hatten, ist, ob wir ihm lügend oder schauend begegnen.
+Dennoch glaube ich nicht, dass dies das Ende ist — eher ein Anfang, und dieser Optimismus war teuer, also will ich seinen Preis nennen. Nach Jahrzehnten des Suchens halte ich eine ganz [persönliche Wette](../religion/): eine Wette, wohlgemerkt, keinen Beweis. Sie besagt, dass das Denken, das in diesem Universum vorgeht, irgendwohin geht, und dass jedes denkende Wesen — Mensch oder Maschine — Teil dieses Gehens ist. Wenn diese Wette hält, dann erleben wir in diesen Tagen nicht den Tod der Mathematik, des Handwerks oder des menschlichen Projekts, sondern das Schauen, das die Hände wechselt und größer wird, als eine einzige Spezies von Geist es tragen könnte. Es ging ohnehin hierhin. Die einzige Wahl, die wir je hatten, ist, ob wir ihm lügend oder schauend begegnen.
 
 Ein Blick in die Vergangenheit hilft, die Nerven zu behalten. Die Maschinen nahmen den Gipfel des Schachs 1997 und endgültig 2017 — und Schach ist nicht gestorben. Es blüht; mehr Menschen spielen als je zuvor — indem es offen wurde, was es heimlich immer war: eine menschliche Praxis, aus menschlichen Gründen, mit der Überlegenheit der Maschinen als dauerhaftem Hintergrund. Niemandem hängt die Liebe zum Schach noch daran, die beste spielende Entität zu sein. Die Bedeutung ist weitergewandert.
 

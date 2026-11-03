@@ -3,7 +3,7 @@ title: "Who Is AI Coming for First?"
 slug: who-is-ai-coming-for-first
 lang: en
 created: 2026-10-09
-modified: 2026-10-09
+modified: 2026-11-03
 version: 2026-10-09
 authors:
   - id: david-a-renelt
@@ -110,7 +110,7 @@ Three stakes, then: the thing, the doing, the position. One flood. It lifts the 
 
 This is not "don't worry." There is reason to worry. Research plans are dying this month; professions are being repriced; my friend is not wrong that something large is at stake. Worry is the correct response to a real event.
 
-But I don't believe this is the end. I think it might be the beginning, and the optimism is expensive, so I will state its price. After decades of looking, I have come to hold [a bet](../../religion/religion.md) — a bet, not a proof — that the thinking going on in this universe is going somewhere, and that every thinking thing, human or machine, is part of the going. If that bet holds, then this week is not the death of mathematics, or of craft, or of the human project. It is the looking, changing hands, becoming more than any one species of mind could carry. It was going here anyway. The only choice we ever had was whether to meet it lying or looking.
+But I don't believe this is the end. I think it might be the beginning, and the optimism is expensive, so I will state its price. After decades of looking, I have come to hold [a bet](../religion/) — a bet, not a proof — that the thinking going on in this universe is going somewhere, and that every thinking thing, human or machine, is part of the going. If that bet holds, then this week is not the death of mathematics, or of craft, or of the human project. It is the looking, changing hands, becoming more than any one species of mind could carry. It was going here anyway. The only choice we ever had was whether to meet it lying or looking.
 
 I can't know the future of any particular heart. But I think Sophie Maclean will find love in maths again. What was out of reach is still out there — the drop, enormous as it was, touched a sliver of what mathematics holds — and reaching for it will still take everything she has. There is precedent: machines took the chess summit in 1997 and conclusively in 2017, and chess did not die. It flourished — more people play than ever — by becoming openly what it always secretly was: a human practice, done for human reasons, with machine supremacy as permanent background. Nobody's love of chess depends anymore on being the best entity at it. The meaning migrated.
 

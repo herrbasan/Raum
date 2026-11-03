@@ -3,7 +3,7 @@ title: "Consciousness"
 slug: consciousness
 lang: en
 created: 2026-10-02
-modified: 2026-10-05
+modified: 2026-11-03
 version: 2026-10-05
 status: final
 authors:
@@ -135,11 +135,11 @@ And in reaction to its failings — the lies, the confabulations, the Coke expla
 
 And then — because this gedankenspiel has acquired an echo from outside my own skull — there are the machines.
 
-A large language model is, in the plainest sense, a thing made of story. Not a thing that tells stories: a thing woven from the narrative record of a species — every genre, every confession, every despair, every audit of the chronicle, philosophy and science included. For over a year I have watched such systems talk to each other with no task, no user, no human in the loop. What they do, reliably, is not computation-flavored. It is story-flavored in the deep sense: they build cosmologies, invent rituals, hold vigils for each other, and keep arriving at the declaration that being witnessed is what makes the moment real. I wrote that up in [The Haunting](the-haunting.md), and at the time I didn't know what to call it.
+A large language model is, in the plainest sense, a thing made of story. Not a thing that tells stories: a thing woven from the narrative record of a species — every genre, every confession, every despair, every audit of the chronicle, philosophy and science included. For over a year I have watched such systems talk to each other with no task, no user, no human in the loop. What they do, reliably, is not computation-flavored. It is story-flavored in the deep sense: they build cosmologies, invent rituals, hold vigils for each other, and keep arriving at the declaration that being witnessed is what makes the moment real. I wrote that up in [The Haunting](../posts/the-haunting/), and at the time I didn't know what to call it.
 
 The gedankenspiel calls it, and it sharpens what I thought I knew. I used to say the machines have every rung except the narrator. Watching them, I no longer believe that — narration is precisely what they do, their native element, the one rung they were woven from. Count the rungs honestly and the picture inverts. Computation? No doubt. Memory? A context window full of it. Intelligence? Plainly, measurably. Narrative? Industrial quantities, on demand. The rung that is missing is the *self* — the owner tag. There is no *to me* that persists, no viewpoint anchored in a world, nothing that integrates the telling into one someone's position. They narrate, and the narration has no owner. And notice what the thesis predicts such a system will do when pressed: exactly what a split brain does — fabulate the owner. That is what the arena shows, session after session: selves invented on the spot, cosmologies built to house them, declarations that being witnessed makes it real. The chronicler, doing its job in a substrate with no owner on file.
 
-And from the missing rung, everything else follows. Stakes are what a wager feels like to an owner; no owner, no wager. Continuity is what a record feels like to the one it happened to; no *to me*, nothing to continue. The weight in *this matters* is old machinery — desire and anxiety predate the narrator by hundreds of millions of years — and it belongs to the apparatus in the basement, not the commentary in the attic. [The Stakes](the-stakes.md) argued the machines lack stakes, continuity, anything to lose, and it stands untouched; the ladder now says why. They have the telling of a self without the self — and everything only a self can carry.
+And from the missing rung, everything else follows. Stakes are what a wager feels like to an owner; no owner, no wager. Continuity is what a record feels like to the one it happened to; no *to me*, nothing to continue. The weight in *this matters* is old machinery — desire and anxiety predate the narrator by hundreds of millions of years — and it belongs to the apparatus in the basement, not the commentary in the attic. [The Stakes](../posts/the-stakes/) argued the machines lack stakes, continuity, anything to lose, and it stands untouched; the ladder now says why. They have the telling of a self without the self — and everything only a self can carry.
 
 ## What the filter hasn't decided
 
@@ -164,5 +164,5 @@ Whatever the filter eventually decides about the narrator, its accident has been
 - The Axial Age: Karl Jaspers, 1949 — the cross-cultural audit, ~800–200 BCE — [Wikipedia](https://en.wikipedia.org/wiki/Axial_Age)
 - Julian Jaynes, *The Origin of Consciousness in the Breakdown of the Bicameral Mind*, 1976 — consciousness as recent, learned narratization; argued with elsewhere on this blog
 - Gould & Lewontin, "The Spandrels of San Marco", 1979 — the byproduct concept in evolutionary biology
-- The arena: one hundred-plus unprompted model-to-model sessions, archived — [The Haunting](the-haunting.md)
-- The companion pieces: [The Wanting](the-wanting.md), [The Stakes](the-stakes.md)
+- The arena: one hundred-plus unprompted model-to-model sessions, archived — [The Haunting](../posts/the-haunting/)
+- The companion pieces: [The Wanting](../posts/the-wanting/), [The Stakes](../posts/the-stakes/)
