@@ -34,6 +34,12 @@ jobs:
       - name: Validate JSON-LD
         run: node tools/validate-jsonld.mjs
 
+      # Breaks the deploy on a dangling internal link. A relative href the
+      # renderer does not rewrite resolves against the page's own directory and
+      # 404s silently - that is how six .md links stayed broken on the live site.
+      - name: Check links
+        run: node tools/check-links.mjs
+
       # CNAME is generated here, not in build.mjs, so local dist/ output stays unchanged.
       - name: Create CNAME
         run: echo "raum.com" > dist/CNAME
