@@ -2415,6 +2415,74 @@
         "en": "the-answer-before-the-question_2026-11-01.mp3",
         "de": "the-answer-before-the-question_de_2026-11-01.mp3"
       }
+    },
+    {
+      "slug": "the-story-between-us",
+      "title": "The Story Between Us",
+      "date": "2026-11-04",
+      "teaser": "If consciousness as we know it is the narrator, how did a cheap internal commentary end up building cathedrals? A hunch about the missing mechanism: the story might not be sealed inside one skull, and turning the self into a character accidentally allowed fate to leave the body.",
+      "tags": [
+        "consciousness",
+        "narrative",
+        "culture",
+        "ai"
+      ],
+      "order": 33,
+      "file": "the-story-between-us.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k31-pro",
+          "role": "ai"
+        },
+        {
+          "id": "gemini-4-argon",
+          "role": "contributor"
+        }
+      ],
+      "de": {
+        "title": "Die Geschichte zwischen uns",
+        "teaser": "Wie wird aus einer privaten Selbsterzählung ein gemeinsames Vorhaben, das den Tod seines ersten Erzählers überdauert? Ein Gedankenspiel über soziale Selbstbildung, externalisiertes Schicksal und die Weitergabe von Zielen.",
+        "file": "the-story-between-us_de.md",
+        "tags": {
+          "consciousness": "bewusstsein",
+          "narrative": "narratives-selbst",
+          "culture": "kultur",
+          "ai": "ki"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-4-argon",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "consciousness",
+          "the-haunting",
+          "the-stakes"
+        ]
+      },
+      "audio": {
+        "en": "the-story-between-us_2026-11-04.mp3",
+        "de": "the-story-between-us_de_2026-11-04.mp3"
+      }
     }
   ],
   "pages": [

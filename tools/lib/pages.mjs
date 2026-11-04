@@ -148,6 +148,14 @@ export class Site {
 			if (!sec) throw new Error(`link "../posts/${slug}/" — no post with that slug in any section`);
 			return `href="${esc(this.postHref(slug, lang, sec))}"`;
 		});
+		// Same-folder post links (`x.md`, German `x_de.md`) are the other
+		// canonical post→post form. Note→note links have already been lifted to
+		// ../references/ by normalizeNoteLinks, so they cannot be captured here.
+		html = html.replace(/href="([a-z0-9-]+)(?:_de)?\.md"/g, (m, slug) => {
+			const sec = this.postSectionOf(slug);
+			if (!sec) return m;
+			return `href="${esc(this.postHref(slug, lang, sec))}"`;
+		});
 		// Other internal links (`../{id}/`): every post section, arena, and every
 		// manifest page. Arena keeps its original language — no DE tree — the same
 		// exception the chrome nav makes. An id that is none of those used to be
@@ -288,7 +296,7 @@ export class Site {
 	// sides of the corpus — and only for names that are actually notes.
 	normalizeNoteLinks(md) {
 		const notes = this.referenceIndex();
-		return md.replace(/\]\(([a-z0-9-]+)\.md\)/g,
+		return md.replace(/\]\(([a-z0-9-]+)(?:_de)?\.md\)/g,
 			(m, slug) => (notes.has(slug) ? `](../references/${slug}.md)` : m));
 	}
 
