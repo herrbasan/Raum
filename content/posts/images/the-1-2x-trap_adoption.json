@@ -1,0 +1,37 @@
+{
+  "caption": "The ceiling rises when the workflow and then the offer change.",
+  "header": [
+    "Level",
+    "What changes",
+    "What stays",
+    "Opportunity"
+  ],
+  "rows": [
+    [
+      "Assistance",
+      "Worker and tool",
+      "Workflow and queues",
+      "Faster tasks, bounded gains"
+    ],
+    [
+      "Reorganization",
+      "Routine path and handoffs",
+      "Judgment and responsibility",
+      "New cost and cycle time"
+    ],
+    [
+      "Reinvention",
+      "Product and market",
+      "Customer value and verification",
+      "Previously uneconomic offers"
+    ]
+  ],
+  "title": "Three levels of AI adoption",
+  "type": "table",
+  "weights": [
+    0.9,
+    1.35,
+    1.35,
+    1.4
+  ]
+}

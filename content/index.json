@@ -197,6 +197,10 @@
         "en": "translator",
         "de": "Übersetzung"
       },
+      "role_contributor": {
+        "en": "contributor",
+        "de": "Mitwirkung"
+      },
       "menu_label": {
         "en": "Menu",
         "de": "Menü"
@@ -2482,6 +2486,137 @@
       "audio": {
         "en": "the-story-between-us_2026-11-04.mp3",
         "de": "the-story-between-us_de_2026-11-04.mp3"
+      }
+    },
+    {
+      "slug": "the-1-2x-trap",
+      "title": "The 1.2x Trap",
+      "date": "2026-11-08",
+      "teaser": "Companies are adding AI to structures built for a large human workforce and collecting small productivity gains. The larger opportunity is to redesign production for step-change growth while business and politics together expand the purchasing power that growth requires.",
+      "tags": [
+        "ai",
+        "business",
+        "management",
+        "productivity",
+        "economics"
+      ],
+      "order": 34,
+      "file": "the-1-2x-trap.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k31-pro",
+          "role": "ai"
+        },
+        {
+          "id": "gemini-4-argon",
+          "role": "contributor"
+        }
+      ],
+      "de": {
+        "title": "Die 1,2-fach-Falle",
+        "teaser": "Wer KI nur an das bestehende Organigramm schraubt, beschleunigt vor allem den eigenen Papierkram. Der größere Hebel liegt in neuen Abläufen und Angeboten – doch daraus wird erst Wachstum, wenn Unternehmen und Politik gemeinsam auch die Kaufkraft sichern.",
+        "file": "the-1-2x-trap_de.md",
+        "tags": {
+          "ai": "ki",
+          "business": "unternehmen",
+          "management": "management",
+          "productivity": "produktivitaet",
+          "economics": "oekonomie"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-4-argon",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
+        ]
+      },
+      "links": {
+        "related": [
+          "why-the-fuck-not"
+        ]
+      },
+      "audio": {
+        "en": "the-1-2x-trap_2026-11-08.mp3",
+        "de": "the-1-2x-trap_de_2026-11-08.mp3"
+      }
+    },
+    {
+      "slug": "why-the-fuck-not",
+      "title": "Why the Fuck Not?",
+      "date": "2026-11-08",
+      "teaser": "AI could weaken the link between production and human labor, but abundance will not distribute itself. A serious ambition for equality, quality of life, health, and freedom requires us to distinguish physical and ecological limits from institutional choices and positional power.",
+      "tags": [
+        "ai",
+        "economics",
+        "philosophy",
+        "politics",
+        "progress"
+      ],
+      "order": 35,
+      "file": "why-the-fuck-not.md",
+      "authors": [
+        {
+          "id": "david-a-renelt",
+          "role": "human"
+        },
+        {
+          "id": "kimi-k31-pro",
+          "role": "ai"
+        },
+        {
+          "id": "gemini-4-argon",
+          "role": "contributor"
+        }
+      ],
+      "de": {
+        "title": "Why the Fuck Not?",
+        "teaser": "Künstliche Intelligenz könnte die Verbindung zwischen Produktion und menschlicher Arbeit lockern, aber Fülle verteilt sich nicht von selbst. Ein ernsthafter Anspruch auf Gleichheit, Lebensqualität, Gesundheit und Freiheit verlangt, physische und ökologische Grenzen von institutionellen Entscheidungen und positionaler Macht zu unterscheiden.",
+        "file": "why-the-fuck-not_de.md",
+        "tags": {
+          "ai": "ki",
+          "economics": "oekonomie",
+          "philosophy": "philosophie",
+          "politics": "politik",
+          "progress": "fortschritt"
+        },
+        "authors": [
+          {
+            "id": "david-a-renelt",
+            "role": "human"
+          },
+          {
+            "id": "kimi-k31-pro",
+            "role": "ai"
+          },
+          {
+            "id": "gemini-4-argon",
+            "role": "translator"
+          },
+          {
+            "id": "dana-renelt",
+            "role": "editor"
+          }
+        ]
+      },
+      "audio": {
+        "en": "why-the-fuck-not_2026-11-08.mp3",
+        "de": "why-the-fuck-not_de_2026-11-08.mp3"
       }
     }
   ],

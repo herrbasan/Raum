@@ -1,0 +1,49 @@
+{
+  "background": true,
+  "caption": "Einzeln vernünftige Kostensenkung kann die Kaufkraft untergraben, auf die alle angewiesen sind.",
+  "centre": "Die Nachfragefalle",
+  "edges": [
+    {
+      "from": "firms",
+      "to": "income"
+    },
+    {
+      "from": "income",
+      "to": "demand"
+    },
+    {
+      "from": "demand",
+      "to": "capacity"
+    },
+    {
+      "from": "capacity",
+      "to": "firms"
+    }
+  ],
+  "nodes": [
+    {
+      "detail": "Jede Entscheidung wirkt vernünftig",
+      "id": "firms",
+      "label": "Firmen senken Arbeitskosten"
+    },
+    {
+      "detail": "Weniger Lohneinkommen in der Breite",
+      "id": "income",
+      "label": "Einkommen schrumpfen"
+    },
+    {
+      "accent": true,
+      "detail": "Angebot trifft leere Portemonnaies",
+      "id": "demand",
+      "label": "Nachfrage fällt"
+    },
+    {
+      "detail": "Der Druck zum Sparen kehrt zurück",
+      "id": "capacity",
+      "label": "Kapazität liegt brach"
+    }
+  ],
+  "title": "Wenn jede Firma auf Kunden von anderswo wartet",
+  "type": "cycle",
+  "width": 1280
+}

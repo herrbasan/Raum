@@ -1,0 +1,39 @@
+{
+  "background": true,
+  "caption": "Die größeren Hebel liegen in neuen Abläufen und Angeboten.",
+  "header": [
+    "Stufe",
+    "Was sich ändert",
+    "Was bleibt",
+    "Möglichkeit"
+  ],
+  "rows": [
+    [
+      "Unterstützung",
+      "Arbeit und Werkzeug",
+      "Ablauf und Warteschlangen",
+      "Schneller, aber begrenzt"
+    ],
+    [
+      "Neuorganisation",
+      "Routine und Übergaben",
+      "Urteil und Verantwortung",
+      "Andere Kosten und Ablaufzeiten"
+    ],
+    [
+      "Neuerfindung",
+      "Angebot und Markt",
+      "Nutzen und Prüfung",
+      "Früher zu teure Angebote"
+    ]
+  ],
+  "title": "Drei Stufen der KI-Nutzung",
+  "type": "table",
+  "weights": [
+    0.95,
+    1.3,
+    1.35,
+    1.4
+  ],
+  "width": 1280
+}

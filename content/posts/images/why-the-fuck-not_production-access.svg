@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="418.2" viewBox="0 0 960 418.2" class="nc" role="img">
+<title>Production is not access</title>
+<desc>More output helps only when people retain a claim on it.</desc>
+<style>
+.nc,.nc text{font-family:var(--nc-font, Inter,"Segoe UI","DejaVu Sans",sans-serif)}
+svg{color-scheme:light dark}
+.nc-box,.nc-box-q,.nc-wire,.nc-rule,.nc-group{stroke-width:1}
+.nc-box,.nc-box-q{stroke-linejoin:round}
+.nc-group{fill:none;stroke-dasharray:4 4}
+.nc-wire{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.nc-wire-d{stroke-dasharray:5 5}
+.nc-shadow{filter:url(#nc-sh)}
+.nc .t-title{font-size:28px;font-weight:600}
+.nc .t-label{font-size:16px;font-weight:500}
+.nc .t-detail{font-size:14px;font-weight:400}
+.nc .t-edge{font-size:13px;font-weight:400}
+.nc .t-caption{font-size:14px;font-weight:400}
+.nc .t-group{font-size:12px;font-weight:600;letter-spacing:0.09em}
+.nc .t-value{font-size:14px;font-weight:500}
+.nc .t-number{font-size:26px;font-weight:600}
+.t-badge{font-size:12px;font-weight:600}
+.nc-bg{fill:rgb(255,255,255)}
+.nc-box{fill:rgb(255,255,255);stroke:rgb(188,188,188)}
+.nc-box-q{fill:none;stroke:rgb(188,188,188)}
+.nc-wire{stroke:rgb(106,106,106)}
+.nc-head{fill:rgb(106,106,106)}
+.nc-ink{fill:rgb(59,59,59)}
+.nc-dim{fill:rgb(124,124,124)}
+.nc-chip{fill:rgb(255,255,255)}
+.nc-rule{stroke:rgb(188,188,188)}
+.nc-group{stroke:rgb(188,188,188)}
+.nc-bar{fill:rgb(222,222,222)}
+.nc-bar-a{fill:rgb(59,125,221)}
+.nc .t-title{fill:rgb(59,59,59)}
+.nc-box.nc-tone-neutral{fill:rgb(255,255,255);stroke:rgb(188,188,188)}
+.nc-shape-neutral{fill:rgb(255,255,255);stroke:rgb(188,188,188)}
+.nc-soft-neutral{fill:rgb(255,255,255)}
+.nc-box.nc-tone-slate{fill:rgb(241,243,246);stroke:rgb(100,116,139)}
+.nc-shape-slate{fill:rgb(241,243,246);stroke:rgb(100,116,139)}
+.nc-soft-slate{fill:rgb(241,243,246)}
+.nc-box.nc-tone-blue{fill:rgb(238,244,253);stroke:rgb(59,125,221)}
+.nc-shape-blue{fill:rgb(238,244,253);stroke:rgb(59,125,221)}
+.nc-soft-blue{fill:rgb(238,244,253)}
+.nc-box.nc-tone-teal{fill:rgb(230,246,245);stroke:rgb(19,126,126)}
+.nc-shape-teal{fill:rgb(230,246,245);stroke:rgb(19,126,126)}
+.nc-soft-teal{fill:rgb(230,246,245)}
+.nc-box.nc-tone-green{fill:rgb(233,246,237);stroke:rgb(46,138,79)}
+.nc-shape-green{fill:rgb(233,246,237);stroke:rgb(46,138,79)}
+.nc-soft-green{fill:rgb(233,246,237)}
+.nc-box.nc-tone-amber{fill:rgb(255,247,226);stroke:rgb(176,123,17)}
+.nc-shape-amber{fill:rgb(255,247,226);stroke:rgb(176,123,17)}
+.nc-soft-amber{fill:rgb(255,247,226)}
+.nc-box.nc-tone-orange{fill:rgb(255,240,230);stroke:rgb(190,90,20)}
+.nc-shape-orange{fill:rgb(255,240,230);stroke:rgb(190,90,20)}
+.nc-soft-orange{fill:rgb(255,240,230)}
+.nc-box.nc-tone-red{fill:rgb(253,235,235);stroke:rgb(192,64,64)}
+.nc-shape-red{fill:rgb(253,235,235);stroke:rgb(192,64,64)}
+.nc-soft-red{fill:rgb(253,235,235)}
+.nc-box.nc-tone-purple{fill:rgb(244,238,253);stroke:rgb(120,70,190)}
+.nc-shape-purple{fill:rgb(244,238,253);stroke:rgb(120,70,190)}
+.nc-soft-purple{fill:rgb(244,238,253)}
+.nc-box.nc-tone-pink{fill:rgb(253,236,244);stroke:rgb(190,70,130)}
+.nc-shape-pink{fill:rgb(253,236,244);stroke:rgb(190,70,130)}
+.nc-soft-pink{fill:rgb(253,236,244)}
+.nc-fill-neutral{fill:rgb(124,124,124)}
+.nc-fill-slate{fill:rgb(100,116,139)}
+.nc-fill-blue{fill:rgb(59,125,221)}
+.nc-fill-teal{fill:rgb(19,126,126)}
+.nc-fill-green{fill:rgb(46,138,79)}
+.nc-fill-amber{fill:rgb(176,123,17)}
+.nc-fill-orange{fill:rgb(190,90,20)}
+.nc-fill-red{fill:rgb(192,64,64)}
+.nc-fill-purple{fill:rgb(120,70,190)}
+.nc-fill-pink{fill:rgb(190,70,130)}
+.nc-box.nc-tone-neutral-inv{fill:rgb(59,59,59);stroke:rgb(59,59,59)}
+.nc-shape-neutral-inv{fill:rgb(59,59,59);stroke:rgb(59,59,59)}
+.nc-box.nc-tone-slate-inv{fill:rgb(51,65,85);stroke:rgb(51,65,85)}
+.nc-shape-slate-inv{fill:rgb(51,65,85);stroke:rgb(51,65,85)}
+.nc-box.nc-tone-blue-inv{fill:rgb(37,99,181);stroke:rgb(37,99,181)}
+.nc-shape-blue-inv{fill:rgb(37,99,181);stroke:rgb(37,99,181)}
+.nc-box.nc-tone-teal-inv{fill:rgb(13,95,95);stroke:rgb(13,95,95)}
+.nc-shape-teal-inv{fill:rgb(13,95,95);stroke:rgb(13,95,95)}
+.nc-box.nc-tone-green-inv{fill:rgb(32,110,62);stroke:rgb(32,110,62)}
+.nc-shape-green-inv{fill:rgb(32,110,62);stroke:rgb(32,110,62)}
+.nc-box.nc-tone-amber-inv{fill:rgb(146,101,8);stroke:rgb(146,101,8)}
+.nc-shape-amber-inv{fill:rgb(146,101,8);stroke:rgb(146,101,8)}
+.nc-box.nc-tone-orange-inv{fill:rgb(154,66,10);stroke:rgb(154,66,10)}
+.nc-shape-orange-inv{fill:rgb(154,66,10);stroke:rgb(154,66,10)}
+.nc-box.nc-tone-red-inv{fill:rgb(160,42,42);stroke:rgb(160,42,42)}
+.nc-shape-red-inv{fill:rgb(160,42,42);stroke:rgb(160,42,42)}
+.nc-box.nc-tone-purple-inv{fill:rgb(91,45,150);stroke:rgb(91,45,150)}
+.nc-shape-purple-inv{fill:rgb(91,45,150);stroke:rgb(91,45,150)}
+.nc-box.nc-tone-pink-inv{fill:rgb(155,45,100);stroke:rgb(155,45,100)}
+.nc-shape-pink-inv{fill:rgb(155,45,100);stroke:rgb(155,45,100)}
+.nc-text-strong-neutral{fill:rgb(59,59,59)}
+.nc-text-strong-slate{fill:rgb(51,65,85)}
+.nc-text-strong-blue{fill:rgb(37,99,181)}
+.nc-text-strong-teal{fill:rgb(13,95,95)}
+.nc-text-strong-green{fill:rgb(32,110,62)}
+.nc-text-strong-amber{fill:rgb(146,101,8)}
+.nc-text-strong-orange{fill:rgb(154,66,10)}
+.nc-text-strong-red{fill:rgb(160,42,42)}
+.nc-text-strong-purple{fill:rgb(91,45,150)}
+.nc-text-strong-pink{fill:rgb(155,45,100)}
+.nc-on-strong{fill:rgb(255,255,255)}
+.nc-on-strong-dim{fill:rgb(226,226,226)}
+@media (prefers-color-scheme: dark){
+.nc-bg{fill:rgb(24,24,24)}
+.nc-box{fill:rgb(36,36,36);stroke:rgb(78,78,78)}
+.nc-box-q{fill:none;stroke:rgb(78,78,78)}
+.nc-wire{stroke:rgb(168,168,168)}
+.nc-head{fill:rgb(168,168,168)}
+.nc-ink{fill:rgb(230,230,230)}
+.nc-dim{fill:rgb(154,154,154)}
+.nc-chip{fill:rgb(24,24,24)}
+.nc-rule{stroke:rgb(78,78,78)}
+.nc-group{stroke:rgb(78,78,78)}
+.nc-bar{fill:rgb(58,58,58)}
+.nc-bar-a{fill:rgb(111,159,240)}
+.nc .t-title{fill:rgb(230,230,230)}
+.nc-box.nc-tone-neutral{fill:rgb(36,36,36);stroke:rgb(78,78,78)}
+.nc-shape-neutral{fill:rgb(36,36,36);stroke:rgb(78,78,78)}
+.nc-soft-neutral{fill:rgb(36,36,36)}
+.nc-box.nc-tone-slate{fill:rgb(34,39,47);stroke:rgb(148,163,184)}
+.nc-shape-slate{fill:rgb(34,39,47);stroke:rgb(148,163,184)}
+.nc-soft-slate{fill:rgb(34,39,47)}
+.nc-box.nc-tone-blue{fill:rgb(30,44,76);stroke:rgb(111,159,240)}
+.nc-shape-blue{fill:rgb(30,44,76);stroke:rgb(111,159,240)}
+.nc-soft-blue{fill:rgb(30,44,76)}
+.nc-box.nc-tone-teal{fill:rgb(18,46,46);stroke:rgb(80,190,190)}
+.nc-shape-teal{fill:rgb(18,46,46);stroke:rgb(80,190,190)}
+.nc-soft-teal{fill:rgb(18,46,46)}
+.nc-box.nc-tone-green{fill:rgb(24,46,31);stroke:rgb(94,196,132)}
+.nc-shape-green{fill:rgb(24,46,31);stroke:rgb(94,196,132)}
+.nc-soft-green{fill:rgb(24,46,31)}
+.nc-box.nc-tone-amber{fill:rgb(52,42,20);stroke:rgb(224,178,74)}
+.nc-shape-amber{fill:rgb(52,42,20);stroke:rgb(224,178,74)}
+.nc-soft-amber{fill:rgb(52,42,20)}
+.nc-box.nc-tone-orange{fill:rgb(54,33,18);stroke:rgb(232,150,88)}
+.nc-shape-orange{fill:rgb(54,33,18);stroke:rgb(232,150,88)}
+.nc-soft-orange{fill:rgb(54,33,18)}
+.nc-box.nc-tone-red{fill:rgb(56,28,28);stroke:rgb(232,120,120)}
+.nc-shape-red{fill:rgb(56,28,28);stroke:rgb(232,120,120)}
+.nc-soft-red{fill:rgb(56,28,28)}
+.nc-box.nc-tone-purple{fill:rgb(40,30,62);stroke:rgb(170,140,245)}
+.nc-shape-purple{fill:rgb(40,30,62);stroke:rgb(170,140,245)}
+.nc-soft-purple{fill:rgb(40,30,62)}
+.nc-box.nc-tone-pink{fill:rgb(54,26,42);stroke:rgb(232,140,190)}
+.nc-shape-pink{fill:rgb(54,26,42);stroke:rgb(232,140,190)}
+.nc-soft-pink{fill:rgb(54,26,42)}
+.nc-fill-neutral{fill:rgb(154,154,154)}
+.nc-fill-slate{fill:rgb(148,163,184)}
+.nc-fill-blue{fill:rgb(111,159,240)}
+.nc-fill-teal{fill:rgb(80,190,190)}
+.nc-fill-green{fill:rgb(94,196,132)}
+.nc-fill-amber{fill:rgb(224,178,74)}
+.nc-fill-orange{fill:rgb(232,150,88)}
+.nc-fill-red{fill:rgb(232,120,120)}
+.nc-fill-purple{fill:rgb(170,140,245)}
+.nc-fill-pink{fill:rgb(232,140,190)}
+.nc-box.nc-tone-neutral-inv{fill:rgb(230,230,230);stroke:rgb(230,230,230)}
+.nc-shape-neutral-inv{fill:rgb(230,230,230);stroke:rgb(230,230,230)}
+.nc-box.nc-tone-slate-inv{fill:rgb(148,163,184);stroke:rgb(148,163,184)}
+.nc-shape-slate-inv{fill:rgb(148,163,184);stroke:rgb(148,163,184)}
+.nc-box.nc-tone-blue-inv{fill:rgb(111,159,240);stroke:rgb(111,159,240)}
+.nc-shape-blue-inv{fill:rgb(111,159,240);stroke:rgb(111,159,240)}
+.nc-box.nc-tone-teal-inv{fill:rgb(80,190,190);stroke:rgb(80,190,190)}
+.nc-shape-teal-inv{fill:rgb(80,190,190);stroke:rgb(80,190,190)}
+.nc-box.nc-tone-green-inv{fill:rgb(94,196,132);stroke:rgb(94,196,132)}
+.nc-shape-green-inv{fill:rgb(94,196,132);stroke:rgb(94,196,132)}
+.nc-box.nc-tone-amber-inv{fill:rgb(224,178,74);stroke:rgb(224,178,74)}
+.nc-shape-amber-inv{fill:rgb(224,178,74);stroke:rgb(224,178,74)}
+.nc-box.nc-tone-orange-inv{fill:rgb(232,150,88);stroke:rgb(232,150,88)}
+.nc-shape-orange-inv{fill:rgb(232,150,88);stroke:rgb(232,150,88)}
+.nc-box.nc-tone-red-inv{fill:rgb(232,120,120);stroke:rgb(232,120,120)}
+.nc-shape-red-inv{fill:rgb(232,120,120);stroke:rgb(232,120,120)}
+.nc-box.nc-tone-purple-inv{fill:rgb(170,140,245);stroke:rgb(170,140,245)}
+.nc-shape-purple-inv{fill:rgb(170,140,245);stroke:rgb(170,140,245)}
+.nc-box.nc-tone-pink-inv{fill:rgb(232,140,190);stroke:rgb(232,140,190)}
+.nc-shape-pink-inv{fill:rgb(232,140,190);stroke:rgb(232,140,190)}
+.nc-text-strong-neutral{fill:rgb(230,230,230)}
+.nc-text-strong-slate{fill:rgb(148,163,184)}
+.nc-text-strong-blue{fill:rgb(111,159,240)}
+.nc-text-strong-teal{fill:rgb(80,190,190)}
+.nc-text-strong-green{fill:rgb(94,196,132)}
+.nc-text-strong-amber{fill:rgb(224,178,74)}
+.nc-text-strong-orange{fill:rgb(232,150,88)}
+.nc-text-strong-red{fill:rgb(232,120,120)}
+.nc-text-strong-purple{fill:rgb(170,140,245)}
+.nc-text-strong-pink{fill:rgb(232,140,190)}
+.nc-on-strong{fill:rgb(24,24,24)}
+.nc-on-strong-dim{fill:rgb(52,52,52)}
+.nc-shadow{filter:url(#nc-sh-d)}
+}
+</style>
+<defs>
+<filter id="nc-sh" x="-30%" y="-30%" width="160%" height="180%">
+<feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgb(0,0,0)" flood-opacity="0.10"/>
+</filter>
+<filter id="nc-sh-d" x="-30%" y="-30%" width="160%" height="180%">
+<feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgb(0,0,0)" flood-opacity="0.55"/>
+</filter>
+</defs>
+<rect class="nc-bg" x="0" y="0" width="960" height="418.2"/>
+<text class="t-title" x="52" y="79.58" text-anchor="start" textLength="327.05" lengthAdjust="spacingAndGlyphs">Production is not access</text>
+<g transform="translate(52 109)">
+<text class="t-group nc-dim" x="214.05" y="23.52" text-anchor="start" textLength="62.91" lengthAdjust="spacingAndGlyphs">Production</text>
+<text class="t-group nc-dim" x="521.12" y="23.52" text-anchor="start" textLength="40.29" lengthAdjust="spacingAndGlyphs">Access</text>
+<line class="nc-rule" x1="0" y1="38.4" x2="856" y2="38.4"/>
+<text class="t-label nc-ink" x="0" y="66.56" text-anchor="start" textLength="68.7" lengthAdjust="spacingAndGlyphs">Question</text>
+<text class="t-detail nc-dim" x="214.05" y="64.89" text-anchor="start" textLength="123.2" lengthAdjust="spacingAndGlyphs">What can we make?</text>
+<text class="t-detail nc-dim" x="521.12" y="64.89" text-anchor="start" textLength="96.18" lengthAdjust="spacingAndGlyphs">Who can use it?</text>
+<line class="nc-rule" x1="0" y1="83.2" x2="856" y2="83.2"/>
+<text class="t-label nc-ink" x="0" y="111.36" text-anchor="start" textLength="91.27" lengthAdjust="spacingAndGlyphs">Current link</text>
+<text class="t-detail nc-dim" x="214.05" y="109.69" text-anchor="start" textLength="181.3" lengthAdjust="spacingAndGlyphs">Human labor creates output</text>
+<text class="t-detail nc-dim" x="521.12" y="109.69" text-anchor="start" textLength="113.68" lengthAdjust="spacingAndGlyphs">Wages buy output</text>
+<line class="nc-rule" x1="0" y1="128" x2="856" y2="128"/>
+<text class="t-label nc-ink" x="0" y="156.16" text-anchor="start" textLength="123.75" lengthAdjust="spacingAndGlyphs">If labor weakens</text>
+<text class="t-detail nc-dim" x="214.05" y="154.49" text-anchor="start" textLength="146.72" lengthAdjust="spacingAndGlyphs">Output can keep rising</text>
+<text class="t-detail nc-dim" x="521.12" y="154.49" text-anchor="start" textLength="255.22" lengthAdjust="spacingAndGlyphs">Ownership, services and claims matter</text>
+<line class="nc-rule" x1="0" y1="172.8" x2="856" y2="172.8"/>
+<text class="t-label nc-ink" x="0" y="200.96" text-anchor="start" textLength="122.61" lengthAdjust="spacingAndGlyphs">If they separate</text>
+<text class="t-detail nc-dim" x="214.05" y="199.29" text-anchor="start" textLength="183.4" lengthAdjust="spacingAndGlyphs">Overcapacity and idle supply</text>
+<text class="t-detail nc-dim" x="521.12" y="199.29" text-anchor="start" textLength="208.04" lengthAdjust="spacingAndGlyphs">Empty wallets and lost leverage</text>
+<line class="nc-rule" x1="0" y1="217.6" x2="856" y2="217.6"/>
+
+
+
+
+
+</g>
+<text class="t-caption nc-dim" x="52" y="361.44" text-anchor="start" textLength="356.72" lengthAdjust="spacingAndGlyphs">More output helps only when people retain a claim on it.</text>
+</svg>

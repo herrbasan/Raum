@@ -1,0 +1,49 @@
+{
+  "background": true,
+  "caption": "Individually rational cost cutting can weaken the customer base everyone depends on.",
+  "centre": "The demand trap",
+  "edges": [
+    {
+      "from": "firms",
+      "to": "income"
+    },
+    {
+      "from": "income",
+      "to": "demand"
+    },
+    {
+      "from": "demand",
+      "to": "capacity"
+    },
+    {
+      "from": "capacity",
+      "to": "firms"
+    }
+  ],
+  "nodes": [
+    {
+      "detail": "Each decision looks rational",
+      "id": "firms",
+      "label": "Firms cut labor costs"
+    },
+    {
+      "detail": "Less labor income across the economy",
+      "id": "income",
+      "label": "Household incomes weaken"
+    },
+    {
+      "accent": true,
+      "detail": "Output meets thinner wallets",
+      "id": "demand",
+      "label": "Demand erodes"
+    },
+    {
+      "detail": "Pressure to cut costs returns",
+      "id": "capacity",
+      "label": "Capacity sits idle"
+    }
+  ],
+  "title": "When every firm waits for customers elsewhere",
+  "type": "cycle",
+  "width": 1280
+}
